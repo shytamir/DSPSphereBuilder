@@ -10,7 +10,7 @@ $files = [ordered]@{
 }
 $sourceFiles = @('global.json', 'VERSION', 'LICENSE', 'checks/Directory.Build.props',
     'scripts/Build-Plugin.ps1', 'scripts/Get-BuildIdentity.ps1', 'scripts/Test-ReferenceMap.ps1',
-    'scripts/write_plan.py', 'scripts/derive_patches.py', 'scripts/blueprint_geometry.py')
+    'scripts/write_plan.py', 'scripts/derive_patches.py', 'scripts/verify_geometry.py', 'scripts/blueprint_geometry.py')
 foreach ($directory in @('src', 'references', 'checks/Metadata', 'research/cosmin1490')) {
     $sourceFiles += Get-ChildItem -LiteralPath (Join-Path $RepositoryRoot $directory) -Recurse -File |
         Where-Object { $_.FullName -notmatch '[\\/](obj|bin)[\\/]' -and $_.Extension -in @('.cs', '.csproj', '.props', '.json', '.md', '.txt', '') } |

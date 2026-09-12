@@ -217,3 +217,8 @@ The root/package/build documentation now describes actual installation and use.
 The intermediate workflow still wraps its executable ZIP with build information;
 SB-I4.2 replaces that transport and verifies the real download. No game installation,
 execution, release, or submission was performed.
+
+Package-source follow-up: inspection found that the retained patch derivation also
+imports `verify_geometry.py`. That file is now included (48 package files). The
+source directory extracted from the revised local ZIP successfully regenerated
+the production plan with Python, without reaching outside its packaged inputs.

@@ -27,7 +27,7 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Phases 1–3 and SB-I4.1 complete; SB-I4.2 awaits hosted download inspection |
+| Roadmap and active work | Phases 1–3 and SB-I4.1 complete; SB-I4.2 awaits hosted download inspection with the complete derivation source |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1, IG2/IM2, and IG3/IM3 passed; IG4–IG5 and workshop-entry IG5a not entered |
 | Mod implementation | Editor control and additive operation compile in both reference modes and pass offline checks; runtime observations await SB-I5.1 |
@@ -86,7 +86,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I3.1 | Complete | [Additive operation and failure boundary](MVP-VALIDATION.md#sb-i31--additive-operation-and-failure-boundary) |
 | SB-I3.2 | Complete | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
 | SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
-| SB-I4.2 | In progress; direct upload implemented, hosted inspection pending | Real hosted download and independent inspection |
+| SB-I4.2 | In progress; direct upload implemented and package source dependency verified; hosted inspection pending | Real hosted download and independent inspection |
 | SB-I5.1 | Not started | Focused owner/runtime validation |
 | SB-I5.2 | Not started | Owner UI workshop |
 | SB-I5.3 | Not started | Agreed UI refinements and targeted rechecks |
