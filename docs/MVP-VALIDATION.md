@@ -194,3 +194,26 @@ reopening, and production native preservation await SB-I5.1. The hosted runs for
 [SB-I2.2](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34677110100) and
 [SB-I3.1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34677535631)
 also passed their affected offline checks.
+
+## SB-I4.1 — Executable package and validator
+
+Local package 0.1.28 was built from the working tree based on `389668a`; this is a
+rehearsal identity, not a clean CI revision. Both reference modes compile without
+warnings/errors, with identical 210 emitted references and a matching five-assembly
+native map. The builder always compiles first and explicitly selects the production
+DLL; no stale/missing payload or compiler failure falls back to a mock package.
+
+The ZIP contains 47 files: required root metadata, one production DLL in the
+verified BepInEx path, and source/compile inputs with pinned geometry, derivation,
+credit and applicable licenses. The supplied icon is unchanged, with the hash and
+256×256 PNG dimensions recorded above. Validation checks metadata identity, numeric
+version, diagnostic revision, payload hash, UTF-8, real image decoding, retained
+input hashes, and the file inventory. Twelve malformed variants were rejected:
+missing DLL, wrong manifest/DLL versions, altered GUID, shim as payload, extra dependency/probe,
+nested ZIP, wrapper folder, missing reference source, wrong dependency, and invalid
+image. This tests package contracts, not README wording.
+
+The root/package/build documentation now describes actual installation and use.
+The intermediate workflow still wraps its executable ZIP with build information;
+SB-I4.2 replaces that transport and verifies the real download. No game installation,
+execution, release, or submission was performed.

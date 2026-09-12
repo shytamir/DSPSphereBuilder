@@ -10,5 +10,5 @@ Apache-2.0 license does not replace these third-party terms.
 This file supplies reproducible research input. No generator implementation has
 been incorporated. [FEASIBILITY.md](../../docs/FEASIBILITY.md#sb-f21--canonical-reference-geometry)
 records hashes and the measured comparison to the published sphere and sample.
-The fixture is excluded from the mock package. Any later distribution using this
-material must carry its applicable terms and attribution.
+Executable packages retain this fixture, its applicable terms and attribution
+under source/research/cosmin1490, alongside production source and derivation.

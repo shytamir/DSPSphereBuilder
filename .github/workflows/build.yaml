@@ -1,4 +1,4 @@
-name: Build mock Thunderstore package
+name: Build Thunderstore package
 run-name: Build ${{ github.run_number }} from ${{ github.sha }}
 
 on:
@@ -43,7 +43,7 @@ jobs:
           python -B scripts/check_plan.py artifacts/compiled-plan.json
           if ($LASTEXITCODE -ne 0) { throw 'Compiled plan comparison failed.' }
 
-      - name: Build and validate mock package
+      - name: Build and validate executable package
         id: package
         run: |
           ./scripts/Build-Package.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
@@ -61,11 +61,11 @@ jobs:
         run: |
           $info = Get-Content artifacts/BUILD-INFO.json -Raw | ConvertFrom-Json
           @"
-          Mock package: $($info.package_file)
+          Executable package: $($info.package_file)
 
           Thunderstore version: $($info.package_version)
 
           Build identity: $($info.build_label)
 
-          Contains metadata and documentation only; no executable mod. Extract the inner ZIP from the Actions artifact.
+          Extract the inner package ZIP from this Actions artifact. It contains the production DLL and source/licenses.
           "@ >> $env:GITHUB_STEP_SUMMARY

@@ -2,8 +2,8 @@
 
 **Paint a perfect C60 Dyson sphere, one patch at a time.**
 
-DSP Sphere Builder is a proposed quality-of-life mod for Dyson Sphere Program.
-Its intended interaction is simple: select an empty sphere layer, then click
+DSP Sphere Builder is a quality-of-life mod for Dyson Sphere Program.
+The interaction is simple: select an empty sphere layer, then click
 **Paint next patch** whenever you want to extend its framework.
 
 The design grows through twelve pentagons: one polar cap, five in the upper
@@ -31,25 +31,31 @@ established by this project.
 - [Agent working practices](AGENTS.md) — scope discipline, validation, and Git
   conventions for automated contributors.
 
-## Mock package
+## Build and use
 
-The [build workflow](https://github.com/shytamir/DSPSphereBuilder/actions/workflows/build.yaml)
-produces a **mock Thunderstore ZIP** containing package metadata, a package README,
-a placeholder icon, and the license. It contains no executable mod and installs
-no gameplay functionality. Download an Actions artifact and extract its enclosed
-package ZIP; the artifact wrapper is not itself the Thunderstore package.
+Select exactly one native sphere layer with at least 68 degrees of unlocked
+Dyson sphere latitude. Start on an empty layer or continue a recognized staged
+framework. Click **Paint next patch** to extend it without waiting for
+construction. Save/reload continuation comes from the actual framework; modified
+or unrelated layouts are refused. Unexpected errors stop painting for the plugin
+session and may leave a partial patch; there is no rollback or automatic retry.
 
-For a local build on Windows, use PowerShell 7 from the repository root:
+The executable package includes the DLL, supplied icon, metadata, source and
+licenses. It requires BepInEx 5.4.17. Follow the [package instructions](packaging/README.md)
+for installation and use, and [PROJECT.md](docs/PROJECT.md) for runtime acceptance
+and candidate identity. The [workflow](https://github.com/shytamir/DSPSphereBuilder/actions/workflows/build.yaml)
+summary identifies its package download.
+
+For a local Windows build with PowerShell 7 and the pinned .NET SDK:
 
 ```powershell
 $commit = git rev-parse HEAD
 ./scripts/Build-Package.ps1 -BuildNumber 1 -Commit $commit
 ```
 
-The command validates the ZIP before returning its path. Outputs stay under
-ignored `artifacts/`. CI supplies the sequential build number automatically;
-see [the version contract](docs/BUILD.md#version-contract) for how it maps to
-Thunderstore's numeric version.
+The command compiles and validates the package. Outputs stay in ignored
+`artifacts/`. CI supplies the sequential build number automatically; see the
+[build guide](docs/BUILD.md) for native-reference comparison and versioning.
 
 ## References and credit
 

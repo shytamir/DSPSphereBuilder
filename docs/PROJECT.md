@@ -27,12 +27,12 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Phases 1–3 complete; SB-I4.1 next |
+| Roadmap and active work | Phases 1–3 and SB-I4.1 complete; SB-I4.2 next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1, IG2/IM2, and IG3/IM3 passed; IG4–IG5 and workshop-entry IG5a not entered |
 | Mod implementation | Editor control and additive operation compile in both reference modes and pass offline checks; runtime observations await SB-I5.1 |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
-| Distribution | Mock artifact only; no release or Thunderstore publication authorized |
+| Distribution | Executable local package verified; direct hosted download awaits SB-I4.2; no publication authorized |
 
 ## Accepted scope
 
@@ -54,7 +54,7 @@ the UI workshop. The short session reuses accepted feasibility evidence instead
 of reopening W1–W6 as a test matrix. Necessary workshop changes and targeted
 rechecks precede final MVP acceptance. Production implementation is authorized;
 publication and polish remain outside this roadmap. The supplied icon replaces
-the package placeholder in SB-I4.1. CI retains mock delivery until SB-I4.2.
+the package placeholder in SB-I4.1. Phase 4 replaces mock delivery; SB-I4.2 verifies the direct hosted download.
 
 ## Target game reference
 
@@ -85,7 +85,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I2.2 | Complete | [Native graph recognition](MVP-VALIDATION.md#sb-i22--native-graph-recognition) |
 | SB-I3.1 | Complete | [Additive operation and failure boundary](MVP-VALIDATION.md#sb-i31--additive-operation-and-failure-boundary) |
 | SB-I3.2 | Complete | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
-| SB-I4.1 | Not started | Executable package and validator |
+| SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
 | SB-I4.2 | Not started | Real hosted download and independent inspection |
 | SB-I5.1 | Not started | Focused owner/runtime validation |
 | SB-I5.2 | Not started | Owner UI workshop |

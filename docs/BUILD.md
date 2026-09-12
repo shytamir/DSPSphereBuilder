@@ -1,56 +1,10 @@
 # Build and packaging
 
-See [PROJECT.md](PROJECT.md) for current readiness and acceptance. This document
-defines production compilation and the current mock package procedure.
+[PROJECT.md](PROJECT.md) owns readiness and acceptance. Use Windows, PowerShell 7,
+Git, and the SDK pinned in [global.json](../global.json). Package image validation
+uses System.Drawing; compilation and checks do not launch the game.
 
-## Production compilation
-
-Use the SDK pinned in [global.json](../global.json) and PowerShell 7. From the
-repository root, compile against the CI declarations with:
-
-```powershell
-$commit = git rev-parse HEAD
-./scripts/Build-Plugin.ps1 -BuildNumber 1 -Commit $commit
-```
-
-To also compile against the local target and compare emitted references:
-
-```powershell
-./scripts/Build-Plugin.ps1 -BuildNumber 1 -Commit $commit -DspManagedPath $managedPath -BepInExCorePath $loaderPath
-```
-
-Set those variables to the actual `DSPGAME_Data/Managed` and `BepInEx/core`
-directories. The script checks the recorded local target hash, compiles both
-reference modes, checks the [reference map](../references/README.md), and inspects
-DLL metadata without loading the plugin. It invokes no game runtime.
-
-Outputs are `artifacts/plugin/Shim/DSPSphereBuilder.dll` and, with real inputs,
-`artifacts/plugin/Native/DSPSphereBuilder.dll`. Reference assemblies in build
-directories are compile inputs, never package payload. Build information records
-the source commit and whether the local working tree was dirty; local builds with
-edits must not be represented as clean reproductions of that commit.
-
-## Offline plan and logic checks
-
-Production geometry/logic checks use the compiled DLL and Python 3.12 (CI pins
-the published Windows runtime 3.12.10; the bundled local runtime is 3.12.14):
-
-```powershell
-dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json
-python -B scripts/check_plan.py artifacts/compiled-plan.json
-```
-
-The committed `src/Plan.Data.cs` is generated with
-`python -B scripts/write_plan.py src/Plan.Data.cs`. The comparison checks numeric
-coordinates and topology from the compiled data against the retained derivation;
-it does not assert generated source text. Production builds need no Python at
-runtime and load no blueprint parser.
-
-## Mock package build
-
-Windows with PowerShell 7 and Git is sufficient. PNG validation uses Windows
-System.Drawing. No game installation, SDK, package restore,
-or downloaded build dependency is required.
+## Build the package
 
 From the repository root:
 
@@ -59,19 +13,56 @@ $commit = git rev-parse HEAD
 ./scripts/Build-Package.ps1 -BuildNumber 1 -Commit $commit
 ```
 
-Use a positive build number for a local rehearsal. The script reads `VERSION`,
-builds and validates a ZIP, and writes build identity to `artifacts/BUILD-INFO.json`.
-Local numbers are not reserved CI sequence numbers. The supplied commit identifies
-the source revision; a local build can also include uncommitted working-tree edits.
+This compiles production source against the mapped reference shims, checks DLL
+metadata, builds the executable ZIP, validates it, and writes
+`artifacts/BUILD-INFO.json` with full commit, dirty state, version and hashes.
+Use a positive local rehearsal number; local numbers do not reserve CI numbers.
+Failed compilation or a missing input stops packaging; there is no prebuilt-DLL
+or mock fallback. Generated outputs stay under ignored `artifacts/`.
 
-To inspect an existing package independently:
+To also compile against the actual target and compare emitted references:
 
 ```powershell
-./scripts/Test-Package.ps1 -PackagePath artifacts/packages/DSPSphereBuilder-0.1.1.zip -ExpectedVersion 0.1.1
+./scripts/Build-Package.ps1 -BuildNumber 1 -Commit $commit -DspManagedPath $managedPath -BepInExCorePath $loaderPath
 ```
 
-Use the actual version/path printed by the build. Generated outputs are ignored
-by Git and are never staged as source.
+Set the path variables to the actual `DSPGAME_Data/Managed` and `BepInEx/core`
+directories. The build verifies the recorded local target hash and the
+[reference map](../references/README.md). All newly referenced native surfaces
+must be inspected and mapped in the commit introducing them.
+
+For compilation alone, `scripts/Build-Plugin.ps1` accepts the same arguments.
+Outputs are `artifacts/plugin/Shim/DSPSphereBuilder.dll` and, with real inputs,
+`artifacts/plugin/Native/DSPSphereBuilder.dll`. The package selects only the
+production DLL; shim and native dependency binaries are never shipped.
+
+## Offline checks
+
+```powershell
+dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json
+python -B scripts/check_plan.py artifacts/compiled-plan.json
+./scripts/Test-PackageFailures.ps1 -PackagePath artifacts/packages/DSPSphereBuilder-0.1.1.zip -ExpectedVersion 0.1.1 -ExpectedCommit $commit
+```
+
+Use the version printed by the build. Python 3.12 is needed only for geometry
+checks/derivation (CI 3.12.10; bundled local runtime 3.12.14). The compiled-code
+checks exercise this project's managed logic; native game methods and the plugin
+entry point are not invoked. The independent derivation compares all twelve
+deltas and numeric positions. `scripts/write_plan.py src/Plan.Data.cs` regenerates
+the committed plan. No generator or parser runs inside the mod.
+
+To inspect a downloaded package independently:
+
+```powershell
+./scripts/Test-Package.ps1 -PackagePath $zipPath -ExpectedVersion $version -ExpectedCommit $commit -ExpectedPayloadHash $payloadHash
+```
+
+Take the expected inputs from the matching separate build record. The hash is
+optional for a local check; use it when validating downloaded bytes against CI.
+The validator checks archive entries, UTF-8, PNG decoding/dimensions, source and
+license presence, retained input bytes, runtime dependency metadata, and DLL
+GUID/version/revision without loading it. Negative cases cover malformed payload,
+identity, dependencies, source, image, and archive layout.
 
 ## Version contract
 
@@ -108,42 +99,32 @@ Keep this single workflow's sequence when extending it to build the real mod.
 Do not substitute a short hash, commit count, run ID, or retry attempt for the
 numeric patch.
 
-## Mock ZIP contract
 
-The package contains exactly these root entries:
+## Package contract
 
-```text
-manifest.json
-README.md
-icon.png
-LICENSE
-```
+Required root files are `manifest.json`, `README.md`, `icon.png`, and `LICENSE`.
+The single executable is `BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll`.
+`source/` contains production source, compile declarations/checks, geometry
+inputs/derivation, applicable licenses/credit, and revision identity. No game or
+shim DLL, probe, evidence dump, cache, wrapper directory, or nested ZIP belongs
+in the package. [Get-PackageInputs.ps1](../scripts/Get-PackageInputs.ps1) defines
+that file inventory.
 
-The manifest uses `DSPSphereBuilder`, a numeric three-part version, the repository
-URL, a description explicitly identifying the mock, and an empty dependency
-array. The mock has no runtime payload or dependency to install. The dedicated
-[package README](../packaging/README.md) describes that artifact, without copying
-project status. The 256x256 PNG is a placeholder, not final product artwork.
-
-The validator checks the ZIP entry set, readable UTF-8 text, manifest fields and
-version, and actual PNG decoding and dimensions. These follow the
-[Thunderstore package requirements](https://wiki.thunderstore.io/mods/creating-a-package).
-A format-valid mock is not a functional mod or a moderation-approved submission.
-
-Build information stays outside the package and identifies the full commit,
-numeric version, diagnostic label, build number, and retry attempt.
+The manifest declares `xiaoye97-BepInEx-5.4.17`. The supplied icon is retained
+unchanged as a 256×256 PNG. These follow the
+[Thunderstore package requirements](https://wiki.thunderstore.io/mods/creating-a-package)
+and [BepInEx directory routing](https://wiki.thunderstore.io/mods/packaging-your-mods).
+Original Apache-2.0 code and the upstream fixture's GPL-3.0 material retain their
+separate terms; see the package's source attribution. Package validation is not
+runtime acceptance or a Thunderstore moderation decision.
 
 ## GitHub Actions
 
-[build.yaml](../.github/workflows/build.yaml) runs on pushes to `main` and manual
-dispatch. It checks out the triggering revision, compiles production source with
-the mapped shims and checks its metadata, then builds and validates the mock,
-and uploads the ZIP and build information as one Actions artifact. The workflow
-has read-only repository permissions and a bounded job timeout.
+[build.yaml](../.github/workflows/build.yaml) runs on `main` pushes and manual
+dispatch, with read-only repository permissions and a bounded timeout. It builds
+production source, validates the package and affected offline logic, and records
+build identity. See PROJECT.md for verified hosted delivery and the identified
+owner-session candidate. The run summary identifies the appropriate download.
 
-Download the artifact from a successful run and extract the enclosed
-`DSPSphereBuilder-<version>.zip`. The downloaded artifact wrapper contains both
-that ZIP and build information; do not submit the wrapper to Thunderstore.
-
-The workflow does not create releases or tags, push version edits, publish to
-Thunderstore, or interact with a game installation.
+The workflow does not create releases/tags, edit VERSION, submit to Thunderstore,
+or interact with a game installation.

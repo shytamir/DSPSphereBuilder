@@ -1,16 +1,48 @@
-# DSP Sphere Builder — mock package
+# DSP Sphere Builder
 
-This is a packaging test artifact. It contains a manifest, this README, a
-placeholder icon, and the repository license. It contains no plugin DLL and
-provides no gameplay functionality.
+Paint the reference C60 framework one pentagon at a time. Twelve clicks progress
+from one polar cap through two rings to the opposite cap, ending with 60 nodes
+and 90 frames. Each click adds the missing connections and one leading spoke.
+Hexagons emerge between the pentagons; fill shells yourself using the native tool.
 
-Do not install or publish this mock as a playable mod.
+## Install
 
-DSP Sphere Builder's intended experience is to lay out an exact C60 sphere
-framework one pentagon patch at a time, progressing from pole to pole while
-preserving existing construction. Shell filling stays with the player.
+Requires Dyson Sphere Program and BepInEx 5.4.17 (Thunderstore dependency
+`xiaoye97-BepInEx-5.4.17`). With BepInEx installed, extract this package's `BepInEx`
+directory into the game directory, preserving its folders. For a mod-manager
+profile, use its profile directory instead. The payload is
+`BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll`.
 
-See the [product concept](https://github.com/shytamir/DSPSphereBuilder/blob/main/CONCEPT.md)
-for the design, geometry references, and sample. The
-[project record](https://github.com/shytamir/DSPSphereBuilder/blob/main/docs/PROJECT.md)
-is authoritative for development state and readiness.
+Remove an older Sphere Builder DLL before replacing it. The feasibility probe
+must not be active alongside this plugin. The plugin GUID is `dsp.spherebuilder`.
+See the repository's [project record](https://github.com/shytamir/DSPSphereBuilder/blob/main/docs/PROJECT.md)
+for validation and acceptance state.
+
+## Use
+
+Open the native Dyson sphere editor in a running game. Select exactly one empty
+sphere layer at a native legal radius. At least 68 degrees of unlocked Dyson
+sphere latitude is required. Click **Paint next patch** to start, then again
+whenever ready; construction need not finish between clicks. The panel reports
+progress or why painting is unavailable.
+
+Continue after a save reload by selecting the layer again. Progress comes from
+its existing framework. Completed designs add nothing. A layer that differs from
+the staged design is refused; arbitrary blueprints and manual repairs are not
+supported. An exact earlier prefix is recognized as that prefix.
+
+Existing framework and construction are preserved. No shells are created or
+filled, no research is unlocked, and no future patch is planned automatically.
+On an unexpected error, painting stops for the plugin session and details go to
+`BepInEx/LogOutput.log`. A partial patch can remain: there is no rollback or
+automatic retry. Returning to the menu does not clear this stop.
+
+## Credit and source
+
+Geometry: [Cosmin1490's optimized 60-node sphere](https://www.dysonsphereblueprints.com/en/blueprints/dyson-sphere-best-cost-efficiency-optimized-sphere-design-60-nodes-15-cheaper-than-football),
+with reference material from the author's
+[Blueprint Generator](https://github.com/Cosmin1490/DysonSphereProgram-BlueprintGenerator).
+"Perfect" means faithful geometry; this project has not independently proved
+mathematical optimality. Source, pinned reference, attribution, and applicable
+licenses accompany the package in `source/`. Original project code uses Apache-2.0;
+reference material retains its GPL-3.0 terms.
