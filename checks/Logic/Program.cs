@@ -3,6 +3,7 @@ using System.Text.Json;
 
 if (args.Length != 1) throw new ArgumentException("Output path for compiled plan comparison is required.");
 RecognitionChecks.Run();
+PaintChecks.Run();
 var export = new
 {
     reference = SpherePlan.ReferenceSha256,

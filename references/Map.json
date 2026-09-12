@@ -4,6 +4,13 @@
     "sha256": "AE0BA95F75BD879A62AA4CE253B2AB78EAA4FB3C7C595F5E1FEE75EBE0E0EF85",
     "mvid": "ece4a40e-5e73-43f4-a9f8-4e74970b5942",
     "types": {
+      "DESelection": {
+        "token": "02000599",
+        "base": "System.Object",
+        "members": {
+          "DysonSphereLayer DESelection::get_singleSelectedLayer()": "0600340E"
+        }
+      },
       "DysonFrame": {
         "token": "0200027C",
         "base": "System.Object",
@@ -52,8 +59,63 @@
           "DysonFrame[] DysonSphereLayer::framePool": "040023D3",
           "DysonNode[] DysonSphereLayer::nodePool": "040023CE",
           "DysonShell[] DysonSphereLayer::shellPool": "040023D8",
+          "StarData DysonSphereLayer::starData": "040023C0",
           "System.Int32 DysonSphereLayer::id": "040023C1",
-          "System.Single DysonSphereLayer::orbitRadius": "040023C2"
+          "System.Single DysonSphereLayer::orbitRadius": "040023C2",
+          "System.Int32 DysonSphereLayer::NewDysonFrame(System.Int32,System.Int32,System.Int32,System.Boolean)": "06001CD5",
+          "System.Int32 DysonSphereLayer::NewDysonNode(System.Int32,UnityEngine.Vector3)": "06001CD1"
+        }
+      },
+      "GameHistoryData": {
+        "token": "0200021F",
+        "base": "System.Object",
+        "members": {
+          "System.Single GameHistoryData::dysonNodeLatitude": "04001C2E"
+        }
+      },
+      "GameMain": {
+        "token": "02000564",
+        "base": "UnityEngine.MonoBehaviour",
+        "members": {
+          "GameHistoryData GameMain::get_history()": "0600306C",
+          "System.Boolean GameMain::get_isRunning()": "0600305A"
+        }
+      },
+      "ManualBehaviour": {
+        "token": "020005E3",
+        "base": "UnityEngine.MonoBehaviour",
+        "members": {
+          "System.Boolean ManualBehaviour::get_active()": "06003911",
+          "System.Void ManualBehaviour::.ctor()": "0600392D"
+        }
+      },
+      "StarData": {
+        "token": "02000252",
+        "base": "System.Object",
+        "members": {
+          "System.Int32 StarData::id": "040020FD"
+        }
+      },
+      "UIDysonEditor": {
+        "token": "020005B1",
+        "base": "ManualBehaviour",
+        "members": {
+          "DESelection UIDysonEditor::selection": "04003DE5"
+        }
+      },
+      "UIGame": {
+        "token": "020005BA",
+        "base": "ManualBehaviour",
+        "members": {
+          "UIDysonEditor UIGame::dysonEditor": "04003F24"
+        }
+      },
+      "UIRoot": {
+        "token": "020006C6",
+        "base": "ManualBehaviour",
+        "members": {
+          "UIGame UIRoot::uiGame": "04005223",
+          "UIRoot UIRoot::get_instance()": "060044F5"
         }
       }
     }
@@ -117,6 +179,13 @@
           "System.Void UnityEngine.Component::.ctor()": "060018BB"
         }
       },
+      "UnityEngine.Mathf": {
+        "token": "020001F7",
+        "base": "System.ValueType",
+        "members": {
+          "System.Int32 UnityEngine.Mathf::RoundToInt(System.Single)": "0600164A"
+        }
+      },
       "UnityEngine.MonoBehaviour": {
         "token": "02000255",
         "base": "UnityEngine.Behaviour",
@@ -128,6 +197,10 @@
         "token": "0200026F",
         "base": "System.Object",
         "members": {
+          "System.Boolean UnityEngine.Object::Equals(System.Object)": "060019C8",
+          "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)": "06001A0E",
+          "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)": "06001A0F",
+          "System.Int32 UnityEngine.Object::GetHashCode()": "060019C7",
           "System.Void UnityEngine.Object::.ctor()": "06001A22"
         }
       },
@@ -137,7 +210,8 @@
         "members": {
           "System.Single UnityEngine.Vector3::x": "0400080C",
           "System.Single UnityEngine.Vector3::y": "0400080D",
-          "System.Single UnityEngine.Vector3::z": "0400080E"
+          "System.Single UnityEngine.Vector3::z": "0400080E",
+          "System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)": "060015A9"
         }
       }
     }

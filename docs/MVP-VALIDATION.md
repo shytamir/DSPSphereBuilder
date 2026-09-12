@@ -134,3 +134,31 @@ run this project's compiled matcher/math on captured-data fixtures; the native
 reader is verified by mapped metadata and real-reference compilation, not executed
 in a game session. SP/CP/identity capture is retained for the next story's
 preservation comparison; there is no report-export or custom-save subsystem.
+
+## SB-I3.1 — Additive operation and failure boundary
+
+The production operation resolves its target through a fresh callback, checks
+native-context availability and rounded latitude before capture, recognizes a
+complete prefix, and checks every proposed position before allocation. The mapped
+native adapter supplies prototype 0 nodes, then non-Euler prototype 0 frames.
+`DESelection.singleSelectedLayer`, native running/history getters, and the exact
+creation signatures were inspected against the target. Native Mathf.RoundToInt
+supplies the unlock comparison; no research-level name is guessed.
+
+The before/after comparison preserves existing identities, exact old positions,
+properties, SP/CP, earlier links, and shell associations while allowing construction
+increases and new node adjacency. A zero frame result, invalid node ID, exception,
+or detected preservation/result discrepancy stops further Paint attempts for the
+session. Error reporting does not recapture/retry after a failed native call.
+
+Both builds pass with no warnings/errors, identical 158 emitted references, and
+the updated three-assembly native map. Offline tests use prepared before/after
+records and a call recorder, not a simulated native allocator. They verify all
+twelve call deltas/endpoints, both shell classes with increasing construction,
+no-write selection/unlock/edit/completion outcomes, current-target changes,
+one-error session stop on zero/exception, no reset through another target or
+missing/menu context, rejection of a partial result in a fresh session, and
+continuation from a fully finished delta after a result-read failure. Separate
+negative outcomes detect lost SP/CP, replaced/moved old nodes, removed shells,
+and missing result frames. Production UI invocation and native behavior remain
+for the later integration/human stories; this is not a new live observation.
