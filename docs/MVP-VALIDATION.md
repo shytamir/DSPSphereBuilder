@@ -76,4 +76,9 @@ production DLL explicitly instead of archiving a build directory.
 The existing workflow now installs the exact pinned SDK through the official
 [setup-dotnet action](https://github.com/actions/setup-dotnet), compiles production
 source, and checks DLL identity before publishing its still-explicit mock artifact.
-Hosted compile evidence is recorded after the first matching run completes.
+[Hosted run 34676317466](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34676317466)
+passed for `fc42073f054d90b5f9cde168b341855932c40a4e`: production version `0.1.20`,
+label `0.1.20.fc42073`, 19 inspected emitted references, and successful mock ZIP
+validation/upload. A local negative metadata check rejected a different expected
+package version. Compilation, metadata inspection, and mock packaging are the
+only claims here; no plugin/game runtime was invoked.
