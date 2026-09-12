@@ -18,18 +18,19 @@ governs agent conduct. These documents link here for state.
 
 The owner accepted the MVP specification on 2026-09-12. The feasibility roadmap
 is complete and retained in the [archive](management/archive/ROADMAP-feasibility-and-mvp-definition.md).
-The new [MVP implementation roadmap](management/ROADMAP.md) is a reviewed draft
-prepared for owner review. Its authoring and publication to main are authorized;
-implementation execution has not been activated by this planning request.
+The owner accepted the [MVP implementation roadmap](management/ROADMAP.md) and
+authorized sequential execution with a main push and this state update for each
+completed story. Work proceeds to phase 5's owner session, then the workshop and
+final acceptance follow their explicit human gates. See SB-D014.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Feasibility roadmap closed and archived; new implementation draft contains five epics and twelve stories; none started |
+| Roadmap and active work | Implementation authorized; SB-I1.1 complete; SB-I1.2 next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1–IG5 and workshop-entry IG5a not entered |
-| Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
+| Mod implementation | Initial compile-reference shims mapped; production project is next |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
@@ -42,7 +43,7 @@ preservation of existing construction, and player-managed shells. Future changes
 to that baseline require a steering decision here and a corresponding update to
 the concept where its behavior changes.
 
-The implementation draft plans a working MVP and a real, directly usable CI mod
+The implementation roadmap delivers a working MVP and a real, directly usable CI mod
 package, followed by publication polish in a later roadmap. The production GUID
 is `dsp.spherebuilder`. CI will use mapped compile-only reference shims; every commit
 adding or changing a referenced surface must carry the corresponding native
@@ -51,9 +52,9 @@ type/member mapping and checks. Local real-reference compilation remains require
 Human validation and game runtime validation begin together immediately before
 the UI workshop. The short session reuses accepted feasibility evidence instead
 of reopening W1–W6 as a test matrix. Necessary workshop changes and targeted
-rechecks precede final MVP acceptance. Actual publication, polish, and production
-implementation are outside the current authoring task. The mock pipeline remains
-the current build behavior until its implementation stories execute.
+rechecks precede final MVP acceptance. Production implementation is authorized;
+publication and polish remain outside this roadmap. The supplied icon replaces
+the package placeholder in SB-I4.1. CI retains mock delivery until SB-I4.2.
 
 ## Target game reference
 
@@ -78,7 +79,7 @@ are owner-operated; the agent has not launched or operated a game session.
 
 | Story | Execution state | Planned outcome |
 | --- | --- | --- |
-| SB-I1.1 | Not started | Mapped compile references and delivery inputs |
+| SB-I1.1 | Complete | [Mapped references and delivery inputs](MVP-VALIDATION.md#sb-i11--mapped-references-and-delivery-inputs) |
 | SB-I1.2 | Not started | Production project and local/CI compilation |
 | SB-I2.1 | Not started | Exact twelve-patch production plan |
 | SB-I2.2 | Not started | Native-content prefix recognition |
@@ -380,6 +381,38 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** Specification target/delivery notes and SB-A01;
   implementation execution rules, SB-I1, all new native references, and SB-I4.
 
+### SB-D014 — Execute the implementation roadmap and use the supplied icon
+
+- **Date / decision-maker:** 2026-09-12, owner instruction.
+- **Choice:** Implement each story in order, push to main with its PROJECT update,
+  and progress through the phase 5 owner session. Runtime observations remain
+  owner-operated and wait for that handoff. Use the supplied spherebuilder icon
+  as the Thunderstore package icon.
+- **Basis / alternatives:** The owner accepted the draft and prioritized the
+  concept promise, verified unknowns, bounded scope, and outcome-led tradeoffs.
+  No further planning approval or alternative artwork is needed.
+- **Consequence:** Authoring-only restrictions from SB-D010 are superseded for
+  this roadmap. Substantial blockers stop dependent work; ordinary implementation
+  decisions stay with the implementor. Final owner/UI gates cannot be inferred.
+- **Affected contract:** Current phase, story execution, SB-I4.1, and SB-I5.
+
+### SB-D015 — Build identity and package inputs
+
+- **Date / decision-maker:** 2026-09-12, implementor within authorized scope.
+- **Choice:** Use netstandard2.1, mapped references in CI and real local references
+  for target compilation. BepInPlugin version is `MAJOR.MINOR.BuildNumber`;
+  assembly/file versions are `MAJOR.MINOR.0.0`; informational/log identity is
+  `MAJOR.MINOR.BuildNumber.shortCommit`. Package the mod under
+  `BepInEx/plugins/DSPSphereBuilder/` and depend on `xiaoye97-BepInEx-5.4.17`.
+- **Basis / alternatives:** Local loader metadata and primary distribution docs
+  are recorded in SB-I1.1 evidence. Putting the sequential build into a CLR
+  assembly-version component would impose an unrelated 16-bit limit; keeping
+  assembly binding stable avoids that without changing the package sequence.
+- **Consequence:** Keep native and shim binaries out of the payload. Retain
+  upstream fixture/source/license credit separately from original project terms.
+  The supplied icon already meets the decoded PNG/dimension requirement.
+- **Affected contract:** SB-I1.2, SB-I4, SB-MVP-23–24, and package metadata.
+
 ## Evidence and unresolved questions
 
 - The implementation draft was reviewed in three passes on 2026-09-12:
@@ -411,8 +444,5 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Owner review and execution authorization for the new
-[MVP implementation roadmap](management/ROADMAP.md). Its draft covers five epics,
-twelve stories, phased gates/milestones, and all 15 specification acceptance cases.
-No production code, reference shims, new live probe, or real-package workflow has
-been implemented by this authoring task. There is no current runtime handoff.
+Continue SB-I1.2 under the recorded authorization. The first human/runtime handoff
+is SB-I5.1 after a directly usable real CI package exists. No early probe is needed.

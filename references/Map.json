@@ -1,0 +1,67 @@
+{
+  "BepInEx.dll": {
+    "identity": "BepInEx, Version=5.4.17.0, Culture=neutral, PublicKeyToken=null",
+    "sha256": "DC1CB6B58B962BDA5AAA1D6B5F9AE14EC174F61836A1A1F96C1A040C7E8381F7",
+    "mvid": "23c82cad-a617-4aee-a1f2-659206cab34d",
+    "types": {
+      "BepInEx.BaseUnityPlugin": {
+        "token": "02000011",
+        "base": "UnityEngine.MonoBehaviour",
+        "members": {
+          "BepInEx.Logging.ManualLogSource BepInEx.BaseUnityPlugin::get_Logger()": "060000A5",
+          "System.Void BepInEx.BaseUnityPlugin::.ctor()": "060000A7"
+        }
+      },
+      "BepInEx.BepInPlugin": {
+        "token": "0200000B",
+        "base": "System.Attribute",
+        "members": {
+          "System.Void BepInEx.BepInPlugin::.ctor(System.String,System.String,System.String)": "06000085"
+        }
+      },
+      "BepInEx.Logging.ManualLogSource": {
+        "token": "0200001E",
+        "base": "System.Object",
+        "members": {
+          "System.Void BepInEx.Logging.ManualLogSource::LogError(System.Object)": "0600011D",
+          "System.Void BepInEx.Logging.ManualLogSource::LogInfo(System.Object)": "06000120"
+        }
+      }
+    }
+  },
+  "UnityEngine.CoreModule.dll": {
+    "identity": "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "sha256": "E2B5AE2FD12646D03FC3D04D1A37D522572A3B97022FE1B95BBF2A2F2B04853A",
+    "mvid": "edb248b2-d207-4081-a30f-b04d4bcf3eb4",
+    "types": {
+      "UnityEngine.Behaviour": {
+        "token": "0200023A",
+        "base": "UnityEngine.Component",
+        "members": {
+          "System.Void UnityEngine.Behaviour::.ctor()": "06001879"
+        }
+      },
+      "UnityEngine.Component": {
+        "token": "02000240",
+        "base": "UnityEngine.Object",
+        "members": {
+          "System.Void UnityEngine.Component::.ctor()": "060018BB"
+        }
+      },
+      "UnityEngine.MonoBehaviour": {
+        "token": "02000255",
+        "base": "UnityEngine.Behaviour",
+        "members": {
+          "System.Void UnityEngine.MonoBehaviour::.ctor()": "06001973"
+        }
+      },
+      "UnityEngine.Object": {
+        "token": "0200026F",
+        "base": "System.Object",
+        "members": {
+          "System.Void UnityEngine.Object::.ctor()": "06001A22"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyVersion>5.4.17.0</AssemblyVersion>
+    <FileVersion>5.4.17.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../UnityEngine.CoreModule/UnityEngine.CoreModule.csproj" Private="false" />
+  </ItemGroup>
+</Project>
