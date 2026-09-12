@@ -23,8 +23,8 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F1.1 complete; SB-F1.2 is next |
-| Feasibility gates and MVP specification | G1–G4 not passed; specification not yet authored or accepted |
+| Roadmap and active work | SB-F1 complete; SB-F2.1 is next |
+| Feasibility gates and MVP specification | G1/M1 passed; G2–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Not started; no plugin source or runtime scaffold |
 | Runtime validation and owner acceptance | Not performed for the proposed mod |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
@@ -64,8 +64,8 @@ loaded or executed by the agent.
 | Story | Execution state | Evidence |
 | --- | --- | --- |
 | SB-F1.1 | Complete | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
-| SB-F1.2 | Not started; next | — |
-| SB-F2.1 | Not started | — |
+| SB-F1.2 | Complete | [Native placement and lifecycle](FEASIBILITY.md#sb-f12--native-placement-and-lifecycle) |
+| SB-F2.1 | Not started; next | — |
 | SB-F2.2 | Not started | — |
 | SB-F2.3 | Not started | — |
 | SB-F3.1 | Not started | — |
@@ -115,6 +115,20 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** Execution rules, SB-F3, and G3. This supersedes SB-D001's
   planning-only execution boundary, not its specification-first outcome.
 
+### SB-D003 — Use the native additive path; preserve its validation boundary
+
+- **Date / decision-maker:** 2026-09-12, implementor within authorized scope.
+- **Question / choice:** Investigate direct native node/frame creation for the
+  probe; do not use blueprint replacement to extend a layer.
+- **Alternatives and evidence:** SB-F1.2 found individual native allocation and
+  bookkeeping methods; blueprint import instead resets the layer pools.
+- **Rationale / consequence:** Native creation avoids replacing existing records.
+  Its availability is not proof of live preservation, and its constructors omit
+  editor geometry/unlock checks. SB-F2.3 must establish those constraints before
+  mutation; SB-F3 must establish behavior. No compatibility gate or custom
+  allocator is introduced.
+- **Affected contract:** SB-F2.3, SB-F3.1, and future MVP placement/preservation.
+
 ## Evidence and unresolved questions
 
 - The concept preserves the supplied sample and reported format checks; those
@@ -136,5 +150,6 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to SB-F1.2 under the existing execution authorization. G1 awaits its native
-operation map. The next implementation roadmap remains downstream of G4/M4.
+Proceed to SB-F2.1. G1/M1 passed from the identified target and native operation map;
+each unresolved behavioral question has a bounded owning story. The next
+implementation roadmap remains downstream of G4/M4.
