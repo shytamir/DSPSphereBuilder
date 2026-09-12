@@ -24,9 +24,22 @@ def decode(text):
         offset += struct.calcsize('<' + fmt)
         return result[0] if len(result) == 1 else result
 
-    format_version, layer_version = read('ii')
-    if format_version != 0 or layer_version not in (0, 1):
-        raise ValueError((format_version, layer_version))
+    format_version = read('i')
+    if format_version != 0:
+        raise ValueError(format_version)
+    records = read_layer(read)
+    if offset != len(data):
+        raise ValueError(('Unconsumed data', offset, len(data)))
+    records['source'] = {'sha256': hashlib.sha256(blueprint.encode('ascii')).hexdigest(),
+                         'payload_sha256': hashlib.sha256(data).hexdigest(),
+                         'header': header, 'signature': signature, 'bytes': len(data)}
+    return records
+
+
+def read_layer(read):
+    layer_version = read('i')
+    if layer_version not in (0, 1):
+        raise ValueError(layer_version)
     records = {}
     for kind in ('nodes', 'frames', 'shells'):
         capacity, cursor, recycled = read('iii')
@@ -82,11 +95,6 @@ def decode(text):
         read('i')
         if read('?'):
             read(str(4 * read('i')) + 'B')
-    if offset != len(data):
-        raise ValueError(('Unconsumed data', offset, len(data)))
-    records['source'] = {'sha256': hashlib.sha256(blueprint.encode('ascii')).hexdigest(),
-                         'payload_sha256': hashlib.sha256(data).hexdigest(),
-                         'header': header, 'signature': signature, 'bytes': len(data)}
     return records
 
 

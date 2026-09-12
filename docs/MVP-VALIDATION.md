@@ -293,3 +293,79 @@ boundary. It does not authenticate the custom blueprint checksum, recover memory
 identities, or infer invested SP/CP that the blueprint omits. In-action production
 checks and retained feasibility evidence remain the support for those properties;
 owner observations/logs and captures will be reviewed together. See SB-D017.
+
+## SB-I5.1 — Owner evidence review
+
+The owner reported **"MVP is owner accepted"** on 2026-09-12 and supplied the two
+exports, log and screenshot. Originals were read from the established evidence
+folder and copied unchanged into ignored `artifacts/owner-session/0.1.31/`.
+These hashes identify the reviewed files; raw captures are not repository source.
+
+| File | Bytes | SHA-256 |
+| --- | ---: | --- |
+| prefix-3.txt | 1,546 | `133C1455340B33BAA66522816ADFCDCD55869DAB18618A1F20294036169E7F50` |
+| complete-12.txt | 3,150 | `F14C4257B13C073A0F7A3DB6AD0DA5B10BA419A12CE0E6DACADE0CA3C2601B77` |
+| LogOutput.log | 2,966 | `6B805B9BE6BEBE0C8A72C8B6EBF6F8B370BB6A422DAE88F2DCD577D69D5797AC` |
+| 20260912134823_1.jpg | 1,691,655 | `23B51231BC0E452F20417B55C3639B5B038DF47C8E73CA9EDA6BEBE9236E38DE` |
+
+The log identifies production **0.1.31.a71fd79**, the expected target MVID,
+BepInEx 5.4.17.0, and no loaded feasibility probe. The target DLL hash still matches
+the pinned baseline. All twelve logged additions on star 60, layer 1, radius
+36,000 match the derived cumulative counts, from 6/6 to 60/90. A later entry starts
+layer 3 at radius 26,200 with 6/6. The supplied log has no Error/Fatal entry; that
+fact alone is not the runtime conclusion.
+
+The exports are **whole-sphere type 4**, not the requested single-layer type 1.
+The checker initially refused this format. Before extending the offline reader,
+the target's enum, DysonBlueprintData.Export and DysonOrbitBlueprintData.Export
+were inspected: container 0, twenty swarm orbit records, color and render fields,
+layer orbits, then the ID-indexed layer array. Orbit record version is 0. The
+existing layer reader was reused without changing its record rules. Explicit
+`--layer 1` selection and complete payload consumption locate the intended layer;
+its encoded radius also agrees with the log. Nothing was imported or run in game.
+The native export headers report `0.10.34.28529`; no separate displayed version
+capture is claimed.
+
+The manually designated shell is a **reference hexagon**, not a pentagon. The
+checker also initially refused its procedure-specific pentagon expectation. Both
+face classes are already required by the product specification, so the capture
+comparison now accepts one validated reference face and reports its boundary
+size. This changes evidence tooling only; no runtime behavior or design scope was
+relaxed. Seven focused capture checks and ten existing geometry/decoder checks
+pass, including whole-sphere selection, absent/unspecified layers, truncation,
+trailing data, and retained hexagon coverage.
+
+Reproduction from the repository root:
+
+```powershell
+python -B scripts/check_owner_capture.py --before artifacts/owner-session/0.1.31/prefix-3.txt --after artifacts/owner-session/0.1.31/complete-12.txt --radius 36000 --layer 1
+```
+
+| Capture | Nodes / frames / shells | Maximum direction error | Maximum relative radius error |
+| --- | --- | --- | --- |
+| Prefix 3 | 16 / 19 / 1 | `3.753450739e-8` | `3.743727878e-8` |
+| Complete 12 | 60 / 90 / 1 | `4.307964797e-8` | `4.186824723e-8` |
+
+Both graphs match the fixed plan within SB-MVP-07 bounds. All earlier numeric node
+IDs, exact captured positions, prototypes, frame IDs/endpoints and non-Euler modes
+are retained. Shell 1 keeps the same six-node boundary through patches 4–12. The
+other exported layer (2, radius 9,700) keeps the same decoded 6/6/0 graph; its raw
+serialized bytes differ, so byte-for-byte preservation of its bookkeeping is not
+claimed. The full comparison JSON is retained beside the copied evidence.
+
+The screenshot shows the top-center control with `Layer 1: 3/12 patches planned`,
+native counts 16 nodes / 19 frames / one shell, radius 36,000, and zero constructed
+structure/cell points. The button and status are readable. The panel overlaps the
+native center `Painting mode` caption; the left/right controls and bottom toolbar
+are visible. This is concrete input to the owner's current-UI disposition, not a
+request to redesign the control.
+
+**Limits:** No itemized route report accompanies the owner's overall acceptance.
+The log does not mark menu reload, no-selection/disabled feedback, manual-edit
+refusal, or a completed no-op; the still image cannot prove click-through behavior.
+These are not newly instrumented production observations. Native inspection,
+managed behavior checks, prior feasibility observations, and the owner's explicit
+acceptance remain their evidence/disposition. The exports omit invested SP/CP and
+object identity; this screenshot has no invested construction to preserve. The
+new hexagon observation covers designation/boundary retention beside later
+addition, not completed hexagon CP delivery or the radius endpoints. See SB-D018.

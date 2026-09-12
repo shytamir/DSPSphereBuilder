@@ -27,11 +27,11 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Phases 1–4 complete; SB-I5.1 handoff prepared and awaiting the owner session |
+| Roadmap and active work | SB-I5.1 complete; owner accepted 0.1.31; the UI workshop remains required |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
-| Implementation gates | IG1/IM1 through IG4/IM4 passed; workshop-entry IG5a and final IG5 await owner evidence |
-| Mod implementation | Editor control and additive operation compile in both reference modes and pass offline checks; runtime observations await SB-I5.1 |
-| Runtime validation and owner acceptance | Feasibility observations and SB-D008 remain accepted; production runtime observations and owner acceptance are pending SB-I5 |
+| Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; workshop/refinements and final IG5 remain |
+| Mod implementation | Production 0.1.31 has matching owner evidence for the full framework and retained hexagon boundary |
+| Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 on 2026-09-12 and clarified this does not skip the UI workshop; final IG5 remains open |
 | Distribution | CI package 0.1.31 independently verified as a direct installable download; no publication authorized |
 
 ## Accepted scope
@@ -87,7 +87,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I3.2 | Complete | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
 | SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
 | SB-I4.2 | Complete | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
-| SB-I5.1 | In progress; awaiting owner runtime observations | [Session procedure](OWNER-SESSION.md) and [capture preparation](MVP-VALIDATION.md#sb-i51--prepared-owner-capture-and-handoff) |
+| SB-I5.1 | Complete under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
 | SB-I5.2 | Not started | Owner UI workshop |
 | SB-I5.3 | Not started | Agreed UI refinements and targeted rechecks |
 | SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
@@ -448,6 +448,30 @@ or Thunderstore moderation acceptance.
   unless the owner explicitly disposes of them; this is no new acceptance waiver.
 - **Affected contract:** SB-I5.1, SB-MVP-12–13, SB-A04–06/09/12–13 and owner handoff.
 
+### SB-D018 — Accept the observed production MVP and record evidence limits
+
+- **Date / decision-maker:** 2026-09-12, owner: "MVP is owner accepted", with the
+  produced exports, normal log and screenshot supplied for review.
+- **Choice:** Accept the tested 0.1.31.a71fd79 MVP. The owner explicitly clarified
+  this does not skip the UI workshop; SB-I5.2–5.4 remain required. No no-change UI
+  disposition or final IG5 acceptance is inferred. Close the integrated session
+  using the actual captures and overall owner acceptance, retaining the distinction
+  between independently checked outcomes and observations not separately recorded.
+- **Basis / alternatives:** The log identifies the expected plugin/target and all
+  twelve deltas; whole-sphere layer 1 checks as prefix 3 and complete 60/90 at
+  radius 36,000, with earlier records and one reference hexagon boundary retained.
+  The capture reader was adapted to the verified native container and existing
+  two-face product contract instead of requesting replacement exports or gameplay.
+- **Limits / consequence:** The owner supplied overall acceptance, not an itemized
+  report of reload, no-selection, edit refusal, completion no-op or click-through.
+  Do not relabel these as newly instrumented observations. SP/CP and memory
+  identity remain supported by in-action checks and prior feasibility evidence;
+  the screenshot shows zero construction. No core defect is exposed. W2 now has
+  production designation/boundary-retention evidence for a hexagon; completed CP
+  delivery and endpoint coverage remain unverified. Other W1–W6 limits stand.
+- **Affected contract:** SB-I5.1, IG5a/IM5a, SB-MVP-12–13, W2, final evidence review
+  and owner acceptance. Acceptance does not authorize publication or polish work.
+
 ## Evidence and unresolved questions
 
 - The implementation draft was reviewed in three passes on 2026-09-12:
@@ -479,6 +503,6 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Follow [the prepared owner session](OWNER-SESSION.md) on candidate 0.1.31, build
-0.1.31.a71fd79. IG5a requires owner observations and evidence review before the UI
-workshop. Prepared instructions and passing CI do not supply that acceptance.
+Conduct SB-I5.2 with the owner using the supplied screenshot and observed control.
+Placement, compactness and feedback remain workshop choices. No UI change or
+no-change disposition is agreed yet; refinements and final IG5 follow the workshop.

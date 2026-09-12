@@ -53,7 +53,7 @@ does not make them measured results.
 | Accepted assumption | Supporting basis and missing live observation |
 | --- | --- |
 | W1: radius envelope | E3's unit-direction predicates and scale checks support native legal radii. E6 verifies the full graph at the logged minimum 9,700 in star 60; no C60 maximum-radius or full both-face endpoint test was run. |
-| W2: manual hexagon shells | E3 validates both face classes and later additions outside prior faces. E4/E6 observe pentagon preservation; manual hexagon filling and addition beside it were not exercised. |
+| W2: manual hexagon shells | E3 validates both face classes; E4/E6 observe pentagon preservation. [Production owner evidence](MVP-VALIDATION.md#sb-i51--owner-evidence-review) now shows a designated hexagon boundary retained from patch 3 through 12 at radius 36,000. Completed hexagon construction/CP delivery and endpoint coverage remain unobserved. |
 | W3: other systems, including giants | E2/E3 resolve the viewed sphere and its native bounds. The owner switched stars and returned; no Paint report targets another star. |
 | W4: research refusal | E2/E3 establish the rounded native latitude predicate and the required value 68. Live successful runs use 90; a below-threshold refusal and named research levels were not observed. |
 | W5: multiple selected layers | E2 returns a layer only for exactly one selected layer. No-selection refusal is observed; the multiple-selection case was not exercised. |

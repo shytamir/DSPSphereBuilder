@@ -82,16 +82,19 @@ and the optional layer painting colors. The retained reference exercises those
 node/frame/shell versions. The full game-version suffix comes from the native
 export header; the startup MVID identifies the actual assembly.
 
-The agent will run the existing decoder and bounded capture comparison:
+The supplied files used whole-sphere copy and a hexagon shell. The evidence review
+in [MVP-VALIDATION.md](MVP-VALIDATION.md#sb-i51--owner-evidence-review) records that
+difference from this original procedure. The decoder can select the native layer
+from those exports by adding `--layer 1` to the comparison:
 
 ```powershell
 python -B scripts/check_owner_capture.py --before $prefixFile --after $completeFile --radius $recordedRadius
 ```
 
 This checks the 3/12 and 12/12 graphs, final 60 nodes/90 frames, direction/radius
-bounds, prior numeric IDs/positions/endpoints/prototypes, and retained pentagon
-boundary. Five offline checks cover a valid pair, missing final frame, wrong
-radius, lost shell, and a changed old position inside geometry tolerance.
+bounds, prior numeric IDs/positions/endpoints/prototypes, and a retained reference-face
+boundary. Capture checks cover both face classes, whole-sphere layer selection,
+payload bounds, missing frames, wrong radius, lost shell and changed old positions.
 
 Blueprints omit invested SP/CP and object identities. They cannot independently
 prove those properties across the session. Production actions check them in memory
