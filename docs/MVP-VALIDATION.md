@@ -232,3 +232,12 @@ rejected DLL left native exit code 1 in PowerShell. The negative-check script no
 returns success explicitly only after every rejection has passed. The local
 Actions-style exit-code check confirms zero; unexpected acceptance still throws.
 The next candidate must pass hosted upload and independent download inspection.
+
+Run 34678732321 (build 30, `2138818`) passed all hosted checks and direct upload.
+The independent API download matched CI's package SHA-256 and had the required
+root and single DLL, with no wrapper/nested archive. Its DLL's 210 emitted
+references matched the same-revision local real-reference compilation. Inspection
+then found CI's Windows checkout converted the upstream LICENSE from LF to CRLF.
+The text was identical after newline normalization, but retained bytes differed.
+`.gitattributes` now pins license/text inputs to LF; the next downloaded candidate
+must pass the unchanged byte check before IG4 can close.

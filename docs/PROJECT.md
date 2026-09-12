@@ -86,7 +86,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I3.1 | Complete | [Additive operation and failure boundary](MVP-VALIDATION.md#sb-i31--additive-operation-and-failure-boundary) |
 | SB-I3.2 | Complete | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
 | SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
-| SB-I4.2 | In progress; handled negative-test exit status fixed after run 34678551277; hosted inspection pending | Real hosted download and independent inspection |
+| SB-I4.2 | In progress; direct download verified; retained license newline fix awaits the next hosted package | Real hosted download and independent inspection |
 | SB-I5.1 | Not started | Focused owner/runtime validation |
 | SB-I5.2 | Not started | Owner UI workshop |
 | SB-I5.3 | Not started | Agreed UI refinements and targeted rechecks |
