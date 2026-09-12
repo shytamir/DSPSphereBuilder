@@ -284,3 +284,27 @@ Two delivery/documentation observations remain assigned to phase 4: bind the
 supplied build revision to actual HEAD, and correct the historical probe guide's
 claim that raw exception exports can never contain filesystem paths. Neither
 establishes an exploitable production boundary. No new live test is indicated.
+
+## SB-R3.2 — Security closure
+
+The source scan was sealed successfully for its original `2d4c869` snapshot with
+zero reportable findings and complete tracked-file coverage. Its generated report
+and canonical JSON are retained locally under `artifacts/release-review/security-report/`.
+The later assessment/state documentation changes were reviewed separately; they
+do not retroactively change the scan's revision. The scan used the available
+worker capacity after a ready preflight; the helper could not identify a six-slot
+capacity, which was advisory and did not reduce completed file coverage.
+
+No source vulnerability fix or dependency change was warranted. The explicit
+NuGet audit override used in SB-R3.1 and the empty restored package graphs establish
+the current dependency result despite the repository's normal audit opt-out.
+Upstream advisories retain the owner's SB-D027 exclusion, with no false clean-bill
+claim for those libraries.
+
+The five unnecessary signed-image query strings were removed from the ignored
+HTML cache while retaining the page and public image paths. Gitleaks rechecked
+`artifacts/reference` successfully with no alerts. The scanner's own example
+strings remain identifiable test documentation, not suppressed repository secrets.
+No runtime behavior, native reference surface or shipped input changed. The
+source-identity and probe-guide observations remain with their phase-4 stories;
+there is no unresolved repository security finding or material source-coverage gap.
