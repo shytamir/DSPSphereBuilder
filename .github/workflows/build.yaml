@@ -31,6 +31,18 @@ jobs:
         run: |
           ./scripts/Build-Plugin.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
 
+      - name: Set up geometry check runtime
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12.14'
+
+      - name: Check the compiled plan
+        run: |
+          dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json
+          if ($LASTEXITCODE -ne 0) { throw 'Production logic checks failed.' }
+          python -B scripts/check_plan.py artifacts/compiled-plan.json
+          if ($LASTEXITCODE -ne 0) { throw 'Compiled plan comparison failed.' }
+
       - name: Build and validate mock package
         id: package
         run: |

@@ -27,10 +27,10 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-I1.1–1.2 complete; SB-I2.1 next |
+| Roadmap and active work | SB-I1.1–1.2 and SB-I2.1 complete; SB-I2.2 next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 passed; IG2–IG5 and workshop-entry IG5a not entered |
-| Mod implementation | Minimal production entry point compiles against mapped and real references; no editor action yet |
+| Mod implementation | Production entry point and exact fixed plan compile and pass offline checks; no editor action yet |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
@@ -81,7 +81,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | --- | --- | --- |
 | SB-I1.1 | Complete | [Mapped references and delivery inputs](MVP-VALIDATION.md#sb-i11--mapped-references-and-delivery-inputs) |
 | SB-I1.2 | Complete | [Local and hosted production compilation](MVP-VALIDATION.md#sb-i12--production-compilation-and-identity) |
-| SB-I2.1 | Not started | Exact twelve-patch production plan |
+| SB-I2.1 | Complete | [Compiled production plan](MVP-VALIDATION.md#sb-i21--compiled-production-plan) |
 | SB-I2.2 | Not started | Native-content prefix recognition |
 | SB-I3.1 | Not started | Additive action and session failure boundary |
 | SB-I3.2 | Not started | Current-target editor control and feedback |
@@ -444,5 +444,5 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Continue SB-I2.1 under the recorded authorization. The first human/runtime handoff
+Continue SB-I2.2 under the recorded authorization. The first human/runtime handoff
 is SB-I5.1 after a directly usable real CI package exists. No early probe is needed.

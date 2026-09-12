@@ -82,3 +82,24 @@ label `0.1.20.fc42073`, 19 inspected emitted references, and successful mock ZIP
 validation/upload. A local negative metadata check rejected a different expected
 package version. Compilation, metadata inspection, and mock packaging are the
 only claims here; no plugin/game runtime was invoked.
+
+## SB-I2.1 — Compiled production plan
+
+The production DLL holds the fixed normalized directions, twelve deltas, and 32
+face boundaries generated from the pinned fixture. It contains no generator or
+blueprint parser. Coordinates use independent scalar calculations in managed
+code, then the native adapter can supply those positions to the game.
+
+The managed check reads the actual compiled DLL's plan and exports it to
+`artifacts/compiled-plan.json`. `scripts/check_plan.py` independently derives the
+reference again and checks every new-node/edge set and face, plus positions at
+five scales (100, 9,700, 36,000, 100,000, 1,000,000). These are arithmetic scales,
+not new claims of supported game radii. Results: all twelve deltas and faces
+match, final counts 60/90, maximum normalized-direction error `6.72304398e-8`,
+maximum relative radius error `7.07654325e-8`, both below SB-MVP-07's bounds.
+
+Both production reference modes compile without warnings/errors and have the
+same 29 emitted references. No native API was added; the reference map is
+unchanged. This managed test executes only this project's pure plan/math code,
+not the plugin entry point or any native game/Unity method. CI now runs the same
+compiled-plan comparison with pinned Python 3.12.14.

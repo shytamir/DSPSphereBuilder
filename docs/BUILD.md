@@ -32,6 +32,19 @@ edits must not be represented as clean reproductions of that commit.
 
 ## Local build
 
+Production geometry/logic checks use the compiled DLL and Python 3.12.14:
+
+```powershell
+dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json
+python -B scripts/check_plan.py artifacts/compiled-plan.json
+```
+
+The committed `src/Plan.Data.cs` is generated with
+`python -B scripts/write_plan.py src/Plan.Data.cs`. The comparison checks numeric
+coordinates and topology from the compiled data against the retained derivation;
+it does not assert generated source text. Production builds need no Python at
+runtime and load no blueprint parser.
+
 Windows with PowerShell 7 and Git is sufficient. PNG validation uses Windows
 System.Drawing. No game installation, SDK, package restore,
 or downloaded build dependency is required.
