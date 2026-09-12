@@ -7,7 +7,7 @@ current phase, epic/story status, readiness, and owner acceptance. Update those
 facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
-The [release-candidate roadmap](management/ROADMAP.md) defines the proposed
+The [release-candidate roadmap](management/ROADMAP.md) defines the authorized
 polishing work and completion criteria.
 Archived roadmaps retain their original work and completion criteria. The
 [MVP specification](MVP-SPECIFICATION.md) defines the
@@ -23,15 +23,15 @@ MVP, the UI workshop refinement and the label-only correction; final reconciliat
 passed under SB-D021. The [implementation plan](management/archive/ROADMAP-mvp-implementation.md)
 and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition.md)
 are archived. The management/code hygiene passes and final cleanup package
-inspection were completed before this planning round. The first release-candidate
-roadmap is authored under SB-D022; its stories have not started. Execution awaits
-owner authorization. Candidate acceptance and manual publication remain separate.
+inspection were completed before this planning round. The owner authorized
+sequential execution under SB-D023. SB-R1.1 is complete; SB-R1.2 is next and RG1
+remains open. Candidate acceptance and manual publication remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | First release-candidate draft authored; five epics and ten stories, awaiting execution authorization |
+| Roadmap and active work | Release-candidate execution authorized; SB-R1.1 complete, privacy review SB-R1.2 next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1–RG4, RG5a and RG5 not passed; no release candidate accepted |
@@ -63,9 +63,9 @@ Human and game runtime validation began together before the UI workshop. The
 short sessions reused accepted feasibility evidence; W1–W6 were not reopened as
 a test matrix. Agreed refinements and the targeted recheck preceded final MVP
 acceptance. Phase 4 replaced mock delivery with the real package and supplied
-icon. The requested MVP closeout cleanup is complete. SB-D022 authorizes authoring
-and pushing the polishing plan; it does not start implementation or authorize
-publication. Accepted behavior and W1–W6 evidence limits remain unchanged.
+icon. The requested MVP closeout cleanup is complete. SB-D023 authorizes executing
+the polishing plan and pushing each completed story with its state update.
+Accepted behavior and W1–W6 evidence limits remain unchanged; publication is excluded.
 
 ## Target game reference
 
@@ -90,7 +90,7 @@ are owner-operated; the agent has not launched or operated a game session.
 
 | Story | Execution state | Evidence |
 | --- | --- | --- |
-| SB-R1.1 | Not started | — |
+| SB-R1.1 | Complete | [Minimum distribution contract](RELEASE-CANDIDATE.md#sb-r11--minimum-distribution-contract), SB-D024 |
 | SB-R1.2 | Not started | — |
 | SB-R2.1 | Not started | — |
 | SB-R2.2 | Not started | — |
@@ -585,6 +585,41 @@ Historical instructions in a decision are not a new request to execute that work
 - **Affected contract:** SB-R1–SB-R5, RG1–RG5/RM1–RM5 including RG5a/RM5a, the
   current planning boundary and the separation of acceptance from publication.
 
+### SB-D023 — Execute the polishing roadmap through candidate handoff
+
+- **Date / decision-maker:** 2026-09-12, explicit owner instruction.
+- **Choice / basis:** Implement the entire roadmap in sequence, update PROJECT.md
+  and push each completed story to main. The owner will review the finished
+  candidate. This supersedes SB-D022's planning-only execution boundary.
+- **Consequence:** Complete authorized agent work without routine interim approvals;
+  preserve bounded scope, investigate unknowns and stop on a substantial blocker.
+  SB-R5.2/RG5 still require actual owner acceptance. Publication remains manual
+  and owner-operated, outside this authorization.
+- **Affected contract:** SB-R1–SB-R5 and the current execution boundary.
+
+### SB-D024 — Minimal install ZIP with revision-specific source access
+
+- **Date / decision-maker:** 2026-09-12, implementor within SB-R1.1.
+- **Choice:** Reduce the install ZIP to manifest, player README, unchanged icon,
+  one combined LICENSE/attribution file and the production DLL. Remove its complete
+  `source/` subtree; provide anonymous, full-commit source archive links in the
+  generated README and LICENSE. Keep build diagnostics separate.
+- **Basis:** [Distribution investigation](RELEASE-CANDIDATE.md#sb-r11--minimum-distribution-contract):
+  actual inventory/licenses, GPL-3.0 section 6(d), Apache's compatibility guidance,
+  primary Thunderstore/DSP routing rules and a successful anonymous source download
+  containing build and derivation inputs.
+- **Alternatives:** Retaining the entire source tree would preserve access but add
+  unnecessary install files. Removing source without directions/terms, linking a
+  mutable branch, or using expiring CI source artifacts would not meet the chosen
+  distribution basis. No separate source-hosting service is needed.
+- **Consequence:** Treat the combined distribution under GPL-3.0 while retaining
+  the original Apache-2.0 source grant and notices. Preserve upstream attribution;
+  make no claim that numerical derivation erases its licensing. Verify source access
+  for the exact candidate and keep it available while that binary is distributed.
+  BUILD.md keeps describing current behavior until SB-R2.1 implements this change.
+- **Affected contract:** SB-R1.1, SB-R2.1–2.2, SB-R5.1; supersedes SB-D016's bundled
+  source choice without changing the game's behavior or original-source license.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -626,7 +661,6 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Owner review and execution authorization for the first release-candidate roadmap.
-The completed MVP, retained evidence limits and verified 0.1.41 package remain its
-starting inputs. No polishing story has run, no security/privacy pass is claimed,
-and no release candidate or publication has been approved.
+Proceed to SB-R1.2's privacy review and resolve RG1 before package implementation.
+No privacy/security gate or release candidate is accepted yet. The owner's next
+planned participation remains the final candidate session.
