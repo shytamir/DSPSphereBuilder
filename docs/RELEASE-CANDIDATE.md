@@ -308,3 +308,42 @@ strings remain identifiable test documentation, not suppressed repository secret
 No runtime behavior, native reference surface or shipped input changed. The
 source-identity and probe-guide observations remain with their phase-4 stories;
 there is no unresolved repository security finding or material source-coverage gap.
+
+## SB-R4.1 — Delivery and DLL identity
+
+The build now rejects a supplied revision that differs from the checkout's HEAD
+before generating identity or compiling. A wrong-revision invocation failed and
+left the existing DLL unchanged. Local dirty rehearsals remain explicitly marked;
+the hosted record below confirms a clean checkout. Build 52/retry 2 retained
+numeric version `0.1.52`; build 53 advanced to `0.1.53`. The diagnostic suffix came
+from the actual full revision. Version semantics and workflow numbering did not change.
+
+The metadata inspector now independently reads both the assembly file-version
+attribute and the native PE version resource, alongside CLR assembly identity,
+BepInPlugin GUID/name/version and informational revision. The negative suite first
+accepts its original package, then rejects 15 mutations. Separate file-attribute
+and file-resource corruptions exercise both checks; a shared fixture helper
+requires one unambiguous byte marker and preserves PE layout. An initially ambiguous
+resource marker was corrected after inspection showed distinct FileVersion and
+Assembly Version fields. Failure logs confirmed the intended identity checks.
+
+Shim and exact-target compilation passed with zero warnings/errors, the same
+217 emitted references and all five native maps matching. No production behavior
+or native reference declaration changed. Workflow review found no remaining mock
+fallback or obsolete source-payload step; useful pins, timeout, read-only permissions
+and separate artifact delivery were retained. actionlint passed. Compilation errors
+propagate before archive construction; there is no prebuilt-DLL fallback.
+
+[Hosted run 52, attempt 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34699887898)
+passed all build, managed logic, independent geometry and malformed-package checks
+for `df53e8b8fb02e150a71e4aa57c883b9b91247efd`. The actual downloaded artifact
+`10300495368` was directly a 51,499-byte five-entry ZIP, with no wrapper or inner ZIP.
+The separate build record identified `0.1.52.df53e8b` and a clean working tree.
+Independent validation of those bytes passed, including both file-version fields
+at `0.1.0.0` and loader GUID `dsp.spherebuilder`.
+
+- ZIP SHA-256: `1352654105AB78F8E808383797F9A07A2585FBE8958AA3C169A595482DE276F8`.
+- DLL SHA-256: `4F03E70985A84BC6DD0D38CE29947B78210A295D0E93572AEA19EE67A1FE8F61`.
+
+This is delivery evidence. SB-R5.1 identifies the final candidate after the remaining
+sanity pass; this intermediate package is not owner-accepted or published.

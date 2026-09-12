@@ -25,14 +25,14 @@ and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
 sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-SB-R1.1–3.2 are complete and RG1/RM1–RG3/RM3 passed under SB-D027. SB-R4.1 is next. Candidate acceptance
+SB-R1.1–4.1 are complete and RG1/RM1–RG3/RM3 passed under SB-D027. SB-R4.2 is next. Candidate acceptance
 and manual publication remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Repository security closure complete; SB-R4.1 delivery review next |
+| Roadmap and active work | Hosted delivery verified; SB-R4.2 sanity/code-quality review next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 through RG3/RM3 passed; RG4, RG5a and RG5 not passed |
@@ -97,7 +97,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-R2.2 | Complete; RG2/RM2 passed | [Player copy and rendered preview](RELEASE-CANDIDATE.md#sb-r22--player-facing-description-and-readme) |
 | SB-R3.1 | Complete | [Repository security assessment](RELEASE-CANDIDATE.md#sb-r31--repository-security-assessment), SB-D027 |
 | SB-R3.2 | Complete; RG3/RM3 passed under SB-D027 | [Security closure](RELEASE-CANDIDATE.md#sb-r32--security-closure) |
-| SB-R4.1 | In progress; local checks passed, hosted verification pending | Source revision binding and both file-version representations checked; 15 malformed packages rejected |
+| SB-R4.1 | Complete | [Delivery and DLL identity](RELEASE-CANDIDATE.md#sb-r41--delivery-and-dll-identity) |
 | SB-R4.2 | Not started | — |
 | SB-R5.1 | Not started | — |
 | SB-R5.2 | Not started | — |
@@ -718,7 +718,7 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Proceed to SB-R4.1 and the remaining authorized sequence. SB-R4.1 must verify
-caller-supplied source identity against the actual checkout before candidate delivery.
+Proceed to SB-R4.2 and final candidate preparation. Source identity is now bound to
+the actual checkout and the downloaded delivery artifact passed its independent check.
 The next planned owner participation is candidate acceptance; security and candidate
 gates have not yet passed.
