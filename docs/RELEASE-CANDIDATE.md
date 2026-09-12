@@ -229,3 +229,58 @@ reported successful rendering; visual and accessibility inspection confirmed the
 headings, action emphasis, installation paths and credit/source links. No package
 was submitted or owner copy approval requested. UTF-8 decoding and the local
 `0.1.48.6ce9a97` package check passed with the new copy. No prose assertions were added.
+
+## SB-R3.1 — Repository security assessment
+
+Reviewed source: `2d4c8692a8093ef35381a15e8cde501615e2075f`, 87 tracked files.
+The offline source assessment included an independent complete audit, architecture
+review, focused delivery review and parent verification. It covered all production
+and probe code, parsers/generators, tests, reference declarations/maps, workflow,
+configuration, documentation, licenses, the reference fixture and PNG structure.
+No repository SECURITY.md was present. No confirmed exploitable repository finding
+was identified. This is source evidence, not a game or penetration test.
+
+The production plugin has no network, external import or custom persistence route.
+It uses compiled geometry and the current native selection. A partial native write
+is a documented functional failure boundary, not rollback. Offline tools consume
+operator-selected files; the ZIP validator requires exact entry names, extracts
+only one fixed destination and reads PE metadata without executing the payload.
+Numeric/hash validation constrains generated code and command arguments. The local
+Mono.Cecil tool library and game/loader installation remain trusted external inputs.
+
+Checks on 2026-09-12:
+
+| Check | Coverage and result |
+| --- | --- |
+| Gitleaks 8.30.1 | `git . --log-opts='--all' --redact=100`: 49 reachable commits, no secret findings. `dir . --max-archive-depth=3 --max-decode-depth=2 --redact=100`: 12.75 MB scanned, 14 alerts triaged below. Complements the broader SB-R1.2 privacy/output inspection. |
+| actionlint 1.7.12 | `-no-color .github/workflows/build.yaml`: passed. Manual review confirmed full action pins, read-only token, no persisted checkout credentials, ten-minute timeout, fixed output paths and no untrusted PR trigger or publishing action. |
+| .NET SDK 10.0.302 | Forced shim restore with `NuGetAudit=true` and `NuGetAuditMode=all` passed. Explicit vulnerable/transitive package queries for production and both check projects returned no packages. All 11 restored asset graphs, including native/probe/check modes, contain no NuGet package libraries. |
+| Dependency inputs | All ten project files and three shared property files were inspected. They use project/framework or local assembly references; Python scripts use the standard library. Explicit `NuGetAudit=false` settings were found and assessed, rather than treating normal compilation as an audit. |
+
+The first production package query omitted `ReferenceMode` and could not locate its
+mode-specific assets. Setting `ReferenceMode=Shim` resolved that command error;
+the successful query and asset inventory establish the result. Portable scanners
+were downloaded from their official releases with matching published SHA-256
+digests; no scanner or new audit infrastructure was added to the repository.
+
+The 14 local secret alerts comprised ten detections of five signed public-image
+URLs in an ignored reference HTML cache (including decoded duplicates), and four
+detections of the scanner's own documented examples in its ignored README/archive.
+The URLs contain public access-key identifiers and per-object signatures, not an
+AWS secret key or repository credential. The example alerts are not real secrets.
+No blanket allowlist was added. The cache query strings can be removed without
+changing the source fixture; diagnostic path handling remains covered by SB-R1.2.
+
+Public action lockfiles were inventoried (24/79/56/156 runtime entries for checkout,
+setup-dotnet, setup-python and upload-artifact). Their advisory query returned
+upstream library alerts. The owner then explicitly instructed **“Ignore the upstream
+advisories.”** Further upstream triage stopped; those alerts are excluded under
+SB-D027, not claimed fixed or absent. Repository workflow controls remain assessed.
+The external SDK, operating system, loader/game binaries and hosted infrastructure
+were not internally audited. No private source or raw finding was sent to a service;
+the dependency query sent only public action package names and versions.
+
+Two delivery/documentation observations remain assigned to phase 4: bind the
+supplied build revision to actual HEAD, and correct the historical probe guide's
+claim that raw exception exports can never contain filesystem paths. Neither
+establishes an exploitable production boundary. No new live test is indicated.

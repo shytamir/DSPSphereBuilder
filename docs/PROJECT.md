@@ -25,14 +25,14 @@ and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
 sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-SB-R1.1–2.2 are complete and RG1/RM1–RG2/RM2 passed. SB-R3.1 is next. Candidate acceptance
+SB-R1.1–3.1 are complete and RG1/RM1–RG2/RM2 passed. SB-R3.2 is next. Candidate acceptance
 and manual publication remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Player-facing package complete; SB-R3.1 whole-repository security assessment next |
+| Roadmap and active work | Repository assessment complete; SB-R3.2 security closure next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 and RG2/RM2 passed; RG3–RG4, RG5a and RG5 not passed |
@@ -95,7 +95,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-R1.2 | Complete; RG1/RM1 passed | [Authorized privacy cleanup and checks](RELEASE-CANDIDATE.md#authorized-cleanup-and-checks), SB-D026 |
 | SB-R2.1 | Complete | [Minimal package and path checks](RELEASE-CANDIDATE.md#sb-r21--minimal-package-and-installation-paths) |
 | SB-R2.2 | Complete; RG2/RM2 passed | [Player copy and rendered preview](RELEASE-CANDIDATE.md#sb-r22--player-facing-description-and-readme) |
-| SB-R3.1 | Not started | — |
+| SB-R3.1 | Complete | [Repository security assessment](RELEASE-CANDIDATE.md#sb-r31--repository-security-assessment), SB-D027 |
 | SB-R3.2 | Not started | — |
 | SB-R4.1 | Not started | — |
 | SB-R4.2 | Not started | — |
@@ -662,6 +662,21 @@ Historical instructions in a decision are not a new request to execute that work
   for this cleanup and resolves SB-D025. RG1/RM1 passed; proceed to SB-R2.1.
 - **Affected contract:** SB-R1.2/RG1, history provenance and production debug metadata.
 
+### SB-D027 — Exclude upstream advisories from this polishing scope
+
+- **Date / decision-maker:** 2026-09-12, owner: “Ignore the upstream advisories.”
+- **Choice:** Stop further triage or fixes of advisories in upstream action/runtime
+  dependencies. Continue the repository-owned source, workflow, secret, privacy
+  and delivery checks. Retain the dependency inventory and disclose the exclusion.
+- **Basis:** The action lockfile query had returned upstream library alerts after
+  repository source review found no confirmed exploitable issue. The owner supplied
+  this explicit scope correction before remediation.
+- **Alternatives / consequence:** No dependency upgrade or claim that upstream
+  alerts are fixed, absent or accepted by a scanner. RG3 applies to the assessed
+  repository with this exclusion; new findings in repository-owned controls still
+  require resolution. Publication remains outside this roadmap.
+- **Affected contract:** SB-R3.1–3.2 and the final security evidence in SB-R5.1.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -703,7 +718,7 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Proceed to SB-R3.1 and the remaining authorized sequence. SB-R4.1 must verify
+Proceed to SB-R3.2 and the remaining authorized sequence. SB-R4.1 must verify
 caller-supplied source identity against the actual checkout before candidate delivery.
 The next planned owner participation is candidate acceptance; security and candidate
 gates have not yet passed.
