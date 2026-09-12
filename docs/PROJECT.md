@@ -23,8 +23,8 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3.2 complete; reconcile remaining SB-F3.3 evidence under the owner's acceptance of unverified cases, then proceed to SB-F4 |
-| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
+| Roadmap and active work | SB-F3 complete; proceed to SB-F4.1 constraint reconciliation |
+| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; G4/M4 pending |
 | Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
@@ -70,7 +70,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
 | SB-F3.1 | Complete | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
 | SB-F3.2 | Complete; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
-| SB-F3.3 | Not started | — |
+| SB-F3.3 | Complete under SB-D008; remaining live cases accepted without execution | [Full workflow and limits](FEASIBILITY.md#sb-f33--full-workflow-evidence-and-accepted-limits) |
 | SB-F4.1 | Not started | — |
 | SB-F4.2 | Not started | — |
 
@@ -256,7 +256,7 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Apply SB-D008 while reconciling SB-F3.3, then complete the MVP specification epic.
-No further human probe is requested. The next human handoff is the concrete
-specification and its evidence/decision record for owner review; G4/M4 and the
-next implementation roadmap remain downstream of that acceptance.
+Complete SB-F4.1 constraint reconciliation, then write and review the full MVP
+specification under SB-F4.2. No further human probe is requested. The next human
+handoff is the concrete specification and its evidence/decision record for owner
+review; G4/M4 and the next implementation roadmap remain downstream of acceptance.

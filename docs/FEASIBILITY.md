@@ -808,3 +808,43 @@ mod state. Full process restart/removal, placement in another star, and the
 remaining envelope/shell cases were not established by this run. The owner's
 subsequent acceptance of unverified cases is recorded as SB-D008 in PROJECT.md;
 it does not convert them into observations.
+
+## SB-F3.3 — Full workflow evidence and accepted limits
+
+The continuation run supplies the full-graph observations without another probe
+implementation. Every successful action matches its intended delta; the final
+`20260912T040709.2035603-paint.json` has 60 unique nodes, 90 unique non-Euler
+frames, and exactly the canonical connectivity. This includes ring closures,
+the equator crossing, and the final cap. All recognized snapshots' normalized
+positions differ from the derived reference by at most `6.106743 × 10^-8`
+(rounded upward), below SB-F2.1's `2.384185934 × 10^-7` comparison bound.
+Maximum relative radius error is `7.008132 × 10^-8` (rounded upward).
+
+The owner advanced patches 4–12 from `040704.1161904` through `040709.2035603`,
+about 5.09 seconds. The original 330 node SP and 1,600 frame SP remain invested;
+new framework construction was not a prerequisite for further clicks. The two
+existing pentagon shells retain their native records and associations throughout
+addition. Only pentagon shells are present in this run: hexagon designation and
+later addition beside a hexagon remain unobserved.
+
+The existing native Unity panel resolves the selected layer at click time. The
+owner reported no observed control or visual problems. No-selection reports at
+`040839.1635382-snapshot` and `040839.8135562-paint` have no selected target and no
+placement; completed-graph Paint attempts leave 60 / 90 unchanged. Editor return,
+selection switching, graph mismatches, and reload are covered by SB-F3.2. This
+supports the control location's feasibility, not final UI styling or arbitrary
+mod compatibility.
+
+| Scope | Direct observation | Remaining validation boundary |
+| --- | --- | --- |
+| Star 60, radius 9,700 | Full framework, continued construction, pentagon shells; reported native minimum 9,700 | Endpoint control manipulation was not independently captured; hexagon filling untested |
+| Star 60, radii 21,300 and 36,000 | Starts/partial graphs, selection/identity/refusal cases | No complete sphere or both-face shell checks at these radii |
+| Native maximum / other systems | Reports identify star 60's maximum as 74,000; owner switched to another star and back | No C60 placement at 74,000 or in another star/giant |
+| Research | All successful live reports have unlocked latitude 90; source and derivation require rounded value at least 68 | Below-threshold refusal and named research levels not observed |
+| Lifetime / selection | Menu reloads, no selection, layer switching/recreation, edited graphs | Full process restart/removal and multiple selected layers not exercised |
+
+The scale-invariant native-predicate analysis in SB-F2.3 supports the candidate
+envelope; these limited observations do not prove universal live coverage. Under
+the owner's SB-D008 decision, the unverified cases are accepted for the MVP
+contract without another live run. Their expected behavior remains required and
+their evidential limits remain explicit. The gate disposition is in PROJECT.md.
