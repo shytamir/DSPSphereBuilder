@@ -23,7 +23,7 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3 complete; proceed to SB-F4.1 constraint reconciliation |
+| Roadmap and active work | SB-F4.1 complete; author and review the specification under SB-F4.2 |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; G4/M4 pending |
 | Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
@@ -71,7 +71,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F3.1 | Complete | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
 | SB-F3.2 | Complete; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
 | SB-F3.3 | Complete under SB-D008; remaining live cases accepted without execution | [Full workflow and limits](FEASIBILITY.md#sb-f33--full-workflow-evidence-and-accepted-limits) |
-| SB-F4.1 | Not started | — |
+| SB-F4.1 | Complete | [Constraint reconciliation](FEASIBILITY.md#sb-f41--mvp-constraint-reconciliation), SB-D009 |
 | SB-F4.2 | Not started | — |
 
 Record story progress, gate/milestone outcomes, and concise evidence links
@@ -233,6 +233,45 @@ or Thunderstore moderation acceptance.
   specification validation boundaries. Acceptance of the as-yet unwritten full
   specification and G4/M4 remains a separate owner review.
 
+### SB-D009 — Lean MVP behavior and failure boundary
+
+- **Date / decision-maker:** 2026-09-12, implementor within the owner's authorized
+  scope, using SB-D008's acceptance; final specification review remains with owner.
+- **Choice:** Carry SB-D003–007 into the MVP: one fixed native-frame design,
+  one selected layer per click, native additive allocation, no construction wait,
+  player-managed shells, and content-based continuation from native saves. Keep
+  the native radius envelope and rounded latitude requirement, with SB-D008's
+  unverified coverage plainly identified. No alternative geometry or partial
+  low-latitude start is introduced.
+- **Feedback / failure:** Provide one Paint next patch action in the native sphere
+  editor and concise feedback for the actual selected target. Completion and
+  unmet prerequisites produce no additions. An unexpected allocation or
+  preservation failure stops further Paint actions for the plugin session,
+  reports that partial additions may remain, and retains useful diagnostic
+  context. No retry loop, rollback, automatic repair, or queued action is required.
+  A later fresh session evaluates native content again; only a complete prefix
+  can resume, and an unmatched partial delta refuses.
+- **Alternatives / evidence:** A stored patch counter, automatic recovery, batch
+  queue, global ownership registry, or a persisted failure marker adds machinery
+  without a demonstrated need. SB-F3.1 proves non-atomic native calls and additive
+  preservation; SB-F3.2 proves reconstruction for observed transitions. A session
+  stop is the probe's bounded response, not a promise of transactional recovery.
+- **Consequence:** Save data owns geometry, progress, and shell associations.
+  The plugin needs only transient action/feedback/error state. Removing it leaves
+  native construction in the save; no custom format or migration is selected.
+  The probe's snapshot/rejection buttons and bulk evidence-file export are not
+  MVP features. Retain concise diagnostics for actual failures, not a telemetry
+  or reporting subsystem.
+- **Target / delivery:** Use the recorded assembly/runtime as the implementation
+  baseline. The probe's hard hash gate is an experiment safeguard, not a required
+  production compatibility framework. Preserve the established build/version
+  contract and reference attribution/licenses when later packaging executable
+  work; this epic does not change the mock pipeline or authorize publication.
+- **Affected contract:** MVP action states, preservation, continuation, failure,
+  support envelope, data lifetime, and planning handoff. This resolves SB-D007's
+  provisional mechanism choice using the observations and SB-D008; neither the
+  original concept's progression nor its shell ownership changes.
+
 ## Evidence and unresolved questions
 
 - The concept preserves the supplied sample and reported format checks; those
@@ -256,7 +295,7 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Complete SB-F4.1 constraint reconciliation, then write and review the full MVP
-specification under SB-F4.2. No further human probe is requested. The next human
-handoff is the concrete specification and its evidence/decision record for owner
-review; G4/M4 and the next implementation roadmap remain downstream of acceptance.
+Write and review the full MVP specification under SB-F4.2. No further human probe
+is requested. The next human handoff is the concrete specification and its
+evidence/decision record for owner review; G4/M4 and the next implementation
+roadmap remain downstream of acceptance.

@@ -848,3 +848,31 @@ envelope; these limited observations do not prove universal live coverage. Under
 the owner's SB-D008 decision, the unverified cases are accepted for the MVP
 contract without another live run. Their expected behavior remains required and
 their evidential limits remain explicit. The gate disposition is in PROJECT.md.
+
+## SB-F4.1 — MVP constraint reconciliation
+
+The following reconciliation uses existing findings and SB-D008's explicit owner
+acceptance; it adds no live result. Material choices are recorded in PROJECT.md,
+with SB-D009 resolving the previously provisional continuation/failure policy.
+
+| Concept concern | MVP contract | Basis and limit |
+| --- | --- | --- |
+| Perfect C60 | Preserve the chosen optimized reference, fixed P1/P4 orientation and twelve deltas; do not use the five-spoke sample as click 1 | SB-F2.1–2.2; full live graph in SB-F3.3; no optimality proof or fixed rocket-cost claim |
+| On-demand expansion | One current-layer patch per deliberate click, independent of construction completion | Actual rapid additions in SB-F3.3; no batch queue or automation |
+| Systems, radii, unlocks | Native-created selected layer at its current legal radius; rounded native latitude at least 68 | Native predicates and scale derivation in SB-F2.3; limited live coverage plus SB-D008 |
+| Preservation and shells | Retain earlier native records/progress; designate no shells; preserve reference-face shells supplied by the player | Partial/completed construction and pentagon shells observed; hexagon cases accepted without execution |
+| Returning later | Reconstruct only a unique complete prefix from native geometry/topology; no stored mod progress | SB-F3.2 observations; process restart/removal accepted via SB-D008 |
+| Edits, ambiguity, completion | Refuse unmatched/partial/ambiguous graphs; an exact earlier prefix is treated as that prefix; completed graph produces no additions | SB-D007; edited graphs, reused layer ID, unrelated node, and completion observed |
+| Failure and retry | Refuse predictable invalid actions before mutation; stop Paint for the plugin session after unexpected failure, retain diagnostic context and partial native result | Non-atomic native calls and probe stop behavior; no general repair or rollback |
+| UI and integration | Use a native-editor Paint action with current-target feedback; synchronous native mutation | Probe control works in the reported context; final placement/styling remains an implementation choice |
+| Target and delivery | Recorded target/runtime, existing version/build contract, retained source credit/licenses | SB-F1.1, BUILD.md, SB-D004; no extra compatibility matrix or release authorization |
+
+No demonstrated runtime defect is being waived. The remaining gaps concern
+unexecuted cases, which retain their static basis and SB-D008 disposition. The
+complete displayed game build suffix and named research levels remain unknown;
+neither is needed to identify the hash-bound target or apply the actual native
+latitude value. Broader mod compatibility and optimality proof remain excluded.
+There is no unresolved concept change or unaccepted narrowing of player behavior
+to defer to implementation planning. The final specification will retain the
+accepted assumptions and define implementation acceptance cases without claiming
+those cases have already passed in a production mod.
