@@ -60,8 +60,10 @@ namespace DSPSphereBuilder.Feasibility
                 enabled = false;
                 return;
             }
-            using (var input = new StreamReader(ownAssembly.GetManifestResourceStream("plan.json")))
-                plan = JsonUtility.FromJson<Plan>(input.ReadToEnd());
+            using (var input = ownAssembly.GetManifestResourceStream("plan.json"))
+                plan = ProbeJson.Read<Plan>(input);
+            if (plan.nodes == null || plan.patches == null)
+                throw new InvalidDataException("Probe plan is missing nodes or patches");
             Logger.LogInfo("Probe source " + revision + "; target " + targetHash + "; evidence " + outputDirectory);
         }
 
@@ -145,7 +147,7 @@ namespace DSPSphereBuilder.Feasibility
 
         private void Save(Evidence evidence, string name)
         {
-            File.WriteAllText(Path.Combine(outputDirectory, name + ".json"), JsonUtility.ToJson(evidence, true));
+            File.WriteAllText(Path.Combine(outputDirectory, name + ".json"), ProbeJson.Write(evidence));
         }
 
         private void Run(string action)

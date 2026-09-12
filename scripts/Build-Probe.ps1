@@ -26,6 +26,11 @@ try {
         "-p:ProbePlanPath=$plan", "-p:ProbeRevision=$revision", '-p:NuGetAudit=false')
     & dotnet @buildArgs
     if ($LASTEXITCODE -ne 0) { throw 'Probe compilation failed.' }
+    $checkArgs = @('run', '--project', 'tests/probe-json/ProbeJsonChecks.csproj', '--configuration', 'Release',
+        "-p:BaseIntermediateOutputPath=$output/json-checks/obj/", "-p:OutputPath=$output/json-checks/bin/",
+        "-p:ProbeDllPath=$output/bin/DSPSphereBuilder.Feasibility.dll", "-p:DspManagedPath=$DspManagedPath")
+    & dotnet @checkArgs
+    if ($LASTEXITCODE -ne 0) { throw 'Probe JSON checks failed.' }
     $package = Join-Path $output 'package/DSPSphereBuilder.Feasibility'
     New-Item -ItemType Directory -Force $package | Out-Null
     Copy-Item -LiteralPath (Join-Path $output 'bin/DSPSphereBuilder.Feasibility.dll') -Destination $package

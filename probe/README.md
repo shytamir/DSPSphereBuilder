@@ -17,6 +17,10 @@ BepInEx installation; no game files are replaced by this artifact.
    The build script labels uncommitted source with `-dirty`; the handed-off ZIP
    should have a clean source revision.
 
+For a replacement build, close the game and replace the DLL in your existing
+probe folder with the ZIP's DLL. Preserve its `evidence/` folder. Restart the
+game before testing; do not install a second copy of the probe.
+
 Evidence JSON files are written to `evidence/` beside the probe DLL. The files
 include source/target identities, game version/build, selected star/layer/radius,
 unlock value, native prototype counts, before/after structure and shell records,

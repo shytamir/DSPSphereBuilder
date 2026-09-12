@@ -512,3 +512,52 @@ actions on the same layer. It is not an MVP resumption policy. SB-F3.2 will asse
 native reconstruction only after the additive observations satisfy SB-F3.1.
 Real partial/completed construction, preservation, shell handoff, control behavior,
 and the rejection experiment have **not yet been observed in the running game**.
+
+### First owner run: serialization failure before placement
+
+On 2026-09-12 the owner stopped at case A and supplied eight JSON files from the
+installed probe. Source revision was `88074c48f9944a61e5b2208d5edae9e432a7e013`;
+the installed DLL SHA-256 matched the handed-off DLL:
+`7B31E10D24AC923BA826BDCDBE7442B5358E07D56A33957996BDF75162EA22D4`.
+Reports confirmed the target assembly hash/MVID, Unity `2022.3.62f3c1`, one loaded
+node prototype, and three frame prototypes. The reported game version was
+`0.10.34` with `GameConfig.build = 0`; the full player-facing suffix remains unknown.
+
+The no-selection and unrelated-nonempty-layer refusals reached the owner through
+the probe UI. The first eligible Paint action produced a `NullReferenceException`
+in `Probe.Run`, reported at IL offset `0x00205`. Inspection of the matching binary
+places that block at `completed == plan.patches.Length` (the array length read is
+at `0x00216`). The plan root/reference hash was loaded, but its patch array was
+null. The native creation loops follow this block: this failure occurred before
+any placement call. It does not establish a native additive-placement failure.
+
+Every supplied report also omitted its nested snapshot fields, including
+`20260912T021543.5271080-paint-before.json` and the matching `-paint-error.json`.
+Their SHA-256 values are recorded below. Consequently these files cannot verify
+selected radius, unlock value, graph counts, or preservation. Empty failure arrays
+are not accepted as preservation evidence when the underlying snapshots are absent.
+Original files were read only; an ignored local copy preserves the supplied run.
+
+| Input | SHA-256 |
+| --- | --- |
+| Case A before report | `40C4600990B252C1458B58A499A52B1010209DBC34C7DAE898E3AE4FD1A80F35` |
+| Case A error report | `99462E777178CDC085C82581DA2E8185B83CDBAD61BC8E66C8EFFCB0C952F5BC` |
+
+The observed defect is the probe's `JsonUtility` path failing to retain custom
+nested data in this runtime. Its internal Unity cause is not established. The
+fix replaces plan reading and report writing with the standard managed
+`DataContractJsonSerializer`; no external package or geometry change is needed.
+A missing plan array now fails initialization rather than reaching a Paint action.
+
+The build now runs [serialization regression checks](../tests/probe-json/Program.cs)
+against the actual compiled DLL and embedded plan before packaging. They compare
+every node coordinate and patch endpoint with an independent JSON reader, verify
+populated node/frame/shell progress and associations, preserve empty snapshots and
+identity mappings, and exclude native object references. Compilation and these
+checks passed with zero compiler warnings/errors. They execute under .NET 10,
+not the game's Unity/Mono runtime; they do not replace another owner run.
+
+Retest with the replacement DLL after restarting the game. Repeat the quick
+refusal cases so their before/after records can be verified, then resume the
+procedure at case A on an empty layer. Cases A–C and additive preservation still
+require live observations; no later story is advanced by this fix.

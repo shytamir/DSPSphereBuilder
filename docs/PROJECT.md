@@ -23,10 +23,10 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3.1 in progress; owner-operated probe observations are next |
+| Roadmap and active work | SB-F3.1 in progress; first live run failed before placement; corrected probe awaits retest |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Disposable two-patch feasibility probe only; production implementation not started |
-| Runtime validation and owner acceptance | Probe compilation passed; live observations and owner acceptance pending |
+| Runtime validation and owner acceptance | First run established probe serialization failure; corrected build and serialization checks passed; additive validation pending |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
 ## Accepted scope
@@ -56,8 +56,8 @@ This hash identifies the initial target, not a claim of game compatibility.
 SB-F1.1 reconfirmed it. Managed MVID is
 `ece4a40e-5e73-43f4-a9f8-4e74970b5942`; GameConfig declares `0.10.34`, while the
 complete build suffix remains unknown. See [the evidence](FEASIBILITY.md#sb-f11--target-and-probe-environment).
-The sample header is not a substitute for this target. No game code has been
-loaded or executed by the agent.
+The sample header is not a substitute for this target. Live gameplay observations
+are owner-operated; the agent has not launched or operated a game session.
 
 ## Work tracking
 
@@ -68,7 +68,7 @@ loaded or executed by the agent.
 | SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
-| SB-F3.1 | In progress; probe prepared, awaiting owner observations | [Probe preparation](FEASIBILITY.md#sb-f31--additive-probe-preparation), [operator procedure](../probe/README.md) |
+| SB-F3.1 | In progress; serialization fix awaiting owner retest | [First live run and fix](FEASIBILITY.md#first-owner-run-serialization-failure-before-placement), [operator procedure](../probe/README.md) |
 | SB-F3.2 | Not started | — |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
@@ -195,8 +195,10 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-The owner runs the [two-patch procedure](../probe/README.md) in a disposable save
-and returns its evidence and observations. G2/M2 passed; G3 cannot pass on static
+The owner replaces the probe DLL, restarts, repeats the brief refusal checks,
+and resumes the [two-patch procedure](../probe/README.md) at case A in a disposable
+save. The first failure was in probe serialization, before native placement;
+its omitted snapshots cannot establish preservation. G2/M2 passed; G3 cannot pass on static
 inspection or compilation. Complete SB-F3.1 from the identified live results
 before proceeding to SB-F3.2. The next implementation roadmap remains downstream
 of G4/M4; no full MVP specification or final acceptance is claimed.

@@ -19,7 +19,6 @@
     <Reference Include="UnityEngine.UI" HintPath="$(DspManagedPath)/UnityEngine.UI.dll" Private="false" />
     <Reference Include="UnityEngine.UIModule" HintPath="$(DspManagedPath)/UnityEngine.UIModule.dll" Private="false" />
     <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(DspManagedPath)/UnityEngine.TextRenderingModule.dll" Private="false" />
-    <Reference Include="UnityEngine.JSONSerializeModule" HintPath="$(DspManagedPath)/UnityEngine.JSONSerializeModule.dll" Private="false" />
     <EmbeddedResource Include="$(ProbePlanPath)" LogicalName="plan.json" />
   </ItemGroup>
   <Target Name="CheckProbeInputs" BeforeTargets="PrepareForBuild">
