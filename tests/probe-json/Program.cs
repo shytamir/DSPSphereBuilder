@@ -46,7 +46,13 @@ var before = new Snapshot
     shells = new[] { new ShellRecord { id = 2, nodes = new[] { 8, 9, 10 }, frames = new[] { 4, 5, 6 }, nodecps = new[] { 7, 8, 9, 24 } } }
 };
 var after = new Snapshot { tick = before.tick + 1, nodes = Array.Empty<NodeRecord>(), frames = Array.Empty<FrameRecord>(), shells = Array.Empty<ShellRecord>() };
-var report = new Evidence { before = before, after = after, nodeMapping = new[] { new NodeMapping { canonicalId = 1, nativeId = 8 } } };
+var report = new Evidence
+{
+    before = before, after = after, sessionId = Guid.NewGuid().ToString("N"),
+    nodeMapping = new[] { new NodeMapping { canonicalId = 1, nativeId = 8 } },
+    beforeRecognition = new Recognition { state = GraphState.Prefix, completedPatches = 4 },
+    afterRecognition = new Recognition { state = GraphState.Complete, completedPatches = 12 }
+};
 var json = ProbeJson.Write(report);
 using var document = JsonDocument.Parse(json);
 var root = document.RootElement;
@@ -60,4 +66,26 @@ using var roundTrip = new MemoryStream(Encoding.UTF8.GetBytes(json));
 var restored = ProbeJson.Read<Evidence>(roundTrip);
 Check(restored.before.tick == before.tick && restored.before.nodes[0].position.x == before.nodes[0].position.x, "Snapshot values changed");
 Check(restored.before.nodes[0].shells.SequenceEqual(before.nodes[0].shells), "Shell associations changed");
+Check(restored.sessionId == report.sessionId && restored.beforeRecognition.state == GraphState.Prefix
+    && restored.afterRecognition.state == GraphState.Complete && restored.afterRecognition.completedPatches == 12,
+    "Recognition evidence changed");
 Console.WriteLine("Embedded plan and populated/empty snapshot serialization checks passed.");
+var expectedFaces = expected.RootElement.GetProperty("faces").EnumerateArray().ToArray();
+Check(plan.faces.Length == expectedFaces.Length, "Face boundaries missing");
+for (int i = 0; i < expectedFaces.Length; i++)
+    Check(plan.faces[i].SequenceEqual(expectedFaces[i].EnumerateArray().Select(n => n.GetInt32())), "Face boundary changed");
+RecognitionChecks.Run(plan);
+foreach (var path in args)
+{
+    using var evidenceFile = File.OpenRead(path);
+    using var evidence = JsonDocument.Parse(evidenceFile);
+    using var snapshotFile = new MemoryStream(Encoding.UTF8.GetBytes(evidence.RootElement.GetProperty("after").GetRawText()));
+    var liveSnapshot = ProbeJson.Read<Snapshot>(snapshotFile);
+    var recognized = GraphRecognition.Match(plan, liveSnapshot);
+    Check(recognized.state == GraphState.Prefix && recognized.completedPatches == 2, "Live two-patch evidence not recognized");
+    var expectedMapping = evidence.RootElement.GetProperty("nodeMapping").EnumerateArray()
+        .ToDictionary(n => n.GetProperty("nativeId").GetInt32(), n => n.GetProperty("canonicalId").GetInt32());
+    Check(recognized.nodeMapping.Length == expectedMapping.Count && recognized.nodeMapping.All(n => expectedMapping[n.nativeId] == n.canonicalId),
+        "Live node mapping differs from creation evidence");
+    Console.WriteLine("Recognized live two-patch evidence: " + Path.GetFileName(path));
+}

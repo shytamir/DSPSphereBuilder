@@ -23,9 +23,9 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3.1 complete; SB-F3.2 is next |
+| Roadmap and active work | SB-F3.1 complete; SB-F3.2 in progress with continuation probe ready for owner observations |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
-| Mod implementation | Disposable two-patch feasibility probe only; production implementation not started |
+| Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
 | Runtime validation and owner acceptance | Two-patch addition preserved partial and completed construction and an existing shell; native rejection retained its prior addition; continuation and full workflow pending |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
@@ -69,7 +69,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
 | SB-F3.1 | Complete | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
-| SB-F3.2 | Not started | — |
+| SB-F3.2 | In progress; native reconstruction and local checks complete; live transitions pending | [Continuation investigation](FEASIBILITY.md#sb-f32--continuation-probe-preparation), [operator procedure](../probe/README.md#run-the-continuation-story-sb-f32) |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
 | SB-F4.2 | Not started | — |
@@ -174,6 +174,37 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** Probe preconditions and future specification support,
   research refusal, and native layer selection. No technology level name is guessed.
 
+### SB-D007 — Probe continuation from the native graph
+
+- **Date / decision-maker:** 2026-09-12, implementor within authorized feasibility
+  scope; MVP proposal pending matching live evidence and final owner review.
+- **Question / choice:** Reconstruct a unique complete prefix of the fixed plan
+  from the selected layer at each action. Accept an empty layer as a new start;
+  continue prefixes 1–11; refuse completion and all unmatched graphs without
+  mutation. Existing reference-face shells and construction do not prevent
+  continuation. Use the measured/derived float recognition bound in SB-F3.2;
+  do not alter placement coordinates or move existing nodes.
+- **Alternatives / evidence:** The previous object-reference cache cannot survive
+  native reload or layer recreation. Native serialization retains the geometry
+  and endpoints needed for reconstruction. A persisted patch index would still
+  need graph validation after edits; no need for extra stored state has emerged.
+  Exact float equality failed the cross-runtime check of actual owner evidence.
+- **Rationale / consequence:** The probe uses native save data alone. Closing the
+  editor, switching layer/star, restart, or mod removal stores no progress in the
+  plugin. Reinstallation can reconstruct matching native content. This is not an
+  ownership claim: indistinguishable matching prefixes are treated alike, even
+  after edits or ID reuse. Non-prefix edits, partial additions, and ambiguous
+  matches refuse; there is no arbitrary blueprint recognition or automatic repair.
+  An edit that exactly restores an earlier prefix is treated as that prefix.
+- **Failure boundary:** An unexpected addition/preservation error stops further
+  painting for that plugin session and retains before/after evidence. Do not
+  bypass that stop by restarting during the probe. After investigation, only a
+  fully matched prefix could provide a candidate resumption point; a partial
+  graph is not retried or rolled back automatically.
+- **Affected contract:** SB-F3.2 and future MVP continuation, edits, failure,
+  completion, and state lifetime. This is a tested local candidate, not accepted
+  live resumption or a production persistence design. G3 remains open.
+
 ## Evidence and unresolved questions
 
 - The concept preserves the supplied sample and reported format checks; those
@@ -196,9 +227,10 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to SB-F3.2: evaluate native graph reconstruction and prepare the bounded
-continuation/identity probe. The owner authorized work through its next live
-handoff. Cases A–C need no repeat. G3 remains pending; SB-F3.1's additive results
-do not establish save/reload continuation or the full twelve-patch workflow.
-The next implementation roadmap remains downstream of G4/M4; no full MVP
-specification or final acceptance is claimed.
+The owner installs the continuation probe by replacing the existing DLL, then
+runs cases D1–D10 in the [operator procedure](../probe/README.md). Existing
+two-patch test layers can be used, with no construction wait or repeat of A–C.
+Return evidence and a short case/timestamp note for transitions. Stop at the first
+unexpected recognition or preservation failure. SB-F3.2 cannot close from local
+checks alone; SB-F3.3 remains downstream. The next implementation roadmap remains
+downstream of G4/M4; no full MVP specification or final acceptance is claimed.

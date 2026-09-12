@@ -466,8 +466,10 @@ rejection. No game code was executed for these checks.
 
 ## SB-F3.1 — Additive probe preparation
 
-The disposable [probe source](../probe/Probe.cs) and
-[operator procedure](../probe/README.md) apply only the first two checked deltas.
+The initial disposable probe applied only the first two checked deltas. Its
+corrected [source](https://github.com/shytamir/DSPSphereBuilder/blob/4c49a0c666d1ef39a4ce24cfb129fbec42ee25e6/probe/Probe.cs)
+and [operator procedure](https://github.com/shytamir/DSPSphereBuilder/blob/4c49a0c666d1ef39a4ce24cfb129fbec42ee25e6/probe/README.md)
+identify the SB-F3.1 experiment; the current probe evolves in the subsequent story.
 The selected native layer is resolved at each button click. A panel beneath the
 editor's control panel uses native Unity UI, `UIBlockZone`, and the editor's GUI
 rectangle list; actual layout and interaction await observation. No Harmony patch,
@@ -657,3 +659,105 @@ creation is not atomic: stop on a failed addition, retain evidence, and do not
 blindly retry, roll back, or repair. Whether the surviving graph establishes a
 safe next step is the subsequent continuation investigation. No spontaneous
 failure of a valid delta, save/reload resumption, or complete traversal is claimed.
+
+## SB-F3.2 — Continuation probe preparation
+
+### Native reconstruction inputs
+
+Targeted reinspection of the same target assembly confirms:
+
+- `DysonNode.Export/Import` writes and reads each position component as a binary
+  single, without normalization during ordinary save import. Layer radius is
+  likewise a single in `DysonSphereLayer.Export/Import`.
+- `DysonFrame.Export/Import` retains endpoint IDs and Euler mode; import resolves
+  fresh node references and reconstructs adjacency. Construction fields and
+  native shells remain owned by the native save.
+- `DysonSphereLayer.Import` creates new node/frame objects. `DysonSphere.RemoveLayer`
+  clears the layer slot and frees its contents; `AddLayer`/`AddLayerOnId` creates
+  a new object and can occupy a previously used ID.
+- `UIDysonEditor._OnClose` clears selection; `_OnFree/_OnInit` releases/recreates
+  it. `DESelection.SetViewStar` clears selection and resolves the viewed sphere.
+  A cached object reference or numeric layer ID cannot identify a continued design.
+
+These are source findings, not new live transition observations. They support
+trying geometry/topology reconstruction on the selected layer before adding
+stored mod state. Reproduce with the SB-F1.1 decompiler command and these members;
+the retained output remains ignored and no native implementation is copied.
+
+### Matching experiment and numeric boundary
+
+[GraphRecognition.Match](../probe/GraphRecognition.cs) reads a fresh snapshot on
+each action. It maps positions to unique canonical nodes, verifies the exact
+unordered frame set and non-Euler mode, and recognizes only a complete union of
+the first `k` deltas. Existing shell boundaries must match reference faces whose
+frames are present. Construction progress, colors, record IDs, and pool order
+do not determine `k`. There is no layer registry, ownership marker, custom save
+data, repair, or replacement import. Runtime object references are retained only
+inside each action's preservation snapshots.
+
+Bitwise coordinate comparison was tried first. Re-reading the owner's successful
+radius-9,700 snapshot under .NET 10 reproduces canonical node 8's Y/Z one float
+step away from the game result: Y `1336.9548` versus `1336.955`, Z `-3743.6982`
+versus `-3743.6985` (short round-trip decimal forms). All graph data remains the
+same. The exact source of the runtime arithmetic/parsing difference is not
+established; bit equality across these runtimes is therefore not a sound check.
+
+Recognition uses Euclidean position distance at most `radius × γ10`, where
+`u = 2^-24` and `γ10 = 10u / (1 - 10u) ≈ 5.960468 × 10^-7`. This is a conservative
+float-arithmetic allowance for comparing two normalized/scaled evaluations of
+the same encoded direction: three-term squared magnitude has relative error
+bounded by `γ3`; square root, component division, and radius multiplication give
+approximately `4.5u` per evaluation, covered jointly by `γ10`. This bound assumes
+normal finite coordinates at game radii; it is not a measured game placement
+limit. At radius 9,700 it allows about 0.00579 position units. It is far below the
+reference's shortest normalized node separation (about 0.324); every match must
+still be unique. Placement still uses the unchanged normalized reference and
+never moves an existing node. Topology remains exact. SB-F2.1's separate
+source-blueprint comparison bound is unchanged.
+
+This identifies graph content, not historical ownership. An identical prefix
+recreated by another route is indistinguishable; an edit leaving an exact earlier
+prefix is likewise indistinguishable from that earlier state. An unmatched
+partial delta refuses rather than being completed as a repair. The proposed
+policy and its acceptance boundary are recorded in SB-D007 in
+[PROJECT.md](PROJECT.md#sb-d007--probe-continuation-from-the-native-graph).
+
+### Local checks and live handoff
+
+The probe embeds all twelve already-derived deltas and their 32 face boundaries
+because SB-F3.2 requires observing reload at completion. It still exposes only
+one patch per Paint click and creates no shells. Reports add before/after
+recognition, the recovered mapping, and a per-plugin-session identifier; no
+progress is read from earlier report files. Graph states serialize as Mismatch
+`0`, Empty `1`, Prefix `2`, and Complete `3`. Human transition notes remain
+necessary to distinguish editor closure, selection switching, and save loading.
+
+The existing local check executable now verifies all prefixes after serialization
+with permuted/recycled IDs and changed star/layer IDs. It accepts reference
+shells and float rounding, and rejects missing nodes/frames, displaced coordinates,
+extra/duplicate edges, duplicate canonical positions, Euler frames, a partial next
+patch, unrelated geometry, wrong radius, invalid radii, and invalid shell cycles.
+Report serialization covers recognition and session identity. No assertion
+depends on UI/error-message wording, and no game allocation or save API is called.
+
+Both actual second-Paint snapshots from SB-F3.1 (radii 9,700 and 36,000) also
+recognize as prefix 2, with mappings matching the creation evidence. The initial
+historical-record reader failed because the old reports lack newly added fields;
+the check now reads their unchanged Snapshot payload rather than treating them
+as current reports. There is no production evidence migration path.
+
+Reproduce compilation, embedded-plan/JSON checks, and recognition checks with
+`scripts/Build-Probe.ps1` as above. To additionally check retained owner inputs:
+
+```powershell
+dotnet artifacts/probe/json-checks/bin/ProbeJsonChecks.dll $completedShellPaint $radius36000Paint
+```
+
+Compilation and local checks pass against the identified real reference
+assemblies. The checks execute under .NET 10, not the game runtime. The
+[continuation procedure](../probe/README.md#run-the-continuation-story-sb-f32)
+covers intermediate and completed transitions, restart, edits, unrelated geometry,
+and layer recreation. Its expected results are not observations. Native save/load
+fidelity and live recognition remain unverified until that owner run; state and
+the next gate are tracked only in PROJECT.md. Full traversal records from this
+run may inform SB-F3.3, without claiming its shell and envelope checks in advance.
