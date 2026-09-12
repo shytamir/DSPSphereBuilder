@@ -761,3 +761,50 @@ and layer recreation. Its expected results are not observations. Native save/loa
 fidelity and live recognition remain unverified until that owner run; state and
 the next gate are tracked only in PROJECT.md. Full traversal records from this
 run may inform SB-F3.3, without claiming its shell and envelope checks in advance.
+
+### Owner continuation run
+
+The 2026-09-12 run identifies source
+`9dd00e2909cc7e07f6db329cf3a4c6e694f5075b`, the unchanged target hash/MVID,
+and Unity `2022.3.62f3c1`. All reports use plugin session
+`f4dbe0732cb4402bbca2665a7924c4d9`, star 60, and unlocked latitude 90. The owner
+reported no aberrations, clarified that star switching involved returning without
+painting in the other star, and confirmed that quit/reload meant returning to
+the main menu. It occurred after the manual edits. No full application restart
+is inferred from these files. Originals were read only and copied under ignored
+artifacts for independent comparison.
+
+| Observation | Identifying reports and result |
+| --- | --- |
+| Initial recognition and editor return | `040527.7778530` and `040558.0307442` snapshots recognize the previous two-patch graph on layer 2, radius 9,700, with two shells. `040559.5220092-paint` adds patch 3: 16 nodes / 19 frames. Editor closure is owner-reported; the JSON records the returned target. |
+| Layer switch | `040614.2050568-paint` starts layer 1 at radius 36,000. Returning to layer 2, `040617.2117729-snapshot` retains prefix 3; `040618.0103250-paint` advances it to prefix 4. |
+| Intermediate reload | `040650.0058467-snapshot` returns to prefix 2 at tick 26,263,210, below the prior tick 26,264,335. `040651.8036476-paint` correctly adds patch 3. Positions, frame endpoints, and shell boundaries match the pre-save baseline. |
+| Completed graph and return | `040709.2035603-paint` reaches 60 / 90 with the original two shells. The subsequent snapshots and Paint refusals retain completion. Star switch-and-return is owner-reported; every recorded Paint target remains star 60. |
+| Completed reloads | `040843.5223495-snapshot` and, after the edits, `041103.2537543-snapshot` retain the same completed graph and shells while ticks rewind to saved state. Their following Paint actions refuse unchanged. These are reload observations within one plugin session. |
+| Manual edits | On layer 1, `040934.0441909-paint` refuses the edited 6-node / 5-frame graph; `041005.7821733-paint` refuses 5 / 4 after node removal. Before/after records show no additions or lost construction from either refusal. |
+| Recreated layer / reused ID | Layer 1 holds prefix 3 at radius 36,000 in `041118.7863371-snapshot`, then is empty at radius 21,300 in `041133.9286832-snapshot`. A native unrelated node is refused in `041149.3225812-paint`. After its removal, `041159.1733045-paint` starts patch 1 at 6 / 6 rather than carrying over an old index. |
+
+Timestamps above abbreviate filenames beginning `20260912T` and ending `.json`.
+Independent checks compared all successful additions with the derived canonical
+node/edge unions and all recorded recognized snapshots with their claimed prefix.
+The full traversal preserves the original 330 node SP, 1,600 frame SP, and both
+shells; shell CP increases naturally between actions. No in-process preservation
+failure is reported. Raw-record checks also retain positions, properties,
+connectivity, invested construction, and shell associations within each action.
+Object identities across reload are not claimed preserved: reconstruction works
+with the new native objects.
+
+| Critical input | SHA-256 |
+| --- | --- |
+| Intermediate reload snapshot | `69E63264E5CA1B7780F54CD0223AEFC516598178F1923E9D9B41A8E73906B52A` |
+| First Paint after reload | `F96F9AFC09BB3083AF89EA1766E7413443DDA5AB2BF222C23B1FE307A6A7F3B7` |
+| Complete graph Paint | `BFFE988FB5B0B82194C411B316B237104AA405F8BA54D9182F21EB4CEC6DEF50` |
+| Node-edit refusal | `127D35DC0A520085E8F8FD524B09CD861CE0A2A49B1FAE3691906165C9BE9F60` |
+| Completed refusal after later reload | `52CC71BC5F046E38F4FDC92A7C933F27DA020CD00FC5DB5808412B7642AC0813` |
+| Recreated-layer first Paint | `44C861E994971AC5803A24DFE95D2EFE8060363A2F6650E5D5E308F68F44089B` |
+
+Native reconstruction is sufficient for the observed transitions without stored
+mod state. Full process restart/removal, placement in another star, and the
+remaining envelope/shell cases were not established by this run. The owner's
+subsequent acceptance of unverified cases is recorded as SB-D008 in PROJECT.md;
+it does not convert them into observations.

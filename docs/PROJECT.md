@@ -23,10 +23,10 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3.1 complete; SB-F3.2 in progress with continuation probe ready for owner observations |
+| Roadmap and active work | SB-F3.2 complete; reconcile remaining SB-F3.3 evidence under the owner's acceptance of unverified cases, then proceed to SB-F4 |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
-| Runtime validation and owner acceptance | Two-patch addition preserved partial and completed construction and an existing shell; native rejection retained its prior addition; continuation and full workflow pending |
+| Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
 ## Accepted scope
@@ -69,7 +69,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
 | SB-F3.1 | Complete | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
-| SB-F3.2 | In progress; native reconstruction and local checks complete; live transitions pending | [Continuation investigation](FEASIBILITY.md#sb-f32--continuation-probe-preparation), [operator procedure](../probe/README.md#run-the-continuation-story-sb-f32) |
+| SB-F3.2 | Complete; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
 | SB-F4.2 | Not started | — |
@@ -204,6 +204,34 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** SB-F3.2 and future MVP continuation, edits, failure,
   completion, and state lifetime. This is a tested local candidate, not accepted
   live resumption or a production persistence design. G3 remains open.
+  **Later disposition:** the owner continuation run supports the observed native
+  reload/selection/edit cases; SB-D008 accepts the remaining unverified cases.
+
+### SB-D008 — Accept remaining unverified cases and proceed to specification
+
+- **Date / decision-maker:** 2026-09-12, explicit owner instruction: "Let's treat
+  the unverified cases as accepted and proceed to the MVP specification epic please."
+- **Choice:** Accept the remaining feasibility cases without further live testing
+  and proceed through SB-F4. This supersedes the roadmap's requirement to obtain
+  every outstanding live observation before advancing G3. Preserve the difference
+  between measured results and owner acceptance; do not manufacture evidence.
+- **Remaining cases covered:** C60 placement at the native maximum radius;
+  manual hexagon filling and later addition beside that hexagon; both-face shell
+  checks across radius endpoints; placement in another system/giant; below-threshold
+  research refusal and actual research-level metadata; multiple-layer selection;
+  full application restart and mod removal/reinstallation. No-selection refusal,
+  menu reload, and star switch-and-return have separate actual observations.
+- **Basis / alternatives:** The native-rule derivations, compiled probe, and
+  successful owner runs support the candidate behavior. The alternative was the
+  remaining human test handoff; the owner explicitly chose acceptance instead.
+- **Consequence:** These cases remain required MVP behavior based on their static
+  evidence and accepted assumptions. They are not advertised as live-verified
+  coverage. Later contrary evidence must be addressed, not hidden by this waiver.
+  This does not authorize bypassing native limits, narrowing the concept, or
+  shipping a release. Keep accepted assumptions visible in the specification.
+- **Affected contract:** SB-F3.2–3.3, G3/M3, SB-F4's evidence reconciliation, and
+  specification validation boundaries. Acceptance of the as-yet unwritten full
+  specification and G4/M4 remains a separate owner review.
 
 ## Evidence and unresolved questions
 
@@ -211,8 +239,9 @@ or Thunderstore moderation acceptance.
   checks were not rerun during repository preparation.
 - Canonical geometry, polar progression, and the static native placement envelope
   are verified. Two-patch addition preserved partial and completed construction
-  and a preexisting shell in the live target. Continuation and the full workflow
-  still require matching live observations.
+  and preexisting shells in the live target. Native reconstruction survived the
+  observed menu reloads and selection/edit cases. Remaining live cases have the
+  explicit owner disposition SB-D008; their verification gaps remain documented.
 - Local preparation checks passed: numeric build progression, stable version on
   retry, strict VERSION input rejection, and validation of the four-file mock ZIP.
   Negative checks rejected missing README, unexpected DLL, wrong version, broken
@@ -227,10 +256,7 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-The owner installs the continuation probe by replacing the existing DLL, then
-runs cases D1–D10 in the [operator procedure](../probe/README.md). Existing
-two-patch test layers can be used, with no construction wait or repeat of A–C.
-Return evidence and a short case/timestamp note for transitions. Stop at the first
-unexpected recognition or preservation failure. SB-F3.2 cannot close from local
-checks alone; SB-F3.3 remains downstream. The next implementation roadmap remains
-downstream of G4/M4; no full MVP specification or final acceptance is claimed.
+Apply SB-D008 while reconciling SB-F3.3, then complete the MVP specification epic.
+No further human probe is requested. The next human handoff is the concrete
+specification and its evidence/decision record for owner review; G4/M4 and the
+next implementation roadmap remain downstream of that acceptance.
