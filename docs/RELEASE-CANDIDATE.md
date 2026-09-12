@@ -5,6 +5,44 @@ This document records checks and findings from the
 [release-candidate roadmap](management/ROADMAP.md). Earlier runtime observations
 remain in [MVP-VALIDATION.md](MVP-VALIDATION.md); no new gameplay is implied here.
 
+## Owner review packet — 0.1.54
+
+[Download the candidate ZIP](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34700204095/artifacts/10300236790)
+from [run 54, attempt 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34700204095).
+Use this identified artifact even if a later documentation commit produces another
+build. The [player README](../packaging/README.md) is the packaged copy; the ZIP adds
+its exact-source link. The listing description is:
+
+> Precise Dyson sphere planning without the angle-counting, with connected sections that grow at your pace.
+
+| Identity | Value |
+| --- | --- |
+| File / size | `DSPSphereBuilder-0.1.54.zip` / 51,496 bytes |
+| Source commit | `1c04199c490dfb029ba466ebfb53836ed46548f7` |
+| Plugin / diagnostic version | `0.1.54` / `0.1.54.1c04199` |
+| BepInEx GUID / name | `dsp.spherebuilder` / `DSP Sphere Builder` |
+| CLR assembly / file version | `0.1.0.0` / `0.1.0.0` |
+| ZIP SHA-256 | `9DE0DC20A8DFEAE635BD091E10E6557E1DE661C770DBC302E11873B9583A3767` |
+| DLL SHA-256 | `1D9FC50D70EDC9F5030B375BC17A28575D8D1E522545D5968FA6BE8551F95A91` |
+
+The ZIP contains only manifest, README, icon, LICENSE and the production DLL under
+`BepInEx/plugins/DSPSphereBuilder/`. With the game closed and BepInEx already present,
+replace the existing DLL in that subfolder with this ZIP's DLL; keep one production
+copy. A public mod listing is not required to review this candidate.
+
+Compared with the accepted MVP, this candidate trims package contents, improves
+player copy and source/license access, maps compiler paths and strengthens build
+identity checks. Painting, geometry, continuation and the accepted UI are unchanged.
+Local/native and CI compilation, downloaded-byte validation, 15 malformed-package
+cases, source access and final privacy checks passed; details are in SB-R5.1 below.
+
+The requested owner decision is acceptance of this package and its player copy.
+No additional runtime case is indicated by these changes. Existing W1–W6 limits
+remain in the [specification](MVP-SPECIFICATION.md#evidence-and-accepted-assumptions), and
+upstream advisories were excluded by the owner's SB-D027 instruction. No new game
+observation or Thunderstore moderation approval is claimed. Acceptance and any
+later manual publication are recorded only in PROJECT.md.
+
 ## SB-R1.1 — Minimum distribution contract
 
 Inspected on 2026-09-12 against source
@@ -381,3 +419,47 @@ archive introductions identify their original story language as historical.
 The initial build command was verified present; an incomplete earlier tool display
 did not justify editing it. Local documentation links and whitespace were checked.
 No additional live case is needed for these corrections.
+
+## SB-R5.1 — Final candidate verification
+
+The owner packet identifies the immutable run-54 bytes. CI compiled the clean
+`1c04199` source and passed managed recognition/painting checks, all twelve compiled
+deltas and 32 faces (final 60 nodes / 90 frames), and all 15 malformed-package cases.
+The final geometry comparison measured maximum direction error `6.72304398e-08`
+and relative-radius error `7.07654325e-08`, within the established bounds.
+
+The same clean revision and version compiled locally against both mapped shims and
+the recorded native target with zero warnings/errors. All five maps matched. The
+downloaded DLL's actual assembly/member reference set was compared directly with
+the native build: all 217 agreed. Independent inspection verified the five ZIP
+entries, GUID/name/numeric version, assembly/file versions, diagnostic revision,
+hashes, UTF-8 copy, original 256×256 icon and both retained license texts. Installation
+into isolated manual and manager-route plugin subfolders preserved the exact DLL
+bytes; no live manager or game session was performed.
+
+Anonymous retrieval of the package's full-commit source URL returned HTTP 200.
+All 87 source-archive files matched the commit's Git blobs byte-for-byte, including
+the required build/reference/derivation and license material. The earlier clean
+source-build rehearsal establishes the documented checkout route. Keep this exact
+public source revision accessible while distributing its binary.
+
+Final Gitleaks checks found no secrets in the 54 reachable commits or the downloaded
+candidate/build-record/log archives. A separate privacy recheck covered 199 tracked,
+source-archive, hosted-output and local DLL/PDB entries for personal-contact/home-path
+patterns and verified reachable author/committer attribution. PE CodeView paths in
+the downloaded DLL and both local outputs used `/_/`; required provenance and image
+metadata remained unchanged. Temporary upstream advisory inputs were discarded
+after the owner's exclusion; no raw upstream finding was committed.
+
+The security delta since SB-R3 was reviewed: only source-revision validation,
+metadata inspection, malformed fixtures and documentation changed. No network,
+privilege, runtime parser or dependency was added. The two documentation corrections
+resolve overbroad claims; they do not suppress errors. Local links/anchors and
+whitespace passed. All story findings are closed or have the explicit SB-D027
+upstream exclusion; the later evidence/state commit does not change this candidate.
+
+Comparison with the rewritten equivalent of the MVP cleanup commit found only
+`src/Directory.Build.props` changed under production/reference directories, for
+compiler path mapping. Production C# and native declarations were unchanged.
+Accepted MVP observations therefore remain the runtime basis. No owner debugging,
+repeated twelve-patch demonstration or additional UI workshop is required.

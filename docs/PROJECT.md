@@ -25,20 +25,22 @@ and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
 sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-SB-R1.1–4.2 are complete and RG1/RM1–RG4/RM4 passed under SB-D027. SB-R5.1 is next. Candidate acceptance
-and manual publication remain separate.
+SB-R1.1–5.1 are complete. RG1/RM1–RG4/RM4 and RG5a/RM5a passed under SB-D027.
+SB-R5.2 awaits the owner's acceptance of candidate **0.1.54**, identified in the
+[review packet](RELEASE-CANDIDATE.md#owner-review-packet--0154). Candidate acceptance
+and manual publication remain separate; neither has occurred.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Delivery and code-quality review complete; SB-R5.1 final candidate preparation next |
+| Roadmap and active work | All agent work complete; SB-R5.2 owner candidate acceptance pending |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
-| Release-candidate gates | RG1/RM1 through RG4/RM4 passed; RG5a and RG5 not passed |
-| Mod implementation | Working MVP complete; final cleanup build 0.1.41 retains milestone behavior, including the accepted label capitalization |
+| Release-candidate gates | RG1/RM1 through RG4/RM4 and RG5a/RM5a passed; RG5/RM5 awaits explicit owner acceptance |
+| Mod implementation | Working MVP retained in candidate 0.1.54; production C# and native declarations unchanged from the MVP cleanup |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
-| Distribution | [CI package 0.1.41](MVP-VALIDATION.md#final-cleanup-package) independently verified; no publication authorized |
+| Distribution | [Candidate 0.1.54, run 54 / attempt 1](RELEASE-CANDIDATE.md#owner-review-packet--0154) independently verified; acceptance pending, no publication authorized |
 
 ## Accepted scope
 
@@ -99,8 +101,8 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-R3.2 | Complete; RG3/RM3 passed under SB-D027 | [Security closure](RELEASE-CANDIDATE.md#sb-r32--security-closure) |
 | SB-R4.1 | Complete | [Delivery and DLL identity](RELEASE-CANDIDATE.md#sb-r41--delivery-and-dll-identity) |
 | SB-R4.2 | Complete; RG4/RM4 passed | [Sanity and code-quality review](RELEASE-CANDIDATE.md#sb-r42--sanity-and-code-quality-review) |
-| SB-R5.1 | Not started | — |
-| SB-R5.2 | Not started | — |
+| SB-R5.1 | Complete; RG5a/RM5a passed | [Final candidate verification](RELEASE-CANDIDATE.md#sb-r51--final-candidate-verification) |
+| SB-R5.2 | Awaiting owner acceptance of 0.1.54 | [Owner review packet](RELEASE-CANDIDATE.md#owner-review-packet--0154); no additional runtime case indicated |
 
 ### Completed MVP implementation roadmap
 
@@ -718,7 +720,10 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Proceed to SB-R5.1 final candidate preparation. Source identity is now bound to
-the actual checkout and the downloaded delivery artifact passed its independent check.
-The next planned owner participation is candidate acceptance; security and candidate
-gates have not yet passed.
+The owner reviews candidate **0.1.54** from source
+`1c04199c490dfb029ba466ebfb53836ed46548f7`, run **34700204095**, attempt **1**.
+The [packet](RELEASE-CANDIDATE.md#owner-review-packet--0154) contains the exact download,
+hashes, copy and evidence limits. No new runtime check is required for the polishing
+changes. Record explicit acceptance before closing RG5/RM5 and archiving this roadmap.
+Subsequent documentation builds do not replace this candidate. Actual release work
+remains manual and owner-operated; no release/tag/upload has been performed.
