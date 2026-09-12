@@ -7,8 +7,9 @@ current phase, epic/story status, readiness, and owner acceptance. Update those
 facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
-The [release-candidate roadmap](management/ROADMAP.md) defines the authorized
-polishing work and completion criteria.
+The [current roadmap](management/ROADMAP.md) reserves the next planning boundary.
+The [release-candidate plan](management/archive/ROADMAP-first-release-candidate.md)
+retains the completed polishing scope and criteria.
 Archived roadmaps retain their original work and completion criteria. The
 [MVP specification](MVP-SPECIFICATION.md) defines the
 implementation contract and acceptance cases. The [README](../README.md)
@@ -25,22 +26,25 @@ and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
 sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-SB-R1.1–5.1 are complete. RG1/RM1–RG4/RM4 and RG5a/RM5a passed under SB-D027.
-SB-R5.2 awaits the owner's acceptance of candidate **0.1.54**, identified in the
-[review packet](RELEASE-CANDIDATE.md#owner-review-packet--0154). Candidate acceptance
-and manual publication remain separate; neither has occurred.
+The owner accepted candidate **0.1.54** under SB-D028. SB-R1.1–5.2 are complete;
+RG1/RM1–RG5/RM5 passed, including RG5a/RM5a and the SB-D027 exclusion. The
+[release-candidate plan](management/archive/ROADMAP-first-release-candidate.md) is
+archived, with a short placeholder for the next discussion. The owner requested
+version promotion to **1.0** for manual publication. VERSION now declares major 1
+and minor 0; the promoted hosted package is awaiting build and byte verification.
+No publication has occurred.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | All agent work complete; SB-R5.2 owner candidate acceptance pending |
+| Roadmap and active work | Release-candidate roadmap complete and archived; next roadmap is a placeholder |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
-| Release-candidate gates | RG1/RM1 through RG4/RM4 and RG5a/RM5a passed; RG5/RM5 awaits explicit owner acceptance |
+| Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; owner acceptance recorded in SB-D028 |
 | Mod implementation | Working MVP retained in candidate 0.1.54; production C# and native declarations unchanged from the MVP cleanup |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
-| Distribution | [Candidate 0.1.54, run 54 / attempt 1](RELEASE-CANDIDATE.md#owner-review-packet--0154) independently verified; acceptance pending, no publication authorized |
+| Distribution | [Candidate 0.1.54, run 54 / attempt 1](RELEASE-CANDIDATE.md#owner-review-packet--0154) accepted; 1.0 promotion authorized and hosted verification pending; publication remains owner-operated |
 
 ## Accepted scope
 
@@ -55,9 +59,9 @@ The implementation roadmap delivered a working MVP and a real, directly usable C
 mod package. The owner requested a polishing roadmap whose sole output is the
 first accepted release candidate: minimal package contents, player copy, privacy,
 repository security, delivery validation and a final sanity/code-quality pass.
-No features are added. The only planned owner participation is the final candidate
-session after the agent's work is complete. Actual release work will be manual
-and owner-operated after acceptance; no publishing automation is included.
+No features were added. The owner accepted the identified candidate after the
+agent checks and requested a version-only promotion to 1.0. Actual release work
+remains manual and owner-operated; no publishing automation is included.
 The production GUID is `dsp.spherebuilder`. CI uses mapped compile-only reference shims; every commit
 adding or changing a referenced surface must carry the corresponding native
 type/member mapping and checks. Local real-reference compilation remains required.
@@ -66,8 +70,8 @@ Human and game runtime validation began together before the UI workshop. The
 short sessions reused accepted feasibility evidence; W1–W6 were not reopened as
 a test matrix. Agreed refinements and the targeted recheck preceded final MVP
 acceptance. Phase 4 replaced mock delivery with the real package and supplied
-icon. The requested MVP closeout cleanup is complete. SB-D023 authorizes executing
-the polishing plan and pushing each completed story with its state update.
+icon. The requested MVP closeout cleanup is complete. SB-D023 authorized execution
+of the polishing plan and a push for each completed story with its state update.
 Accepted behavior and W1–W6 evidence limits remain unchanged; publication is excluded.
 
 ## Target game reference
@@ -89,7 +93,7 @@ are owner-operated; the agent has not launched or operated a game session.
 
 ## Work tracking
 
-### First release-candidate roadmap
+### Completed first release-candidate roadmap
 
 | Story | Execution state | Evidence |
 | --- | --- | --- |
@@ -102,7 +106,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-R4.1 | Complete | [Delivery and DLL identity](RELEASE-CANDIDATE.md#sb-r41--delivery-and-dll-identity) |
 | SB-R4.2 | Complete; RG4/RM4 passed | [Sanity and code-quality review](RELEASE-CANDIDATE.md#sb-r42--sanity-and-code-quality-review) |
 | SB-R5.1 | Complete; RG5a/RM5a passed | [Final candidate verification](RELEASE-CANDIDATE.md#sb-r51--final-candidate-verification) |
-| SB-R5.2 | Awaiting owner acceptance of 0.1.54 | [Owner review packet](RELEASE-CANDIDATE.md#owner-review-packet--0154); no additional runtime case indicated |
+| SB-R5.2 | Complete; RG5/RM5 passed | [Owner acceptance and closeout](RELEASE-CANDIDATE.md#sb-r52--owner-acceptance-and-closeout), SB-D028 |
 
 ### Completed MVP implementation roadmap
 
@@ -679,6 +683,25 @@ Historical instructions in a decision are not a new request to execute that work
   require resolution. Publication remains outside this roadmap.
 - **Affected contract:** SB-R3.1–3.2 and the final security evidence in SB-R5.1.
 
+### SB-D028 — Accept the release candidate and promote to 1.0
+
+- **Date / decision-maker:** 2026-09-12, owner: “The release candidate is accepted.
+  Promote the version to 1.0 so I can publish it.”
+- **Choice:** Accept the identified 0.1.54 candidate from source
+  `1c04199c490dfb029ba466ebfb53836ed46548f7`, run `34700204095`, attempt 1,
+  package artifact `10300236790`. Close SB-R5.2 and RG5/RM5, archive the completed
+  plan and leave a short placeholder. Change VERSION to major 1, minor 0.
+- **Basis:** The [candidate packet](RELEASE-CANDIDATE.md#owner-review-packet--0154)
+  identifies the reviewed bytes and passing checks; acceptance is explicit.
+- **Alternatives / consequence:** Preserve the sequential CI patch number and
+  `dsp.spherebuilder` identity. Verify the resulting 1.0 package and record it
+  separately from the accepted candidate; no behavioral change calls for another
+  runtime session. Documentation builds do not replace either identified artifact.
+  The owner will perform publication; no tag, release or upload is authorized for
+  the agent. Existing evidence limits and SB-D027 remain unchanged.
+- **Affected contract:** SB-R5.2/RG5/RM5 closure and the deliberate VERSION inputs;
+  package/loader versions become `1.0.BuildNumber`, assembly/file versions `1.0.0.0`.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -718,12 +741,9 @@ Historical instructions in a decision are not a new request to execute that work
   `0.1.1` and build label `0.1.1.79a72be` matched the run and source commit.
   This is the preparation baseline, not a rolling latest-build record.
 
-## Next decision
+## Next action
 
-The owner reviews candidate **0.1.54** from source
-`1c04199c490dfb029ba466ebfb53836ed46548f7`, run **34700204095**, attempt **1**.
-The [packet](RELEASE-CANDIDATE.md#owner-review-packet--0154) contains the exact download,
-hashes, copy and evidence limits. No new runtime check is required for the polishing
-changes. Record explicit acceptance before closing RG5/RM5 and archiving this roadmap.
-Subsequent documentation builds do not replace this candidate. Actual release work
-remains manual and owner-operated; no release/tag/upload has been performed.
+Verify the version-only 1.0 hosted package authorized by SB-D028 and identify its
+exact download for the owner's manual publication. The accepted 0.1.54 artifact
+remains recorded in the [review packet](RELEASE-CANDIDATE.md#owner-review-packet--0154).
+No additional roadmap or feature work is defined; publication is owner-operated.

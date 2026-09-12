@@ -2,15 +2,15 @@
 
 [PROJECT.md](PROJECT.md) owns execution state, decisions, gates and acceptance.
 This document records checks and findings from the
-[release-candidate roadmap](management/ROADMAP.md). Earlier runtime observations
+[archived release-candidate roadmap](management/archive/ROADMAP-first-release-candidate.md). Earlier runtime observations
 remain in [MVP-VALIDATION.md](MVP-VALIDATION.md); no new gameplay is implied here.
 
 ## Owner review packet — 0.1.54
 
 [Download the candidate ZIP](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34700204095/artifacts/10300236790)
 from [run 54, attempt 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34700204095).
-Use this identified artifact even if a later documentation commit produces another
-build. The [player README](../packaging/README.md) is the packaged copy; the ZIP adds
+This packet retains the candidate reviewed by the owner. Later documentation
+builds do not replace its identity. The [player README](../packaging/README.md) is the packaged copy; the ZIP adds
 its exact-source link. The listing description is:
 
 > Precise Dyson sphere planning without the angle-counting, with connected sections that grow at your pace.
@@ -36,7 +36,8 @@ identity checks. Painting, geometry, continuation and the accepted UI are unchan
 Local/native and CI compilation, downloaded-byte validation, 15 malformed-package
 cases, source access and final privacy checks passed; details are in SB-R5.1 below.
 
-The requested owner decision is acceptance of this package and its player copy.
+The packet requested acceptance of this package and its player copy; SB-D028 in
+[PROJECT.md](PROJECT.md#sb-d028--accept-the-release-candidate-and-promote-to-10) records the owner's response.
 No additional runtime case is indicated by these changes. Existing W1–W6 limits
 remain in the [specification](MVP-SPECIFICATION.md#evidence-and-accepted-assumptions), and
 upstream advisories were excluded by the owner's SB-D027 instruction. No new game
@@ -463,3 +464,12 @@ Comparison with the rewritten equivalent of the MVP cleanup commit found only
 compiler path mapping. Production C# and native declarations were unchanged.
 Accepted MVP observations therefore remain the runtime basis. No owner debugging,
 repeated twelve-patch demonstration or additional UI workshop is required.
+
+## SB-R5.2 — Owner acceptance and closeout
+
+The owner's 2026-09-12 response explicitly accepted the identified candidate and
+requested promotion to 1.0 for manual publication. The authoritative acceptance,
+artifact identity and version decision are recorded in PROJECT.md under SB-D028.
+The original roadmap was archived with relocated links and a historical header;
+a short placeholder reserves the next discussion. No gameplay or publishing
+operation formed part of this closeout.

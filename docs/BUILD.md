@@ -45,7 +45,7 @@ developer's workspace or user-home location.
 ```powershell
 dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json
 python -B scripts/check_plan.py artifacts/compiled-plan.json
-./scripts/Test-PackageFailures.ps1 -PackagePath artifacts/packages/DSPSphereBuilder-0.1.1.zip -ExpectedVersion 0.1.1 -ExpectedCommit $commit
+./scripts/Test-PackageFailures.ps1 -PackagePath artifacts/packages/DSPSphereBuilder-1.0.1.zip -ExpectedVersion 1.0.1 -ExpectedCommit $commit
 ```
 
 Use the version printed by the build. Python 3.12 is needed only for geometry
@@ -89,8 +89,8 @@ experiment; neither is a production dependency.
 The manually authored root [VERSION](../VERSION) contains exactly two assignments:
 
 ```text
-MAJOR=0
-MINOR=1
+MAJOR=1
+MINOR=0
 ```
 
 Edit major/minor deliberately. There is no manually maintained patch or commit
@@ -98,9 +98,9 @@ hash in that file. The build uses these inputs as follows:
 
 | Value | Rule | Example for build 42, commit `abcdef012345...` |
 | --- | --- | --- |
-| Thunderstore `version_number` | `MAJOR.MINOR.BuildNumber` | `0.1.42` |
-| Diagnostic build label | `MAJOR.MINOR.BuildNumber.shortCommit` | `0.1.42.abcdef0` |
-| Package filename | `DSPSphereBuilder-version_number.zip` | `DSPSphereBuilder-0.1.42.zip` |
+| Thunderstore `version_number` | `MAJOR.MINOR.BuildNumber` | `1.0.42` |
+| Diagnostic build label | `MAJOR.MINOR.BuildNumber.shortCommit` | `1.0.42.abcdef0` |
+| Package filename | `DSPSphereBuilder-version_number.zip` | `DSPSphereBuilder-1.0.42.zip` |
 
 The short commit is the first seven hexadecimal characters. The four-part build
 label is diagnostic text, not a semantic package version. Hashes never enter the

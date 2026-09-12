@@ -22,8 +22,8 @@ established by this project.
   scope, phase, work status, readiness, and acceptance.
 - [Product concept](CONCEPT.md) — the agreed experience, geometry, references,
   and copyable sample blueprint with its import caveats.
-- [Release-candidate roadmap](docs/management/ROADMAP.md) — polishing scope,
-  stories and gates ending in owner acceptance; earlier plans remain archived.
+- [Roadmaps](docs/management/ROADMAP.md) — the next planning boundary and
+  archived plans with their original scope, stories and gates.
 - [MVP specification](docs/MVP-SPECIFICATION.md) — the behavioral contract,
   complete patch sequence, acceptance cases, and declared evidence limits.
 - [Build and packaging](docs/BUILD.md) — local commands, version translation,
