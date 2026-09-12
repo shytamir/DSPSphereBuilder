@@ -2,16 +2,52 @@
 
 [PROJECT.md](PROJECT.md) owns execution state, decisions, gates and acceptance.
 This document records checks and findings from the
-[archived release-candidate roadmap](management/archive/ROADMAP-first-release-candidate.md). Earlier runtime observations
-remain in [MVP-VALIDATION.md](MVP-VALIDATION.md); no new gameplay is implied here.
+[archived release-candidate roadmap](management/archive/ROADMAP-first-release-candidate.md).
+Earlier runtime observations remain in [MVP-VALIDATION.md](MVP-VALIDATION.md); no new
+gameplay is implied here.
+
+## Version promotion — 1.0.56
+
+[Download DSPSphereBuilder-1.0.56.zip](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34701506183/artifacts/10300148659)
+from [run 56, attempt 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34701506183).
+This is the version-only successor requested with candidate acceptance in SB-D028;
+the original reviewed candidate remains documented below. Use this identified ZIP
+for manual publication, irrespective of later documentation builds.
+
+| Identity | Verified value |
+| --- | --- |
+| File / size | `DSPSphereBuilder-1.0.56.zip` / 51,496 bytes |
+| Source commit | `b92fb00cde46fa795b2f80c69aa9e5fad76a8aff` |
+| Plugin / diagnostic version | `1.0.56` / `1.0.56.b92fb00` |
+| BepInEx GUID / name | `dsp.spherebuilder` / `DSP Sphere Builder` |
+| CLR assembly / file version | `1.0.0.0` / `1.0.0.0` |
+| ZIP SHA-256 | `30905008C166A7EEBBB25B18FFF67D0D309428FF638FDD25A33CD318C6569905` |
+| DLL SHA-256 | `B118D775E70765CB417B7019404D978F87C40A51E343F73D211FC70087315110` |
+
+On 2026-09-12, the clean hosted build and independent downloaded-ZIP validation
+passed. Its five entries, copy, icon, license/source links and DLL identity passed
+the existing package checks; the ZIP and DLL hashes matched the separate build
+record, artifact `10299899271`. Local shim/native compilation had no warnings or
+errors, and all 217 emitted references in the downloaded DLL matched the native
+build. CI passed the managed logic, independent geometry comparison and all 15
+malformed-package rejection cases with the new major/minor values.
+
+Anonymous download of the exact source URL returned HTTP 200; all 88 archive
+files matched the commit's Git blobs, including VERSION and build/license inputs.
+Production source, native references, build/check scripts, workflow and packaging
+inputs were unchanged from candidate source `1c04199c490dfb029ba466ebfb53836ed46548f7`;
+only VERSION and documentation changed. The existing runtime observations and
+SB-D027 scope exclusion remain the evidence basis. No new runtime session or
+publication was performed. All 180 local links/anchors and preservation of the
+archived plan body passed at closeout; only its header and relative links changed.
 
 ## Owner review packet — 0.1.54
 
 [Download the candidate ZIP](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34700204095/artifacts/10300236790)
 from [run 54, attempt 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34700204095).
 This packet retains the candidate reviewed by the owner. Later documentation
-builds do not replace its identity. The [player README](../packaging/README.md) is the packaged copy; the ZIP adds
-its exact-source link. The listing description is:
+builds do not replace its identity. The [player README](../packaging/README.md) is
+the packaged copy; the ZIP adds its exact-source link. The listing description is:
 
 > Precise Dyson sphere planning without the angle-counting, with connected sections that grow at your pace.
 
@@ -37,7 +73,8 @@ Local/native and CI compilation, downloaded-byte validation, 15 malformed-packag
 cases, source access and final privacy checks passed; details are in SB-R5.1 below.
 
 The packet requested acceptance of this package and its player copy; SB-D028 in
-[PROJECT.md](PROJECT.md#sb-d028--accept-the-release-candidate-and-promote-to-10) records the owner's response.
+[PROJECT.md](PROJECT.md#sb-d028--accept-the-release-candidate-and-promote-to-10)
+records the owner's response.
 No additional runtime case is indicated by these changes. Existing W1–W6 limits
 remain in the [specification](MVP-SPECIFICATION.md#evidence-and-accepted-assumptions), and
 upstream advisories were excluded by the owner's SB-D027 instruction. No new game

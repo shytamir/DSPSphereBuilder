@@ -30,9 +30,10 @@ The owner accepted candidate **0.1.54** under SB-D028. SB-R1.1–5.2 are complet
 RG1/RM1–RG5/RM5 passed, including RG5a/RM5a and the SB-D027 exclusion. The
 [release-candidate plan](management/archive/ROADMAP-first-release-candidate.md) is
 archived, with a short placeholder for the next discussion. The owner requested
-version promotion to **1.0** for manual publication. VERSION now declares major 1
-and minor 0; the promoted hosted package is awaiting build and byte verification.
-No publication has occurred.
+version promotion to **1.0** for manual publication. The resulting
+[package 1.0.56](RELEASE-CANDIDATE.md#version-promotion--1056) passed local/native
+compilation, hosted CI and independent downloaded-byte inspection. No publication
+has occurred; the owner has the verified download for that manual step.
 
 | Area | Current state |
 | --- | --- |
@@ -42,9 +43,9 @@ No publication has occurred.
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; owner acceptance recorded in SB-D028 |
-| Mod implementation | Working MVP retained in candidate 0.1.54; production C# and native declarations unchanged from the MVP cleanup |
+| Mod implementation | Accepted MVP retained in promoted package 1.0.56; production C# and native declarations unchanged from the MVP cleanup |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
-| Distribution | [Candidate 0.1.54, run 54 / attempt 1](RELEASE-CANDIDATE.md#owner-review-packet--0154) accepted; 1.0 promotion authorized and hosted verification pending; publication remains owner-operated |
+| Distribution | [Promoted package 1.0.56, run 56 / attempt 1](RELEASE-CANDIDATE.md#version-promotion--1056) verified for manual publication under SB-D028; candidate 0.1.54 acceptance retained |
 
 ## Accepted scope
 
@@ -743,7 +744,9 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next action
 
-Verify the version-only 1.0 hosted package authorized by SB-D028 and identify its
-exact download for the owner's manual publication. The accepted 0.1.54 artifact
-remains recorded in the [review packet](RELEASE-CANDIDATE.md#owner-review-packet--0154).
-No additional roadmap or feature work is defined; publication is owner-operated.
+The owner can publish [package 1.0.56](RELEASE-CANDIDATE.md#version-promotion--1056)
+from source `b92fb00cde46fa795b2f80c69aa9e5fad76a8aff`, run `34701506183`, attempt 1.
+It is the verified version-only promotion authorized by SB-D028. Later
+documentation builds do not replace this identified download. The accepted 0.1.54
+packet remains available for traceability. No additional roadmap or feature work
+is defined, and no agent release/tag/upload has been performed.
