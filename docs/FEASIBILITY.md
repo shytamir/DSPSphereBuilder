@@ -510,8 +510,9 @@ spontaneously reaches that branch, and it adds no fault-injection framework.
 The probe's temporary in-memory tracking is sufficient to compare two consecutive
 actions on the same layer. It is not an MVP resumption policy. SB-F3.2 will assess
 native reconstruction only after the additive observations satisfy SB-F3.1.
-Real partial/completed construction, preservation, shell handoff, control behavior,
-and the rejection experiment have **not yet been observed in the running game**.
+At preparation time, partial/completed construction, preservation, shell handoff,
+control behavior, and rejection had not been observed in the running game.
+The owner-run records below distinguish subsequent observations from gaps.
 
 ### First owner run: serialization failure before placement
 
@@ -561,3 +562,67 @@ Retest with the replacement DLL after restarting the game. Repeat the quick
 refusal cases so their before/after records can be verified, then resume the
 procedure at case A on an empty layer. Cases A–C and additive preservation still
 require live observations; no later story is advanced by this fix.
+
+### Second owner run: additive results and case B gap
+
+The owner supplied the corrected probe's evidence on 2026-09-12 and reported no
+observable problems other than case B's fresh-layer refusal. Reports identify
+source `4c49a0c666d1ef39a4ce24cfb129fbec42ee25e6`, the target hash/MVID above,
+Unity `2022.3.62f3c1`, and populated nested snapshots. Original files were read
+only; an ignored local copy was audited against the derived first-two-patch graph.
+All selected cases below used star ID 60 with latitude unlock 90.
+
+- **Case A:** `20260912T022658.9418313-paint.json` added 6 nodes / 6 frames
+  to empty layer 2 at radius 9,700. `20260912T022826.6967923-paint.json`
+  extended it to 11 / 12. The original six nodes held 76 invested SP before
+  and after addition; frame SP was zero and no shells existed. Direct in-process
+  preservation comparisons reported no failures. Independent record comparison
+  confirmed retained positions, properties, progress, and prior connectivity.
+  The leading endpoint was reused and both resulting graphs match the intended
+  deltas. Maximum normalized direction discrepancy from the derived reference
+  was 3.575 × 10⁻⁸ (rounded upward).
+- **Refusals:** No selection was reported without a target or placement.
+  The unrelated-layer refusal at `022640.2076894` preserved 56 nodes,
+  103 frames, and 48 shells, including invested construction. The end-of-probe
+  refusal at `022842.7449293` preserved 11 / 12 and two manually added shells.
+  These establish refusal behavior, not shell preservation during addition.
+- **Case B:** `20260912T025221.8173508-snapshot.json` shows layer 2 at radius
+  9,700 with 6 nodes / 6 frames / 1 shell. All nodes and frames were complete:
+  180 node SP and 800 frame SP. The pentagon shell had 14,480 total node CP.
+  Subsequent Paint attempts refused the nonempty untracked layer; their
+  snapshots and comparison results show it remained intact. The owner clarified
+  that a partially formed layer had been deleted and a fresh one created for
+  faster construction, and recalled a save reload between cases A and B. The
+  supplied records do not establish the exact ordering of those transitions.
+  Reload replaces native layer objects, so the probe's reference-based tracking
+  cannot resume that loaded layer. Source inspection confirms deselection alone
+  does not clear tracking; starting another empty layer replaces the tracked one.
+- **Fresh-layer repeat:** `025238.9057476` and `025244.8357915` successfully
+  painted both patches on layer 1 at radius 36,000, with correct topology and
+  maximum direction discrepancy 3.585 × 10⁻⁸ (rounded upward). Before the second
+  addition, all node/frame SP was zero and no shells existed. This is another
+  successful additive result, but cannot substitute for case B's completed
+  structure and preexisting shell. Returning to this tracked layer succeeded
+  even after an intervening refusal on layer 2.
+- **Case C:** `20260912T025256.2528989-rejection.json` records an empty layer 3
+  at radius 25,700 receiving one node, then frame return ID 0 for the intentional
+  same-endpoint request. `025257.6156564-snapshot.json` confirms 1 node / 0 frames
+  remained. This establishes lack of rollback across those two native calls;
+  it does not demonstrate failure of a valid patch.
+
+Critical input identities (SHA-256; timestamps above refer to files from this run):
+
+| Input | SHA-256 |
+| --- | --- |
+| Case A second Paint | `10C205A70BD97C6B9F6242951CBCD41CEFCD7F10FB59F51D087FFEB354E4D806` |
+| Case B completed snapshot | `7EAFF570809155B3880A17AE9EC08BBD0E3B16BB6D517B1CFF45CCD3670A6443` |
+| Fresh-layer second Paint | `F80F33D08DFC4FF467AEA31F93CA51B577803A552886674E4A1B885657900DE1` |
+| Native rejection | `4480B66C368A9BF91AAB8561486A8242102A442C90DE14EBA982CA621D1692C0` |
+| Post-rejection snapshot | `A8F60D60AD37BB838792B6A726748EA7FD16C903331615E0A4216E8BB0B3084B` |
+
+The remaining additive evidence is a successful second Paint against completed
+first-patch structure with a preexisting shell. Repeat only case B using the
+same DLL and one uninterrupted tracked layer, as clarified in the
+[operator procedure](../probe/README.md). Save/reload continuation remains a
+separate investigation, not a capability established by this two-patch probe.
+See [PROJECT.md](PROJECT.md) for story and gate state.

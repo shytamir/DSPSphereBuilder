@@ -32,6 +32,10 @@ any `-before` or `-error` files. They do not include your save or filesystem pat
 Keep this initial run in one game session. The probe deliberately has only two
 patches and only tracks the most recently started layer. Save/reload continuation
 and the full twelve-patch workflow will be investigated after this evidence.
+For case B, create its first patch with the probe and keep that layer tracked
+until the second patch is painted. Do not reload a save or start a patch on
+another empty layer between those two clicks. A loaded nonempty layer cannot be
+adopted by this probe. Deselecting and reselecting alone does not clear tracking.
 
 | Case | Action | Expected observation |
 | --- | --- | --- |

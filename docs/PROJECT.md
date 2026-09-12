@@ -23,10 +23,10 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3.1 in progress; first live run failed before placement; corrected probe awaits retest |
+| Roadmap and active work | SB-F3.1 in progress; cases A and C verified; case B needs successful addition beside completed construction and a shell |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Disposable two-patch feasibility probe only; production implementation not started |
-| Runtime validation and owner acceptance | First run established probe serialization failure; corrected build and serialization checks passed; additive validation pending |
+| Runtime validation and owner acceptance | Corrected probe preserved partial construction; native rejection retained its prior addition; completed-structure and shell preservation during addition remain unverified |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
 ## Accepted scope
@@ -68,7 +68,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
-| SB-F3.1 | In progress; serialization fix awaiting owner retest | [First live run and fix](FEASIBILITY.md#first-owner-run-serialization-failure-before-placement), [operator procedure](../probe/README.md) |
+| SB-F3.1 | In progress; case B rerun required after save/reload interrupted tracking | [Second owner run](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap), [operator procedure](../probe/README.md) |
 | SB-F3.2 | Not started | — |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
@@ -179,8 +179,9 @@ or Thunderstore moderation acceptance.
 - The concept preserves the supplied sample and reported format checks; those
   checks were not rerun during repository preparation.
 - Canonical geometry, polar progression, and the static native placement envelope
-  are verified. Additive preservation, continuation, editor interaction, and
-  player shell filling still require matching live observations.
+  are verified. Two-patch addition preserved partial construction in the live
+  target. Completed construction and shell preservation during addition,
+  continuation, and the full workflow still require matching live observations.
 - Local preparation checks passed: numeric build progression, stable version on
   retry, strict VERSION input rejection, and validation of the four-file mock ZIP.
   Negative checks rejected missing README, unexpected DLL, wrong version, broken
@@ -195,10 +196,12 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-The owner replaces the probe DLL, restarts, repeats the brief refusal checks,
-and resumes the [two-patch procedure](../probe/README.md) at case A in a disposable
-save. The first failure was in probe serialization, before native placement;
-its omitted snapshots cannot establish preservation. G2/M2 passed; G3 cannot pass on static
-inspection or compilation. Complete SB-F3.1 from the identified live results
-before proceeding to SB-F3.2. The next implementation roadmap remains downstream
-of G4/M4; no full MVP specification or final acceptance is claimed.
+Rerun only case B with the existing corrected DLL: start a new empty layer through
+the probe, finish its first patch and manually fill its pentagon shell, capture a
+snapshot, then paint the second patch without reloading or starting another probe
+layer in between. The owner confirmed a save reload between cases A and B; the
+probe cannot adopt a loaded nonempty layer using its temporary object tracking.
+Do not add resumption machinery to this probe to bypass the outstanding additive
+check; SB-F3.2 investigates that policy after SB-F3.1. Cases A and C need no repeat.
+G3 remains pending. The next implementation roadmap remains downstream of G4/M4;
+no full MVP specification or final acceptance is claimed.
