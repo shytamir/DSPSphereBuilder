@@ -23,7 +23,7 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F2.1 complete; SB-F2.2 is next |
+| Roadmap and active work | SB-F2.2 complete; SB-F2.3 is next |
 | Feasibility gates and MVP specification | G1/M1 passed; G2–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Not started; no plugin source or runtime scaffold |
 | Runtime validation and owner acceptance | Not performed for the proposed mod |
@@ -66,8 +66,8 @@ loaded or executed by the agent.
 | SB-F1.1 | Complete | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
 | SB-F1.2 | Complete | [Native placement and lifecycle](FEASIBILITY.md#sb-f12--native-placement-and-lifecycle) |
 | SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
-| SB-F2.2 | Not started; next | — |
-| SB-F2.3 | Not started | — |
+| SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
+| SB-F2.3 | Not started; next | — |
 | SB-F3.1 | Not started | — |
 | SB-F3.2 | Not started | — |
 | SB-F3.3 | Not started | — |
@@ -146,6 +146,19 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** SB-F2 derivation, probe inputs, and future specification
   geometry/provenance and distribution requirements.
 
+### SB-D005 — One fixed polar orientation and route
+
+- **Date / decision-maker:** 2026-09-12, implementor within authorized scope.
+- **Question / choice:** Use the P1-to-P4 rotation and increasing-azimuth ring
+  traversal derived in SB-F2.2, with canonical IDs resolving equivalent starts.
+- **Alternatives / evidence:** Symmetry permits other starting caps and ring
+  directions. This route satisfies the agreed 1–5–5–1 order, adjacent transitions,
+  leading-spoke rule, and complete final graph in all twelve checked deltas.
+- **Rationale / consequence:** One deterministic route is sufficient. Orientation
+  selection and alternate routes add no required feasibility capability.
+- **Affected contract:** Future specification's geometry, click sequence, and
+  continuation matching; SB-F2.3 evaluates this fixed orientation's unlock limits.
+
 ## Evidence and unresolved questions
 
 - The concept preserves the supplied sample and reported format checks; those
@@ -167,6 +180,6 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to SB-F2.2. G1/M1 passed from the identified target and native operation map;
-the canonical geometry is verified within its recorded precision. The next
+Proceed to SB-F2.3. The twelve-patch route and final graph are verified offline;
+native placement limits and live preservation remain unverified. The next
 implementation roadmap remains downstream of G4/M4.

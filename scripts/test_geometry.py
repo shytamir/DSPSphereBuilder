@@ -4,6 +4,7 @@ import unittest
 
 from blueprint_geometry import decode
 from verify_geometry import compare, verify_geometry
+from derive_patches import derive
 
 
 class GeometryChecks(unittest.TestCase):
@@ -49,6 +50,21 @@ class GeometryChecks(unittest.TestCase):
         import struct
         with self.assertRaises(struct.error):
             decode('"'.join((header, shortened, signature)))
+
+    def test_pool_enumeration_does_not_change_patches(self):
+        altered = copy.deepcopy(self.reference)
+        for kind in ('nodes', 'frames', 'shells'):
+            altered[kind] = dict(reversed(list(altered[kind].items())))
+        self.assertEqual(derive(self.reference), derive(altered))
+
+    def test_rotation_preserves_all_pairwise_distances(self):
+        import itertools
+        import math
+        from blueprint_geometry import unit
+        rotated = derive(self.reference)['positions']
+        for a, b in itertools.combinations(rotated, 2):
+            original_distance = math.dist(unit(self.reference['nodes'][a]['position']), unit(self.reference['nodes'][b]['position']))
+            self.assertAlmostEqual(math.dist(rotated[a], rotated[b]), original_distance, places=14)
 
 
 if __name__ == '__main__':

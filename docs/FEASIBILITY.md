@@ -262,3 +262,89 @@ Both verification runs passed. Five focused tests passed: radial scaling retains
 geometry; a removed frame, displaced node, non-boundary cycle, and truncated
 payload are rejected. Shell records are used only to verify boundaries;
 this does not authorize automatic shell creation or prove player filling.
+
+## SB-F2.2 — Polar twelve-patch traversal
+
+The [derivation](../scripts/derive_patches.py) chooses P1 as north and P4 as south.
+North is the normalized mean of P1's five unit directions. The local +X axis is
+node 1's direction projected perpendicular to north; +Z is `X × north`. Dotting
+each source direction with those three axes is a rigid rotation with determinant
++1. It sets a fixed design orientation within the layer, independently of the
+layer's animated orbital rotation. No vertex is moved separately to force a fit.
+
+The rotation rows, rounded here for display only, are:
+
+```text
+[-0.688190966397, -0.425325392017,  0.587785253877]
+[-0.525731097838,  0.850650817178,  0.000000000000]
+[-0.500000006536, -0.309016986814, -0.809016993223]
+```
+
+Pentagon-center latitudes are ±90° for the caps and approximately ±26.565052°
+for the rings (ring spread below 0.0000025° from encoded coordinates).
+Vertices reach approximately ±67.607230°; the cap centers are not nodes.
+SB-F2.3 determines the native unlock consequence.
+
+Each ring is ordered by increasing `atan2(z,x)`, cyclically starting the upper
+ring at its lowest numbered pentagon. The lower ring starts at the lowest
+numbered lower-ring neighbor of the upper ring's final pentagon. This gives:
+**P1 → P2 → P6 → P12 → P11 → P8 → P7 → P9 → P10 → P5 → P3 → P4**.
+Both rings form native graph cycles. Every transition uses a real short spoke;
+the equator crossing is P8–P7 through nodes 38–35.
+
+### Complete deltas
+
+Node IDs and Pk are defined in SB-F2.1. Every row adds the five perimeter frames
+of its Pk; none already exists. In addition, add the listed closing connections
+and leading spoke. Each row after the first reuses exactly its incoming spoke
+(the preceding row's leading edge) and one existing endpoint. All other earlier
+nodes and frames remain untouched. An edge `a–b` is unordered.
+
+| Click / Pk | New nodes | Reused node | Other closing connections | Leading spoke | Total nodes / frames |
+| --- | --- | --- | --- | --- | --- |
+| 1 / P1 | 1–6 | — | — | 4–6 | 6 / 6 |
+| 2 / P2 | 7,8,9,10,27 | 6 | — | 10–27 | 11 / 12 |
+| 3 / P6 | 26,28,29,30,56 | 27 | 5–26 | 30–56 | 16 / 19 |
+| 4 / P12 | 54,57,58,59,60 | 56 | 1–60 | 54–59 | 21 / 26 |
+| 5 / P11 | 37,51,52,53,55 | 54 | 2–55 | 37–51 | 26 / 33 |
+| 6 / P8 | 35,36,38,39,40 | 37 | 3–36; 7–40 | 35–38 | 31 / 41 |
+| 7 / P7 | 31,32,33,34,42 | 35 | 31–52 | 34–42 | 36 / 48 |
+| 8 / P9 | 41,43,44,45,49 | 42 | 8–45; 39–41 | 44–49 | 41 / 56 |
+| 9 / P10 | 22,46,47,48,50 | 49 | 9–50; 28–46 | 22–47 | 46 / 64 |
+| 10 / P5 | 12,21,23,24,25 | 22 | 21–29; 25–57 | 12–24 | 51 / 72 |
+| 11 / P3 | 11,13,14,15,19 | 12 | 11–58; 14–32; 15–53 | 13–19 | 56 / 81 |
+| 12 / P4 | 16,17,18,20 | 19 | 16–48; 17–43; 18–33; 20–23 | — | 60 / 90 |
+
+Every click closes its own pentagon. The following table names each newly closed
+hexagon by the three pentagons surrounding it; no other face closes on that click.
+These are boundary closures, not shell creation.
+
+| Click | Newly closed hexagons, by surrounding Pk numbers |
+| --- | --- |
+| 1–2 | — |
+| 3 | (1,2,6) |
+| 4 | (1,6,12) |
+| 5 | (1,11,12) |
+| 6 | (1,8,11); (1,2,8) |
+| 7 | (7,8,11) |
+| 8 | (2,8,9); (7,8,9) |
+| 9 | (2,9,10); (2,6,10) |
+| 10 | (5,6,10); (5,6,12) |
+| 11 | (3,5,12); (3,11,12); (3,7,11) |
+| 12 | (3,4,5); (3,4,7); (4,9,10); (4,5,10); (4,7,9) |
+
+### Verification
+
+```powershell
+python -B scripts/derive_patches.py --output artifacts/patches.json
+python -B scripts/test_geometry.py
+```
+
+The output records full rotated directions, exact endpoint-pair deltas, reuse,
+and all cyclic boundaries. Checks passed for all twelve monotonically growing,
+connected graphs, exactly one future endpoint/spoke before the last click, and
+final equality to all 60 nodes, 90 frames, and 32 reference boundaries.
+Seven focused tests passed, including unchanged deltas when input pool enumeration
+is reversed and preservation of all 1,770 pairwise node distances under rotation
+to fourteen decimal places. The route is reproducible and agrees with the concept;
+no alternate route, adjustable orientation, or shell operation was introduced.
