@@ -23,7 +23,7 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F1 complete; SB-F2.1 is next |
+| Roadmap and active work | SB-F2.1 complete; SB-F2.2 is next |
 | Feasibility gates and MVP specification | G1/M1 passed; G2–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Not started; no plugin source or runtime scaffold |
 | Runtime validation and owner acceptance | Not performed for the proposed mod |
@@ -65,8 +65,8 @@ loaded or executed by the agent.
 | --- | --- | --- |
 | SB-F1.1 | Complete | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
 | SB-F1.2 | Complete | [Native placement and lifecycle](FEASIBILITY.md#sb-f12--native-placement-and-lifecycle) |
-| SB-F2.1 | Not started; next | — |
-| SB-F2.2 | Not started | — |
+| SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
+| SB-F2.2 | Not started; next | — |
 | SB-F2.3 | Not started | — |
 | SB-F3.1 | Not started | — |
 | SB-F3.2 | Not started | — |
@@ -129,6 +129,23 @@ or Thunderstore moderation acceptance.
   allocator is introduced.
 - **Affected contract:** SB-F2.3, SB-F3.1, and future MVP placement/preservation.
 
+### SB-D004 — Attributed research fixture and explicit precision comparison
+
+- **Date / decision-maker:** 2026-09-12, implementor within authorized scope.
+- **Question / choice:** Use the author's pinned GPL-3.0 `60.txt` as reproducible
+  research input, retaining its license and attribution separately from original
+  Apache-2.0 work. Keep the published sphere as the comparison baseline.
+- **Alternatives and evidence:** The published file has no independently
+  established redistribution grant. SB-F2.1 measured identical topology and a
+  maximum normalized-coordinate difference of 2.545625 × 10⁻⁸ for the licensed
+  repository counterpart, below the derived encoding bound.
+- **Rationale / consequence:** This supplies reviewable data without copying
+  generator implementation or silently substituting an equal-edge football.
+  Comparisons preserve the measured precision distinction. The fixture stays out
+  of the mock package; a later artifact using it must preserve applicable terms.
+- **Affected contract:** SB-F2 derivation, probe inputs, and future specification
+  geometry/provenance and distribution requirements.
+
 ## Evidence and unresolved questions
 
 - The concept preserves the supplied sample and reported format checks; those
@@ -150,6 +167,6 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to SB-F2.1. G1/M1 passed from the identified target and native operation map;
-each unresolved behavioral question has a bounded owning story. The next
+Proceed to SB-F2.2. G1/M1 passed from the identified target and native operation map;
+the canonical geometry is verified within its recorded precision. The next
 implementation roadmap remains downstream of G4/M4.

@@ -4,6 +4,10 @@ Current execution state, decisions, and gate results are in [PROJECT.md](PROJECT
 This record describes observed inputs and findings. References to native members
 are inspection coordinates, not a copied implementation.
 
+Research commands below run from the repository root. Python checks use the
+standard library only; use an available Python 3 interpreter and `-B` to avoid
+writing bytecode beside the scripts. Outputs belong under ignored `artifacts/`.
+
 ## SB-F1.1 — Target and probe environment
 
 ### Target identity
@@ -165,3 +169,96 @@ above locate the findings independently of decompiler line numbers.
 The inspected API supports a candidate additive path. No fundamental missing
 static capability was found. Neither the full design nor live preservation is
 claimed validated by this finding.
+
+## SB-F2.1 — Canonical reference geometry
+
+### Source identity and reuse
+
+Retrieved 2026-09-12 from the [published sphere](https://www.dysonsphereblueprints.com/en/blueprints/dyson-sphere-best-cost-efficiency-optimized-sphere-design-60-nodes-15-cheaper-than-football).
+Its exact `DYBP` string, without surrounding whitespace, has SHA-256
+`d6d9c52f4baf1167739a7dc421e0cb362ecd50af08686396ecd40919ef06f2c7`.
+The decoded payload is 8,205 bytes, SHA-256
+`b345c98c8778667d45df790dc2f76d2bf0f5c46b43a9454a944e801737d91f7c`.
+Header version is `0.10.34.28529`, layer type `1`, latitude `81`; the page's
+separate game-version label says `0.10.34.28524`. Neither identifies our target.
+The author's optimality claim remains outside this investigation.
+
+The [site terms](https://www.dysonsphereblueprints.com/terms), dated 2026-09-09,
+retain contributor ownership and grant the site a content license; they do not
+establish a general mod-distribution license. The published full string remains
+an external comparison input, not a newly committed asset.
+
+The author's [repository fixture](../research/cosmin1490/README.md), pinned to
+`bf00f4b2334c93215f63e0291f9acb6003c9a663`, is retained under its upstream GPL-3.0
+terms with the unmodified license. Its raw file/string SHA-256 is
+`96bd7badd6d0bd971df477b74622c0296b483e7b60e77aa3074cdf0b239620e0`;
+payload SHA-256 is `804bb4284bb432c5867982334fb564967c21c99c61c4d4b779e0981b7fd69a64`.
+It has a different header (`0.10.29.21950`) and coordinate scale, but the comparison
+below establishes matching geometry within encoding precision. SB-D004 records
+this research-input choice. No generator code was copied and the mock package
+does not include the fixture.
+
+### Measured geometry and canonical mapping
+
+The independent [reader](../scripts/blueprint_geometry.py) follows the inspected
+single-layer record layout, consumes all payload bytes, and checks pool identities.
+Gzip integrity is checked by decompression. This tool does not implement the game's
+custom `MD5F` signature algorithm or claim an in-game import result.
+
+Both full inputs have 60 nodes, 90 unique frames, and 32 shell boundary records.
+Every node has degree three; the graph is connected. Each of twelve pentagons
+owns five distinct vertices. Twenty hexagons complete a convex closed surface:
+every frame belongs to exactly two boundaries and `60 - 90 + 32 = 2`.
+All frames have `euler=false`, hence great-circle arcs rather than Euler paths.
+Prototype records are node `0`, frame `1`, shell `0`; these are serialized values,
+not yet verified creation-argument choices.
+
+Canonical node IDs retain source IDs 1–60. Pentagon `Pk` owns IDs
+`5k-4` through `5k`, with consecutive perimeter edges and the closing edge.
+Edges are unordered endpoint pairs; frame pool IDs and shell enumeration order
+are not canonical identities. Face IDs use lexicographically sorted cyclic
+boundaries, ignoring starting vertex and winding. The verifier emits all mappings.
+
+| Quantity, after normalizing positions | Published measurement |
+| --- | --- |
+| 60 pentagon perimeter chord lengths | 0.447837935801–0.447837955976 |
+| 30 inter-pentagon spoke chord lengths | 0.324058597073–0.324058633943 |
+| Greatest within-face plane-distance spread | 1.988675 × 10⁻⁸ |
+| Greatest direction difference from repository fixture | 2.545625 × 10⁻⁸ |
+
+Pentagons have equal perimeter chords and lie on small circles within the measured
+precision; they are regular to that precision. Each hexagon alternates three
+perimeter edges and three shorter spokes. Native frame angle is
+`2 asin(chord / 2)` and arc length is that angle times layer radius. Straight
+chord length and native spherical arc length are not interchangeable.
+
+Repository-to-published node mapping is exactly `i → i`; all 90 endpoint pairs
+and all 32 cyclic boundaries agree. The sample has ten nodes, ten frames, and no
+shell records. Its IDs 1–10 map to published IDs
+`11,12,13,14,15,19,24,32,53,58`; raw coordinates match those published nodes exactly.
+Its five spokes reach five different pentagons. It remains a five-spoke example,
+not the intended one-leading-spoke first click.
+
+### Precision rule and reproduction
+
+Positions are binary32 components. For rounding unit `u = 2^-24`, the vector
+rounding error is bounded by `u` times its magnitude. Normalizing two independently
+encoded vectors gives a conservative direction-difference bound
+`4u/(1-u) = 2.384185934 × 10⁻⁷` (binary64 analysis arithmetic is negligible here).
+The comparison uses Euclidean distance between normalized vectors, a bijective
+node match, and exact graph connectivity. Edge-class spread and face planarity
+checks allow twice that bound. All observed errors are below it; the files are
+not bit-identical and are not described as exact real-number geometry.
+This is an input-comparison rule, not a blanket runtime mutation tolerance.
+
+```powershell
+python -B scripts/verify_geometry.py --output artifacts/geometry.json
+python -B scripts/test_geometry.py
+# Optional independent published input, saved as plain DYBP text:
+python -B scripts/verify_geometry.py --published artifacts/reference/published.txt --output artifacts/reference/verified.json
+```
+
+Both verification runs passed. Five focused tests passed: radial scaling retains
+geometry; a removed frame, displaced node, non-boundary cycle, and truncated
+payload are rejected. Shell records are used only to verify boundaries;
+this does not authorize automatic shell creation or prove player filling.
