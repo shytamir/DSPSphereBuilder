@@ -64,7 +64,11 @@ public class UIDysonEditor : ManualBehaviour
 {
     private UIDysonEditor() { }
     public DESelection selection;
+    public UIDEControlPanel controlPanel;
+    public RectTransform[] guiRects;
 }
+public class UIDEControlPanel : ManualBehaviour { private UIDEControlPanel() { } }
+public class UIBlockZone : MonoBehaviour { private UIBlockZone() { } }
 public class DESelection
 {
     private DESelection() { }

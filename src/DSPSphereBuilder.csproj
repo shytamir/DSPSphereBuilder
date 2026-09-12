@@ -10,11 +10,15 @@
     <Compile Include="$(BuildInfoPath)" />
   </ItemGroup>
   <ItemGroup Condition="'$(ReferenceMode)' == 'Shim'">
+    <ProjectReference Include="../references/UnityEngine.UI/UnityEngine.UI.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
+    <ProjectReference Include="../references/UnityEngine.TextRenderingModule/UnityEngine.TextRenderingModule.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
     <ProjectReference Include="../references/Assembly-CSharp/Assembly-CSharp.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
     <ProjectReference Include="../references/BepInEx/BepInEx.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
     <ProjectReference Include="../references/UnityEngine.CoreModule/UnityEngine.CoreModule.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
   </ItemGroup>
   <ItemGroup Condition="'$(ReferenceMode)' == 'Native'">
+    <Reference Include="UnityEngine.UI" HintPath="$(DspManagedPath)/UnityEngine.UI.dll" Private="false" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(DspManagedPath)/UnityEngine.TextRenderingModule.dll" Private="false" />
     <Reference Include="Assembly-CSharp" HintPath="$(DspManagedPath)/Assembly-CSharp.dll" Private="false" />
     <Reference Include="BepInEx" HintPath="$(BepInExCorePath)/BepInEx.dll" Private="false" />
     <Reference Include="UnityEngine" HintPath="$(DspManagedPath)/UnityEngine.dll" Private="false" />

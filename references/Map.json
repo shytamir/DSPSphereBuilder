@@ -96,11 +96,23 @@
           "System.Int32 StarData::id": "040020FD"
         }
       },
+      "UIBlockZone": {
+        "token": "02000623",
+        "base": "UnityEngine.MonoBehaviour",
+        "members": {}
+      },
+      "UIDEControlPanel": {
+        "token": "0200059C",
+        "base": "ManualBehaviour",
+        "members": {}
+      },
       "UIDysonEditor": {
         "token": "020005B1",
         "base": "ManualBehaviour",
         "members": {
-          "DESelection UIDysonEditor::selection": "04003DE5"
+          "DESelection UIDysonEditor::selection": "04003DE5",
+          "UIDEControlPanel UIDysonEditor::controlPanel": "04003DC6",
+          "UnityEngine.RectTransform[] UIDysonEditor::guiRects": "04003DE7"
         }
       },
       "UIGame": {
@@ -162,6 +174,13 @@
           "System.Void UnityEngine.Behaviour::.ctor()": "06001879"
         }
       },
+      "UnityEngine.Color": {
+        "token": "020001EC",
+        "base": "System.ValueType",
+        "members": {
+          "System.Void UnityEngine.Color::.ctor(System.Single,System.Single,System.Single,System.Single)": "06001503"
+        }
+      },
       "UnityEngine.Color32": {
         "token": "020001ED",
         "base": "System.ValueType",
@@ -176,7 +195,48 @@
         "token": "02000240",
         "base": "UnityEngine.Object",
         "members": {
-          "System.Void UnityEngine.Component::.ctor()": "060018BB"
+          "System.Void UnityEngine.Component::.ctor()": "060018BB",
+          "T UnityEngine.Component::GetComponent()": "0600188F",
+          "T[] UnityEngine.Component::GetComponentsInChildren(System.Boolean)": "06001899",
+          "UnityEngine.GameObject UnityEngine.Component::get_gameObject()": "0600188C",
+          "UnityEngine.Transform UnityEngine.Component::get_transform()": "0600188B"
+        }
+      },
+      "UnityEngine.Events.UnityAction": {
+        "token": "02000305",
+        "base": "System.MulticastDelegate",
+        "members": {
+          "System.IAsyncResult UnityEngine.Events.UnityAction::BeginInvoke(System.AsyncCallback,System.Object)": "06001FEC",
+          "System.Void UnityEngine.Events.UnityAction::.ctor(System.Object,System.IntPtr)": "06001FEA",
+          "System.Void UnityEngine.Events.UnityAction::EndInvoke(System.IAsyncResult)": "06001FED",
+          "System.Void UnityEngine.Events.UnityAction::Invoke()": "06001FEB"
+        }
+      },
+      "UnityEngine.Events.UnityEvent": {
+        "token": "02000306",
+        "base": "UnityEngine.Events.UnityEventBase",
+        "members": {
+          "System.Void UnityEngine.Events.UnityEvent::.ctor()": "06001FEE",
+          "System.Void UnityEngine.Events.UnityEvent::AddListener(UnityEngine.Events.UnityAction)": "06001FEF",
+          "System.Void UnityEngine.Events.UnityEvent::RemoveListener(UnityEngine.Events.UnityAction)": "06001FF0"
+        }
+      },
+      "UnityEngine.Events.UnityEventBase": {
+        "token": "02000304",
+        "base": "System.Object",
+        "members": {
+          "System.Void UnityEngine.Events.UnityEventBase::.ctor()": "06001FD1"
+        }
+      },
+      "UnityEngine.GameObject": {
+        "token": "0200024E",
+        "base": "UnityEngine.Object",
+        "members": {
+          "System.Void UnityEngine.GameObject::.ctor(System.String,System.Type[])": "0600192B",
+          "System.Void UnityEngine.GameObject::SetActive(System.Boolean)": "06001914",
+          "T UnityEngine.GameObject::AddComponent()": "06001909",
+          "T UnityEngine.GameObject::GetComponent()": "060018E0",
+          "UnityEngine.Transform UnityEngine.GameObject::get_transform()": "0600190F"
         }
       },
       "UnityEngine.Mathf": {
@@ -201,7 +261,42 @@
           "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)": "06001A0E",
           "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)": "06001A0F",
           "System.Int32 UnityEngine.Object::GetHashCode()": "060019C7",
-          "System.Void UnityEngine.Object::.ctor()": "06001A22"
+          "System.Void UnityEngine.Object::.ctor()": "06001A22",
+          "System.Void UnityEngine.Object::Destroy(UnityEngine.Object)": "060019ED"
+        }
+      },
+      "UnityEngine.RectTransform": {
+        "token": "020002A0",
+        "base": "UnityEngine.Transform",
+        "members": {
+          "System.Void UnityEngine.RectTransform::set_anchoredPosition(UnityEngine.Vector2)": "06001C55",
+          "System.Void UnityEngine.RectTransform::set_anchorMax(UnityEngine.Vector2)": "06001C53",
+          "System.Void UnityEngine.RectTransform::set_anchorMin(UnityEngine.Vector2)": "06001C51",
+          "System.Void UnityEngine.RectTransform::set_pivot(UnityEngine.Vector2)": "06001C59",
+          "System.Void UnityEngine.RectTransform::set_sizeDelta(UnityEngine.Vector2)": "06001C57"
+        }
+      },
+      "UnityEngine.Time": {
+        "token": "02000294",
+        "base": "System.Object",
+        "members": {
+          "System.Single UnityEngine.Time::get_unscaledTime()": "06001BDC"
+        }
+      },
+      "UnityEngine.Transform": {
+        "token": "020002A5",
+        "base": "UnityEngine.Component",
+        "members": {
+          "System.Void UnityEngine.Transform::.ctor()": "06001C7C",
+          "System.Void UnityEngine.Transform::SetAsLastSibling()": "06001CDB",
+          "System.Void UnityEngine.Transform::SetParent(UnityEngine.Transform,System.Boolean)": "06001C9E"
+        }
+      },
+      "UnityEngine.Vector2": {
+        "token": "020001F9",
+        "base": "System.ValueType",
+        "members": {
+          "System.Void UnityEngine.Vector2::.ctor(System.Single,System.Single)": "06001673"
         }
       },
       "UnityEngine.Vector3": {
@@ -212,6 +307,93 @@
           "System.Single UnityEngine.Vector3::y": "0400080D",
           "System.Single UnityEngine.Vector3::z": "0400080E",
           "System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)": "060015A9"
+        }
+      }
+    }
+  },
+  "UnityEngine.TextRenderingModule.dll": {
+    "identity": "UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "sha256": "D70709FEE2D288D5293FFF38821C00C4D6A8F16EBF1645D856A7148F8E26B5CF",
+    "mvid": "f360f14d-5584-4f86-bdba-830d2eba8ef7",
+    "types": {
+      "UnityEngine.Font": {
+        "token": "02000010",
+        "base": "UnityEngine.Object",
+        "members": {}
+      },
+      "UnityEngine.TextAnchor": {
+        "token": "02000008",
+        "base": "System.Enum",
+        "members": {
+          "System.Int32 UnityEngine.TextAnchor::value__": "0400002C",
+          "UnityEngine.TextAnchor UnityEngine.TextAnchor::MiddleCenter": "04000031"
+        }
+      }
+    }
+  },
+  "UnityEngine.UI.dll": {
+    "identity": "UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "sha256": "54953EBD7C9B4B39279876B37109F0F503938847F2A7BE4A22D62E9B94C347EB",
+    "mvid": "91c88efc-7b1e-45c0-841b-06e353c6b40f",
+    "types": {
+      "UnityEngine.EventSystems.UIBehaviour": {
+        "token": "0200007F",
+        "base": "UnityEngine.MonoBehaviour",
+        "members": {
+          "System.Void UnityEngine.EventSystems.UIBehaviour::.ctor()": "060007B8"
+        }
+      },
+      "UnityEngine.UI.Button": {
+        "token": "02000007",
+        "base": "UnityEngine.UI.Selectable",
+        "members": {
+          "UnityEngine.UI.Button/ButtonClickedEvent UnityEngine.UI.Button::get_onClick()": "06000043"
+        }
+      },
+      "UnityEngine.UI.Button/ButtonClickedEvent": {
+        "token": "02000086",
+        "base": "UnityEngine.Events.UnityEvent",
+        "members": {}
+      },
+      "UnityEngine.UI.Graphic": {
+        "token": "02000015",
+        "base": "UnityEngine.EventSystems.UIBehaviour",
+        "members": {
+          "System.Void UnityEngine.UI.Graphic::.ctor()": "060000FD",
+          "System.Void UnityEngine.UI.Graphic::set_color(UnityEngine.Color)": "060000F6",
+          "System.Void UnityEngine.UI.Graphic::set_raycastTarget(System.Boolean)": "060000F8"
+        }
+      },
+      "UnityEngine.UI.Image": {
+        "token": "02000019",
+        "base": "UnityEngine.UI.MaskableGraphic",
+        "members": {}
+      },
+      "UnityEngine.UI.MaskableGraphic": {
+        "token": "0200002E",
+        "base": "UnityEngine.UI.Graphic",
+        "members": {
+          "System.Void UnityEngine.UI.MaskableGraphic::.ctor()": "0600035D"
+        }
+      },
+      "UnityEngine.UI.Selectable": {
+        "token": "02000038",
+        "base": "UnityEngine.EventSystems.UIBehaviour",
+        "members": {
+          "System.Void UnityEngine.UI.Selectable::.ctor()": "06000437",
+          "System.Void UnityEngine.UI.Selectable::set_interactable(System.Boolean)": "06000430",
+          "System.Void UnityEngine.UI.Selectable::set_targetGraphic(UnityEngine.UI.Graphic)": "0600042E"
+        }
+      },
+      "UnityEngine.UI.Text": {
+        "token": "0200003D",
+        "base": "UnityEngine.UI.MaskableGraphic",
+        "members": {
+          "System.Void UnityEngine.UI.Text::set_alignment(UnityEngine.TextAnchor)": "06000531",
+          "System.Void UnityEngine.UI.Text::set_font(UnityEngine.Font)": "06000521",
+          "System.Void UnityEngine.UI.Text::set_fontSize(System.Int32)": "06000535",
+          "System.Void UnityEngine.UI.Text::set_text(System.String)": "06000525",
+          "UnityEngine.Font UnityEngine.UI.Text::get_font()": "06000520"
         }
       }
     }

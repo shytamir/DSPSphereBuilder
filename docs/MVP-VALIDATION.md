@@ -162,3 +162,35 @@ continuation from a fully finished delta after a result-read failure. Separate
 negative outcomes detect lost SP/CP, replaced/moved old nodes, removed shells,
 and missing result frames. Production UI invocation and native behavior remain
 for the later integration/human stories; this is not a new live observation.
+
+## SB-I3.2 — Current-target editor control
+
+The initial panel sits at the top center of the native control panel, 380 by 122
+UI units, with one Paint button and a short status. It reuses a native editor font.
+Inspection of UIDysonEditor's mouse-over calculation confirms that active entries
+in `guiRects` exclude native brush input; the panel registers there and also uses
+UIBlockZone. Button callbacks invoke one synchronous action and resolve selection
+afresh. There is no probe control, exporter, queue, or automatic advance.
+
+Source review traced attachment, editor close/reopen, replacement, destruction,
+and failed setup: one owned panel/listener is created per attachment, hidden while
+closed, removed before replacement, and unregistered on destruction. A session
+error survives target/menu changes; integration exceptions stop repeated setup.
+Only presentation caches a layer reference to refresh promptly. Progress otherwise
+refreshes at most four times per second; writes never use that cached reference.
+
+Managed checks verify every prefix's current target/progress, no writes during
+feedback, menu transitions, readiness/completion, and feedback for every disabled
+outcome without assertions on exact wording or Unity widget internals. The action
+checks continue to verify click-sized deltas and target changes. Both compilation
+modes pass without warnings/errors and emit the same 210 references. Five shim
+assemblies match native signatures, now including type abstract/sealed and method
+virtual-slot shape. The mapped UI assemblies and inherited declarations were
+inspected before use; BepInEx's base plugin is abstract.
+
+This is offline lifecycle review and compilation, not a Unity runtime test.
+Visibility, overlap, readable feedback, actual event delivery, click-through,
+reopening, and production native preservation await SB-I5.1. The hosted runs for
+[SB-I2.2](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34677110100) and
+[SB-I3.1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34677535631)
+also passed their affected offline checks.

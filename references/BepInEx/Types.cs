@@ -8,7 +8,7 @@ namespace BepInEx
         public BepInPlugin(string guid, string name, string version) => throw new NotSupportedException();
     }
 
-    public class BaseUnityPlugin : UnityEngine.MonoBehaviour
+    public abstract class BaseUnityPlugin : UnityEngine.MonoBehaviour
     {
         protected BaseUnityPlugin() => throw new NotSupportedException();
         protected Logging.ManualLogSource Logger => throw new NotSupportedException();

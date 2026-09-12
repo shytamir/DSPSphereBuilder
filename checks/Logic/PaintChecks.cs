@@ -103,6 +103,25 @@ static class PaintChecks
         selected = Target(newLayer);
         Check(session.Paint(() => selected).StarId == 8 && oldLayer.Writes == 0 && newLayer.Writes > 0, "Action used an old target.");
 
+        session = Session();
+        Check(!session.Describe(() => null!).CanPaint, "Missing selection exposed an action.");
+        for (int k = 0; k <= 12; k++)
+        {
+            var graph = Prefix(k);
+            var layer = new ScriptedLayer(graph, graph, k) { StarId = k + 1 };
+            var display = session.Describe(() => Target(layer));
+            Check(display.CompletedPatches == k && display.StarId == k + 1 && display.LayerId == layer.LayerId, "Feedback kept another selection's progress.");
+            Check(display.CanPaint == (k < 12) && layer.Writes == 0, "Feedback wrote data or exposed the wrong action.");
+            Check(!string.IsNullOrWhiteSpace(Feedback.Text(display)), "Missing progress feedback.");
+            Check(session.Describe(() => null!).State == PaintState.Unavailable && !session.Stopped, "Menu transition changed session state.");
+        }
+        foreach (PaintState state in Enum.GetValues<PaintState>())
+        {
+            var display = new PaintResult { State = state };
+            Check(!string.IsNullOrWhiteSpace(Feedback.Text(display)), "Missing action feedback.");
+            Check(display.CanPaint == (state == PaintState.Ready || state == PaintState.Applied), "Refusal exposes an action.");
+        }
+
         foreach (bool throws in new[] { false, true })
         {
             logs.Clear(); session = Session();

@@ -24,7 +24,8 @@ foreach ($file in $files) {
         $types = [ordered]@{}
         foreach ($type in $shim.MainModule.GetTypes() | Where-Object { $_.IsPublic -or $_.IsNestedPublic } | Sort-Object FullName) {
             $actual = $native.MainModule.GetType($type.FullName)
-            if ($null -eq $actual -or $type.BaseType.FullName -cne $actual.BaseType.FullName -or $type.IsValueType -ne $actual.IsValueType) {
+            if ($null -eq $actual -or $type.BaseType.FullName -cne $actual.BaseType.FullName -or
+                $type.IsValueType -ne $actual.IsValueType -or $type.IsAbstract -ne $actual.IsAbstract -or $type.IsSealed -ne $actual.IsSealed) {
                 throw "Missing or different native type: $($type.FullName)"
             }
             $members = [ordered]@{}
@@ -39,7 +40,8 @@ foreach ($file in $files) {
             foreach ($method in $type.Methods | Where-Object { $_.IsPublic -or $_.IsFamily } | Sort-Object FullName) {
                 $found = @($actual.Methods | Where-Object {
                     $_.FullName -ceq $method.FullName -and $_.IsStatic -eq $method.IsStatic -and
-                    $_.IsPublic -eq $method.IsPublic -and $_.IsFamily -eq $method.IsFamily
+                    $_.IsPublic -eq $method.IsPublic -and $_.IsFamily -eq $method.IsFamily -and
+                    $_.IsVirtual -eq $method.IsVirtual -and $_.IsNewSlot -eq $method.IsNewSlot -and $_.IsAbstract -eq $method.IsAbstract
                 })
                 if ($found.Count -ne 1) { throw "Method differs: $($method.FullName)" }
                 $members[$method.FullName] = $found[0].MetadataToken.ToUInt32().ToString('X8')
