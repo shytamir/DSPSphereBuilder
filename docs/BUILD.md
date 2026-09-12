@@ -32,7 +32,8 @@ edits must not be represented as clean reproductions of that commit.
 
 ## Local build
 
-Production geometry/logic checks use the compiled DLL and Python 3.12.14:
+Production geometry/logic checks use the compiled DLL and Python 3.12 (CI pins
+the published Windows runtime 3.12.10; the bundled local runtime is 3.12.14):
 
 ```powershell
 dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json

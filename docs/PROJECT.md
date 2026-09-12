@@ -27,7 +27,7 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-I1.1–1.2 and SB-I2.1 complete; SB-I2.2 next |
+| Roadmap and active work | SB-I1.1–1.2 and SB-I2.1 complete; hosted geometry-check runtime corrected to an available version; SB-I2.2 next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 passed; IG2–IG5 and workshop-entry IG5a not entered |
 | Mod implementation | Production entry point and exact fixed plan compile and pass offline checks; no editor action yet |

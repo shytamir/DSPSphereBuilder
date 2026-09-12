@@ -102,4 +102,8 @@ Both production reference modes compile without warnings/errors and have the
 same 29 emitted references. No native API was added; the reference map is
 unchanged. This managed test executes only this project's pure plan/math code,
 not the plugin entry point or any native game/Unity method. CI now runs the same
-compiled-plan comparison with pinned Python 3.12.14.
+compiled-plan comparison. Its first hosted run stopped before the checks because
+actions/python-versions does not publish Windows 3.12.14. The
+[official version manifest](https://github.com/actions/python-versions/blob/main/versions-manifest.json)
+lists 3.12.10 as the latest available 3.12 Windows x64 binary; CI now pins that
+version. No geometry/code change or local Python replacement was needed.
