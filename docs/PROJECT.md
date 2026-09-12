@@ -27,12 +27,12 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-I5.1–5.2 complete; SB-I5.3 implemented locally, pending CI package inspection and owner layout/input recheck |
+| Roadmap and active work | SB-I5.1–5.2 complete; SB-I5.3 awaits the short owner layout/input recheck on 0.1.36 |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
-| Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; workshop/refinements and final IG5 remain |
-| Mod implementation | Production 0.1.31 has matching owner evidence for the full framework and retained hexagon boundary |
+| Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; agreed UI refinement confirmation and final IG5 remain |
+| Mod implementation | Production 0.1.31 has matching owner evidence for the full framework and retained hexagon boundary; 0.1.36 changes only the control layout and its mapped references |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 on 2026-09-12 and clarified this does not skip the UI workshop; final IG5 remains open |
-| Distribution | CI package 0.1.31 independently verified as a direct installable download; no publication authorized |
+| Distribution | [CI package 0.1.36](MVP-VALIDATION.md#sb-i53--compact-bottom-left-control) independently verified for the UI recheck; no publication authorized |
 
 ## Accepted scope
 
@@ -89,7 +89,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I4.2 | Complete | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
 | SB-I5.1 | Complete under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
 | SB-I5.2 | Complete | [Owner workshop](MVP-VALIDATION.md#sb-i52--owner-ui-workshop), SB-D019 |
-| SB-I5.3 | In progress; mapped native/shim compilation and offline checks passed; CI candidate and owner recheck pending | [Compact bottom-left control](MVP-VALIDATION.md#sb-i53--compact-bottom-left-control) |
+| SB-I5.3 | In progress; native/shim checks and downloaded CI package 0.1.36 passed; owner layout/input confirmation pending | [Compact bottom-left control](MVP-VALIDATION.md#sb-i53--compact-bottom-left-control), [short recheck](OWNER-SESSION.md#ui-refinement-recheck--sb-i53) |
 | SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
 
 ### Completed feasibility roadmap
@@ -522,5 +522,7 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Inspect the SB-I5.3 hosted candidate and obtain the targeted owner layout/input
-confirmation for SB-D019. The final gate follows that recheck.
+Obtain the targeted owner layout/input confirmation for SB-D019 using the verified
+0.1.36.97b7f86 candidate and [short recheck](OWNER-SESSION.md#ui-refinement-recheck--sb-i53).
+Then complete SB-I5.3 and reconcile the final gate in SB-I5.4. The earlier MVP
+acceptance remains recorded; it does not substitute for this UI confirmation.

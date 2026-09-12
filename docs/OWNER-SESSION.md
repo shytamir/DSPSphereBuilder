@@ -1,10 +1,49 @@
-# MVP owner session — SB-I5.1
+# MVP owner sessions
 
-[PROJECT.md](PROJECT.md) owns validation state and acceptance. This is the first
-production runtime session, immediately before the UI workshop. Use the candidate
-identified below; a prepared procedure is not evidence that it passed.
+[PROJECT.md](PROJECT.md) owns validation state and acceptance. The UI refinement
+uses the short recheck below. The original integrated procedure is retained
+after it for reference; a prepared procedure is not evidence that it passed.
 
-## Candidate and setup
+## UI refinement recheck — SB-I5.3
+
+Use **0.1.36**, build label **0.1.36.97b7f86**, source
+`97b7f863c45f4fe7d6b799e32ec447b7a98edc76`:
+[direct package download](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34693238801/artifacts/10297338736).
+The ZIP was independently checked; its hashes and native compilation comparison
+are in [the candidate evidence](MVP-VALIDATION.md#hosted-refinement-candidate).
+Use this identified build even if a later documentation push produces a newer one.
+
+With the game closed, replace the existing production DLL with
+`BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll` from this ZIP. Keep one
+production copy and the feasibility probe inactive. Use the same game/loader and
+disposable save as the previous session. The startup line should identify
+`0.1.36.97b7f86` and target MVID `ece4a40e-5e73-43f4-a9f8-4e74970b5942`.
+
+1. Open the sphere editor. View the no-selection feedback, then select an existing
+   test layer. Check that the smaller panel sits left of the native bottom bar,
+   stays clear of native controls and the center caption, and keeps its button
+   and feedback readable. If the existing layer is complete or edited, its usual
+   disabled explanation should still fit.
+2. Close and reopen the editor once; there should be one control. Select a fresh
+   disposable layer with the same unlocked latitude and ordinary legal radius.
+   Click **Paint next patch** once: the panel should show 1/12 and the editor should
+   add one starting patch, with no extra native brush action beneath the control.
+3. Save one useful panel screenshot and this session's `BepInEx/LogOutput.log` in
+   the familiar evidence folder, preferably under `workshop-0.1.36/`. Report whether
+   placement, readability and the click behaved as requested, plus any issue.
+
+This recheck ends there: no exports, full sphere, shell designation, save/menu
+reload, construction wait or W1–W6 matrix. If the panel is absent, an error occurs
+or the click behaves unexpectedly, stop and retain the log/screenshot for a
+targeted correction. The disposable layer need not be kept after evidence capture.
+
+## Original integrated session — SB-I5.1
+
+This was the first production runtime procedure, immediately before the workshop.
+Its supplied evidence and differences from the proposed route are reviewed in
+[MVP-VALIDATION.md](MVP-VALIDATION.md#sb-i51--owner-evidence-review).
+
+### Candidate and setup
 
 - Package: **DSPSphereBuilder 0.1.31**, build label **0.1.31.a71fd79**.
 - Source: `a71fd79244054b1fe0695cff2d07631eb5ae803c`.
@@ -32,7 +71,7 @@ Create an evidence subfolder under the familiar location:
 one useful panel screenshot, and the session log there. The mod does not create
 these files automatically.
 
-## One short route
+### One short route
 
 1. Open the sphere editor with no layer selected. The panel should explain the
    missing selection and disable Paint. Select the empty test layer; it should
@@ -71,7 +110,7 @@ MVP, close the game and remove only its DLL. Retain the exports/log separately.
 No full restart/removal test, radius/star matrix, hexagon filling, or forced error
 is part of this session.
 
-## Evidence interpretation
+### Evidence interpretation
 
 The layer copy path was inspected offline: UIDELayerPanel's single-layer copy
 uses UIDysonEditor and DysonBlueprintData to serialize the selected native layer

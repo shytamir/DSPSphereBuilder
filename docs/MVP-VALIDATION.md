@@ -412,3 +412,31 @@ editor GUI-rectangle registration and detach cleanup. Compilation and this
 review do not establish the new layout's live readability or input behavior.
 The affected owner recheck uses one patch and the control's displayed states,
 without repeating the full progression, reload/shell route or W1–W6.
+
+### Hosted refinement candidate
+
+[Run 34693238801](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34693238801),
+build 36 / attempt 1, passed compilation, package/geometry/logic checks, all twelve
+malformed-package cases and direct upload. Source is
+`97b7f863c45f4fe7d6b799e32ec447b7a98edc76`; CI reports a clean checkout.
+The independently downloaded [DSPSphereBuilder-0.1.36.zip](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34693238801/artifacts/10297338736)
+is 96,095 bytes and matches both CI's package hash and the hosted artifact digest.
+
+- Package SHA-256: `1810D1535D49AAE5A425A583ABB899EB730FA9198A27BA81279354287105B6E4`.
+- DLL SHA-256: `5F9DF4FCF0C2751C65ADEB730CF93E5906E53BC2F05C0F9B11D74644273344B8`.
+- Plugin/package version: `0.1.36`; diagnostic identity: `0.1.36.97b7f86`;
+  GUID: `dsp.spherebuilder`; assembly version: `0.1.0.0`.
+
+The unchanged package validator passes the actual download's 48 entries, direct
+root, one production DLL, source/licenses, metadata and supplied 256x256 icon.
+There is no nested ZIP or bundled native/shim/probe DLL. The downloaded plugin's
+217 emitted references match the local real-reference build at the same revision
+and version, compiled from a clean working tree. Raw download and CI build record
+are retained under ignored `artifacts/hosted/34693238801/`.
+
+Compared with runtime-tested 0.1.31, production changes are confined to the layout
+in `Plugin.cs` and its mapped reference declarations. The geometry, recognition,
+mutation, preservation and feedback wording are unchanged. Offline capture tools
+also changed during SB-I5.1's evidence review; they are not the runtime plugin.
+[The short owner procedure](OWNER-SESSION.md#ui-refinement-recheck--sb-i53) targets
+the new placement/readability/input, with no claim of runtime verification yet.
