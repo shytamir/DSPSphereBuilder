@@ -1,18 +1,57 @@
-# Release-candidate evidence
+# Release and candidate evidence
 
 [PROJECT.md](PROJECT.md) owns execution state, decisions, gates and acceptance.
 This document records checks and findings from the
 [archived release-candidate roadmap](management/archive/ROADMAP-first-release-candidate.md).
-Earlier runtime observations remain in [MVP-VALIDATION.md](MVP-VALIDATION.md); no new
-gameplay is implied here.
+The sections below retain the checks and handoffs from their recorded stages.
+Earlier runtime observations were recorded in [MVP-VALIDATION.md](MVP-VALIDATION.md);
+[PROJECT.md](PROJECT.md#sb-d029--accept-the-published-product-and-enter-maintenance)
+records the owner's final product acceptance and publication report.
+
+## Publication verification
+
+On 2026-09-12, GitHub's release API reported the public
+[release tagged 1.0](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.0),
+published at `2026-09-12T15:49:02Z`, with asset
+[DSPSphereBuilder-1.0.56.zip](https://github.com/shytamir/DSPSphereBuilder/releases/download/1.0/DSPSphereBuilder-1.0.56.zip).
+The asset was 51,496 bytes and its reported SHA-256 was
+`30905008C166A7EEBBB25B18FFF67D0D309428FF638FDD25A33CD318C6569905`, matching the
+independently downloaded CI package recorded below. Remote tag `1.0` resolved to
+`5a0707b49e075ad7f588730b7401db6195384dda`, the documentation follow-up to the
+package source `b92fb00cde46fa795b2f80c69aa9e5fad76a8aff`. The release tag and
+embedded build revision were recorded separately; the release asset retained
+the verified package bytes.
+
+The owner reported publishing to Thunderstore after verifying native operation
+through a Thunderstore Mod Manager profile's modded launch. That was an owner
+observation; the agent verified GitHub release metadata and did not operate the
+profile or infer additional acceptance cases from the report. Final acceptance,
+maintenance scope and the unplanned issue were recorded in PROJECT.md under SB-D029.
+
+### Firefox download warning investigation
+
+The blocked temporary 1.0.56 download matched the verified CI ZIP byte-for-byte.
+The two commits after candidate 0.1.54 changed VERSION and documentation only.
+All 108 compiled method bodies were identical; version/build-label substitutions
+accounted for the user-string and blob-heap differences. Both DLLs had zero
+declarative security records, zero P/Invoke methods and no elevation manifest.
+Defender custom scans of both ZIPs and the 1.0.56 DLL reported no threats with
+engine `1.1.26080.3`, signatures `1.459.171.0`; no Sphere Builder detection history
+was returned. The investigation changed no protection settings or tracked code.
+
+[Mozilla's documentation](https://support.mozilla.org/en-US/kb/where-find-and-manage-downloaded-files-firefox)
+identified the reported wording as a Google Safe Browsing download classification.
+Its exact classifier reason and any later removal were not established. The
+owner's false-positive disposition was recorded in SB-D029, without converting it
+into a provider-confirmed finding.
 
 ## Version promotion — 1.0.56
 
 [Download DSPSphereBuilder-1.0.56.zip](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34701506183/artifacts/10300148659)
 from [run 56, attempt 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34701506183).
-This is the version-only successor requested with candidate acceptance in SB-D028;
-the original reviewed candidate remains documented below. Use this identified ZIP
-for manual publication, irrespective of later documentation builds.
+This was the version-only successor requested with candidate acceptance in SB-D028.
+The original reviewed candidate was retained below for traceability. This exact
+ZIP was supplied for manual publication; later documentation builds did not replace it.
 
 | Identity | Verified value |
 | --- | --- |
@@ -37,8 +76,8 @@ files matched the commit's Git blobs, including VERSION and build/license inputs
 Production source, native references, build/check scripts, workflow and packaging
 inputs were unchanged from candidate source `1c04199c490dfb029ba466ebfb53836ed46548f7`;
 only VERSION and documentation changed. The existing runtime observations and
-SB-D027 scope exclusion remain the evidence basis. No new runtime session or
-publication was performed. All 180 local links/anchors and preservation of the
+SB-D027 scope exclusion were the evidence basis. No new runtime session or
+publication was performed during that version-promotion verification. All 180 local links/anchors and preservation of the
 archived plan body passed at closeout; only its header and relative links changed.
 
 ## Owner review packet — 0.1.54
@@ -61,25 +100,25 @@ the packaged copy; the ZIP adds its exact-source link. The listing description i
 | ZIP SHA-256 | `9DE0DC20A8DFEAE635BD091E10E6557E1DE661C770DBC302E11873B9583A3767` |
 | DLL SHA-256 | `1D9FC50D70EDC9F5030B375BC17A28575D8D1E522545D5968FA6BE8551F95A91` |
 
-The ZIP contains only manifest, README, icon, LICENSE and the production DLL under
-`BepInEx/plugins/DSPSphereBuilder/`. With the game closed and BepInEx already present,
-replace the existing DLL in that subfolder with this ZIP's DLL; keep one production
-copy. A public mod listing is not required to review this candidate.
+The candidate ZIP contained only manifest, README, icon, LICENSE and the production
+DLL under `BepInEx/plugins/DSPSphereBuilder/`. The review instructions called for
+replacing the existing DLL with the game closed and BepInEx present, keeping one
+production copy. A public mod listing was not required for that candidate review.
 
-Compared with the accepted MVP, this candidate trims package contents, improves
-player copy and source/license access, maps compiler paths and strengthens build
-identity checks. Painting, geometry, continuation and the accepted UI are unchanged.
+Compared with the accepted MVP, the candidate trimmed package contents, improved
+player copy and source/license access, mapped compiler paths and strengthened build
+identity checks. Painting, geometry, continuation and the accepted UI were unchanged.
 Local/native and CI compilation, downloaded-byte validation, 15 malformed-package
 cases, source access and final privacy checks passed; details are in SB-R5.1 below.
 
 The packet requested acceptance of this package and its player copy; SB-D028 in
 [PROJECT.md](PROJECT.md#sb-d028--accept-the-release-candidate-and-promote-to-10)
 records the owner's response.
-No additional runtime case is indicated by these changes. Existing W1–W6 limits
-remain in the [specification](MVP-SPECIFICATION.md#evidence-and-accepted-assumptions), and
-upstream advisories were excluded by the owner's SB-D027 instruction. No new game
-observation or Thunderstore moderation approval is claimed. Acceptance and any
-later manual publication are recorded only in PROJECT.md.
+No additional runtime case was indicated by those changes. Existing W1–W6 limits
+were retained in the [specification](MVP-SPECIFICATION.md#evidence-and-accepted-assumptions),
+and upstream advisories were excluded by the owner's SB-D027 instruction. The packet
+claimed no new game observation or Thunderstore moderation approval. Subsequent
+acceptance and publication were recorded separately in PROJECT.md.
 
 ## SB-R1.1 — Minimum distribution contract
 
@@ -88,7 +127,7 @@ Inspected on 2026-09-12 against source
 48 entries; `Get-PackageInputs.ps1` and `Build-Package.ps1` account for them through
 the installable DLL, root metadata/legal material and the retained `source/` tree.
 
-### Proposed inventory
+### Original inventory proposal
 
 | ZIP entry | Necessary purpose |
 | --- | --- |
@@ -98,12 +137,12 @@ the installable DLL, root metadata/legal material and the retained `source/` tre
 | `LICENSE` | Attribution and both applicable license texts, with the exact source-download location |
 | `BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll` | The only executable payload |
 
-Remove every `source/` entry from the install ZIP: its README/revision marker,
-production source, shim declarations, metadata checks, derivation scripts,
-configuration and research fixture/license copies. Their purpose is source access,
-not installation; the revision-specific repository archive supplies that material.
-Keep build information as a separate CI artifact. No other install-package entry
-has a demonstrated need. SB-R2.1 will implement this proposal and update BUILD.md.
+The proposal removed every `source/` entry from the install ZIP: its README/revision
+marker, production source, shim declarations, metadata checks, derivation scripts,
+configuration and research fixture/license copies. The revision-specific repository
+archive supplied source access, and build information stayed in a separate CI
+artifact. No other install-package entry had a demonstrated need. SB-R2.1
+implemented the proposal and updated BUILD.md.
 
 ### Source and license basis
 
@@ -119,7 +158,7 @@ copying facilities, when clear directions accompany the object download and
 source remains available. The [Apache compatibility guidance](https://www.apache.org/licenses/GPL-compatibility.html)
 confirms Apache-2.0 material can be included in GPLv3 distributions; the reverse
 does not turn GPL material into Apache-2.0. The package's combined distribution
-will retain GPL-3.0 coverage and the original Apache-2.0 notices/grant, rather than
+was to retain GPL-3.0 coverage and the original Apache-2.0 notices/grant, rather than
 presenting the entire payload as Apache-only. Neither upstream terms nor the
 original-source grant is removed. SB-D024 records this distribution choice.
 
@@ -138,7 +177,7 @@ Inspection found production source, build scripts, mapped reference declarations
 SDK/version inputs, geometry derivation, unmodified fixture, both license texts
 and build instructions. GitHub reports the repository as public. The retained
 local download is under ignored `artifacts/release-review/source-input.zip`.
-SB-R2.1 will check this distribution's source build as part of package changes.
+SB-R2.1 subsequently checked this distribution's source build with the package changes.
 
 ### Package and routing requirements
 
@@ -356,10 +395,11 @@ The external SDK, operating system, loader/game binaries and hosted infrastructu
 were not internally audited. No private source or raw finding was sent to a service;
 the dependency query sent only public action package names and versions.
 
-Two delivery/documentation observations remain assigned to phase 4: bind the
+Two delivery/documentation observations were assigned to phase 4: bind the
 supplied build revision to actual HEAD, and correct the historical probe guide's
 claim that raw exception exports can never contain filesystem paths. Neither
-establishes an exploitable production boundary. No new live test is indicated.
+established an exploitable production boundary. Both observations were addressed
+in the phase-4 records below; no new live test was indicated.
 
 ## SB-R3.2 — Security closure
 
@@ -382,13 +422,13 @@ HTML cache while retaining the page and public image paths. Gitleaks rechecked
 `artifacts/reference` successfully with no alerts. The scanner's own example
 strings remain identifiable test documentation, not suppressed repository secrets.
 No runtime behavior, native reference surface or shipped input changed. The
-source-identity and probe-guide observations remain with their phase-4 stories;
-there is no unresolved repository security finding or material source-coverage gap.
+source-identity and probe-guide observations were carried into their phase-4 stories;
+no repository security finding or material source-coverage gap was unresolved at closure.
 
 ## SB-R4.1 — Delivery and DLL identity
 
-The build now rejects a supplied revision that differs from the checkout's HEAD
-before generating identity or compiling. A wrong-revision invocation failed and
+SB-R4.1 changed the build to reject a supplied revision that differed from the
+checkout's HEAD before generating identity or compiling. A wrong-revision invocation failed and
 left the existing DLL unchanged. Local dirty rehearsals remain explicitly marked;
 the hosted record below confirms a clean checkout. Build 52/retry 2 retained
 numeric version `0.1.52`; build 53 advanced to `0.1.53`. The diagnostic suffix came
@@ -493,14 +533,15 @@ The security delta since SB-R3 was reviewed: only source-revision validation,
 metadata inspection, malformed fixtures and documentation changed. No network,
 privilege, runtime parser or dependency was added. The two documentation corrections
 resolve overbroad claims; they do not suppress errors. Local links/anchors and
-whitespace passed. All story findings are closed or have the explicit SB-D027
-upstream exclusion; the later evidence/state commit does not change this candidate.
+whitespace passed. All story findings were closed or had the explicit SB-D027
+upstream exclusion; the later evidence/state commit did not change that candidate.
 
 Comparison with the rewritten equivalent of the MVP cleanup commit found only
 `src/Directory.Build.props` changed under production/reference directories, for
 compiler path mapping. Production C# and native declarations were unchanged.
-Accepted MVP observations therefore remain the runtime basis. No owner debugging,
-repeated twelve-patch demonstration or additional UI workshop is required.
+Accepted MVP observations therefore supplied the runtime basis for candidate review.
+No owner debugging, repeated twelve-patch demonstration or additional UI workshop
+was required for that handoff.
 
 ## SB-R5.2 — Owner acceptance and closeout
 
@@ -508,5 +549,6 @@ The owner's 2026-09-12 response explicitly accepted the identified candidate and
 requested promotion to 1.0 for manual publication. The authoritative acceptance,
 artifact identity and version decision are recorded in PROJECT.md under SB-D028.
 The original roadmap was archived with relocated links and a historical header;
-a short placeholder reserves the next discussion. No gameplay or publishing
-operation formed part of this closeout.
+a short placeholder reserved the next discussion. No gameplay or publishing
+operation formed part of that candidate closeout; the later publication report
+was recorded separately above and in PROJECT.md.

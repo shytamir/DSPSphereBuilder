@@ -7,7 +7,7 @@ current phase, epic/story status, readiness, and owner acceptance. Update those
 facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
-The [current roadmap](management/ROADMAP.md) reserves the next planning boundary.
+The [current roadmap](management/ROADMAP.md) is the maintenance placeholder.
 The [release-candidate plan](management/archive/ROADMAP-first-release-candidate.md)
 retains the completed polishing scope and criteria.
 Archived roadmaps retain their original work and completion criteria. The
@@ -19,33 +19,32 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-The MVP implementation roadmap is complete. The owner accepted the functional
-MVP, the UI workshop refinement and the label-only correction; final reconciliation
-passed under SB-D021. The [implementation plan](management/archive/ROADMAP-mvp-implementation.md)
-and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition.md)
-are archived. The management/code hygiene passes and final cleanup package
-inspection were completed before this planning round. The owner authorized
-sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-The owner accepted candidate **0.1.54** under SB-D028. SB-R1.1–5.2 are complete;
-RG1/RM1–RG5/RM5 passed, including RG5a/RM5a and the SB-D027 exclusion. The
-[release-candidate plan](management/archive/ROADMAP-first-release-candidate.md) is
-archived, with a short placeholder for the next discussion. The owner requested
-version promotion to **1.0** for manual publication. The resulting
-[package 1.0.56](RELEASE-CANDIDATE.md#version-promotion--1056) passed local/native
-compilation, hosted CI and independent downloaded-byte inspection. No publication
-has occurred; the owner has the verified download for that manual step.
+**Maintenance mode.** The owner accepted the final product, verified that it worked
+through a Thunderstore Mod Manager profile's modded launch, and published package
+**1.0.56** on 2026-09-12. The owner also published the GitHub
+[release tagged 1.0](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.0).
+Its asset digest matched the verified package; [publication evidence](RELEASE-CANDIDATE.md#publication-verification)
+records the tag, source and artifact identities. SB-D029 records final acceptance,
+the Firefox-warning disposition and this maintenance boundary.
 
-| Area | Current state |
+The feasibility, MVP implementation and first release-candidate roadmaps were
+completed and archived. All final milestones were achieved, including the owner
+UI workshop and explicit candidate acceptance. The current ROADMAP.md is a
+maintenance placeholder with no scheduled stories or implementation work.
+[Issue #1 — Feature Request: Repair Mode](https://github.com/shytamir/DSPSphereBuilder/issues/1)
+was retained for future consideration; it was not planned or added to accepted scope.
+
+| Area | Recorded outcome |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
-| Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Release-candidate roadmap complete and archived; next roadmap is a placeholder |
-| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
+| Repository preparation | Completed; local checks and hosted artifact inspection passed |
+| Roadmaps | Feasibility, implementation and release-candidate plans completed and archived |
+| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 completed and G4/M4 achieved under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
-| Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; owner acceptance recorded in SB-D028 |
-| Mod implementation | Accepted MVP retained in promoted package 1.0.56; production C# and native declarations unchanged from the MVP cleanup |
-| Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
-| Distribution | [Promoted package 1.0.56, run 56 / attempt 1](RELEASE-CANDIDATE.md#version-promotion--1056) verified for manual publication under SB-D028; candidate 0.1.54 acceptance retained |
+| Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; candidate 0.1.54 accepted under SB-D028 |
+| Mod implementation | Accepted MVP delivered in 1.0.56; production C# and native declarations were unchanged by release polishing |
+| Runtime and final acceptance | MVP and UI sessions accepted under SB-D018–020; owner verified the published version through a Thunderstore Mod Manager profile's modded launch and accepted the final product under SB-D029 |
+| Distribution | Owner published 1.0.56 to Thunderstore and GitHub release tag 1.0; the GitHub asset digest matched the verified CI package |
 
 ## Accepted scope
 
@@ -57,12 +56,13 @@ to that baseline require a steering decision here and a corresponding update to
 the concept where its behavior changes.
 
 The implementation roadmap delivered a working MVP and a real, directly usable CI
-mod package. The owner requested a polishing roadmap whose sole output is the
+mod package. The owner requested a polishing roadmap whose sole output was the
 first accepted release candidate: minimal package contents, player copy, privacy,
 repository security, delivery validation and a final sanity/code-quality pass.
 No features were added. The owner accepted the identified candidate after the
-agent checks and requested a version-only promotion to 1.0. Actual release work
-remains manual and owner-operated; no publishing automation is included.
+agent checks and requested a version-only promotion to 1.0. The owner performed
+publication manually and then requested maintenance mode. Future work requires an
+explicit scope decision; an open issue alone does not activate planning or delivery.
 The production GUID is `dsp.spherebuilder`. CI uses mapped compile-only reference shims; every commit
 adding or changing a referenced surface must carry the corresponding native
 type/member mapping and checks. Local real-reference compilation remains required.
@@ -71,9 +71,10 @@ Human and game runtime validation began together before the UI workshop. The
 short sessions reused accepted feasibility evidence; W1–W6 were not reopened as
 a test matrix. Agreed refinements and the targeted recheck preceded final MVP
 acceptance. Phase 4 replaced mock delivery with the real package and supplied
-icon. The requested MVP closeout cleanup is complete. SB-D023 authorized execution
+icon. The requested MVP closeout cleanup was completed. SB-D023 authorized execution
 of the polishing plan and a push for each completed story with its state update.
-Accepted behavior and W1–W6 evidence limits remain unchanged; publication is excluded.
+Accepted behavior and W1–W6 evidence limits remain unchanged. Publication was
+performed by the owner after the release-candidate roadmap closed.
 
 ## Target game reference
 
@@ -98,48 +99,48 @@ are owner-operated; the agent has not launched or operated a game session.
 
 | Story | Execution state | Evidence |
 | --- | --- | --- |
-| SB-R1.1 | Complete | [Minimum distribution contract](RELEASE-CANDIDATE.md#sb-r11--minimum-distribution-contract), SB-D024 |
-| SB-R1.2 | Complete; RG1/RM1 passed | [Authorized privacy cleanup and checks](RELEASE-CANDIDATE.md#authorized-cleanup-and-checks), SB-D026 |
-| SB-R2.1 | Complete | [Minimal package and path checks](RELEASE-CANDIDATE.md#sb-r21--minimal-package-and-installation-paths) |
-| SB-R2.2 | Complete; RG2/RM2 passed | [Player copy and rendered preview](RELEASE-CANDIDATE.md#sb-r22--player-facing-description-and-readme) |
-| SB-R3.1 | Complete | [Repository security assessment](RELEASE-CANDIDATE.md#sb-r31--repository-security-assessment), SB-D027 |
-| SB-R3.2 | Complete; RG3/RM3 passed under SB-D027 | [Security closure](RELEASE-CANDIDATE.md#sb-r32--security-closure) |
-| SB-R4.1 | Complete | [Delivery and DLL identity](RELEASE-CANDIDATE.md#sb-r41--delivery-and-dll-identity) |
-| SB-R4.2 | Complete; RG4/RM4 passed | [Sanity and code-quality review](RELEASE-CANDIDATE.md#sb-r42--sanity-and-code-quality-review) |
-| SB-R5.1 | Complete; RG5a/RM5a passed | [Final candidate verification](RELEASE-CANDIDATE.md#sb-r51--final-candidate-verification) |
-| SB-R5.2 | Complete; RG5/RM5 passed | [Owner acceptance and closeout](RELEASE-CANDIDATE.md#sb-r52--owner-acceptance-and-closeout), SB-D028 |
+| SB-R1.1 | Completed | [Minimum distribution contract](RELEASE-CANDIDATE.md#sb-r11--minimum-distribution-contract), SB-D024 |
+| SB-R1.2 | Completed; RG1/RM1 passed | [Authorized privacy cleanup and checks](RELEASE-CANDIDATE.md#authorized-cleanup-and-checks), SB-D026 |
+| SB-R2.1 | Completed | [Minimal package and path checks](RELEASE-CANDIDATE.md#sb-r21--minimal-package-and-installation-paths) |
+| SB-R2.2 | Completed; RG2/RM2 passed | [Player copy and rendered preview](RELEASE-CANDIDATE.md#sb-r22--player-facing-description-and-readme) |
+| SB-R3.1 | Completed | [Repository security assessment](RELEASE-CANDIDATE.md#sb-r31--repository-security-assessment), SB-D027 |
+| SB-R3.2 | Completed; RG3/RM3 passed under SB-D027 | [Security closure](RELEASE-CANDIDATE.md#sb-r32--security-closure) |
+| SB-R4.1 | Completed | [Delivery and DLL identity](RELEASE-CANDIDATE.md#sb-r41--delivery-and-dll-identity) |
+| SB-R4.2 | Completed; RG4/RM4 passed | [Sanity and code-quality review](RELEASE-CANDIDATE.md#sb-r42--sanity-and-code-quality-review) |
+| SB-R5.1 | Completed; RG5a/RM5a passed | [Final candidate verification](RELEASE-CANDIDATE.md#sb-r51--final-candidate-verification) |
+| SB-R5.2 | Completed; RG5/RM5 passed | [Owner acceptance and closeout](RELEASE-CANDIDATE.md#sb-r52--owner-acceptance-and-closeout), SB-D028 |
 
 ### Completed MVP implementation roadmap
 
 | Story | Execution state | Evidence |
 | --- | --- | --- |
-| SB-I1.1 | Complete | [Mapped references and delivery inputs](MVP-VALIDATION.md#sb-i11--mapped-references-and-delivery-inputs) |
-| SB-I1.2 | Complete | [Local and hosted production compilation](MVP-VALIDATION.md#sb-i12--production-compilation-and-identity) |
-| SB-I2.1 | Complete | [Compiled production plan](MVP-VALIDATION.md#sb-i21--compiled-production-plan) |
-| SB-I2.2 | Complete | [Native graph recognition](MVP-VALIDATION.md#sb-i22--native-graph-recognition) |
-| SB-I3.1 | Complete | [Additive operation and failure boundary](MVP-VALIDATION.md#sb-i31--additive-operation-and-failure-boundary) |
-| SB-I3.2 | Complete | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
-| SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
-| SB-I4.2 | Complete | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
-| SB-I5.1 | Complete under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
-| SB-I5.2 | Complete | [Owner workshop](MVP-VALIDATION.md#sb-i52--owner-ui-workshop), SB-D019 |
-| SB-I5.3 | Complete under SB-D020 | [Owner refinement evidence](MVP-VALIDATION.md#owner-refinement-evidence) |
-| SB-I5.4 | Complete; IG5/IM5 passed under SB-D021 | [Final reconciliation](MVP-VALIDATION.md#sb-i54--final-mvp-reconciliation) |
+| SB-I1.1 | Completed | [Mapped references and delivery inputs](MVP-VALIDATION.md#sb-i11--mapped-references-and-delivery-inputs) |
+| SB-I1.2 | Completed | [Local and hosted production compilation](MVP-VALIDATION.md#sb-i12--production-compilation-and-identity) |
+| SB-I2.1 | Completed | [Compiled production plan](MVP-VALIDATION.md#sb-i21--compiled-production-plan) |
+| SB-I2.2 | Completed | [Native graph recognition](MVP-VALIDATION.md#sb-i22--native-graph-recognition) |
+| SB-I3.1 | Completed | [Additive operation and failure boundary](MVP-VALIDATION.md#sb-i31--additive-operation-and-failure-boundary) |
+| SB-I3.2 | Completed | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
+| SB-I4.1 | Completed | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
+| SB-I4.2 | Completed | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
+| SB-I5.1 | Completed under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
+| SB-I5.2 | Completed | [Owner workshop](MVP-VALIDATION.md#sb-i52--owner-ui-workshop), SB-D019 |
+| SB-I5.3 | Completed under SB-D020 | [Owner refinement evidence](MVP-VALIDATION.md#owner-refinement-evidence) |
+| SB-I5.4 | Completed; IG5/IM5 passed under SB-D021 | [Final reconciliation](MVP-VALIDATION.md#sb-i54--final-mvp-reconciliation) |
 
 ### Completed feasibility roadmap
 
 | Story | Execution state | Evidence |
 | --- | --- | --- |
-| SB-F1.1 | Complete | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
-| SB-F1.2 | Complete | [Native placement and lifecycle](FEASIBILITY.md#sb-f12--native-placement-and-lifecycle) |
-| SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
-| SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
-| SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
-| SB-F3.1 | Complete | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
-| SB-F3.2 | Complete; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
-| SB-F3.3 | Complete under SB-D008; remaining live cases accepted without execution | [Full workflow and limits](FEASIBILITY.md#sb-f33--full-workflow-evidence-and-accepted-limits) |
-| SB-F4.1 | Complete | [Constraint reconciliation](FEASIBILITY.md#sb-f41--mvp-constraint-reconciliation), SB-D009 |
-| SB-F4.2 | Complete; owner accepted the specification under SB-D010 | [MVP specification](MVP-SPECIFICATION.md), [review record](FEASIBILITY.md#sb-f42--specification-review) |
+| SB-F1.1 | Completed | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
+| SB-F1.2 | Completed | [Native placement and lifecycle](FEASIBILITY.md#sb-f12--native-placement-and-lifecycle) |
+| SB-F2.1 | Completed | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
+| SB-F2.2 | Completed | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
+| SB-F2.3 | Completed | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
+| SB-F3.1 | Completed | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
+| SB-F3.2 | Completed; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
+| SB-F3.3 | Completed under SB-D008; remaining live cases accepted without execution | [Full workflow and limits](FEASIBILITY.md#sb-f33--full-workflow-evidence-and-accepted-limits) |
+| SB-F4.1 | Completed | [Constraint reconciliation](FEASIBILITY.md#sb-f41--mvp-constraint-reconciliation), SB-D009 |
+| SB-F4.2 | Completed; owner accepted the specification under SB-D010 | [MVP specification](MVP-SPECIFICATION.md), [review record](FEASIBILITY.md#sb-f42--specification-review) |
 
 Record story progress, gate/milestone outcomes, and concise evidence links
 here. Keep purpose, scope, dependencies, and completion criteria in the roadmap.
@@ -160,10 +161,10 @@ Historical instructions in a decision are not a new request to execute that work
 - **Date / decision-maker:** 2026-09-12, owner instruction.
 - **Question and choice:** The first roadmap was to establish feasibility and MVP
   constraints, ending with a full specification backed by evidence and recorded
-  decisions. Planning the playable implementation follows in a separate roadmap.
+  decisions. Planning the playable implementation followed in a separate roadmap.
 - **Basis:** The owner's roadmap request and the outstanding verification in
   [CONCEPT.md](../CONCEPT.md#validation-boundary).
-- **Alternatives:** None evaluated; this is the requested phase boundary, not an
+- **Alternatives:** None evaluated; this was the requested phase boundary, not an
   inferred technical tradeoff.
 - **Consequence:** Probe work must answer feasibility questions without becoming
   production implementation. Publishing this plan does not activate that work.
@@ -174,8 +175,8 @@ Historical instructions in a decision are not a new request to execute that work
 
 - **Date / decision-maker:** 2026-09-12, owner instruction and live-probe reply.
 - **Choice:** Execute the roadmap in order, push each completed story with its
-  state update, and stop on a substantial blocker. The owner runs the eventual
-  probe in a disposable test save; the agent prepares the evidence and artifact.
+  state update, and stop on a substantial blocker. The owner was to run the
+  probe in a disposable test save; the agent prepared the evidence and artifact.
 - **Alternatives:** Agent-operated gameplay was not selected. Offline checks alone
   cannot satisfy the roadmap's live-observation gate.
 - **Basis:** Current owner authorization; SB-F1.1 confirmed the local static
@@ -240,8 +241,8 @@ Historical instructions in a decision are not a new request to execute that work
   target predicates. Reusing the sample's 81° header or checking layer creation
   against the already-existing layer would impose incorrect restrictions.
 - **Rationale / consequence:** No arbitrary radius whitelist is needed. The
-  scale-invariant candidate envelope still requires live boundary observations;
-  any runtime failure that narrows the concept needs an owner disposition.
+  scale-invariant candidate envelope still required live boundary observations
+  at that stage; any runtime failure narrowing the concept needed an owner disposition.
 - **Affected contract:** Probe preconditions and future specification support,
   research refusal, and native layer selection. No technology level name is guessed.
 
@@ -372,7 +373,7 @@ Historical instructions in a decision are not a new request to execute that work
   upload mechanism was assigned to SB-I4.2 for verification rather than guessed.
 - **Consequence:** Basic executable packaging and installation docs belong to
   this roadmap. Final artwork, publication polish, release automation, and actual
-  Thunderstore upload remain outside it. The GUID is no longer an open choice.
+  Thunderstore upload remained outside it. The GUID was no longer an open choice.
 - **Affected contract:** Specification delivery/planning handoff; SB-I1.2,
   SB-I4.1–4.2, and the final IG5/IM5 package requirement.
 
@@ -464,7 +465,7 @@ Historical instructions in a decision are not a new request to execute that work
   was found by the unchanged retained-byte check and corrected with Git attributes.
 - **Consequence:** The download is directly usable in package structure. Retry
   keeps the numeric version and replaces only that run's same-named package;
-  matching attempt/build hashes distinguish it. Publication remains deferred.
+  matching attempt/build hashes distinguish it. Publication was deferred at that stage.
 - **Affected contract:** SB-I4, SB-MVP-23–24, BUILD.md and package delivery.
 
 ### SB-D017 — Minimal owner-session evidence
@@ -541,8 +542,8 @@ Historical instructions in a decision are not a new request to execute that work
   initial screenshot duplicated the earlier 0.1.31 capture. The owner then supplied
   a replacement showing the compact bottom-left control; it corroborates the
   owner's layout/input confirmation.
-- **Consequence:** Final reconciliation and the corrected package still require
-  offline/CI checks. No new live session is needed for this label-only change.
+- **Consequence:** Final reconciliation and the corrected package still required
+  offline/CI checks at that handoff. No new live session was needed for the label-only change.
   After the final milestone, archive the completed roadmap, leave a polishing
   placeholder, and perform the requested management and code hygiene passes.
   Authoring or executing the polishing roadmap and publication are not included.
@@ -575,7 +576,7 @@ Historical instructions in a decision are not a new request to execute that work
   and no owner participation before the final candidate handoff.
 - **Basis / alternatives:** The completed MVP and retained acceptance evidence
   provide the baseline. The owner chose candidate preparation followed by manual
-  owner release, rather than adding features or automating publication. The current
+  owner release, rather than adding features or automating publication. The then-current
   workflow, package inventory, validators, licenses and primary Thunderstore package
   and DSP routing rules were inspected while drafting.
 - **Planning choices:** Five epics contain ten sequential stories. Resolve minimum
@@ -597,11 +598,11 @@ Historical instructions in a decision are not a new request to execute that work
 
 - **Date / decision-maker:** 2026-09-12, explicit owner instruction.
 - **Choice / basis:** Implement the entire roadmap in sequence, update PROJECT.md
-  and push each completed story to main. The owner will review the finished
-  candidate. This supersedes SB-D022's planning-only execution boundary.
+  and push each completed story to main. The owner was to review the finished
+  candidate. This superseded SB-D022's planning-only execution boundary.
 - **Consequence:** Complete authorized agent work without routine interim approvals;
   preserve bounded scope, investigate unknowns and stop on a substantial blocker.
-  SB-R5.2/RG5 still require actual owner acceptance. Publication remains manual
+  SB-R5.2/RG5 required actual owner acceptance. Publication remained manual
   and owner-operated, outside this authorization.
 - **Affected contract:** SB-R1–SB-R5 and the current execution boundary.
 
@@ -624,7 +625,7 @@ Historical instructions in a decision are not a new request to execute that work
   the original Apache-2.0 source grant and notices. Preserve upstream attribution;
   make no claim that numerical derivation erases its licensing. Verify source access
   for the exact candidate and keep it available while that binary is distributed.
-  BUILD.md keeps describing current behavior until SB-R2.1 implements this change.
+  BUILD.md described the then-current behavior until SB-R2.1 implemented the change.
 - **Affected contract:** SB-R1.1, SB-R2.1–2.2, SB-R5.1; supersedes SB-D016's bundled
   source choice without changing the game's behavior or original-source license.
 
@@ -634,17 +635,18 @@ Historical instructions in a decision are not a new request to execute that work
 - **Finding / basis:** [Privacy inspection](RELEASE-CANDIDATE.md#sb-r12--privacy-review-and-historical-attribution-blocker)
   confirmed a personal email in 44 of 45 reachable commits, including the effective
   identity used for new commits. Anonymous GitHub access confirmed published
-  exposure. Historical names and remaining file/artifact surfaces also need review.
+  exposure. Historical names and remaining file/artifact surfaces also needed review.
 - **Choice:** Change only this repository's future Git identity to the existing
   public handle and verified GitHub no-reply address. Record SB-R1.2/RG1 as blocked;
   do not rewrite history, delete remote material or silently exempt attribution.
 - **Alternatives / consequence:** A normal new commit cannot remove old metadata.
-  History cleanup requires separate authorization, revised commit identities and
+  History cleanup required separate authorization, revised commit identities and
   review of old references/hosted remnants. Excluding historical attribution would
-  instead require an explicit owner scope change. Neither is authorized by the
-  current plan. Global Git settings and existing history remain unchanged.
+  instead have required an explicit owner scope change. Neither was authorized by
+  the then-current plan; Git settings outside this repo and history were unchanged
+  at that handoff. SB-D026 subsequently authorized and recorded the cleanup.
 - **Affected contract:** SB-R1.2/RG1 and dependent stories; no privacy pass, release
-  candidate readiness or new acceptance waiver is asserted.
+  candidate readiness or new acceptance waiver was asserted at that handoff.
 
 ### SB-D026 — Authorize and complete the attribution rewrite
 
@@ -666,7 +668,7 @@ Historical instructions in a decision are not a new request to execute that work
   GitHub internal retention and other people's copies are outside repository control;
   no internet-wide erasure claim is made. Future candidate outputs are rechecked.
   This explicit owner authorization superseded the prior no-rewrite restriction
-  for this cleanup and resolves SB-D025. RG1/RM1 passed; proceed to SB-R2.1.
+  for this cleanup and resolved SB-D025. RG1/RM1 passed, permitting SB-R2.1.
 - **Affected contract:** SB-R1.2/RG1, history provenance and production debug metadata.
 
 ### SB-D027 — Exclude upstream advisories from this polishing scope
@@ -698,10 +700,35 @@ Historical instructions in a decision are not a new request to execute that work
   `dsp.spherebuilder` identity. Verify the resulting 1.0 package and record it
   separately from the accepted candidate; no behavioral change calls for another
   runtime session. Documentation builds do not replace either identified artifact.
-  The owner will perform publication; no tag, release or upload is authorized for
-  the agent. Existing evidence limits and SB-D027 remain unchanged.
+  Publication was reserved for the owner; no tag, release or upload was authorized
+  for the agent. Existing evidence limits and SB-D027 were retained.
 - **Affected contract:** SB-R5.2/RG5/RM5 closure and the deliberate VERSION inputs;
-  package/loader versions become `1.0.BuildNumber`, assembly/file versions `1.0.0.0`.
+  package/loader versions became `1.0.BuildNumber`, assembly/file versions `1.0.0.0`.
+
+### SB-D029 — Accept the published product and enter maintenance
+
+- **Date / decision-maker:** 2026-09-12, owner instruction after publication.
+- **Choice:** The owner accepted the final product and reported successful native
+  operation through a Thunderstore Mod Manager profile's modded launch. The owner
+  published 1.0.56 to Thunderstore and GitHub release tag `1.0`, then requested
+  maintenance mode with the completed plans archived and a maintenance placeholder.
+- **Basis:** The [publication verification](RELEASE-CANDIDATE.md#publication-verification)
+  recorded the public GitHub asset digest matching the verified CI ZIP. The tag
+  resolved to `5a0707b49e075ad7f588730b7401db6195384dda`; the shipped DLL was built
+  from `b92fb00cde46fa795b2f80c69aa9e5fad76a8aff`. Thunderstore publication and the
+  profile launch were owner-reported observations, not agent-operated gameplay.
+- **Warning disposition:** The owner chose to treat Firefox's warning as a false
+  positive and proceed. The investigation found matching download bytes, identical
+  compiled method bodies to the accepted candidate and no Defender detections.
+  This was an owner disposition; Google Safe Browsing's reason or removal of the
+  classification was not established.
+- **Consequence:** All roadmap work and final acceptance were closed. The existing
+  release-candidate archive was retained; no duplicate plan or new feature epic was
+  created. Issue #1, “Feature Request: Repair Mode,” was left open and unplanned.
+  The owner requested the documentation closeout and a push to main. Existing
+  evidence limits and the SB-D027 upstream-advisory exclusion were retained.
+- **Affected contract:** Published baseline 1.0.56, final product acceptance and
+  maintenance scope. The release candidate's RG5/RM5 closure was preserved.
 
 ## Evidence and unresolved questions
 
@@ -710,23 +737,23 @@ Historical instructions in a decision are not a new request to execute that work
   early unknowns and the final-only owner workload; authority, links and historical
   integrity. The inventory decision was separated from changing the implemented
   build contract, and publication exclusions were clarified to preserve CI artifact
-  delivery. Five epics and ten stories have explicit scope, done criteria, outputs
+  delivery. Five epics and ten stories had explicit scope, done criteria, outputs
   and exclusions. All 74 local links/anchors in the five changed documents passed,
   as did story-field, dependency, tracking and whitespace checks. Archived plan
   bodies were preserved; only their current-roadmap link captions changed. These
-  are planning checks, not security, privacy, package or runtime validation.
+  were planning checks, not security, privacy, package or runtime validation.
 - The implementation draft was reviewed in three passes on 2026-09-12:
   scope/decomposition and backward-only dependencies; requirement/failure-state
   coverage and the late human-validation workload; archive/authority integrity,
   per-commit reference mapping, and direct package delivery. All 15 acceptance
-  cases map to owning work and cover the 25 specification requirements. The
-  archived body matches the prior roadmap apart from adjusted relative links;
-  local links/anchors and whitespace checks pass. These are document checks, not
+  cases mapped to owning work and covered the 25 specification requirements. The
+  archived body matched the prior roadmap apart from adjusted relative links;
+  local links/anchors and whitespace checks passed. These were document checks, not
   implementation, build, or runtime evidence.
 - The concept preserves the supplied sample and reported format checks; those
   checks were not rerun during repository preparation.
 - Canonical geometry, polar progression, and the static native placement envelope
-  are verified. Two-patch addition preserved partial and completed construction
+  were verified. Two-patch addition preserved partial and completed construction
   and preexisting shells in the live target. Native reconstruction survived the
   observed menu reloads and selection/edit cases. Remaining live cases have the
   explicit owner disposition SB-D008; their verification gaps remain documented.
@@ -742,11 +769,10 @@ Historical instructions in a decision are not a new request to execute that work
   `0.1.1` and build label `0.1.1.79a72be` matched the run and source commit.
   This is the preparation baseline, not a rolling latest-build record.
 
-## Next action
+## Maintenance boundary
 
-The owner can publish [package 1.0.56](RELEASE-CANDIDATE.md#version-promotion--1056)
-from source `b92fb00cde46fa795b2f80c69aa9e5fad76a8aff`, run `34701506183`, attempt 1.
-It is the verified version-only promotion authorized by SB-D028. Later
-documentation builds do not replace this identified download. The accepted 0.1.54
-packet remains available for traceability. No additional roadmap or feature work
-is defined, and no agent release/tag/upload has been performed.
+No roadmap execution, feature planning or new release is active. The owner retained
+[issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
+and explicitly deferred planning it. Maintenance changes require a concrete request
+and the usual bounded verification. Subsequent CI builds do not supersede the
+published 1.0.56 baseline without a separate owner release decision.

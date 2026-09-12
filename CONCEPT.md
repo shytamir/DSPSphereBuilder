@@ -24,7 +24,7 @@ The twelve pentagons are painted in a fixed progression along a pentagon-to-pent
 
 The first six pentagons complete the northern group before progression moves into the southern group. The rings describe the latitudes of the pentagon centres; individual vertices lie at different latitudes. The polar pentagons cap the axis. Like every other pentagon, each borders five hexagons.
 
-The intended result is a twelve-click progression from an empty layer to the complete framework. The exact route through the rings, its crossing between hemispheres, and its orientation must be verified against the reference geometry so every leading spoke follows an actual design edge.
+The result is a twelve-click progression from an empty layer to the complete framework. The route through the rings, its crossing between hemispheres, and its orientation were verified against the reference geometry; the [MVP specification](docs/MVP-SPECIFICATION.md) records the exact sequence and its evidence.
 
 ## What each click paints
 

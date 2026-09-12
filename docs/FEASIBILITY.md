@@ -120,12 +120,14 @@ length (maximum `0.518f`), proximity to other nodes/frames, duplicate/crossing
 frames, and shell interior conflicts. Latitude is rounded from the absolute
 normalized Y component and compared with rounded `GameMain.history.dysonNodeLatitude`.
 The constructor itself does not repeat these geometric/research checks.
-SB-F2.3 must evaluate them; direct constructor success would not prove compliance.
+SB-F2.3 subsequently evaluated them; direct constructor success alone did not
+prove compliance.
 
 Node positions are layer-local radius-scaled vectors. Rendering applies
 `currentRotation`; the design must not bake the layer's animated rotation into
 its saved node positions. `DysonFrame.euler` selects the interpolation form.
-The reference's actual frame mode and numeric precision remain SB-F2 questions.
+The reference's actual frame mode and numeric precision were then open SB-F2
+questions; the geometry and envelope findings below resolved them.
 
 ### Construction and failure boundary
 
@@ -381,7 +383,7 @@ non-Euler frames. No Euler interpolation approximation is involved.
 
 Shell interior checks use the equivalent convex spherical half-spaces established
 in SB-F2.1. Native cursor tracking, cycle search, raycast parity, and shell mesh/cell
-generation remain live observations in SB-F3.3. Their success is not inferred from
+generation were reserved for live observation in SB-F3.3. Their success was not inferred from
 having parsed a shell record. At a face center, all boundary vertices are within
 both native collection limits, with a minimum shell-size margin above 0.00465.
 
@@ -754,14 +756,14 @@ Reproduce compilation, embedded-plan/JSON checks, and recognition checks with
 dotnet artifacts/probe/json-checks/bin/ProbeJsonChecks.dll $completedShellPaint $radius36000Paint
 ```
 
-Compilation and local checks pass against the identified real reference
-assemblies. The checks execute under .NET 10, not the game runtime. The
+Compilation and local checks passed against the identified real reference
+assemblies. The checks executed under .NET 10, not the game runtime. The
 [continuation procedure](../probe/README.md#run-the-continuation-story-sb-f32)
-covers intermediate and completed transitions, restart, edits, unrelated geometry,
-and layer recreation. Its expected results are not observations. Native save/load
-fidelity and live recognition remain unverified until that owner run; state and
-the next gate are tracked only in PROJECT.md. Full traversal records from this
-run may inform SB-F3.3, without claiming its shell and envelope checks in advance.
+covered intermediate and completed transitions, restart, edits, unrelated geometry,
+and layer recreation. Its expected results were not observations. Native save/load
+fidelity and live recognition were still unverified at that handoff; the owner
+results followed below. Full traversal records subsequently informed SB-F3.3
+without substituting for its separate shell and envelope checks.
 
 ### Owner continuation run
 

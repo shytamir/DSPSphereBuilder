@@ -3,7 +3,7 @@
 > Historical plan, archived on 2026-09-12. It prescribed the scope and completion
 > criteria below; its story language is retained as the original plan, not active
 > work. [PROJECT.md](../../PROJECT.md) records execution, acceptance and closure.
-> The [current roadmap](../ROADMAP.md) reserves subsequent planning.
+> The [current roadmap](../ROADMAP.md) is the maintenance placeholder.
 
 ## Outcome and authority
 

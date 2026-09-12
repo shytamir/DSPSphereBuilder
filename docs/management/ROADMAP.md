@@ -1,10 +1,10 @@
-# Next roadmap
+# Maintenance roadmap placeholder
 
-This placeholder reserves the next owner discussion; it defines no new work.
-[PROJECT.md](../PROJECT.md) owns current state, acceptance and decisions.
-Actual publication remains manual and owner-operated.
+[PROJECT.md](../PROJECT.md#current-phase) records the maintenance state, published
+baseline and owner decisions. No epics, stories, phase gates or milestones are
+scheduled here. Future issue discussion requires a separate owner planning request.
 
-Completed plans retain their original scope and completion criteria:
+Completed plans were archived with their original scope and completion criteria:
 
 - [First release candidate](archive/ROADMAP-first-release-candidate.md)
 - [MVP implementation](archive/ROADMAP-mvp-implementation.md)

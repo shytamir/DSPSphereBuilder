@@ -22,7 +22,7 @@ established by this project.
   scope, phase, work status, readiness, and acceptance.
 - [Product concept](CONCEPT.md) — the agreed experience, geometry, references,
   and copyable sample blueprint with its import caveats.
-- [Roadmaps](docs/management/ROADMAP.md) — the next planning boundary and
+- [Roadmaps](docs/management/ROADMAP.md) — the maintenance placeholder and
   archived plans with their original scope, stories and gates.
 - [MVP specification](docs/MVP-SPECIFICATION.md) — the behavioral contract,
   complete patch sequence, acceptance cases, and declared evidence limits.
@@ -42,9 +42,11 @@ session and may leave a partial patch; there is no rollback or automatic retry.
 
 The executable package includes the DLL, supplied icon, metadata and licenses,
 with a link to its exact source revision. It requires BepInEx 5.4.17. Follow the [package instructions](packaging/README.md)
-for installation and use, and [PROJECT.md](docs/PROJECT.md) for runtime acceptance
-and candidate identity. The [workflow](https://github.com/shytamir/DSPSphereBuilder/actions/workflows/build.yaml)
-summary identifies its package download.
+for installation and use. Published downloads are under
+[GitHub releases](https://github.com/shytamir/DSPSphereBuilder/releases);
+[PROJECT.md](docs/PROJECT.md) records the published baseline, owner acceptance and
+maintenance scope. The [workflow](https://github.com/shytamir/DSPSphereBuilder/actions/workflows/build.yaml)
+provides development artifacts with their own build identities.
 
 For a local Windows build with PowerShell 7 and the pinned .NET SDK:
 

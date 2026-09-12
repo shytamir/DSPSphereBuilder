@@ -147,8 +147,10 @@ Thunderstore moderation decision.
 [build.yaml](../.github/workflows/build.yaml) runs on `main` pushes and manual
 dispatch, with read-only repository permissions and a bounded timeout. It builds
 production source, validates the package and affected offline logic, and records
-build identity. See PROJECT.md for verified hosted delivery and the identified
-accepted build. The run summary identifies the appropriate download.
+build identity. [PROJECT.md](PROJECT.md) identifies the accepted published baseline.
+[GitHub releases](https://github.com/shytamir/DSPSphereBuilder/releases) provides
+published downloads; each CI run summary identifies its development artifact.
+A later CI build does not itself update the published release.
 
 The workflow does not create releases/tags, edit VERSION, submit to Thunderstore,
 or interact with a game installation.

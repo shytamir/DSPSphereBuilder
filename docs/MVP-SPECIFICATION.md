@@ -206,8 +206,10 @@ new retry framework. A prototype failure is investigated before further testing.
 The production plugin GUID is **`dsp.spherebuilder`** (SB-D011). The implementation
 contract requires the actual CI-built mod as a directly usable package download,
 without a wrapper directory or nested package ZIP. Shim assemblies are build
-inputs and must not be shipped. Publication polish and upload remain later work;
-SB-D012 placed the initial owner/runtime session immediately before the UI workshop.
+inputs and must not be shipped. Publication polish and upload were outside the
+implementation roadmap; subsequent delivery and acceptance were recorded in
+[PROJECT.md](PROJECT.md). SB-D012 placed the initial owner/runtime session
+immediately before the UI workshop.
 
 | ID | Requirement | Basis |
 | --- | --- | --- |

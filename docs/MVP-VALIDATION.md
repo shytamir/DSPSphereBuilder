@@ -530,8 +530,8 @@ capitalization. SB-D020 explicitly accepts that difference without another live
 check. Runtime geometry/preservation evidence remains the 0.1.31 session and E4–E6;
 the 0.1.36 session and replacement screenshot establish the UI refinement.
 
-Publication polish is the next planning boundary: presentation/package copy,
-any agreed cosmetic refinements and release preparation. This review did not
+Publication polish was the subsequent planning boundary: presentation/package
+copy, any agreed cosmetic refinements and release preparation. This review did not
 add product features, reopen W1–W6, author that plan, or authorize publication.
 
 ## Closeout management and code review
@@ -552,11 +552,11 @@ recovery loop, speculative compatibility gate, or project steering comment was
 found in production code. The existing catches preserve diagnostic exception
 details and stop non-atomic mutation as required; they were not broadened or removed.
 
-Cleanup adds only two technical comments explaining the float allowance and
-partial-write boundary, orders the plugin imports consistently, documents the
-source layout in BUILD.md, and removes redundant reference-map prose. The source
-diff changes no executable expression, dependency, native declaration or generated
-plan. No new runtime recheck is required for these documentation-only code edits.
+Cleanup added two technical comments explaining the float allowance and
+partial-write boundary, ordered the plugin imports consistently, documented the
+source layout in BUILD.md, and removed redundant reference-map prose. The source
+diff changed no executable expression, dependency, native declaration or generated
+plan. No new runtime recheck was required for those documentation-only code edits.
 
 ### Final cleanup package
 
