@@ -81,7 +81,7 @@ namespace DSPSphereBuilder
             paintButton = button.GetComponent<Button>();
             paintButton.targetGraphic = background;
             paintButton.onClick.AddListener(Paint);
-            var caption = Label(button.transform, "Paint next patch", 0, 0, 152, 28, 14, font);
+            var caption = Label(button.transform, "Paint Next Patch", 0, 0, 152, 28, 14, font);
             caption.alignment = TextAnchor.MiddleCenter;
             status = Label(panel, "", 8, 40, 264, 18, 13, font);
             panel.SetAsLastSibling();

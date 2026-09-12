@@ -27,11 +27,11 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-I5.1–5.2 complete; SB-I5.3 awaits the short owner layout/input recheck on 0.1.36 |
+| Roadmap and active work | SB-I5.1–5.3 complete; SB-I5.4 final reconciliation is next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
-| Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; agreed UI refinement confirmation and final IG5 remain |
+| Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; workshop outcomes accepted; final IG5 reconciliation remains |
 | Mod implementation | Production 0.1.31 has matching owner evidence for the full framework and retained hexagon boundary; 0.1.36 changes only the control layout and its mapped references |
-| Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 on 2026-09-12 and clarified this does not skip the UI workshop; final IG5 remains open |
+| Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
 | Distribution | [CI package 0.1.36](MVP-VALIDATION.md#sb-i53--compact-bottom-left-control) independently verified for the UI recheck; no publication authorized |
 
 ## Accepted scope
@@ -89,7 +89,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I4.2 | Complete | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
 | SB-I5.1 | Complete under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
 | SB-I5.2 | Complete | [Owner workshop](MVP-VALIDATION.md#sb-i52--owner-ui-workshop), SB-D019 |
-| SB-I5.3 | In progress; native/shim checks and downloaded CI package 0.1.36 passed; owner layout/input confirmation pending | [Compact bottom-left control](MVP-VALIDATION.md#sb-i53--compact-bottom-left-control), [short recheck](OWNER-SESSION.md#ui-refinement-recheck--sb-i53) |
+| SB-I5.3 | Complete under SB-D020 | [Owner refinement evidence](MVP-VALIDATION.md#owner-refinement-evidence) |
 | SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
 
 ### Completed feasibility roadmap
@@ -491,6 +491,24 @@ or Thunderstore moderation acceptance.
   progression, shell tests or accepted feasibility gaps. Final IG5 remains open.
 - **Affected contract:** SB-I5.2–5.4 and SB-MVP-08–10 presentation only.
 
+### SB-D020 — Accept the workshop refinement and title-case the action
+
+- **Date / decision-maker:** 2026-09-12, explicit owner confirmation: "Everything
+  looks good", with authorization to finish the roadmap after changing the label
+  to **Paint Next Patch**, without another live recheck for that correction.
+- **Choice:** Accept SB-D019's layout/input outcomes and complete SB-I5.3. Retain
+  the same words, dimensions and action; change only their capitalization.
+- **Basis / limits:** The new log identifies 0.1.36.97b7f86 and the target MVID,
+  with one successful 6-node/6-frame patch and no Error/Fatal entry. The supplied
+  screenshot duplicates the earlier 0.1.31 capture; it is not visual proof of the
+  refinement. The owner's confirmation supplies the layout/input disposition.
+- **Consequence:** Final reconciliation and the corrected package still require
+  offline/CI checks. No new live session is needed for this label-only change.
+  After the final milestone, archive the completed roadmap, leave a polishing
+  placeholder, and perform the requested management and code hygiene passes.
+  Authoring or executing the polishing roadmap and publication are not included.
+- **Affected contract:** SB-I5.3–5.4, SB-MVP-08 presentation, roadmap lifecycle.
+
 ## Evidence and unresolved questions
 
 - The implementation draft was reviewed in three passes on 2026-09-12:
@@ -522,7 +540,7 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Obtain the targeted owner layout/input confirmation for SB-D019 using the verified
-0.1.36.97b7f86 candidate and [short recheck](OWNER-SESSION.md#ui-refinement-recheck--sb-i53).
-Then complete SB-I5.3 and reconcile the final gate in SB-I5.4. The earlier MVP
-acceptance remains recorded; it does not substitute for this UI confirmation.
+Reconcile SB-I5.4 and the corrected package against the accepted MVP and workshop
+evidence, then carry out the owner-requested archive and hygiene passes. SB-D020
+supplies the UI confirmation and accepts the capitalization correction without
+another live recheck.

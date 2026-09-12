@@ -440,3 +440,27 @@ mutation, preservation and feedback wording are unchanged. Offline capture tools
 also changed during SB-I5.1's evidence review; they are not the runtime plugin.
 [The short owner procedure](OWNER-SESSION.md#ui-refinement-recheck--sb-i53) targets
 the new placement/readability/input, with no claim of runtime verification yet.
+
+### Owner refinement evidence
+
+On 2026-09-12 the owner confirmed the refinement worked as requested and asked
+only for **Paint Next Patch** capitalization, explicitly requiring no new live
+recheck for that correction. The control's dimensions, action and feedback remain
+the same. SB-D020 records the acceptance and final reconciliation authorization.
+The corrected label compiles in both modes with no warnings/errors; all five
+mapped shim assemblies and 217 emitted references still agree with the target.
+
+The supplied `workshop-0.1.36/LogOutput.log` is 1,801 bytes, SHA-256
+`8AC56F580CF06DA04E3B5468C50A9E519951268D3D6303BB534AF2E089F102B1`.
+It records BepInEx 5.4.17.0, production 0.1.36.97b7f86, the expected target MVID,
+and one patch on star 60, layer 1, radius 36,000: 6 nodes / 6 frames, progress 1/12.
+No Error/Fatal entry or feasibility probe load appears. It does not independently
+instrument editor reopen, readability or native click-through; those outcomes
+use the owner's explicit confirmation.
+
+The supplied `20260912134823_1.jpg` is byte-identical to the earlier screenshot
+(1,691,655 bytes, SHA-256
+`23B51231BC0E452F20417B55C3639B5B038DF47C8E73CA9EDA6BEBE9236E38DE`).
+Visual inspection confirms it shows the old top-center panel, not the refinement.
+It is retained as supplied and not relabeled as a new UI capture. Both original
+files were copied unchanged to ignored `artifacts/owner-session/0.1.36/`.
