@@ -61,10 +61,10 @@ To inspect a downloaded package independently:
 
 Take the expected inputs from the matching separate build record. The hash is
 optional for a local check; use it when validating downloaded bytes against CI.
-The validator checks archive entries, UTF-8, PNG decoding/dimensions, source and
-license presence, retained input bytes, runtime dependency metadata, and DLL
+The validator checks archive entries, UTF-8, PNG decoding/dimensions, revision-specific
+source access, both license texts, retained icon bytes, runtime dependency metadata, and DLL
 GUID/version/revision without loading it. Negative cases cover malformed payload,
-identity, dependencies, source, image, and archive layout.
+identity, dependencies, source access, licenses, image, and archive layout.
 
 ## Source layout
 
@@ -119,21 +119,25 @@ numeric patch.
 
 ## Package contract
 
-Required root files are `manifest.json`, `README.md`, `icon.png`, and `LICENSE`.
-The single executable is `BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll`.
-`source/` contains production source, compile declarations/checks, geometry
-inputs/derivation, applicable licenses/credit, and revision identity. No game or
-shim DLL, probe, evidence dump, cache, wrapper directory, or nested ZIP belongs
-in the package. [Get-PackageInputs.ps1](../scripts/Get-PackageInputs.ps1) defines
-that file inventory.
+The ZIP contains exactly five files: root `manifest.json`, `README.md`, `icon.png`,
+and `LICENSE`, plus `BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll`.
+No source tree, game/shim DLL, probe, evidence dump, cache, wrapper directory or
+nested ZIP belongs in the package. [Get-PackageInputs.ps1](../scripts/Get-PackageInputs.ps1)
+lists static inputs; the builder generates manifest, README source footer and
+combined license material. The validator has an independent expected entry list.
 
 The manifest declares `xiaoye97-BepInEx-5.4.17`. The supplied icon is retained
 unchanged as a 256×256 PNG. These follow the
 [Thunderstore package requirements](https://wiki.thunderstore.io/mods/creating-a-package)
 and [BepInEx directory routing](https://wiki.thunderstore.io/mods/packaging-your-mods).
-Original Apache-2.0 code and the upstream fixture's GPL-3.0 material retain their
-separate terms; see the package's source attribution. Package validation is not
-runtime acceptance or a Thunderstore moderation decision.
+The combined distribution retains GPL-3.0 coverage and the original Apache-2.0
+source grant/notices. LICENSE includes attribution and both complete license texts.
+README and LICENSE link to the full-commit public repository archive containing
+source, build/interface declarations, derivation and the upstream fixture.
+Keep that revision publicly accessible while distributing its binary; verify the
+exact source download before candidate acceptance. The install ZIP needs no
+separate development tree. Package validation is not runtime acceptance or a
+Thunderstore moderation decision.
 
 ## GitHub Actions
 

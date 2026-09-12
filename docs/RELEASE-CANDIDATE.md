@@ -178,3 +178,32 @@ These checks cover the repository, reachable history and inspected outputs; they
 are not an internet-wide erasure claim. Final candidate outputs receive a regression
 check in SB-R5.1. Raw download inventories and sanitized match summaries are local
 under `artifacts/release-review/`.
+
+## SB-R2.1 — Minimal package and installation paths
+
+The builder now emits the five entries in SB-R1.1's inventory. README and LICENSE
+receive the exact-revision source URL; LICENSE combines attribution with the two
+unchanged license texts. The former source tree is absent. BUILD.md and fixture
+provenance describe the implemented distribution arrangement.
+
+Local rehearsal `0.1.47.e26008d` produced a 52,203-byte ZIP with exactly five entries.
+The independent validator checked DLL identity, source access, retained license
+texts/icon, UTF-8 and image dimensions. All 13 malformed-package cases were rejected,
+including missing source access and a missing license. Expected entries no longer
+come from the builder's inventory, and prose wording is not asserted.
+
+Isolated manual and manager-route filesystem rehearsals each installed one DLL
+under a BepInEx plugins subfolder; both payload hashes matched the ZIP. These are
+path/byte checks against the verified routing rules, not live mod-manager or game
+observations. No installed mod or save was touched.
+
+A separate public checkout of `e26008d` compiled with the pinned SDK and its own
+source/interface inputs: zero warnings/errors, 217 emitted references and correct
+identity. It used no source copied from the working checkout. Source archive
+inspection and this clean build establish the accessible source/build route.
+
+An initial local rehearsal supplied an incorrect full revision and was discarded;
+the replacement used `git rev-parse HEAD`. The builder currently trusts that
+caller's revision argument beyond its format. SB-R4.1's source-identity review must
+close that gap before candidate delivery. The working-tree package above is a
+rehearsal, not a published or accepted candidate; final bytes come from clean CI.

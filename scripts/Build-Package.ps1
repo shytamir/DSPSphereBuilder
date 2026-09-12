@@ -26,6 +26,14 @@ try {
     foreach ($path in $packageFiles.Values) {
         if (!(Test-Path -LiteralPath $path -PathType Leaf)) { throw "Missing package input: $path" }
     }
+    $sourceUrl = "https://github.com/shytamir/DSPSphereBuilder/archive/$($info.source_commit).zip"
+    $sourceLink = "[Source for this build]($sourceUrl)"
+    $texts = [ordered]@{
+        'manifest.json' = ($manifest | ConvertTo-Json)
+        'README.md' = (Get-Content $packageFiles['README.md'] -Raw).TrimEnd() + "`n`n$sourceLink`n"
+        'LICENSE' = (Get-Content packaging/SOURCE.md -Raw).TrimEnd() + "`n`n$sourceLink`n`n" +
+            (Get-Content LICENSE -Raw) + "`n" + (Get-Content research/cosmin1490/LICENSE -Raw)
+    }
     $directory = Join-Path $repo 'artifacts/packages'
     New-Item -ItemType Directory -Path $directory -Force | Out-Null
     $packagePath = Join-Path $directory $info.package_file
@@ -33,15 +41,12 @@ try {
     try {
         $zip = [IO.Compression.ZipArchive]::new($file, [IO.Compression.ZipArchiveMode]::Create)
         try {
-            $texts = [ordered]@{
-                'manifest.json' = ($manifest | ConvertTo-Json)
-                'source/REVISION.txt' = "Commit: $($info.source_commit)`nBuild: $($info.build_label)`nWorking tree dirty: $($info.working_tree_dirty)"
-            }
             foreach ($text in $texts.GetEnumerator()) {
                 $writer = [IO.StreamWriter]::new($zip.CreateEntry($text.Key).Open(), [Text.UTF8Encoding]::new($false))
                 try { $writer.WriteLine($text.Value) } finally { $writer.Dispose() }
             }
             foreach ($item in $packageFiles.GetEnumerator()) {
+                if ($texts.Contains($item.Key)) { continue }
                 [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, (Join-Path $repo $item.Value), $item.Key) | Out-Null
             }
         }

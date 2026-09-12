@@ -10,13 +10,13 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 Add-Type -AssemblyName System.Drawing
 $repo = Split-Path -Parent $PSScriptRoot
-$inputs = & (Join-Path $PSScriptRoot 'Get-PackageInputs.ps1')
-$required = @('manifest.json', 'source/REVISION.txt') + @($inputs.Keys)
+$required = @('manifest.json', 'README.md', 'icon.png', 'LICENSE',
+    'BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll')
 $zip = [IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath $PackagePath).Path)
 try {
     $names = @($zip.Entries.FullName)
     if ($names.Count -ne $required.Count -or @($required | Where-Object { $_ -cnotin $names }).Count -ne 0) {
-        throw 'Package entries differ: missing payload/source or extra, nested, dependency, or probe content.'
+        throw 'Package entries differ: missing required files or extra, nested, dependency, or probe content.'
     }
     $texts = @{}
     foreach ($name in $required | Where-Object { $_ -notmatch '\.(dll|png)$' }) {
@@ -32,13 +32,16 @@ try {
         throw 'Manifest identity, version, description, or dependencies differ.'
     }
     $label = "$ExpectedVersion.$($ExpectedCommit.Substring(0, 7).ToLowerInvariant())"
-    if ($texts['source/REVISION.txt'] -notmatch "(?m)^Commit: $($ExpectedCommit.ToLowerInvariant())\r?$" -or
-        $texts['source/REVISION.txt'] -notmatch "(?m)^Build: $([regex]::Escape($label))\r?$") { throw 'Source revision differs.' }
-    foreach ($name in @('source/research/cosmin1490/60.txt', 'source/research/cosmin1490/LICENSE', 'LICENSE', 'icon.png')) {
-        $stream = $zip.GetEntry($name).Open()
-        try { $hash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($stream)) } finally { $stream.Dispose() }
-        if ($hash -cne (Get-FileHash -LiteralPath (Join-Path $repo $inputs[$name])).Hash) { throw "Changed retained input: $name" }
+    $sourceUrl = "https://github.com/shytamir/DSPSphereBuilder/archive/$($ExpectedCommit.ToLowerInvariant()).zip"
+    foreach ($name in @('README.md', 'LICENSE')) {
+        if (!$texts[$name].Contains($sourceUrl)) { throw "Missing revision-specific source access: $name" }
     }
+    foreach ($path in @('LICENSE', 'research/cosmin1490/LICENSE')) {
+        if (!$texts['LICENSE'].Contains([IO.File]::ReadAllText((Join-Path $repo $path)))) { throw "Changed license text: $path" }
+    }
+    $stream = $zip.GetEntry('icon.png').Open()
+    try { $hash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($stream)) } finally { $stream.Dispose() }
+    if ($hash -cne (Get-FileHash -LiteralPath (Join-Path $repo 'packaging/icon.png')).Hash) { throw 'Changed package icon.' }
     $stream = $zip.GetEntry('icon.png').Open()
     $buffer = [IO.MemoryStream]::new()
     try {
@@ -58,4 +61,4 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Package DLL identity check failed.' }
 }
 finally { $zip.Dispose() }
-Write-Host "PASS: executable Thunderstore ZIP $ExpectedVersion; $($required.Count) files, plugin identity, source/license inputs, UTF-8 and 256x256 PNG."
+Write-Host "PASS: executable Thunderstore ZIP $ExpectedVersion; $($required.Count) files, plugin identity, source access/licenses, UTF-8 and 256x256 PNG."

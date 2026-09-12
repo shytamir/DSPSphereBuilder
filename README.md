@@ -40,8 +40,8 @@ construction. Save/reload continuation comes from the actual framework; modified
 or unrelated layouts are refused. Unexpected errors stop painting for the plugin
 session and may leave a partial patch; there is no rollback or automatic retry.
 
-The executable package includes the DLL, supplied icon, metadata, source and
-licenses. It requires BepInEx 5.4.17. Follow the [package instructions](packaging/README.md)
+The executable package includes the DLL, supplied icon, metadata and licenses,
+with a link to its exact source revision. It requires BepInEx 5.4.17. Follow the [package instructions](packaging/README.md)
 for installation and use, and [PROJECT.md](docs/PROJECT.md) for runtime acceptance
 and candidate identity. The [workflow](https://github.com/shytamir/DSPSphereBuilder/actions/workflows/build.yaml)
 summary identifies its package download.
@@ -66,5 +66,6 @@ limits are recorded in the [concept](CONCEPT.md#references).
 
 ## License
 
-This repository uses the [Apache License 2.0](LICENSE). Referenced third-party
-material retains its own licensing.
+Original source uses the [Apache License 2.0](LICENSE). Referenced third-party
+material retains its own licensing; the combined package carries GPL-3.0 coverage
+and both license notices as described in the [build guide](docs/BUILD.md#package-contract).

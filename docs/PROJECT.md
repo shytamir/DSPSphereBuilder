@@ -25,14 +25,14 @@ and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
 sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-SB-R1.1–1.2 are complete and RG1/RM1 passed. SB-R2.1 is next. Candidate acceptance
+SB-R1.1–2.1 are complete and RG1/RM1 passed. SB-R2.2 is next. Candidate acceptance
 and manual publication remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Release inputs complete; SB-R2.1 minimal package implementation next |
+| Roadmap and active work | Minimal package implemented; SB-R2.2 player-facing copy next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 passed under SB-D026; RG2–RG4, RG5a and RG5 not passed |
@@ -93,7 +93,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | --- | --- | --- |
 | SB-R1.1 | Complete | [Minimum distribution contract](RELEASE-CANDIDATE.md#sb-r11--minimum-distribution-contract), SB-D024 |
 | SB-R1.2 | Complete; RG1/RM1 passed | [Authorized privacy cleanup and checks](RELEASE-CANDIDATE.md#authorized-cleanup-and-checks), SB-D026 |
-| SB-R2.1 | Not started | — |
+| SB-R2.1 | Complete | [Minimal package and path checks](RELEASE-CANDIDATE.md#sb-r21--minimal-package-and-installation-paths) |
 | SB-R2.2 | Not started | — |
 | SB-R3.1 | Not started | — |
 | SB-R3.2 | Not started | — |
@@ -703,6 +703,7 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Proceed to SB-R2.1 and the remaining authorized sequence. The history blocker is
-resolved under SB-D026. The next planned owner participation is candidate acceptance;
-security and candidate gates have not yet passed.
+Proceed to SB-R2.2 and the remaining authorized sequence. SB-R4.1 must verify
+caller-supplied source identity against the actual checkout before candidate delivery.
+The next planned owner participation is candidate acceptance; security and candidate
+gates have not yet passed.

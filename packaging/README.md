@@ -43,6 +43,6 @@ Geometry: [Cosmin1490's optimized 60-node sphere](https://www.dysonspherebluepri
 with reference material from the author's
 [Blueprint Generator](https://github.com/Cosmin1490/DysonSphereProgram-BlueprintGenerator).
 "Perfect" means faithful geometry; this project has not independently proved
-mathematical optimality. Source, pinned reference, attribution, and applicable
-licenses accompany the package in `source/`. Original project code uses Apache-2.0;
-reference material retains its GPL-3.0 terms.
+mathematical optimality. The source link below includes the pinned reference and
+derivation. LICENSE retains the GPL-3.0 distribution terms and original Apache-2.0
+source grant, with attribution and both license texts.

@@ -1,16 +1,16 @@
-# Package source and credit
+# DSP Sphere Builder — license and source
 
-Original DSP Sphere Builder code is under the accompanying Apache-2.0 LICENSE.
-The fixed geometry is derived from Cosmin1490's 60-node reference, revision
-`bf00f4b2334c93215f63e0291f9acb6003c9a663`. Its unmodified input and GPL-3.0 LICENSE
-are retained in `research/cosmin1490/`, with attribution there. These terms are
-not replaced by the original-code license. No upstream generator implementation
-or game assembly is included.
+This distribution includes geometry derived from Cosmin1490 and contributors'
+60-node reference at revision `bf00f4b2334c93215f63e0291f9acb6003c9a663` of
+https://github.com/Cosmin1490/DysonSphereProgram-BlueprintGenerator.
+The combined distribution is provided under GPL-3.0; original DSP Sphere Builder
+source remains available under Apache-2.0. Both license texts follow this notice.
+The original-code license does not replace the reference material's GPL terms.
 
-This directory contains the production source, reference declarations, compile
-checks, and geometry derivation inputs. `REVISION.txt` identifies the source
-commit and local dirty state. For a clean reproducible build, check out that
-commit from https://github.com/shytamir/DSPSphereBuilder and follow docs/BUILD.md.
-Native references are supplied by a local game installation, never this package.
-The package icon was supplied by the project owner; no icon was generated
-or modified during packaging.
+The source download below contains the exact project revision for this build,
+including production source, build instructions in docs/BUILD.md, interface
+declarations, geometry derivation, and the unmodified reference input with its
+license and attribution. It is available without charge or an account.
+
+No upstream generator implementation or game assembly is included in this package.
+The icon was supplied by the project owner and is retained unchanged.

@@ -16,7 +16,7 @@ try {
 $payload = 'BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll'
 $directory = Join-Path $repo 'artifacts/package-negative'
 New-Item -ItemType Directory -Force $directory | Out-Null
-$cases = @('missing-dll', 'wrong-version', 'wrong-dll-version', 'wrong-guid', 'shim-payload', 'extra-dependency', 'extra-probe', 'nested-zip', 'wrapper', 'missing-source', 'wrong-dependency', 'bad-image')
+$cases = @('missing-dll', 'wrong-version', 'wrong-dll-version', 'wrong-guid', 'shim-payload', 'extra-dependency', 'extra-probe', 'nested-zip', 'wrapper', 'missing-source-link', 'missing-license', 'wrong-dependency', 'bad-image')
 foreach ($case in $cases) {
     $files = [ordered]@{}
     foreach ($item in $entries.GetEnumerator()) { $files[$item.Key] = $item.Value.Clone() }
@@ -43,14 +43,18 @@ foreach ($case in $cases) {
             $manifest = [Text.Encoding]::UTF8.GetString($files['manifest.json']) | ConvertFrom-Json
             $manifest.version_number = $version
             $files['manifest.json'] = [Text.Encoding]::UTF8.GetBytes(($manifest | ConvertTo-Json))
-            $files['source/REVISION.txt'] = [Text.Encoding]::UTF8.GetBytes("Commit: $ExpectedCommit`nBuild: $version.$($ExpectedCommit.Substring(0, 7))`nWorking tree dirty: False")
         }
         'shim-payload' { $files[$payload] = [IO.File]::ReadAllBytes((Join-Path $repo 'artifacts/plugin/Shim/Assembly-CSharp.dll')) }
         'extra-dependency' { $files['BepInEx/plugins/DSPSphereBuilder/UnityEngine.CoreModule.dll'] = $files[$payload] }
         'extra-probe' { $files['BepInEx/plugins/DSPSphereBuilder/FeasibilityProbe.dll'] = $files[$payload] }
         'nested-zip' { $files["DSPSphereBuilder-$ExpectedVersion.zip"] = [byte[]]@(80, 75) }
         'wrapper' { $wrapped = [ordered]@{}; foreach ($item in $files.GetEnumerator()) { $wrapped["package/$($item.Key)"] = $item.Value }; $files = $wrapped }
-        'missing-source' { $files.Remove('source/research/cosmin1490/60.txt') }
+        'missing-source-link' {
+            $readme = [Text.Encoding]::UTF8.GetString($files['README.md'])
+            $readme = $readme.Replace("https://github.com/shytamir/DSPSphereBuilder/archive/$($ExpectedCommit.ToLowerInvariant()).zip", '')
+            $files['README.md'] = [Text.Encoding]::UTF8.GetBytes($readme)
+        }
+        'missing-license' { $files.Remove('LICENSE') }
         'wrong-dependency' {
             $manifest = [Text.Encoding]::UTF8.GetString($files['manifest.json']) | ConvertFrom-Json
             $manifest.dependencies = @(); $files['manifest.json'] = [Text.Encoding]::UTF8.GetBytes(($manifest | ConvertTo-Json))
