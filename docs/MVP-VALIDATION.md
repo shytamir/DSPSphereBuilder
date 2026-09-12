@@ -52,3 +52,28 @@ Primary distribution inputs checked on the same date:
 These establish build/distribution inputs, not runtime compatibility or a
 Thunderstore submission. The initial declaration check is not a blanket check
 of unreferenced game types. Every later added surface extends the same map.
+
+## SB-I1.2 — Production compilation and identity
+
+The minimal production plugin uses `dsp.spherebuilder` and the declared identity
+mapping. Local compilation in both reference modes passed with no warnings or
+errors using SDK 10.0.302. Metadata inspection found identical 19 emitted
+assembly/member references in the shim and native builds. The checker reads PE
+metadata, never instantiates the plugin or a game type.
+
+Build 70,000 produced plugin/package version `0.1.70000`, assembly/file version
+`0.1.0.0`, and informational label `0.1.70000.f85d4a5` from the local worktree based
+on `f85d4a5`. This is local working-tree evidence, not a clean source-commit build.
+The build record now explicitly reports dirty state. Retry attempts 1 and 2 kept
+the same version, build 70,001 advanced it, and the unchanged mock ZIP validator
+passed using the shared VERSION translation.
+
+The build fails on missing required paths, a changed local target hash, compile
+errors, mismatched plugin metadata, or a changed declared native reference map.
+The source project marks references non-copying; later packaging will select the
+production DLL explicitly instead of archiving a build directory.
+
+The existing workflow now installs the exact pinned SDK through the official
+[setup-dotnet action](https://github.com/actions/setup-dotnet), compiles production
+source, and checks DLL identity before publishing its still-explicit mock artifact.
+Hosted compile evidence is recorded after the first matching run completes.

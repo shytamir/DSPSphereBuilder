@@ -5,6 +5,8 @@
     <FileVersion>0.0.0.0</FileVersion>
     <GenerateDependencyFile>false</GenerateDependencyFile>
     <NuGetAudit>false</NuGetAudit>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)../artifacts/obj/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/obj/**;**/bin/**</DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyMetadata Include="ReferenceShim" Value="true" />

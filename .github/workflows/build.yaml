@@ -22,6 +22,15 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Set up the pinned SDK
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          global-json-file: global.json
+
+      - name: Compile production source and check metadata
+        run: |
+          ./scripts/Build-Plugin.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
+
       - name: Build and validate mock package
         id: package
         run: |

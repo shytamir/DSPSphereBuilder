@@ -1,7 +1,34 @@
 # Build and packaging
 
 See [PROJECT.md](PROJECT.md) for current readiness and acceptance. This document
-defines the mock package and its build procedure.
+defines production compilation and the current mock package procedure.
+
+## Production compilation
+
+Use the SDK pinned in [global.json](../global.json) and PowerShell 7. From the
+repository root, compile against the CI declarations with:
+
+```powershell
+$commit = git rev-parse HEAD
+./scripts/Build-Plugin.ps1 -BuildNumber 1 -Commit $commit
+```
+
+To also compile against the local target and compare emitted references:
+
+```powershell
+./scripts/Build-Plugin.ps1 -BuildNumber 1 -Commit $commit -DspManagedPath $managedPath -BepInExCorePath $loaderPath
+```
+
+Set those variables to the actual `DSPGAME_Data/Managed` and `BepInEx/core`
+directories. The script checks the recorded local target hash, compiles both
+reference modes, checks the [reference map](../references/README.md), and inspects
+DLL metadata without loading the plugin. It invokes no game runtime.
+
+Outputs are `artifacts/plugin/Shim/DSPSphereBuilder.dll` and, with real inputs,
+`artifacts/plugin/Native/DSPSphereBuilder.dll`. Reference assemblies in build
+directories are compile inputs, never package payload. Build information records
+the source commit and whether the local working tree was dirty; local builds with
+edits must not be represented as clean reproductions of that commit.
 
 ## Local build
 
@@ -50,8 +77,10 @@ hash in that file. The build uses these inputs as follows:
 
 The short commit is the first seven hexadecimal characters. The four-part build
 label is diagnostic text, not a semantic package version. Hashes never enter the
-Thunderstore `version_number`. No assembly version is generated until there is an
-assembly to build.
+Thunderstore `version_number`. The loader's plugin version is the same numeric
+package version. Assembly/file versions are `MAJOR.MINOR.0.0`, and informational
+version is the diagnostic build label. This keeps sequential package versions
+independent of CLR assembly-version component limits.
 
 CI uses `github.run_number`, the sequential number for this workflow, as
 `BuildNumber`. New runs advance it, including failed runs; gaps are normal.
@@ -91,7 +120,8 @@ numeric version, diagnostic label, build number, and retry attempt.
 ## GitHub Actions
 
 [build.yaml](../.github/workflows/build.yaml) runs on pushes to `main` and manual
-dispatch. It checks out the triggering revision, builds and validates the mock,
+dispatch. It checks out the triggering revision, compiles production source with
+the mapped shims and checks its metadata, then builds and validates the mock,
 and uploads the ZIP and build information as one Actions artifact. The workflow
 has read-only repository permissions and a bounded job timeout.
 

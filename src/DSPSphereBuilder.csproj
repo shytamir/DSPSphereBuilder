@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <NuGetAudit>false</NuGetAudit>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(BuildInfoPath)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(ReferenceMode)' == 'Shim'">
+    <ProjectReference Include="../references/BepInEx/BepInEx.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
+    <ProjectReference Include="../references/UnityEngine.CoreModule/UnityEngine.CoreModule.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(ReferenceMode)' == 'Native'">
+    <Reference Include="BepInEx" HintPath="$(BepInExCorePath)/BepInEx.dll" Private="false" />
+    <Reference Include="UnityEngine" HintPath="$(DspManagedPath)/UnityEngine.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(DspManagedPath)/UnityEngine.CoreModule.dll" Private="false" />
+  </ItemGroup>
+  <Target Name="CheckBuildInputs" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(ReferenceMode)' != 'Shim' And '$(ReferenceMode)' != 'Native'" Text="ReferenceMode must be Shim or Native. Use scripts/Build-Plugin.ps1." />
+    <Error Condition="!Exists('$(BuildInfoPath)')" Text="Generated build identity is required." />
+  </Target>
+</Project>

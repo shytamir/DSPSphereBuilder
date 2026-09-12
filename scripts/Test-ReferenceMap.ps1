@@ -12,7 +12,8 @@ Set-StrictMode -Version Latest
 Add-Type -Path (Join-Path $BepInExCorePath 'Mono.Cecil.dll')
 $mapPath = Join-Path $PSScriptRoot '../references/Map.json'
 $assemblies = [ordered]@{}
-$files = @(Get-ChildItem -LiteralPath $ShimDirectory -Filter '*.dll' | Sort-Object Name)
+$projectNames = @(Get-ChildItem -LiteralPath (Join-Path $PSScriptRoot '../references') -Recurse -Filter '*.csproj' | ForEach-Object { $_.BaseName + '.dll' })
+$files = @(Get-ChildItem -LiteralPath $ShimDirectory -Filter '*.dll' | Where-Object { $_.Name -in $projectNames } | Sort-Object Name)
 if ($files.Count -eq 0) { throw 'Build the reference shims first.' }
 foreach ($file in $files) {
     $nativePath = Join-Path $(if ($file.BaseName -eq 'BepInEx') { $BepInExCorePath } else { $DspManagedPath }) $file.Name
@@ -30,6 +31,9 @@ foreach ($file in $files) {
             foreach ($field in $type.Fields | Where-Object IsPublic | Sort-Object FullName) {
                 $found = @($actual.Fields | Where-Object { $_.FullName -ceq $field.FullName -and $_.IsStatic -eq $field.IsStatic -and $_.IsPublic })
                 if ($found.Count -ne 1) { throw "Field differs: $($field.FullName)" }
+                if ($found[0].HasConstant -ne $field.HasConstant -or ($field.HasConstant -and $found[0].Constant -ne $field.Constant)) {
+                    throw "Field constant differs: $($field.FullName)"
+                }
                 $members[$field.FullName] = $found[0].MetadataToken.ToUInt32().ToString('X8')
             }
             foreach ($method in $type.Methods | Where-Object { $_.IsPublic -or $_.IsFamily } | Sort-Object FullName) {
@@ -57,7 +61,7 @@ foreach ($file in $files) {
 }
 $json = $assemblies | ConvertTo-Json -Depth 12
 if ($UpdateMap) { $json | Set-Content -LiteralPath $mapPath -Encoding utf8NoBOM }
-elseif ($json.Trim() -cne (Get-Content -LiteralPath $mapPath -Raw).Trim()) {
+elseif ($json.Replace("`r`n", "`n").Trim() -cne (Get-Content -LiteralPath $mapPath -Raw).Replace("`r`n", "`n").Trim()) {
     throw 'Reference map differs. Inspect the changed native surface, update the map, and include it with the declarations in this commit.'
 }
 Write-Host "PASS: $($files.Count) shim assemblies match native type/member signatures and the recorded map."

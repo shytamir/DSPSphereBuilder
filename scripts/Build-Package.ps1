@@ -19,22 +19,10 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $RepositoryRoot = (Resolve-Path -LiteralPath $RepositoryRoot).Path
 
-# VERSION is input, never rewritten by a build.
-$versionParts = @{}
-foreach ($line in Get-Content -LiteralPath (Join-Path $RepositoryRoot 'VERSION')) {
-    if ([string]::IsNullOrWhiteSpace($line)) { continue }
-    if ($line -cnotmatch '^(MAJOR|MINOR)=(0|[1-9][0-9]*)$') {
-        throw 'VERSION must contain MAJOR and MINOR as non-negative decimal integers without leading zeros.'
-    }
-    $key = $Matches[1]
-    if ($versionParts.ContainsKey($key)) { throw "Duplicate VERSION key: $key" }
-    $versionParts[$key] = [int]$Matches[2]
-}
-if ($versionParts.Count -ne 2) { throw 'VERSION requires both MAJOR and MINOR.' }
-
-$version = '{0}.{1}.{2}' -f $versionParts.MAJOR, $versionParts.MINOR, $BuildNumber
-$sourceCommit = $Commit.ToLowerInvariant()
-$buildLabel = "$version.$($sourceCommit.Substring(0, 7))"
+$identity = & (Join-Path $PSScriptRoot 'Get-BuildIdentity.ps1') -BuildNumber $BuildNumber -Commit $Commit -RunAttempt $RunAttempt -RepositoryRoot $RepositoryRoot
+$version = $identity.package_version
+$sourceCommit = $identity.source_commit
+$buildLabel = $identity.build_label
 $manifest = [ordered]@{
     name = 'DSPSphereBuilder'
     version_number = $version
