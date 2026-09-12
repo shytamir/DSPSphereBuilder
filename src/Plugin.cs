@@ -15,6 +15,7 @@ namespace DSPSphereBuilder
         private RectTransform panel;
         private Button paintButton;
         private Text status;
+        private readonly Vector3[] toolbarCorners = new Vector3[4];
         private float refreshAt;
 
         private void Awake()
@@ -42,6 +43,7 @@ namespace DSPSphereBuilder
                     Attach(editor);
                 }
                 panel.gameObject.SetActive(true);
+                PositionPanel(editor);
                 var selected = editor.selection?.singleSelectedLayer;
                 if (!ReferenceEquals(selected, displayedLayer) || Time.unscaledTime >= refreshAt)
                 {
@@ -64,24 +66,24 @@ namespace DSPSphereBuilder
             panel = (RectTransform)root.transform;
             attachedEditor = editor;
             panel.SetParent(editor.controlPanel.transform, false);
-            panel.anchorMin = panel.anchorMax = panel.pivot = new Vector2(0.5f, 1);
-            panel.anchoredPosition = new Vector2(0, -12);
-            panel.sizeDelta = new Vector2(380, 122);
+            panel.anchorMin = panel.anchorMax = new Vector2(0.5f, 0.5f);
+            panel.pivot = new Vector2(1, 0);
+            panel.sizeDelta = new Vector2(280, 64);
             root.GetComponent<Image>().color = new Color(0.06f, 0.09f, 0.13f, 0.97f);
             root.AddComponent<UIBlockZone>();
             editor.guiRects = editor.guiRects.Concat(new[] { panel }).ToArray();
-            Label(panel, "Sphere Builder", 10, 5, 360, 24, 16, font);
+            Label(panel, "Sphere Builder", 8, 8, 104, 24, 14, font);
 
             var button = new GameObject("Paint", typeof(RectTransform), typeof(Image), typeof(Button));
-            Place(button, panel, 10, 35, 170, 32);
+            Place(button, panel, 120, 6, 152, 28);
             var background = button.GetComponent<Image>();
             background.color = new Color(0.13f, 0.28f, 0.36f, 1);
             paintButton = button.GetComponent<Button>();
             paintButton.targetGraphic = background;
             paintButton.onClick.AddListener(Paint);
-            var caption = Label(button.transform, "Paint next patch", 0, 0, 170, 32, 14, font);
+            var caption = Label(button.transform, "Paint next patch", 0, 0, 152, 28, 14, font);
             caption.alignment = TextAnchor.MiddleCenter;
-            status = Label(panel, "", 10, 74, 360, 43, 13, font);
+            status = Label(panel, "", 8, 40, 264, 18, 13, font);
             panel.SetAsLastSibling();
             refreshAt = 0;
         }
@@ -125,7 +127,17 @@ namespace DSPSphereBuilder
         private void Present(PaintResult result)
         {
             status.text = Feedback.Text(result);
+            var textHeight = Math.Max(18, status.preferredHeight);
+            ((RectTransform)status.transform).sizeDelta = new Vector2(264, textHeight);
+            panel.sizeDelta = new Vector2(280, 46 + textHeight);
             paintButton.interactable = result.CanPaint;
+        }
+
+        private void PositionPanel(UIDysonEditor editor)
+        {
+            editor.controlPanel.toolbox.selfRect.GetWorldCorners(toolbarCorners);
+            var corner = editor.controlPanel.transform.InverseTransformPoint(toolbarCorners[0]);
+            panel.localPosition = new Vector3(corner.x - 12, corner.y, 0);
         }
 
         private void Detach()

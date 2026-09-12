@@ -67,7 +67,16 @@ public class UIDysonEditor : ManualBehaviour
     public UIDEControlPanel controlPanel;
     public RectTransform[] guiRects;
 }
-public class UIDEControlPanel : ManualBehaviour { private UIDEControlPanel() { } }
+public class UIDEControlPanel : ManualBehaviour
+{
+    private UIDEControlPanel() { }
+    public UIDEToolbox toolbox;
+}
+public class UIDEToolbox : ManualBehaviour
+{
+    private UIDEToolbox() { }
+    public RectTransform selfRect;
+}
 public class UIBlockZone : MonoBehaviour { private UIBlockZone() { } }
 public class DESelection
 {

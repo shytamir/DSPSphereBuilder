@@ -379,3 +379,36 @@ too large and bulky. These are the finite refinement inputs recorded in SB-D019;
 there is no no-change disposition. The capture's top-center overlap and unused
 panel area provide the visual basis. No new action, setting, preview, or product
 behavior was requested.
+
+## SB-I5.3 — Compact bottom-left control
+
+The refinement keeps the existing editor integration, Paint handler, feedback
+wording, target resolution and session-stop behavior. The title and button share
+one row, with feedback underneath. The ordinary one-line panel is 280 by 64 UI
+units, down from 380 by 122; button/status fonts remain 14/13, while the title
+changes from 16 to 14. Longer feedback uses Unity Text's preferred height at the
+fixed content width so the smaller box can expand vertically for wrapped text.
+
+Placement follows the native toolbar's bottom-left corner with a 12-unit gap,
+aligning the panel's bottom edge. Read-only inspection of the target's
+`UIDEControlPanel` and `UIDEToolbox` established the `toolbox.selfRect` reference
+and the native bar's changing width. The panel stays under `controlPanel`, so
+closing the toolbox for no selection does not hide Sphere Builder's explanation.
+World corners are converted into that parent's local coordinates; no screen
+resolution or native toolbar width is hard-coded. Unity documents corner 0 as
+bottom-left in [GetWorldCorners](https://docs.unity3d.com/ScriptReference/RectTransform.GetWorldCorners.html).
+
+The same change maps `UIDEToolbox`, `UIDEControlPanel.toolbox`, `selfRect`,
+`RectTransform.GetWorldCorners`, `Transform.InverseTransformPoint`,
+`Transform.localPosition` and `Text.preferredHeight` to the local native metadata
+in `references/Map.json`, including declaration shape. Both compile modes pass
+with no warnings/errors; all five shim assemblies match the recorded target and
+all 217 emitted plugin references agree between native and shim builds. The
+managed logic checks still pass for the full plan, recognition, shell boundaries,
+preservation, current-target binding, prerequisites, completion and bounded failure.
+
+Source review confirms the same single click listener, native input-block zone,
+editor GUI-rectangle registration and detach cleanup. Compilation and this
+review do not establish the new layout's live readability or input behavior.
+The affected owner recheck uses one patch and the control's displayed states,
+without repeating the full progression, reload/shell route or W1–W6.

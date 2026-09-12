@@ -104,7 +104,16 @@
       "UIDEControlPanel": {
         "token": "0200059C",
         "base": "ManualBehaviour",
-        "members": {}
+        "members": {
+          "UIDEToolbox UIDEControlPanel::toolbox": "04003B77"
+        }
+      },
+      "UIDEToolbox": {
+        "token": "020005AD",
+        "base": "ManualBehaviour",
+        "members": {
+          "UnityEngine.RectTransform UIDEToolbox::selfRect": "04003D67"
+        }
       },
       "UIDysonEditor": {
         "token": "020005B1",
@@ -269,6 +278,7 @@
         "token": "020002A0",
         "base": "UnityEngine.Transform",
         "members": {
+          "System.Void UnityEngine.RectTransform::GetWorldCorners(UnityEngine.Vector3[])": "06001C66",
           "System.Void UnityEngine.RectTransform::set_anchoredPosition(UnityEngine.Vector2)": "06001C55",
           "System.Void UnityEngine.RectTransform::set_anchorMax(UnityEngine.Vector2)": "06001C53",
           "System.Void UnityEngine.RectTransform::set_anchorMin(UnityEngine.Vector2)": "06001C51",
@@ -288,8 +298,10 @@
         "base": "UnityEngine.Component",
         "members": {
           "System.Void UnityEngine.Transform::.ctor()": "06001C7C",
+          "System.Void UnityEngine.Transform::set_localPosition(UnityEngine.Vector3)": "06001C80",
           "System.Void UnityEngine.Transform::SetAsLastSibling()": "06001CDB",
-          "System.Void UnityEngine.Transform::SetParent(UnityEngine.Transform,System.Boolean)": "06001C9E"
+          "System.Void UnityEngine.Transform::SetParent(UnityEngine.Transform,System.Boolean)": "06001C9E",
+          "UnityEngine.Vector3 UnityEngine.Transform::InverseTransformPoint(UnityEngine.Vector3)": "06001CD1"
         }
       },
       "UnityEngine.Vector2": {
@@ -389,6 +401,7 @@
         "token": "0200003D",
         "base": "UnityEngine.UI.MaskableGraphic",
         "members": {
+          "System.Single UnityEngine.UI.Text::get_preferredHeight()": "06000555",
           "System.Void UnityEngine.UI.Text::set_alignment(UnityEngine.TextAnchor)": "06000531",
           "System.Void UnityEngine.UI.Text::set_font(UnityEngine.Font)": "06000521",
           "System.Void UnityEngine.UI.Text::set_fontSize(System.Int32)": "06000535",

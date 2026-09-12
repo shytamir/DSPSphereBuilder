@@ -42,6 +42,8 @@ namespace UnityEngine
         protected Transform() => throw new NotSupportedException();
         public void SetParent(Transform parent, bool worldPositionStays) => throw new NotSupportedException();
         public void SetAsLastSibling() => throw new NotSupportedException();
+        public Vector3 InverseTransformPoint(Vector3 position) => throw new NotSupportedException();
+        public Vector3 localPosition { set => throw new NotSupportedException(); }
     }
     public sealed class RectTransform : Transform
     {
@@ -51,6 +53,7 @@ namespace UnityEngine
         public Vector2 pivot { set => throw new NotSupportedException(); }
         public Vector2 anchoredPosition { set => throw new NotSupportedException(); }
         public Vector2 sizeDelta { set => throw new NotSupportedException(); }
+        public void GetWorldCorners(Vector3[] corners) => throw new NotSupportedException();
     }
     public sealed class GameObject : Object
     {

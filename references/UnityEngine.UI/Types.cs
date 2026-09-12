@@ -23,6 +23,7 @@ namespace UnityEngine.UI
         public int fontSize { set => throw new NotSupportedException(); }
         public virtual string text { set => throw new NotSupportedException(); }
         public TextAnchor alignment { set => throw new NotSupportedException(); }
+        public virtual float preferredHeight => throw new NotSupportedException();
     }
     public class Selectable : EventSystems.UIBehaviour
     {
