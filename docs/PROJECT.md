@@ -14,15 +14,14 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-Repository preparation, before implementation planning. The owner accepted the
-core concept and requested repository guidance, management placeholders, and a
-working mock Thunderstore packaging pipeline. Preparation may be committed and
-pushed to `main` as it is completed.
+Ready for implementation planning. Repository preparation is complete: the agreed
+concept is preserved, working guidance and management placeholders are in place,
+and the mock packaging pipeline has passed locally and on GitHub Actions.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
-| Repository preparation | Local validation passed; hosted packaging verification pending |
+| Repository preparation | Complete; local checks and hosted artifact inspection passed |
 | Roadmap and active work | Placeholder only; no epics or stories defined or active |
 | Mod implementation | Not started; no plugin source or runtime scaffold |
 | Runtime validation and owner acceptance | Not performed for the proposed mod |
@@ -61,8 +60,13 @@ or Thunderstore moderation acceptance.
   retry, strict VERSION input rejection, and validation of the four-file mock ZIP.
   Negative checks rejected missing README, unexpected DLL, wrong version, broken
   PNG, and invalid UTF-8. PowerShell parsing and whitespace checks also passed.
-- Hosted preparation evidence: to be recorded after the first successful workflow
-  run and inspection of its downloaded package.
+- [Hosted build 1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34662682423)
+  passed checkout, package creation/validation, and artifact upload for commit
+  `79a72be46a4b81bc3ed93bf6a1a5b264202dec22`. Its downloaded ZIP was inspected
+  independently: exactly `manifest.json`, `README.md`, `icon.png`, and `LICENSE`,
+  with valid metadata, UTF-8 text, and a decoded 256x256 PNG. Package version
+  `0.1.1` and build label `0.1.1.79a72be` matched the run and source commit.
+  This is the preparation baseline, not a rolling latest-build record.
 
 ## Next decision
 
