@@ -266,3 +266,30 @@ modes, five checked shim assemblies, no warnings/errors. Local handoff-only file
 were uncommitted during that compile and were not production inputs; CI itself
 was clean. The raw download/build record are retained under ignored
 `artifacts/hosted/34678932740/`. No runtime or installation was performed.
+
+## SB-I5.1 — Prepared owner capture and handoff
+
+[OWNER-SESSION.md](OWNER-SESSION.md) defines the single integrated route on the
+verified build 0.1.31.a71fd79. The agent has not installed or run that plugin.
+The owner records two native single-layer exports (prefix 3 with a designated
+pentagon, then prefix 12), a useful panel screenshot, and the normal BepInEx log.
+The route uses one menu reload and a second-layer manual edit, without new-system,
+endpoint, restart/removal, hexagon, construction-wait, or forced-failure cases.
+
+Offline inspection followed `UIDELayerPanel.OnCopyClick1`, the selected-layer
+blueprint generation path, and the target's layer/node/frame/shell blueprint
+writers. This is a clipboard export, not layer import. CheckLayerNodeCount only
+compares record counts and does not require completed construction. The decoder
+already covers container 0, layer 1, node 5, frame 1 and shell 2; the pinned source
+contains the target's node/frame/shell versions. The writer's pool/recycle and
+optional layer-color tails were reconciled with the reader.
+
+The small capture comparison reuses that decoder and the independent derivation.
+Five offline cases pass: valid prefix-3/final pair, missing frame, wrong radius,
+lost manual shell, and changed old position inside the geometry tolerance. These
+are captured-data checks, not native export execution. The tool compares graph,
+numeric bounds, retained numeric IDs/positions/endpoints/prototypes and shell
+boundary. It does not authenticate the custom blueprint checksum, recover memory
+identities, or infer invested SP/CP that the blueprint omits. In-action production
+checks and retained feasibility evidence remain the support for those properties;
+owner observations/logs and captures will be reviewed together. See SB-D017.

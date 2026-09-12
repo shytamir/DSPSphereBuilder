@@ -27,11 +27,11 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Phases 1–4 complete; SB-I5.1 owner handoff is next |
+| Roadmap and active work | Phases 1–4 complete; SB-I5.1 handoff prepared and awaiting the owner session |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG4/IM4 passed; workshop-entry IG5a and final IG5 await owner evidence |
 | Mod implementation | Editor control and additive operation compile in both reference modes and pass offline checks; runtime observations await SB-I5.1 |
-| Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
+| Runtime validation and owner acceptance | Feasibility observations and SB-D008 remain accepted; production runtime observations and owner acceptance are pending SB-I5 |
 | Distribution | CI package 0.1.31 independently verified as a direct installable download; no publication authorized |
 
 ## Accepted scope
@@ -87,7 +87,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I3.2 | Complete | [Current-target editor control](MVP-VALIDATION.md#sb-i32--current-target-editor-control) |
 | SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
 | SB-I4.2 | Complete | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
-| SB-I5.1 | Not started | Focused owner/runtime validation |
+| SB-I5.1 | In progress; awaiting owner runtime observations | [Session procedure](OWNER-SESSION.md) and [capture preparation](MVP-VALIDATION.md#sb-i51--prepared-owner-capture-and-handoff) |
 | SB-I5.2 | Not started | Owner UI workshop |
 | SB-I5.3 | Not started | Agreed UI refinements and targeted rechecks |
 | SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
@@ -429,6 +429,25 @@ or Thunderstore moderation acceptance.
   matching attempt/build hashes distinguish it. Publication remains deferred.
 - **Affected contract:** SB-I4, SB-MVP-23–24, BUILD.md and package delivery.
 
+### SB-D017 — Minimal owner-session evidence
+
+- **Date / decision-maker:** 2026-09-12, implementor within SB-I5.1.
+- **Choice:** Use native single-layer clipboard exports at prefix 3 and completion,
+  one useful panel screenshot, and the normal session log. Use the independently
+  verified 0.1.31.a71fd79 package even when later documentation pushes produce
+  newer CI versions. No production code has changed since that candidate.
+- **Basis / alternatives:** The native export writer and existing decoder were
+  checked offline. Two exports support the final geometry and prior record/link/
+  shell comparison without another probe or continuous snapshot exporter.
+  Blueprint records omit invested SP/CP and object identity; collecting these
+  independently would require intrusive capture or extra live setup.
+- **Consequence:** Do not claim those omitted properties from blueprints or quiet
+  logs. Retain the existing feasibility basis plus production in-action checks,
+  and review visible outcomes, startup/action logs and captures together. W1–W6
+  are unchanged. Core failures or missing essential evidence still block IG5a
+  unless the owner explicitly disposes of them; this is no new acceptance waiver.
+- **Affected contract:** SB-I5.1, SB-MVP-12–13, SB-A04–06/09/12–13 and owner handoff.
+
 ## Evidence and unresolved questions
 
 - The implementation draft was reviewed in three passes on 2026-09-12:
@@ -460,6 +479,6 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to the focused SB-I5.1 owner session on candidate 0.1.31, build
+Follow [the prepared owner session](OWNER-SESSION.md) on candidate 0.1.31, build
 0.1.31.a71fd79. IG5a requires owner observations and evidence review before the UI
 workshop. Prepared instructions and passing CI do not supply that acceptance.
