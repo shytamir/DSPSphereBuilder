@@ -23,8 +23,8 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F2.2 complete; SB-F2.3 is next |
-| Feasibility gates and MVP specification | G1/M1 passed; G2–G4 pending; specification not yet authored or accepted |
+| Roadmap and active work | SB-F2 complete; SB-F3.1 is next |
+| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Not started; no plugin source or runtime scaffold |
 | Runtime validation and owner acceptance | Not performed for the proposed mod |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
@@ -67,8 +67,8 @@ loaded or executed by the agent.
 | SB-F1.2 | Complete | [Native placement and lifecycle](FEASIBILITY.md#sb-f12--native-placement-and-lifecycle) |
 | SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
-| SB-F2.3 | Not started; next | — |
-| SB-F3.1 | Not started | — |
+| SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
+| SB-F3.1 | Not started; next | — |
 | SB-F3.2 | Not started | — |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
@@ -159,13 +159,28 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** Future specification's geometry, click sequence, and
   continuation matching; SB-F2.3 evaluates this fixed orientation's unlock limits.
 
+### SB-D006 — Enforce the measured native prerequisites
+
+- **Date / decision-maker:** 2026-09-12, implementor within authorized scope.
+- **Question / choice:** The probe uses a native-created selected layer at its
+  existing radius, geodesic prototype-0 frames, and the actual rounded latitude
+  prerequisite of 68. It neither imports a replacement nor bypasses research.
+- **Alternatives / evidence:** SB-F2.3 found unit-direction geometry passes the
+  target predicates. Reusing the sample's 81° header or checking layer creation
+  against the already-existing layer would impose incorrect restrictions.
+- **Rationale / consequence:** No arbitrary radius whitelist is needed. The
+  scale-invariant candidate envelope still requires live boundary observations;
+  any runtime failure that narrows the concept needs an owner disposition.
+- **Affected contract:** Probe preconditions and future specification support,
+  research refusal, and native layer selection. No technology level name is guessed.
+
 ## Evidence and unresolved questions
 
 - The concept preserves the supplied sample and reported format checks; those
   checks were not rerun during repository preparation.
-- Pole-centred orientation, a valid route through both pentagon rings, native
-  placement constraints, and additive preservation still require the targeted
-  verification identified in the concept.
+- Canonical geometry, polar progression, and the static native placement envelope
+  are verified. Additive preservation, continuation, editor interaction, and
+  player shell filling still require matching live observations.
 - Local preparation checks passed: numeric build progression, stable version on
   retry, strict VERSION input rejection, and validation of the four-file mock ZIP.
   Negative checks rejected missing README, unexpected DLL, wrong version, broken
@@ -180,6 +195,7 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to SB-F2.3. The twelve-patch route and final graph are verified offline;
-native placement limits and live preservation remain unverified. The next
+Proceed to SB-F3.1 and prepare the owner-operated probe. G2/M2 passed: the route and
+candidate native envelope agree, with concrete live cases and no core deviation.
+Live preservation remains unverified. The next
 implementation roadmap remains downstream of G4/M4.

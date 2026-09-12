@@ -5,6 +5,7 @@ import unittest
 from blueprint_geometry import decode
 from verify_geometry import compare, verify_geometry
 from derive_patches import derive
+from check_envelope import point_segment_squared, scaled_directions
 
 
 class GeometryChecks(unittest.TestCase):
@@ -65,6 +66,19 @@ class GeometryChecks(unittest.TestCase):
         for a, b in itertools.combinations(rotated, 2):
             original_distance = math.dist(unit(self.reference['nodes'][a]['position']), unit(self.reference['nodes'][b]['position']))
             self.assertAlmostEqual(math.dist(rotated[a], rotated[b]), original_distance, places=14)
+
+    def test_segment_projection_clamps_beyond_endpoint(self):
+        self.assertAlmostEqual(point_segment_squared((0, -1, 0), (1, 0, 0), (0, 1, 0)), 2)
+
+    def test_segment_projection_returns_to_sphere(self):
+        import math
+        middle = (math.sqrt(0.5), math.sqrt(0.5), 0)
+        self.assertAlmostEqual(point_segment_squared(middle, (1, 0, 0), (0, 1, 0)), 0)
+
+    def test_invalid_radius_is_rejected(self):
+        for radius in (0, -1, float('inf'), float('nan')):
+            with self.subTest(radius=radius), self.assertRaises(ValueError):
+                scaled_directions({1: (1, 0, 0)}, radius)
 
 
 if __name__ == '__main__':

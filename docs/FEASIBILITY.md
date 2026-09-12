@@ -348,3 +348,118 @@ Seven focused tests passed, including unchanged deltas when input pool enumerati
 is reversed and preservation of all 1,770 pairwise node distances under rotation
 to fourteen decimal places. The route is reproducible and agrees with the concept;
 no alternate route, adjustable orientation, or shell operation was introduced.
+
+## SB-F2.3 — Native placement envelope
+
+### Predicates and measured margins
+
+The target's node/frame brushes normalize positions before their geometric
+comparisons. The [envelope check](../scripts/check_envelope.py) evaluates those
+geometric conditions over the entire graph, then checks every delta against all
+face boundaries that could already have been filled. It is an independent numeric
+analysis, not execution of the Unity editor or a replacement for its controls.
+
+| Native condition | Target member / rule | Result for the rotated plan |
+| --- | --- | --- |
+| Node spacing | `UIDysonBrush_Node.RecalcCollides`: squared unit distance below 0.0051122503 collides | Minimum 0.105013969 |
+| Node-to-frame and frame endpoint proximity | Both brushes' `PointToSegmentSqr` and `CheckCondition`: below 0.0027562499 refuses | Minimum nonincident distance squared 0.105013969 |
+| Frame length | `UIDysonBrush_Frame.CheckCondition`: unit chord above 0.518 refuses | Maximum 0.447837957 |
+| Frame crossing | Same member: normalized great-circle side products both below −10⁻⁹, excluding shared endpoints | Zero crossings among 120 nonincident candidate pairs |
+| Shell cycle size | `UIDysonBrush_Shell._OnUpdate`: normalized centroid-to-corner squared distance must not exceed 0.26832402 × 0.6 | Pentagon maximum 0.150811786; hexagon maximum 0.156343699; limit approximately 0.160994412 |
+| Shell candidate discovery | Same member: candidates within squared distance 0.16099441 of the cursor; nearby walls within 0.26832402 | At each face center, candidate nodes are exactly its five or six vertices |
+| Other nodes in a shell | Same member: a closed cycle must contain no other node | All 32 convex face interiors are empty |
+| Adding through an existing shell | Node/frame `CheckCondition`, `DysonShell.IsPointInShell` | No later node or new-frame midpoint lies inside any previously closed reference face |
+
+The point-to-segment calculation projects onto the 3D chord, clamps to its ends,
+then normalizes the result back onto the sphere, matching the inspected geometric
+rule. Checking all nonincident node/frame pairs is stronger than the brushes'
+nearby-node filtering. Crossing checks use their 0.13443033 neighborhood filter;
+testing antipodal great-circle extensions as if they were nearby frames would be
+incorrect. `DysonFrame.GetSegments` returns just the two endpoints for these
+non-Euler frames. No Euler interpolation approximation is involved.
+
+Shell interior checks use the equivalent convex spherical half-spaces established
+in SB-F2.1. Native cursor tracking, cycle search, raycast parity, and shell mesh/cell
+generation remain live observations in SB-F3.3. Their success is not inferred from
+having parsed a shell record. At a face center, all boundary vertices are within
+both native collection limits, with a minimum shell-size margin above 0.00465.
+
+### Latitude and native layer bounds
+
+The node brush and frame `CheckCondition` compare rounded absolute node latitude
+to `Mathf.RoundToInt(GameMain.history.dysonNodeLatitude)`. The rotated maximum is
+67.607230°, so the required rounded unlock is **68°**, already needed on click 1;
+no later click requires more. The reference's original 81° import header does
+not apply to this rotation. Great-circle edges may curve poleward; the inspected
+unlock predicates test nodes/endpoints, not every point on an arc.
+
+`GameHistoryData` starts `dysonNodeLatitude` at zero, saves/loads it, and adds
+unlock-function 26's value when research grants it. Research names, level numbers,
+and increments come from runtime prototype data and were not established from
+this assembly. The probe must record the actual value and available research;
+it must not guess a technology level from the 68° predicate.
+
+`DysonSphere.Init` derives star-specific minimum and maximum layer radii from
+`physicsRadius`, `dysonRadius`, and star type, then rounds to 100-unit steps.
+The initial minimum floor is 4,000; giants apply a 0.6 multiplier before rounding.
+`CheckLayerRadius` also excludes the first planet's orbit band and layers within
+999.95 units. These are **layer creation** constraints: calling that method on an
+existing selected layer would find the layer itself and wrongly refuse it.
+The candidate operation uses the selected native layer and does not create,
+resize, or reposition layers. Layer selection and current native bounds are read
+from the viewed sphere, not a hard-coded star or radius list.
+
+All inspected placement distances, shell collection limits, and latitude checks
+operate on unit directions; positive uniform scaling therefore leaves their
+mathematical result unchanged. Radius affects frame segmentation and construction
+cost: `DysonFrame.segCount` rounds `arcAngle × radius / 600`, doubles the result,
+and applies a minimum of two; `spMax` is ten times that count. This rules out a
+fixed rocket-cost claim. No radius-dependent geometric restriction was found for
+this graph beyond the game's layer bounds.
+
+The check also quantizes scaled coordinates and normalization arithmetic to
+binary32 at radii 2,400, 10,000, and 1,000,000. All predicates passed; maximum
+chord stayed below 0.447838006, largest shell distance below 0.156343729, and
+required rounded latitude remained 68. These are numerical scale checks, **not
+claims that those radii are legal in a particular star**. The sampled values do
+not prove native rendering or resource allocation at every radius. The scale
+derivation supports a candidate range; actual star-specific endpoint observations
+are required below. Generated finite coordinates should be checked before mutation.
+
+### Candidate envelope and live cases
+
+The candidate supports a native-created selected layer in the currently viewed
+system, initially empty or later recognized as our own partial graph, at its
+existing game-supported radius. It requires rounded unlocked latitude at least
+68 and the fixed SB-F2.2 orientation. It preserves native layer bounds and does
+not bypass research, placement limits, or shell control. Continuation recognition
+is still SB-F3.2's question. Arbitrary existing designs are outside the concept.
+
+Nodes use creation prototype 0 and geodesic frames creation prototype 0. The
+editor declares one node prototype and three frame prototypes; renderer loading
+determines actual counts, and native frame creation offsets by that node count.
+The probe must record loaded counts before confirming the serialized frame ID 1
+mapping. It should use a normal editor action in its current layer context.
+
+| Live case | Required observation / owner story |
+| --- | --- |
+| Below the first usable unlock, then sufficient research | Clear refusal with no added records, followed by the six-node/six-frame first patch; log actual research values (SB-F3.3) |
+| Ordinary legal radius, partially built then completed earlier structure | Correct next delta, preserved raw invested construction and existing records (SB-F3.1) |
+| Smallest and largest radius accepted by one star's native layer controls | Full geometry and successful manual pentagon/hexagon filling; log actual limits and selected radii (SB-F3.3) |
+| Another system, including a giant if the save permits | Correct selected sphere/layer; log star bounds and any skipped case without claiming coverage (SB-F3.2/3.3) |
+| Fill a closed pentagon and hexagon before continuing | Existing shells preserved; later frames are accepted; final graph remains complete (SB-F3.1/3.3) |
+| Missing/multiple layer selection or unrelated nonempty graph | Refusal without mutation; no automatic target creation or repair (SB-F3.2/3.3) |
+
+Static inspection found no concept-breaking geometry constraint. This remains a
+candidate support envelope until identified live observations confirm it. Any
+runtime-only restriction must return for an owner scope decision; it cannot be
+hidden behind a narrower advertised radius range.
+
+```powershell
+python -B scripts/check_envelope.py --output artifacts/envelope.json
+python -B scripts/test_geometry.py
+```
+
+The unit-geometry and three quantized-scale runs passed. Ten focused tests passed,
+including projection clamping, projection back onto the sphere, and invalid-radius
+rejection. No game code was executed for these checks.
