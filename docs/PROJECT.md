@@ -16,23 +16,21 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-The owner accepted the MVP specification on 2026-09-12. The feasibility roadmap
-is complete and retained in the [archive](management/archive/ROADMAP-feasibility-and-mvp-definition.md).
-The owner accepted the [MVP implementation roadmap](management/ROADMAP.md) and
-authorized sequential execution with a main push and this state update for each
-completed story. Work proceeds to phase 5's owner session, then the workshop and
-final acceptance follow their explicit human gates. See SB-D014.
+The MVP implementation roadmap is complete. The owner accepted the functional
+MVP, the UI workshop refinement and the label-only correction; final reconciliation
+passed under SB-D021. The requested archive and management/code hygiene passes
+follow this milestone. Polishing roadmap authoring and publication are not active.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-I5.1–5.3 complete; SB-I5.4 final reconciliation is next |
+| Roadmap and active work | SB-I1.1–5.4 complete; archive and owner-requested hygiene passes follow |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
-| Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; workshop outcomes accepted; final IG5 reconciliation remains |
-| Mod implementation | Production 0.1.31 has matching owner evidence for the full framework and retained hexagon boundary; 0.1.36 changes only the control layout and its mapped references |
+| Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
+| Mod implementation | Working MVP complete; final milestone build 0.1.38 changes only label capitalization from UI-tested 0.1.36 |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
-| Distribution | [CI package 0.1.36](MVP-VALIDATION.md#sb-i53--compact-bottom-left-control) independently verified for the UI recheck; no publication authorized |
+| Distribution | [CI package 0.1.38](MVP-VALIDATION.md#final-milestone-package) independently verified; no publication authorized |
 
 ## Accepted scope
 
@@ -90,7 +88,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I5.1 | Complete under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
 | SB-I5.2 | Complete | [Owner workshop](MVP-VALIDATION.md#sb-i52--owner-ui-workshop), SB-D019 |
 | SB-I5.3 | Complete under SB-D020 | [Owner refinement evidence](MVP-VALIDATION.md#owner-refinement-evidence) |
-| SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
+| SB-I5.4 | Complete; IG5/IM5 passed under SB-D021 | [Final reconciliation](MVP-VALIDATION.md#sb-i54--final-mvp-reconciliation) |
 
 ### Completed feasibility roadmap
 
@@ -500,14 +498,32 @@ or Thunderstore moderation acceptance.
   the same words, dimensions and action; change only their capitalization.
 - **Basis / limits:** The new log identifies 0.1.36.97b7f86 and the target MVID,
   with one successful 6-node/6-frame patch and no Error/Fatal entry. The supplied
-  screenshot duplicates the earlier 0.1.31 capture; it is not visual proof of the
-  refinement. The owner's confirmation supplies the layout/input disposition.
+  initial screenshot duplicated the earlier 0.1.31 capture. The owner then supplied
+  a replacement showing the compact bottom-left control; it corroborates the
+  owner's layout/input confirmation.
 - **Consequence:** Final reconciliation and the corrected package still require
   offline/CI checks. No new live session is needed for this label-only change.
   After the final milestone, archive the completed roadmap, leave a polishing
   placeholder, and perform the requested management and code hygiene passes.
   Authoring or executing the polishing roadmap and publication are not included.
 - **Affected contract:** SB-I5.3–5.4, SB-MVP-08 presentation, roadmap lifecycle.
+
+### SB-D021 — Complete the working MVP milestone
+
+- **Date / decision-maker:** 2026-09-12, implementor's evidence reconciliation
+  under the owner's explicit MVP/UI acceptance and instruction to finish.
+- **Choice:** Complete SB-I5.4 and IG5/IM5. All 25 requirements and 15 acceptance
+  cases were reviewed against production source, offline checks, live evidence
+  and the existing accepted limits. No core blocker remained.
+- **Basis:** Final milestone package 0.1.38.f761fee passed CI and independent
+  download/native-reference checks. Its only runtime-source difference from the
+  UI-tested 0.1.36 is SB-D020's accepted capitalization change. Functional evidence
+  comes from 0.1.31 and retained feasibility; no extra live coverage is inferred.
+- **Consequence:** Archive the completed roadmap and leave a polishing placeholder.
+  Complete the requested management/code hygiene passes before the next planning
+  discussion. Keep W1–W6 and their actual evidence distinctions visible. No new
+  feature, polishing implementation, public release or submission is authorized.
+- **Affected contract:** SB-I5.4, IG5/IM5, roadmap lifecycle and next planning boundary.
 
 ## Evidence and unresolved questions
 
@@ -540,7 +556,6 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Reconcile SB-I5.4 and the corrected package against the accepted MVP and workshop
-evidence, then carry out the owner-requested archive and hygiene passes. SB-D020
-supplies the UI confirmation and accepts the capitalization correction without
-another live recheck.
+Complete the archive and hygiene passes requested in SB-D020–021. The next owner
+discussion will define the polishing roadmap; its placeholder does not authorize
+new product work or publication.

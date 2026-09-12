@@ -4,7 +4,7 @@
 
 DSP Sphere Builder is a quality-of-life mod for Dyson Sphere Program.
 The interaction is simple: select an empty sphere layer, then click
-**Paint next patch** whenever you want to extend its framework.
+**Paint Next Patch** whenever you want to extend its framework.
 
 The design grows through twelve pentagons: one polar cap, five in the upper
 ring, five in the lower ring, and the opposite cap. Each click completes the
@@ -35,7 +35,7 @@ established by this project.
 
 Select exactly one native sphere layer with at least 68 degrees of unlocked
 Dyson sphere latitude. Start on an empty layer or continue a recognized staged
-framework. Click **Paint next patch** to extend it without waiting for
+framework. Click **Paint Next Patch** to extend it without waiting for
 construction. Save/reload continuation comes from the actual framework; modified
 or unrelated layouts are refused. Unexpected errors stop painting for the plugin
 session and may leave a partial patch; there is no rollback or automatic retry.

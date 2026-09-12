@@ -3,7 +3,7 @@
 ## Purpose and authority
 
 Let a player build the chosen C60 framework gradually by selecting a sphere layer
-and clicking **Paint next patch**. Twelve deliberate clicks complete the fixed
+and clicking **Paint Next Patch**. Twelve deliberate clicks complete the fixed
 polar progression while native construction continues and shell filling remains
 under the player's control.
 
@@ -136,7 +136,7 @@ closure means its boundary exists; it does not create a shell.
 
 | ID | Requirement | Basis |
 | --- | --- | --- |
-| SB-MVP-08 | Provide one explicit **Paint next patch** action within the native Dyson sphere editor. Bind it to the selected layer at the time of the click; never use a previously selected target. Outside a running editor context it cannot mutate a sphere. | E2/E5/E6; SB-D009 |
+| SB-MVP-08 | Provide one explicit **Paint Next Patch** action within the native Dyson sphere editor. Bind it to the selected layer at the time of the click; never use a previously selected target. Outside a running editor context it cannot mutate a sphere. | E2/E5/E6; SB-D009 |
 | SB-MVP-09 | One deliberate click performs at most one synchronous patch addition on the native UI thread. Permit the next deliberate click without waiting for construction. Do not queue clicks, run background construction, or auto-advance after time, reload, or selection changes. | E2/E4/E6; SB-D009 |
 | SB-MVP-10 | Give concise feedback for the selected target: unavailable prerequisite, ready to start/continue, patch applied, completed, unmatched graph, or stopped after failure. A successful action identifies progress through the twelve patches. Disabled controls must explain why they are unavailable; feedback must not present a previous layer's progress as current. Exact wording and visual styling are implementation choices. | E5/E6; SB-D009 |
 

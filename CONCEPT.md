@@ -2,7 +2,7 @@
 
 **Paint a perfect C60 Dyson sphere, one patch at a time.**
 
-DSP Sphere Builder is a proposed Dyson Sphere Program mod that helps players lay out an exact, cost-efficient C60 sphere gradually. Select a sphere layer and click **Paint next patch** to extend the framework by one connected section.
+DSP Sphere Builder is a proposed Dyson Sphere Program mod that helps players lay out an exact, cost-efficient C60 sphere gradually. Select a sphere layer and click **Paint Next Patch** to extend the framework by one connected section.
 
 It combines the precision of a complete blueprint with the construction control of planning a small area at a time. Players can concentrate construction on the current section, then expand whenever they are ready. Shell filling remains entirely with the player.
 

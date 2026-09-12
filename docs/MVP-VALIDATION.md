@@ -464,3 +464,70 @@ The supplied `20260912134823_1.jpg` is byte-identical to the earlier screenshot
 Visual inspection confirms it shows the old top-center panel, not the refinement.
 It is retained as supplied and not relabeled as a new UI capture. Both original
 files were copied unchanged to ignored `artifacts/owner-session/0.1.36/`.
+
+The owner then supplied the replacement screenshot. It was retained as
+`ui-refinement.jpg` (726,085 bytes, SHA-256
+`783EBF39EED2C7380158597CB1C0CAC5958E3EF285A0AB80E7283CF26A787858`)
+beside those files. It shows the compact title/button row and readable
+`Layer 2: 1/12 patches planned` feedback to the left of the bottom toolbar, with
+the center caption unobstructed. The native inspector also selects layer 2,
+radius 9,700, with 6 nodes / 6 frames / no shells. This is a layout/current-selection
+capture, not evidence that the separate logged layer-1 action painted layer 2.
+It supplies visual corroboration for the owner's refinement acceptance.
+
+## SB-I5.4 — Final MVP reconciliation
+
+The final review covered all 25 requirements through all 15 acceptance cases.
+The implementation paths were read alongside their existing checks; no new full
+runtime matrix was introduced. The following is an evidence map, not a second
+work-status table. E1–E7 and W1–W6 refer to the specification's evidence catalogue.
+
+| Case | Requirements (SB-MVP) | Implementation and checked evidence | Limits retained |
+| --- | --- | --- | --- |
+| SB-A01 | 01,03,25 | Mapped/native compilation, target checks and DLL metadata in SB-I1.1–1.2 and final package below; both owner logs identify the target | Recorded target only; compilation is distinct from gameplay |
+| SB-A02 | 03,08,10,20 | `NativeTarget.Resolve`, `Plugin`, `PaintSession`; selection/readiness/no-write checks in SB-I3; E5 and accepted owner sessions | Multiple-selection live case W5; not every UI transition is separately logged |
+| SB-A03 | 03,10,14,20 | Native rounded latitude read, pre-write refusal, managed 67/68 boundary checks; sufficient unlock in owner sessions | Below-threshold runtime and research names W4 |
+| SB-A04 | 04–07,09,11 | Compiled plan, independent derivation, all twelve call deltas and 0.1.31 export comparison: 60/90 within numeric bounds | No optimality or new radius claim |
+| SB-A05 | 09,12,14 | `NativeGraph` and `Preservation`; retained/replaced identities and lost SP negative checks; partial/completed native construction in E4 | Production exports omit identity/SP/CP; no new completed-construction wait |
+| SB-A06 | 12,13,16 | All 32 face boundaries in recognition checks; both shell classes in additive checks; E4 pentagon and 0.1.31 retained hexagon boundary | Completed hexagon CP and endpoints W2 |
+| SB-A07 | 02,04,05,13,14 | Native radius inspection, independent scalar positions and checked numeric scales; actual full frameworks at 9,700 and 36,000 | Maximum-radius/both-face endpoint coverage W1/W2 |
+| SB-A08 | 02,08,15,17 | Fresh target callback and independent current-layer checks; 0.1.31 layer-1 progression and layer-3 start; refinement screenshot reflects selected layer 2 | Other-system painting W3; screenshot is not an extra logged paint |
+| SB-A09 | 08,15,17,19 | Stateless graph recognition, editor attach/detach review, E5 menu reload and owner refinement confirmation | No separately instrumented production reload record |
+| SB-A10 | 15,17,19,22 | No custom save/progress writer; fresh recognition of complete and partial outcomes; native save inspection | Full exit/removal/reinstallation W6 |
+| SB-A11 | 15,17,18,20 | Permuted/reused numeric IDs in recognition checks; recreated native layers in E5 | Content equivalence cannot establish historical ownership |
+| SB-A12 | 10,15,16,18,20 | Missing/extra/duplicate/displaced/ambiguous graphs, partial deltas and float boundaries in `RecognitionChecks`; no-write edit refusal in `PaintChecks`; E5 native edits | In-bound rounding is deliberately indistinguishable from an equally small edit |
+| SB-A13 | 06,10,20 | Complete graph is read-only; repeated complete requests checked with zero writes; E5/E6 and 0.1.31 final capture | Final graph capture alone does not instrument an extra click |
+| SB-A14 | 12,21,22 | Zero/throw/capture-failure and preservation negatives in `PaintChecks`; one diagnostic and persistent session stop; E4 native rejection | No atomicity, retry or rollback claim; no forced production fault |
+| SB-A15 | 23–25 | Actual downloaded ZIP checks, sequential identity, native reference comparison, retained source/license/icon and negative package cases | No release, upload or Thunderstore moderation acceptance |
+
+The user accepted the production MVP and then the workshop refinement, with a
+specific no-recheck disposition for the label capitalization (SB-D018–020).
+No unresolved core defect was found. The existing stop boundary was kept because
+native allocation can partially succeed; diagnostics retain the original exception
+and no retry/rollback or speculative compatibility gate is present.
+
+### Final milestone package
+
+[Run 34694058740](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34694058740),
+build 38 / attempt 1, passed all CI checks. Its clean source revision is
+`f761feed8d58c3852bb5c272cf1973b366a40546`; the diagnostic identity is
+`0.1.38.f761fee`, numeric version `0.1.38`, assembly version `0.1.0.0` and GUID
+`dsp.spherebuilder`.
+The [direct package](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34694058740/artifacts/10297468797)
+was independently downloaded and checked: 96,096 bytes, 48 valid entries,
+one production DLL, required root/source/license/icon inputs, and no nested ZIP
+or dependency/probe payload. Package SHA-256 and hosted digest agree:
+`4A64DAC4A208F2B2C0430EDCC2A4358984C6CBA0C1186E386E71DFB431E09B45`.
+DLL SHA-256 is `7752FF5E21844466BBD1907B25FFADF015C4DD8FF9BFF1396C1982FB113FC313`.
+All 217 emitted references match the same-revision/version local native build;
+both modes have no warnings/errors and all five shim assemblies match the map.
+The download/build record are retained in ignored `artifacts/hosted/34694058740/`.
+
+The sole runtime-source difference from owner-tested 0.1.36 is **Paint Next Patch**
+capitalization. SB-D020 explicitly accepts that difference without another live
+check. Runtime geometry/preservation evidence remains the 0.1.31 session and E4–E6;
+the 0.1.36 session and replacement screenshot establish the UI refinement.
+
+Publication polish is the next planning boundary: presentation/package copy,
+any agreed cosmetic refinements and release preparation. This review did not
+add product features, reopen W1–W6, author that plan, or authorize publication.

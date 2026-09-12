@@ -22,7 +22,7 @@ for validation and acceptance state.
 
 Open the native Dyson sphere editor in a running game. Select exactly one empty
 sphere layer at a native legal radius. At least 68 degrees of unlocked Dyson
-sphere latitude is required. Click **Paint next patch** to start, then again
+sphere latitude is required. Click **Paint Next Patch** to start, then again
 whenever ready; construction need not finish between clicks. The panel reports
 progress or why painting is unavailable.
 
