@@ -23,10 +23,10 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F2 complete; SB-F3.1 is next |
+| Roadmap and active work | SB-F3.1 in progress; owner-operated probe observations are next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
-| Mod implementation | Not started; no plugin source or runtime scaffold |
-| Runtime validation and owner acceptance | Not performed for the proposed mod |
+| Mod implementation | Disposable two-patch feasibility probe only; production implementation not started |
+| Runtime validation and owner acceptance | Probe compilation passed; live observations and owner acceptance pending |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
 ## Accepted scope
@@ -68,7 +68,7 @@ loaded or executed by the agent.
 | SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
-| SB-F3.1 | Not started; next | — |
+| SB-F3.1 | In progress; probe prepared, awaiting owner observations | [Probe preparation](FEASIBILITY.md#sb-f31--additive-probe-preparation), [operator procedure](../probe/README.md) |
 | SB-F3.2 | Not started | — |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
@@ -195,7 +195,8 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Proceed to SB-F3.1 and prepare the owner-operated probe. G2/M2 passed: the route and
-candidate native envelope agree, with concrete live cases and no core deviation.
-Live preservation remains unverified. The next
-implementation roadmap remains downstream of G4/M4.
+The owner runs the [two-patch procedure](../probe/README.md) in a disposable save
+and returns its evidence and observations. G2/M2 passed; G3 cannot pass on static
+inspection or compilation. Complete SB-F3.1 from the identified live results
+before proceeding to SB-F3.2. The next implementation roadmap remains downstream
+of G4/M4; no full MVP specification or final acceptance is claimed.

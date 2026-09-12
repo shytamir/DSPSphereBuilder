@@ -463,3 +463,52 @@ python -B scripts/test_geometry.py
 The unit-geometry and three quantized-scale runs passed. Ten focused tests passed,
 including projection clamping, projection back onto the sphere, and invalid-radius
 rejection. No game code was executed for these checks.
+
+## SB-F3.1 — Additive probe preparation
+
+The disposable [probe source](../probe/Probe.cs) and
+[operator procedure](../probe/README.md) apply only the first two checked deltas.
+The selected native layer is resolved at each button click. A panel beneath the
+editor's control panel uses native Unity UI, `UIBlockZone`, and the editor's GUI
+rectangle list; actual layout and interaction await observation. No Harmony patch,
+loader migration, shipping plugin scaffold, or mock-pipeline change was needed.
+
+The source compiles as `netstandard2.1` against the identified local assemblies,
+including Unity UI, text rendering, and JSON serialization modules. The compile
+completed with zero warnings and zero errors using the installed .NET SDK.
+The sandbox initially denied MSBuild access to installed SDK metadata; the same
+build command succeeded in the desktop context. No SDK or package installation
+was performed. No game method was executed by compiling the probe.
+
+```powershell
+./scripts/Build-Probe.ps1 -DspManagedPath $managed -BepInExCorePath $loader -PythonCommand python
+```
+
+The build emits an ignored ZIP containing the DLL, operator instructions, original
+license, and the reference asset/license. Its embedded input contains only the
+eleven nodes and two deltas needed here. The build records the source revision
+and marks dirty source explicitly; final handoff uses a clean revision. The probe
+checks and records the actual game assembly hash at startup and writes the loaded
+game/build, Unity version, prototype counts, selected target, and raw snapshots.
+The DLL does not bundle game or loader dependencies.
+
+Snapshots record node positions, raw SP/order counts, endpoint SP, graph links,
+shell associations, shell node CP, and colors. Direct object-reference comparisons
+occur in process and their failures are exported; JSON IDs alone are not treated
+as proof of object identity. Comparisons permit increased construction and do not
+require native request/selection/render bookkeeping to stay unchanged. Counts,
+canonical-to-native node mappings, and the final expected graph are checked.
+
+Before any mutation, a snapshot is written. Known refusals capture actual
+before/after state. Unexpected exceptions stop further painting; any captured
+partial result is retained for inspection, without retry, deletion, or rollback.
+The separate empty-layer rejection experiment makes one valid node call followed
+by a same-endpoint frame call. It tests the known native return-zero branch after
+an earlier successful mutation; it is not evidence that a valid planned patch
+spontaneously reaches that branch, and it adds no fault-injection framework.
+
+The probe's temporary in-memory tracking is sufficient to compare two consecutive
+actions on the same layer. It is not an MVP resumption policy. SB-F3.2 will assess
+native reconstruction only after the additive observations satisfy SB-F3.1.
+Real partial/completed construction, preservation, shell handoff, control behavior,
+and the rejection experiment have **not yet been observed in the running game**.
