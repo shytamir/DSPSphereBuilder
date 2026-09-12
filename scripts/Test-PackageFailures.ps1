@@ -74,3 +74,4 @@ foreach ($case in $cases) {
     if (!$rejected) { throw "Malformed package accepted: $case" }
 }
 Write-Host "PASS: $($cases.Count) malformed package cases rejected."
+exit 0

@@ -222,3 +222,13 @@ Package-source follow-up: inspection found that the retained patch derivation al
 imports `verify_geometry.py`. That file is now included (48 package files). The
 source directory extracted from the revised local ZIP successfully regenerated
 the production plan with Python, without reaching outside its packaged inputs.
+
+## SB-I4.2 — Hosted transport checks
+
+[Run 34678551277](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34678551277)
+passed compilation, package validation, all production logic/geometry checks and
+all twelve malformed-package cases. The step then failed because an intentionally
+rejected DLL left native exit code 1 in PowerShell. The negative-check script now
+returns success explicitly only after every rejection has passed. The local
+Actions-style exit-code check confirms zero; unexpected acceptance still throws.
+The next candidate must pass hosted upload and independent download inspection.
