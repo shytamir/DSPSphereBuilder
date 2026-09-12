@@ -27,45 +27,60 @@ jobs:
         with:
           global-json-file: global.json
 
-      - name: Compile production source and check metadata
+      - name: Compile, package and validate
+        id: package
         run: |
-          ./scripts/Build-Plugin.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
+          ./scripts/Build-Package.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
 
       - name: Set up geometry check runtime
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12.10'
 
-      - name: Check the compiled plan
+      - name: Check production logic and malformed packages
         run: |
           dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json
           if ($LASTEXITCODE -ne 0) { throw 'Production logic checks failed.' }
           python -B scripts/check_plan.py artifacts/compiled-plan.json
           if ($LASTEXITCODE -ne 0) { throw 'Compiled plan comparison failed.' }
+          $info = Get-Content artifacts/BUILD-INFO.json -Raw | ConvertFrom-Json
+          ./scripts/Test-PackageFailures.ps1 -PackagePath "artifacts/packages/$($info.package_file)" -ExpectedVersion $info.package_version -ExpectedCommit $info.source_commit
 
-      - name: Build and validate executable package
-        id: package
-        run: |
-          ./scripts/Build-Package.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
-
-      - name: Upload package and build identity
+      - name: Upload direct mod package
+        id: download
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: DSPSphereBuilder-${{ steps.package.outputs.build_label }}-attempt-${{ github.run_attempt }}
-          path: |
-            artifacts/packages/DSPSphereBuilder-${{ steps.package.outputs.package_version }}.zip
-            artifacts/BUILD-INFO.json
+          path: artifacts/packages/DSPSphereBuilder-${{ steps.package.outputs.package_version }}.zip
+          archive: false
+          overwrite: true
+          if-no-files-found: error
+
+      - name: Upload separate build identity
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: Build-info-${{ steps.package.outputs.build_label }}-attempt-${{ github.run_attempt }}
+          path: artifacts/BUILD-INFO.json
           if-no-files-found: error
 
       - name: Summarize artifact
+        env:
+          PACKAGE_URL: ${{ steps.download.outputs.artifact-url }}
         run: |
           $info = Get-Content artifacts/BUILD-INFO.json -Raw | ConvertFrom-Json
           @"
-          Executable package: $($info.package_file)
+          [Download $($info.package_file)]($env:PACKAGE_URL)
 
-          Thunderstore version: $($info.package_version)
+          This download is the mod package itself, with manifest.json at its root and no enclosed package ZIP.
 
-          Build identity: $($info.build_label)
+          Thunderstore/plugin version: $($info.package_version)
 
-          Extract the inner package ZIP from this Actions artifact. It contains the production DLL and source/licenses.
+          Build: $($info.build_label), attempt $($info.run_attempt)
+
+          Commit: $($info.source_commit)
+
+          Package SHA-256: $($info.package_sha256)
+
+          DLL SHA-256: $($info.payload_sha256)
+
+          Build information is a separate artifact. Runtime acceptance is tracked in docs/PROJECT.md; no publication occurs here.
           "@ >> $env:GITHUB_STEP_SUMMARY

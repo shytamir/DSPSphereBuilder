@@ -128,3 +128,11 @@ owner-session candidate. The run summary identifies the appropriate download.
 
 The workflow does not create releases/tags, edit VERSION, submit to Thunderstore,
 or interact with a game installation.
+
+The package upload uses the pinned action's supported
+[`archive: false` input](https://github.com/actions/upload-artifact/blob/043fb46d1a93c77aae656e7c1c64a875d1fc6a0a/action.yml).
+Download `DSPSphereBuilder-<version>.zip` from the run summary or artifact list:
+it is the package itself, with `manifest.json` at its root. There is no inner ZIP
+to extract. Build information is a separate artifact. A retry preserves the
+numeric version and replaces that run's same-named package; use the matching
+attempt's build record and hashes. No other workflow run's package is replaced.
