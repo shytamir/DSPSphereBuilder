@@ -114,7 +114,7 @@ this repository's history. Effective settings were checked after the change.
 Global configuration and existing commits were not altered. This prevents the
 same future exposure; it does not sanitize the published history.
 
-### Required resolution
+### Initial blocker
 
 SB-R1.2 includes reachable history explicitly. A new content commit cannot remove
 the confirmed metadata. Replacing historical identities would change the affected
@@ -122,10 +122,59 @@ commit IDs and require a coordinated force-push; old source references, hosted
 artifacts and GitHub-retained copies would then need review. A force-push alone
 must not be represented as proof that all published remnants are gone.
 
-The [agent instructions](../AGENTS.md) prohibit history rewriting/force-pushing,
-and this roadmap excludes it from ordinary push authorization. No history rewrite,
-remote deletion or privacy exception was attempted. SB-D025 records the mitigation
-and blocker; PROJECT.md owns the resulting gate state. Resume only after an owner
-decision on a separately authorized history cleanup or an explicit scope exception
-for historical Git attribution. Neither choice is inferred from release-candidate
-implementation authorization.
+At the initial stop, the [agent instructions](../AGENTS.md) prohibited history
+rewriting/force-pushing and the roadmap excluded it from ordinary push authorization.
+No rewrite or privacy exception was inferred. SB-D025 recorded that blocker;
+the subsequent explicit owner approval and cleanup are recorded below.
+
+### Authorized cleanup and checks
+
+The owner explicitly approved any necessary history rewrite. SB-D026 records the
+result: all 46 commits through the blocker record were recreated with project
+handle/GitHub no-reply attribution; the GitHub service identity was retained.
+Every tree, message, parent relationship and timestamp was checked against its
+original. One old signature was removed because rewritten metadata invalidates it.
+The force-push used an exact old-head lease. Public anonymous history inspection
+returned 46 commits with only the expected project/service identities.
+
+[HISTORY-REWRITE.json](management/archive/HISTORY-REWRITE.json) maps old evidence
+identities to their equivalent source commits. Old build labels/hashes in runtime
+records remain historical measurements, not labels of newly compiled binaries.
+The rewritten tip was `65ea520ddada2e24a5cf6bdb940fd55f8ddd82c5`.
+
+Local reflog/object cleanup removed only the verified superseded commits. An
+unrelated recovery tree and all Codex references were preserved. An initial broad
+purge was rejected by automatic approval review; enumerating and protecting the
+unrelated object allowed the narrower cleanup. No unknown recoverable work was
+discarded. The remaining unreachable object is the protected tree, not a commit
+containing private attribution. This verifies repository history; it does not
+claim control over third-party copies or GitHub's internal retention of old objects.
+
+Privacy coverage included 258 reachable historical file blobs, 805 local files
+including ignored inputs, and 2,218 entries recursively read from ZIPs. All 46
+completed hosted runs' logs and all 60 then-available artifacts were downloaded
+successfully and included. UTF-8/UTF-16 searches were supplemented by inspection
+of the matches, image content/metadata and production debug records.
+
+The additional actual finding was an ignored upstream API-response cache carrying
+a contributor's email. It now retains only the source SHA, source URL and tree SHA.
+Its recheck found no email. Public project/source handles and corporate license
+notices were classified as provenance, not personal contact data; required
+attribution and license text were preserved. Email-like matches in PDB bytes were
+framework DLL names adjacent to binary bytes; JPEG matches were compressed data.
+The three retained screenshots (two unique images) showed only game UI. Their
+metadata contained JPEG tables, not author/location fields; the icon's metadata
+contained PNG image information. No artwork or accepted screenshots were changed.
+
+Machine-path matches were generated build/diagnostic paths, not additional personal
+contacts. To keep future production payloads independent of the developer's chosen
+workspace, compiler paths now map to `/_/`. Both shim and real-reference builds
+passed with zero warnings/errors and the same 217 emitted references; five mapped
+shim assemblies still match the target. DLL/PDB byte inspection found no local
+workspace or user-home path in either production build. PE inspection read the
+mapped CodeView path directly. No native reference surface or runtime behavior changed.
+
+These checks cover the repository, reachable history and inspected outputs; they
+are not an internet-wide erasure claim. Final candidate outputs receive a regression
+check in SB-R5.1. Raw download inventories and sanitized match summaries are local
+under `artifacts/release-review/`.

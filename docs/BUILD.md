@@ -35,6 +35,8 @@ For compilation alone, `scripts/Build-Plugin.ps1` accepts the same arguments.
 Outputs are `artifacts/plugin/Shim/DSPSphereBuilder.dll` and, with real inputs,
 `artifacts/plugin/Native/DSPSphereBuilder.dll`. The package selects only the
 production DLL; shim and native dependency binaries are never shipped.
+Production compiler paths map to `/_/` so DLL/PDB debug records do not expose the
+developer's workspace or user-home location.
 
 ## Offline checks
 
