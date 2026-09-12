@@ -16,33 +16,44 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-Executing the [feasibility and MVP definition roadmap](management/ROADMAP.md).
-The owner authorized sequential execution, a main-branch push with state updates
-after every completed story, and evidence-based decisions that keep the MVP lean.
-Stop for a substantial blocker. The owner will operate the later live probe.
+The owner accepted the MVP specification on 2026-09-12. The feasibility roadmap
+is complete and retained in the [archive](management/archive/ROADMAP-feasibility-and-mvp-definition.md).
+The new [MVP implementation roadmap](management/ROADMAP.md) is a reviewed draft
+prepared for owner review. Its authoring and publication to main are authorized;
+implementation execution has not been activated by this planning request.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F4.1 complete; SB-F4.2 authored and reviewed, awaiting owner acceptance of the written specification |
-| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; specification ready for review; G4/M4 pending owner acceptance |
+| Roadmap and active work | Feasibility roadmap closed and archived; new implementation draft contains five epics and twelve stories; none started |
+| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
+| Implementation gates | IG1–IG5 and workshop-entry IG5a not entered |
 | Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
 ## Accepted scope
 
-The accepted product baseline is the [concept](../CONCEPT.md), including its
+The accepted product baseline is the [concept](../CONCEPT.md) and the
+[MVP specification](MVP-SPECIFICATION.md), including the
 twelve-click polar progression, missing connections plus one leading spoke,
 preservation of existing construction, and player-managed shells. Future changes
 to that baseline require a steering decision here and a corresponding update to
 the concept where its behavior changes.
 
-This roadmap covers feasibility evidence and MVP constraints only. It does not
-select a production architecture, deliver the playable MVP, or authorize the
-next implementation roadmap. Repository preparation and its mock pipeline remain
-the established foundation.
+The implementation draft plans a working MVP and a real, directly usable CI mod
+package, followed by publication polish in a later roadmap. The production GUID
+is `dsp.spherebuilder`. CI will use mapped compile-only reference shims; every commit
+adding or changing a referenced surface must carry the corresponding native
+type/member mapping and checks. Local real-reference compilation remains required.
+
+Human validation and game runtime validation begin together immediately before
+the UI workshop. The short session reuses accepted feasibility evidence instead
+of reopening W1–W6 as a test matrix. Necessary workshop changes and targeted
+rechecks precede final MVP acceptance. Actual publication, polish, and production
+implementation are outside the current authoring task. The mock pipeline remains
+the current build behavior until its implementation stories execute.
 
 ## Target game reference
 
@@ -63,6 +74,25 @@ are owner-operated; the agent has not launched or operated a game session.
 
 ## Work tracking
 
+### MVP implementation roadmap
+
+| Story | Execution state | Planned outcome |
+| --- | --- | --- |
+| SB-I1.1 | Not started | Mapped compile references and delivery inputs |
+| SB-I1.2 | Not started | Production project and local/CI compilation |
+| SB-I2.1 | Not started | Exact twelve-patch production plan |
+| SB-I2.2 | Not started | Native-content prefix recognition |
+| SB-I3.1 | Not started | Additive action and session failure boundary |
+| SB-I3.2 | Not started | Current-target editor control and feedback |
+| SB-I4.1 | Not started | Executable package and validator |
+| SB-I4.2 | Not started | Real hosted download and independent inspection |
+| SB-I5.1 | Not started | Focused owner/runtime validation |
+| SB-I5.2 | Not started | Owner UI workshop |
+| SB-I5.3 | Not started | Agreed UI refinements and targeted rechecks |
+| SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
+
+### Completed feasibility roadmap
+
 | Story | Execution state | Evidence |
 | --- | --- | --- |
 | SB-F1.1 | Complete | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
@@ -74,7 +104,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F3.2 | Complete; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
 | SB-F3.3 | Complete under SB-D008; remaining live cases accepted without execution | [Full workflow and limits](FEASIBILITY.md#sb-f33--full-workflow-evidence-and-accepted-limits) |
 | SB-F4.1 | Complete | [Constraint reconciliation](FEASIBILITY.md#sb-f41--mvp-constraint-reconciliation), SB-D009 |
-| SB-F4.2 | In progress; specification and review complete; owner acceptance pending | [MVP specification](MVP-SPECIFICATION.md), [review record](FEASIBILITY.md#sb-f42--specification-review) |
+| SB-F4.2 | Complete; owner accepted the specification under SB-D010 | [MVP specification](MVP-SPECIFICATION.md), [review record](FEASIBILITY.md#sb-f42--specification-review) |
 
 Record story progress, gate/milestone outcomes, and concise evidence links
 here. Keep purpose, scope, dependencies, and completion criteria in the roadmap.
@@ -275,8 +305,91 @@ or Thunderstore moderation acceptance.
   provisional mechanism choice using the observations and SB-D008; neither the
   original concept's progression nor its shell ownership changes.
 
+### SB-D010 — Accept the specification and close feasibility
+
+- **Date / decision-maker:** 2026-09-12, explicit owner instruction: "MVP
+  specification accepted, Close and archive the current roadmap as completed."
+- **Choice:** Accept the written MVP specification, complete SB-F4.2 and G4/M4,
+  and archive the feasibility roadmap with its original scope/criteria intact.
+  Author the next implementation roadmap as a draft on main.
+- **Basis / alternatives:** The specification, its three-pass review, and the
+  retained feasibility/decision record were presented for acceptance. No further
+  feasibility handoff was requested; SB-D008's unverified cases stay explicit.
+- **Consequence:** The first roadmap is closed. Authoring the implementation draft
+  does not execute it, validate a production plugin, or authorize publication.
+- **Affected contract:** Current phase, SB-F4.2, G4/M4, roadmap archive, and the
+  next implementation-planning boundary.
+
+### SB-D011 — Stable plugin identity and a directly usable CI package
+
+- **Date / decision-maker:** 2026-09-12, owner instruction.
+- **Choice:** Use production GUID `dsp.spherebuilder`. The implementation roadmap
+  ends with a working MVP and CI producing the real mod package. Its downloaded
+  archive must expose a valid package root directly, without a wrapper directory
+  or an enclosed same-name ZIP. Preserve the sequential VERSION contract.
+- **Basis / alternatives:** The current workflow uploads a mock ZIP inside an
+  Actions artifact with build information. Retaining that nested delivery or
+  shipping the disposable probe does not meet the requested outcome. The actual
+  upload mechanism will be verified in SB-I4.2, not guessed during planning.
+- **Consequence:** Basic executable packaging and installation docs belong to
+  this roadmap. Final artwork, publication polish, release automation, and actual
+  Thunderstore upload remain outside it. The GUID is no longer an open choice.
+- **Affected contract:** Specification delivery/planning handoff; SB-I1.2,
+  SB-I4.1–4.2, and the final IG5/IM5 package requirement.
+
+### SB-D012 — Focused late validation followed by a UI workshop
+
+- **Date / decision-maker:** 2026-09-12, owner instruction.
+- **Choice:** Defer human validation until immediately before the UI workshop;
+  game runtime validation begins with that owner session. Before it, use static
+  inspection, offline logic checks, compilation, and package inspection only.
+  The workshop precedes the final gate and may yield bounded usability changes.
+- **Basis / alternatives:** The owner requested efficient validation at this
+  point, not early probes or an enlarged replay of the old feasibility matrix.
+  SB-D008 already accepts W1–W6 without claiming those cases were observed.
+- **Consequence:** SB-I5.1 uses one CI candidate and a short integrated route:
+  ordinary-radius progression, a manual pentagon shell, intermediate menu reload,
+  completion, and one edit refusal on a second layer. No construction-completion
+  waits or routine W1–W6 matrix. Existing evidence covers declared limits; new
+  contradictory evidence still requires action. Workshop changes get only the
+  affected rechecks; final acceptance reviews the record rather than restarting
+  the live checklist.
+- **Affected contract:** Validation boundaries, IG1–IG4, SB-I5.1–5.4, IG5a and IG5.
+
+### SB-D013 — Compile-only shims with per-commit native mapping
+
+- **Date / decision-maker:** 2026-09-12, explicit owner steering during roadmap
+  authoring: "We'll use shims to provide type references, carefully mapping any
+  referenced type we add with each commit."
+- **Choice:** CI compiles production source against minimal type-reference shims.
+  Every commit adding or changing a referenced native surface includes its
+  target-backed declaring assembly/type/member signature mapping, corresponding
+  shim declarations, and affected checks. Keep one mapping beside the shim source.
+- **Basis / alternatives:** The owner selected shims rather than acquiring full
+  game binaries in CI. The recorded local assembly remains the authority for
+  signatures and behavior. The available probe's local real-reference build
+  establishes a separate compile path, not evidence that future shims are correct.
+- **Consequence:** Establish initial assembly identity/signature mapping in
+  SB-I1.1 and both compile modes in SB-I1.2; maintain the map in each later affected
+  commit. No unmapped guessed type, copied runtime body, simulated game, or
+  substituted shim-only proof of target compatibility. Exclude all shim/native
+  dependency assemblies from packages and use the actual CI DLL in late runtime
+  validation. Compile-only shims are authorized in the new implementation scope;
+  the archived roadmap's feasibility-only restriction and historical evidence
+  remain intact.
+- **Affected contract:** Specification target/delivery notes and SB-A01;
+  implementation execution rules, SB-I1, all new native references, and SB-I4.
+
 ## Evidence and unresolved questions
 
+- The implementation draft was reviewed in three passes on 2026-09-12:
+  scope/decomposition and backward-only dependencies; requirement/failure-state
+  coverage and the late human-validation workload; archive/authority integrity,
+  per-commit reference mapping, and direct package delivery. All 15 acceptance
+  cases map to owning work and cover the 25 specification requirements. The
+  archived body matches the prior roadmap apart from adjusted relative links;
+  local links/anchors and whitespace checks pass. These are document checks, not
+  implementation, build, or runtime evidence.
 - The concept preserves the supplied sample and reported format checks; those
   checks were not rerun during repository preparation.
 - Canonical geometry, polar progression, and the static native placement envelope
@@ -298,11 +411,8 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Owner review of [MVP-SPECIFICATION.md](MVP-SPECIFICATION.md), together with this
-decision record and FEASIBILITY.md, is the remaining SB-F4.2/G4/M4 step. The
-specification has 25 stable requirements, the complete twelve-delta table, and
-15 acceptance cases; its review is recorded in FEASIBILITY.md. The owner accepted
-the remaining feasibility cases, not this subsequently authored document.
-No further human probe is requested. Record explicit specification acceptance
-here before declaring the final milestone achieved. The next implementation
-roadmap and production work have not been authored or activated by this handoff.
+Owner review and execution authorization for the new
+[MVP implementation roadmap](management/ROADMAP.md). Its draft covers five epics,
+twelve stories, phased gates/milestones, and all 15 specification acceptance cases.
+No production code, reference shims, new live probe, or real-package workflow has
+been implemented by this authoring task. There is no current runtime handoff.

@@ -11,7 +11,8 @@ This document defines the behavioral contract for the next implementation plan.
 [PROJECT.md](PROJECT.md) alone records scope acceptance, execution state, and
 milestones. [CONCEPT.md](../CONCEPT.md) retains the original concept, references,
 and illustrative five-spoke sample. That sample is not the first-click output.
-Decision references below refer to PROJECT.md's SB-D001–009 entries.
+Decision references below refer to PROJECT.md. SB-D003–009 establish the behavior;
+SB-D011–013 add the production identity, delivery, and validation constraints.
 
 ## Scope
 
@@ -74,6 +75,10 @@ of a future executable build.
 The target hash identifies the baseline and triggers revalidation when it changes;
 a production hard-hash compatibility gate is not required. No claim extends to
 another game/loader version without reviewing the affected native surfaces.
+Under SB-D013, CI uses compile-only type-reference shims, with target-backed
+type/member mappings updated in every commit adding or changing a referenced
+surface. Local real-reference compilation remains a separate required check;
+shims neither implement game behavior nor establish runtime compatibility.
 Native layer-creation constraints remain the game's responsibility. Applying its
 creation-time radius check to an already-existing layer would collide with that
 layer itself and is not an appropriate Paint prerequisite.
@@ -196,6 +201,12 @@ new retry framework. A prototype failure is investigated before further testing.
 
 ## Delivery and retained evidence
 
+The production plugin GUID is **`dsp.spherebuilder`** (SB-D011). The implementation
+roadmap must deliver the actual CI-built mod as a directly usable package download,
+without a wrapper directory or nested package ZIP. Shim assemblies are build
+inputs and must not be shipped. Publication polish and upload remain later work;
+SB-D012 places owner/runtime validation immediately before the UI workshop.
+
 | ID | Requirement | Basis |
 | --- | --- | --- |
 | SB-MVP-23 | Keep the established VERSION and sequential-build contract when later producing the executable package: numeric `MAJOR.MINOR.BuildNumber` for Thunderstore and the short commit in diagnostic build identity. Do not replace the build sequence with a hash or retry count. Packaging extension belongs to the next implementation plan. | E7; SB-D009 |
@@ -219,7 +230,7 @@ the identified prototype evidence, not validation of a production mod.
 
 | Case / requirements | Setup and action | Expected result | Validation boundary |
 | --- | --- | --- | --- |
-| SB-A01 — 01,03,25 | Build against the pinned local references; identify inputs and the resulting artifact | Correct target/build attribution and successful real-reference compilation; no substituted game shim | E1/probe compilation observed; future executable still needs its own validation |
+| SB-A01 — 01,03,25 | Build against the pinned local references and mapped CI references; identify inputs and artifacts | Correct attribution and successful local real-reference compilation; CI shim declarations match the target mapping and do not substitute for the real-reference check | E1/probe compilation observed; production mapping/compilation and runtime validation remain distinct obligations under SB-D013 |
 | SB-A02 — 03,08,10,20 | With no layer, then with multiple layers selected, request Paint; also leave the editor | No nodes/frames added and no stale target used; actionable feedback where visible | No-selection refusal and editor return observed; multiple selection W5 |
 | SB-A03 — 03,10,14,20 | Use a native unlock below rounded 68, then a sufficient native unlock, on an otherwise eligible empty layer; request Paint | First request adds nothing; sufficient state adds exactly 6 nodes / 6 frames; research is unchanged | Sufficient value 90 observed; below-threshold case W4; names/increments not assumed |
 | SB-A04 — 04–07,09,11 | Begin empty at a legal radius; click through all twelve rows without waiting | Every per-click delta matches the table, remains connected, and reuses shared elements; final 60 / 90 with no extra spoke; numeric comparisons pass | E3 derivation and E4/E6 combined live deltas; full graph observed at 9,700 |
@@ -242,15 +253,15 @@ pinned target and reference, fixed delta derivation, native operation map,
 SB-D003–009, and the observed/accepted boundaries above. No additional feasibility
 programme is a prerequisite under the owner's acceptance decision.
 
-The next roadmap may decide project/source layout, stable production plugin
-identity, exact native UI placement/styling, dependency reference resolution,
-diagnostic formatting, assembly-version mapping, and how to extend the existing
-mock build into an executable package. These choices must preserve this contract;
+The [implementation roadmap](management/ROADMAP.md) may decide project/source
+layout, exact native UI placement/styling, reference-shim wiring and mapping checks,
+diagnostic formatting, assembly-version mapping, and the direct package delivery
+mechanism. Production GUID and CI reference strategy are fixed by SB-D011/013.
+These choices must preserve this contract;
 they do not authorize new product features, custom persistence, repair, or wider
 compatibility work. They are implementation choices, not hidden unanswered core
 behavior questions.
 
-Present this specification with PROJECT.md and FEASIBILITY.md for owner review.
-Only PROJECT.md records final specification acceptance and the G4/M4 handoff.
-Acceptance of the remaining feasibility cases does not itself accept this newly
-written document or start the next implementation roadmap.
+Only PROJECT.md records specification acceptance, the archived G4/M4 handoff,
+and authorization/readiness for implementation. This contract and its acceptance
+catalogue do not themselves activate the next roadmap or accept an executable.
