@@ -3,7 +3,7 @@
 > Historical plan. The original story language below prescribed its work and
 > criteria; it is not active work. Closure, owner acceptance, and the SB-D008 live-evidence
 > exception are recorded in [PROJECT.md](../../PROJECT.md). The
-> [roadmap placeholder](../ROADMAP.md) is reserved for subsequent planning; this archive retains
+> [current roadmap](../ROADMAP.md) defines subsequent planning; this archive retains
 > the original scope and completion criteria.
 
 ## Outcome and authority

@@ -7,7 +7,8 @@ current phase, epic/story status, readiness, and owner acceptance. Update those
 facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
-The [roadmap placeholder](management/ROADMAP.md) reserves the next planning boundary.
+The [release-candidate roadmap](management/ROADMAP.md) defines the proposed
+polishing work and completion criteria.
 Archived roadmaps retain their original work and completion criteria. The
 [MVP specification](MVP-SPECIFICATION.md) defines the
 implementation contract and acceptance cases. The [README](../README.md)
@@ -21,17 +22,19 @@ The MVP implementation roadmap is complete. The owner accepted the functional
 MVP, the UI workshop refinement and the label-only correction; final reconciliation
 passed under SB-D021. The [implementation plan](management/archive/ROADMAP-mvp-implementation.md)
 and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition.md)
-are archived. The polishing placeholder, management/code hygiene passes and
-final cleanup package inspection are complete. The project is ready for the
-polishing roadmap discussion; authoring and publication are not active.
+are archived. The management/code hygiene passes and final cleanup package
+inspection were completed before this planning round. The first release-candidate
+roadmap is authored under SB-D022; its stories have not started. Execution awaits
+owner authorization. Candidate acceptance and manual publication remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | MVP roadmap archived; management/code review and final package inspection complete; polishing placeholder ready |
+| Roadmap and active work | First release-candidate draft authored; five epics and ten stories, awaiting execution authorization |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
+| Release-candidate gates | RG1–RG4, RG5a and RG5 not passed; no release candidate accepted |
 | Mod implementation | Working MVP complete; final cleanup build 0.1.41 retains milestone behavior, including the accepted label capitalization |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
 | Distribution | [CI package 0.1.41](MVP-VALIDATION.md#final-cleanup-package) independently verified; no publication authorized |
@@ -46,7 +49,12 @@ to that baseline require a steering decision here and a corresponding update to
 the concept where its behavior changes.
 
 The implementation roadmap delivered a working MVP and a real, directly usable CI
-mod package. Publication polish is reserved for the next planning discussion.
+mod package. The owner requested a polishing roadmap whose sole output is the
+first accepted release candidate: minimal package contents, player copy, privacy,
+repository security, delivery validation and a final sanity/code-quality pass.
+No features are added. The only planned owner participation is the final candidate
+session after the agent's work is complete. Actual release work will be manual
+and owner-operated after acceptance; no publishing automation is included.
 The production GUID is `dsp.spherebuilder`. CI uses mapped compile-only reference shims; every commit
 adding or changing a referenced surface must carry the corresponding native
 type/member mapping and checks. Local real-reference compilation remains required.
@@ -55,8 +63,9 @@ Human and game runtime validation began together before the UI workshop. The
 short sessions reused accepted feasibility evidence; W1–W6 were not reopened as
 a test matrix. Agreed refinements and the targeted recheck preceded final MVP
 acceptance. Phase 4 replaced mock delivery with the real package and supplied
-icon. The requested closeout cleanup is authorized; polishing implementation and
-publication require the next scope discussion.
+icon. The requested MVP closeout cleanup is complete. SB-D022 authorizes authoring
+and pushing the polishing plan; it does not start implementation or authorize
+publication. Accepted behavior and W1–W6 evidence limits remain unchanged.
 
 ## Target game reference
 
@@ -76,6 +85,21 @@ The sample header is not a substitute for this target. Live gameplay observation
 are owner-operated; the agent has not launched or operated a game session.
 
 ## Work tracking
+
+### First release-candidate roadmap
+
+| Story | Execution state | Evidence |
+| --- | --- | --- |
+| SB-R1.1 | Not started | — |
+| SB-R1.2 | Not started | — |
+| SB-R2.1 | Not started | — |
+| SB-R2.2 | Not started | — |
+| SB-R3.1 | Not started | — |
+| SB-R3.2 | Not started | — |
+| SB-R4.1 | Not started | — |
+| SB-R4.2 | Not started | — |
+| SB-R5.1 | Not started | — |
+| SB-R5.2 | Not started | — |
 
 ### Completed MVP implementation roadmap
 
@@ -533,8 +557,46 @@ Historical instructions in a decision are not a new request to execute that work
   feature, polishing implementation, public release or submission is authorized.
 - **Affected contract:** SB-I5.4, IG5/IM5, roadmap lifecycle and next planning boundary.
 
+### SB-D022 — Plan the first release candidate; leave publication to the owner
+
+- **Date / decision-maker:** 2026-09-12, explicit owner planning instruction.
+- **Choice:** Author and push a polishing-only roadmap ending in acceptance of
+  the first release candidate. Cover necessary package files, short player copy
+  and installation guidance, no PII, whole-repository security, implementation
+  sanity, CI/DLL identity and a final agentic code-quality pass. Plan no features
+  and no owner participation before the final candidate handoff.
+- **Basis / alternatives:** The completed MVP and retained acceptance evidence
+  provide the baseline. The owner chose candidate preparation followed by manual
+  owner release, rather than adding features or automating publication. The current
+  workflow, package inventory, validators, licenses and primary Thunderstore package
+  and DSP routing rules were inspected while drafting.
+- **Planning choices:** Five epics contain ten sequential stories. Resolve minimum
+  distribution/source obligations and privacy findings before trimming the package;
+  do not presume either a required source tree or permission to remove it. Check
+  the entire repository and close security findings, then review delivery/code and
+  recheck changed inputs against the final downloaded bytes. Keep one evidence
+  document, created only when execution produces findings, with state here alone.
+- **Consequence:** Publishing the draft does not execute stories. RG5a requires
+  completed agent checks and an identified candidate; RG5 requires explicit owner
+  acceptance of that artifact. Reuse unchanged MVP observations; any necessary
+  runtime check is limited to a concrete change in the final session. New privacy,
+  security or distribution blockers cannot inherit W1–W6's earlier acceptance.
+  GUID, mapped-reference discipline and sequential versioning remain unchanged.
+- **Affected contract:** SB-R1–SB-R5, RG1–RG5/RM1–RM5 including RG5a/RM5a, the
+  current planning boundary and the separation of acceptance from publication.
+
 ## Evidence and unresolved questions
 
+- The release-candidate draft was reviewed in three passes on 2026-09-12:
+  scope/decomposition and sequential dependencies; all nine requested outcomes,
+  early unknowns and the final-only owner workload; authority, links and historical
+  integrity. The inventory decision was separated from changing the implemented
+  build contract, and publication exclusions were clarified to preserve CI artifact
+  delivery. Five epics and ten stories have explicit scope, done criteria, outputs
+  and exclusions. All 74 local links/anchors in the five changed documents passed,
+  as did story-field, dependency, tracking and whitespace checks. Archived plan
+  bodies were preserved; only their current-roadmap link captions changed. These
+  are planning checks, not security, privacy, package or runtime validation.
 - The implementation draft was reviewed in three passes on 2026-09-12:
   scope/decomposition and backward-only dependencies; requirement/failure-state
   coverage and the late human-validation workload; archive/authority integrity,
@@ -564,6 +626,7 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Discuss the polishing roadmap with the owner. The completed MVP, evidence limits
-and verified 0.1.41 package are its starting inputs. The placeholder contains no
-approved stories and does not authorize new product work or publication.
+Owner review and execution authorization for the first release-candidate roadmap.
+The completed MVP, retained evidence limits and verified 0.1.41 package remain its
+starting inputs. No polishing story has run, no security/privacy pass is claimed,
+and no release candidate or publication has been approved.
