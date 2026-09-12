@@ -10,10 +10,12 @@
     <Compile Include="$(BuildInfoPath)" />
   </ItemGroup>
   <ItemGroup Condition="'$(ReferenceMode)' == 'Shim'">
+    <ProjectReference Include="../references/Assembly-CSharp/Assembly-CSharp.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
     <ProjectReference Include="../references/BepInEx/BepInEx.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
     <ProjectReference Include="../references/UnityEngine.CoreModule/UnityEngine.CoreModule.csproj" Private="false" GlobalPropertiesToRemove="Version;AssemblyVersion;FileVersion;InformationalVersion" />
   </ItemGroup>
   <ItemGroup Condition="'$(ReferenceMode)' == 'Native'">
+    <Reference Include="Assembly-CSharp" HintPath="$(DspManagedPath)/Assembly-CSharp.dll" Private="false" />
     <Reference Include="BepInEx" HintPath="$(BepInExCorePath)/BepInEx.dll" Private="false" />
     <Reference Include="UnityEngine" HintPath="$(DspManagedPath)/UnityEngine.dll" Private="false" />
     <Reference Include="UnityEngine.CoreModule" HintPath="$(DspManagedPath)/UnityEngine.CoreModule.dll" Private="false" />

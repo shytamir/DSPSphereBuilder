@@ -107,3 +107,30 @@ actions/python-versions does not publish Windows 3.12.14. The
 [official version manifest](https://github.com/actions/python-versions/blob/main/versions-manifest.json)
 lists 3.12.10 as the latest available 3.12 Windows x64 binary; CI now pins that
 version. No geometry/code change or local Python replacement was needed.
+[The corrected run](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34676813261)
+passed for `bd61e9087147c05dc696209b590528cb8dfe648a`, including the compiled-plan
+comparison and existing mock delivery.
+
+## SB-I2.2 — Native graph recognition
+
+The read adapter captures native node/frame/shell content and identities; the
+matcher operates only on managed records. The per-commit map now includes the
+target's four graph types plus Vector3 and Color32 fields. All three shim
+assemblies match their local native signatures; real and shim production builds
+pass with identical 122 emitted references and no warnings/errors.
+
+Compiled-code checks cover empty plus every complete prefix, reversed pool order,
+reused/nonsequential IDs, fresh layer identity, missing nodes/frames, duplicate
+IDs/positions/edges, Euler mode, dangling endpoints, extra records, a partial next
+delta, unrelated content, wrong radius, and invalid numeric radii. Half-tolerance
+and one-float-step perturbations match; twice-tolerance displacement refuses.
+All 32 reference shells match, including both face types; repeated boundary nodes,
+duplicate shell faces, and missing shell frames refuse. Changed SP/CP and colors
+do not change recognition. An exact earlier prefix is classified from its current
+content; no historical registry is introduced.
+
+The existing geometry comparison remains within the recorded bounds. The tests
+run this project's compiled matcher/math on captured-data fixtures; the native
+reader is verified by mapped metadata and real-reference compilation, not executed
+in a game session. SP/CP/identity capture is retained for the next story's
+preservation comparison; there is no report-export or custom-save subsystem.

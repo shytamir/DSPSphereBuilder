@@ -1,4 +1,63 @@
 {
+  "Assembly-CSharp.dll": {
+    "identity": "Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "sha256": "AE0BA95F75BD879A62AA4CE253B2AB78EAA4FB3C7C595F5E1FEE75EBE0E0EF85",
+    "mvid": "ece4a40e-5e73-43f4-a9f8-4e74970b5942",
+    "types": {
+      "DysonFrame": {
+        "token": "0200027C",
+        "base": "System.Object",
+        "members": {
+          "DysonNode DysonFrame::nodeA": "040022ED",
+          "DysonNode DysonFrame::nodeB": "040022EE",
+          "System.Boolean DysonFrame::euler": "040022EF",
+          "System.Int32 DysonFrame::id": "040022E9",
+          "System.Int32 DysonFrame::protoId": "040022EA",
+          "System.Int32 DysonFrame::spA": "040022F0",
+          "System.Int32 DysonFrame::spB": "040022F1",
+          "System.Int32 DysonFrame::spMax": "040022F2",
+          "UnityEngine.Color32 DysonFrame::color": "040022F6"
+        }
+      },
+      "DysonNode": {
+        "token": "0200027D",
+        "base": "System.Object",
+        "members": {
+          "System.Collections.Generic.List`1<DysonFrame> DysonNode::frames": "04002307",
+          "System.Collections.Generic.List`1<DysonShell> DysonNode::shells": "04002308",
+          "System.Int32 DysonNode::id": "040022F9",
+          "System.Int32 DysonNode::protoId": "040022FA",
+          "System.Int32 DysonNode::sp": "040022FF",
+          "System.Int32 DysonNode::spMax": "04002300",
+          "UnityEngine.Color32 DysonNode::color": "04002309",
+          "UnityEngine.Vector3 DysonNode::pos": "040022FE"
+        }
+      },
+      "DysonShell": {
+        "token": "02000285",
+        "base": "System.Object",
+        "members": {
+          "System.Collections.Generic.List`1<DysonFrame> DysonShell::frames": "04002351",
+          "System.Collections.Generic.List`1<DysonNode> DysonShell::nodes": "04002350",
+          "System.Int32 DysonShell::id": "0400234B",
+          "System.Int32 DysonShell::protoId": "0400234C",
+          "System.Int32[] DysonShell::nodecps": "0400235D",
+          "UnityEngine.Color32 DysonShell::color": "0400234F"
+        }
+      },
+      "DysonSphereLayer": {
+        "token": "02000288",
+        "base": "System.Object",
+        "members": {
+          "DysonFrame[] DysonSphereLayer::framePool": "040023D3",
+          "DysonNode[] DysonSphereLayer::nodePool": "040023CE",
+          "DysonShell[] DysonSphereLayer::shellPool": "040023D8",
+          "System.Int32 DysonSphereLayer::id": "040023C1",
+          "System.Single DysonSphereLayer::orbitRadius": "040023C2"
+        }
+      }
+    }
+  },
   "BepInEx.dll": {
     "identity": "BepInEx, Version=5.4.17.0, Culture=neutral, PublicKeyToken=null",
     "sha256": "DC1CB6B58B962BDA5AAA1D6B5F9AE14EC174F61836A1A1F96C1A040C7E8381F7",
@@ -41,6 +100,16 @@
           "System.Void UnityEngine.Behaviour::.ctor()": "06001879"
         }
       },
+      "UnityEngine.Color32": {
+        "token": "020001ED",
+        "base": "System.ValueType",
+        "members": {
+          "System.Byte UnityEngine.Color32::a": "040007E8",
+          "System.Byte UnityEngine.Color32::b": "040007E7",
+          "System.Byte UnityEngine.Color32::g": "040007E6",
+          "System.Byte UnityEngine.Color32::r": "040007E5"
+        }
+      },
       "UnityEngine.Component": {
         "token": "02000240",
         "base": "UnityEngine.Object",
@@ -60,6 +129,15 @@
         "base": "System.Object",
         "members": {
           "System.Void UnityEngine.Object::.ctor()": "06001A22"
+        }
+      },
+      "UnityEngine.Vector3": {
+        "token": "020001F5",
+        "base": "System.ValueType",
+        "members": {
+          "System.Single UnityEngine.Vector3::x": "0400080C",
+          "System.Single UnityEngine.Vector3::y": "0400080D",
+          "System.Single UnityEngine.Vector3::z": "0400080E"
         }
       }
     }

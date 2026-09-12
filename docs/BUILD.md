@@ -30,7 +30,7 @@ directories are compile inputs, never package payload. Build information records
 the source commit and whether the local working tree was dirty; local builds with
 edits must not be represented as clean reproductions of that commit.
 
-## Local build
+## Offline plan and logic checks
 
 Production geometry/logic checks use the compiled DLL and Python 3.12 (CI pins
 the published Windows runtime 3.12.10; the bundled local runtime is 3.12.14):
@@ -45,6 +45,8 @@ The committed `src/Plan.Data.cs` is generated with
 coordinates and topology from the compiled data against the retained derivation;
 it does not assert generated source text. Production builds need no Python at
 runtime and load no blueprint parser.
+
+## Mock package build
 
 Windows with PowerShell 7 and Git is sufficient. PNG validation uses Windows
 System.Drawing. No game installation, SDK, package restore,
