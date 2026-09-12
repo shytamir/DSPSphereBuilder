@@ -23,10 +23,10 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F3.1 in progress; cases A and C verified; case B needs successful addition beside completed construction and a shell |
+| Roadmap and active work | SB-F3.1 complete; SB-F3.2 is next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3–G4 pending; specification not yet authored or accepted |
 | Mod implementation | Disposable two-patch feasibility probe only; production implementation not started |
-| Runtime validation and owner acceptance | Corrected probe preserved partial construction; native rejection retained its prior addition; completed-structure and shell preservation during addition remain unverified |
+| Runtime validation and owner acceptance | Two-patch addition preserved partial and completed construction and an existing shell; native rejection retained its prior addition; continuation and full workflow pending |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
 
 ## Accepted scope
@@ -68,7 +68,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F2.1 | Complete | [Canonical reference geometry](FEASIBILITY.md#sb-f21--canonical-reference-geometry) |
 | SB-F2.2 | Complete | [Polar twelve-patch traversal](FEASIBILITY.md#sb-f22--polar-twelve-patch-traversal) |
 | SB-F2.3 | Complete | [Native placement envelope](FEASIBILITY.md#sb-f23--native-placement-envelope) |
-| SB-F3.1 | In progress; case B rerun required after save/reload interrupted tracking | [Second owner run](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap), [operator procedure](../probe/README.md) |
+| SB-F3.1 | Complete | [Completed-shell retest](FEASIBILITY.md#completed-shell-retest), [earlier additive and rejection results](FEASIBILITY.md#second-owner-run-additive-results-and-case-b-gap) |
 | SB-F3.2 | Not started | — |
 | SB-F3.3 | Not started | — |
 | SB-F4.1 | Not started | — |
@@ -179,9 +179,9 @@ or Thunderstore moderation acceptance.
 - The concept preserves the supplied sample and reported format checks; those
   checks were not rerun during repository preparation.
 - Canonical geometry, polar progression, and the static native placement envelope
-  are verified. Two-patch addition preserved partial construction in the live
-  target. Completed construction and shell preservation during addition,
-  continuation, and the full workflow still require matching live observations.
+  are verified. Two-patch addition preserved partial and completed construction
+  and a preexisting shell in the live target. Continuation and the full workflow
+  still require matching live observations.
 - Local preparation checks passed: numeric build progression, stable version on
   retry, strict VERSION input rejection, and validation of the four-file mock ZIP.
   Negative checks rejected missing README, unexpected DLL, wrong version, broken
@@ -196,12 +196,9 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Rerun only case B with the existing corrected DLL: start a new empty layer through
-the probe, finish its first patch and manually fill its pentagon shell, capture a
-snapshot, then paint the second patch without reloading or starting another probe
-layer in between. The owner confirmed a save reload between cases A and B; the
-probe cannot adopt a loaded nonempty layer using its temporary object tracking.
-Do not add resumption machinery to this probe to bypass the outstanding additive
-check; SB-F3.2 investigates that policy after SB-F3.1. Cases A and C need no repeat.
-G3 remains pending. The next implementation roadmap remains downstream of G4/M4;
-no full MVP specification or final acceptance is claimed.
+Proceed to SB-F3.2: evaluate native graph reconstruction and prepare the bounded
+continuation/identity probe. The owner authorized work through its next live
+handoff. Cases A–C need no repeat. G3 remains pending; SB-F3.1's additive results
+do not establish save/reload continuation or the full twelve-patch workflow.
+The next implementation roadmap remains downstream of G4/M4; no full MVP
+specification or final acceptance is claimed.

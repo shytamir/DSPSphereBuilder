@@ -626,3 +626,34 @@ same DLL and one uninterrupted tracked layer, as clarified in the
 [operator procedure](../probe/README.md). Save/reload continuation remains a
 separate investigation, not a capability established by this two-patch probe.
 See [PROJECT.md](PROJECT.md) for story and gate state.
+
+### Completed-shell retest
+
+The owner reported no observed aberrations and supplied another run from source
+`4c49a0c666d1ef39a4ce24cfb129fbec42ee25e6`. Reports again match the target
+hash/MVID and Unity version. `20260912T030339.0524890-paint.json` starts empty
+layer 2 at radius 9,700; `032721.1733071-snapshot.json` records its completed
+first patch and one shell. In `20260912T032723.6295965-paint.json`, the successful
+second addition changes 6 nodes / 6 frames / 1 shell to 11 / 12 / 1.
+
+All six original nodes retain their completed 180 SP total, and all six original
+frames retain 800 SP. The shell retains its boundary, associations, and 14,480 CP.
+The in-process identity/preservation comparison reports no failures. Independent
+raw-record comparison confirms retained properties and invested construction;
+canonical mapping and topology match the second delta, including endpoint reuse.
+Maximum normalized direction discrepancy remains below 3.575 × 10⁻⁸.
+Later snapshot/refusal records show both manually filled pentagons and no further
+probe additions. Original evidence was read only and copied under ignored artifacts.
+
+| Input | SHA-256 |
+| --- | --- |
+| First-patch completed snapshot | `0FFE0B3D17ACE2E9A70C669E7E136F8F55E9D31915AB572BC2194DA2AFCF6F70` |
+| Second Paint with existing shell | `DE5DC053140785E09A4C815C5146991B5862129D236F3E43ABE144C7B833FB13` |
+| End-of-probe refusal | `9535D17454EFF00AA81F6088AE9D5946B0F19B5592F33C8FF7E2746E7F86C921` |
+
+Together with the earlier partial-construction, prerequisite-refusal, and native
+rejection observations, this covers the two-patch additive experiment. Native
+creation is not atomic: stop on a failed addition, retain evidence, and do not
+blindly retry, roll back, or repair. Whether the surviving graph establishes a
+safe next step is the subsequent continuation investigation. No spontaneous
+failure of a valid delta, save/reload resumption, or complete traversal is claimed.
