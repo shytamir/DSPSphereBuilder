@@ -21,20 +21,20 @@ The MVP implementation roadmap is complete. The owner accepted the functional
 MVP, the UI workshop refinement and the label-only correction; final reconciliation
 passed under SB-D021. The [implementation plan](management/archive/ROADMAP-mvp-implementation.md)
 and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition.md)
-are archived. The polishing placeholder and management/code hygiene passes are
-complete. The final cleanup build is awaiting package inspection. Polishing
-authoring and publication are not active.
+are archived. The polishing placeholder, management/code hygiene passes and
+final cleanup package inspection are complete. The project is ready for the
+polishing roadmap discussion; authoring and publication are not active.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | MVP roadmap archived; management/code review complete; final cleanup package inspection pending |
+| Roadmap and active work | MVP roadmap archived; management/code review and final package inspection complete; polishing placeholder ready |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
-| Mod implementation | Working MVP complete; final milestone build 0.1.38 changes only label capitalization from UI-tested 0.1.36 |
+| Mod implementation | Working MVP complete; final cleanup build 0.1.41 retains milestone behavior, including the accepted label capitalization |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
-| Distribution | [CI package 0.1.38](MVP-VALIDATION.md#final-milestone-package) independently verified; no publication authorized |
+| Distribution | [CI package 0.1.41](MVP-VALIDATION.md#final-cleanup-package) independently verified; no publication authorized |
 
 ## Accepted scope
 
@@ -564,5 +564,6 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Inspect the final cleanup package, then discuss the polishing roadmap with the
-owner. Its placeholder does not authorize new product work or publication.
+Discuss the polishing roadmap with the owner. The completed MVP, evidence limits
+and verified 0.1.41 package are its starting inputs. The placeholder contains no
+approved stories and does not authorize new product work or publication.

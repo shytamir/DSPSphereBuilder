@@ -100,8 +100,8 @@ not new claims of supported game radii. Results: all twelve deltas and faces
 match, final counts 60/90, maximum normalized-direction error `6.72304398e-8`,
 maximum relative radius error `7.07654325e-8`, both below SB-MVP-07's bounds.
 
-Both production reference modes compile without warnings/errors and have the
-same 29 emitted references. No native API was added; the reference map is
+Both production reference modes compiled without warnings/errors and had the
+same 29 emitted references. No native API was added; the reference map was
 unchanged. This managed test executes only this project's pure plan/math code,
 not the plugin entry point or any native game/Unity method. CI was extended to run
 the same compiled-plan comparison. Its first hosted run stopped before the checks because
@@ -116,10 +116,10 @@ comparison and existing mock delivery.
 ## SB-I2.2 — Native graph recognition
 
 The read adapter captures native node/frame/shell content and identities; the
-matcher operates only on managed records. The per-commit map now includes the
+matcher operates only on managed records. The per-commit map was extended with the
 target's four graph types plus Vector3 and Color32 fields. All three shim
-assemblies match their local native signatures; real and shim production builds
-pass with identical 122 emitted references and no warnings/errors.
+assemblies matched their local native signatures; real and shim builds
+passed with identical 122 emitted references and no warnings/errors.
 
 Compiled-code checks cover empty plus every complete prefix, reversed pool order,
 reused/nonsequential IDs, fresh layer identity, missing nodes/frames, duplicate
@@ -153,7 +153,7 @@ increases and new node adjacency. A zero frame result, invalid node ID, exceptio
 or detected preservation/result discrepancy stops further Paint attempts for the
 session. Error reporting does not recapture/retry after a failed native call.
 
-Both builds pass with no warnings/errors, identical 158 emitted references, and
+Both builds passed with no warnings/errors, identical 158 emitted references, and
 the updated three-assembly native map. Offline tests use prepared before/after
 records and a call recorder, not a simulated native allocator. They verify all
 twelve call deltas/endpoints, both shell classes with increasing construction,
@@ -185,8 +185,8 @@ Managed checks verify every prefix's current target/progress, no writes during
 feedback, menu transitions, readiness/completion, and feedback for every disabled
 outcome without assertions on exact wording or Unity widget internals. The action
 checks continue to verify click-sized deltas and target changes. Both compilation
-modes pass without warnings/errors and emit the same 210 references. Five shim
-assemblies match native signatures, now including type abstract/sealed and method
+modes passed without warnings/errors and emitted the same 210 references. Five shim
+assemblies matched native signatures, including type abstract/sealed and method
 virtual-slot shape. The mapped UI assemblies and inherited declarations were
 inspected before use; BepInEx's base plugin is abstract.
 
@@ -200,7 +200,7 @@ also passed their affected offline checks.
 ## SB-I4.1 — Executable package and validator
 
 Local package 0.1.28 was built from the working tree based on `389668a`; this is a
-rehearsal identity, not a clean CI revision. Both reference modes compile without
+rehearsal identity, not a clean CI revision. Both reference modes compiled without
 warnings/errors, with identical 210 emitted references and a matching five-assembly
 native map. The builder always compiles first and explicitly selects the production
 DLL; no stale/missing payload or compiler failure falls back to a mock package.
@@ -215,13 +215,13 @@ missing DLL, wrong manifest/DLL versions, altered GUID, shim as payload, extra d
 nested ZIP, wrapper folder, missing reference source, wrong dependency, and invalid
 image. This tests package contracts, not README wording.
 
-The root/package/build documentation now describes actual installation and use.
+The root/package/build documentation was updated to describe installation and use.
 The intermediate workflow still wrapped its executable ZIP with build information;
 SB-I4.2 subsequently replaced that transport and verified the real download.
 No game installation, execution, release or submission was performed in SB-I4.1.
 
 Package-source follow-up: inspection found that the retained patch derivation also
-imports `verify_geometry.py`. That file is now included (48 package files). The
+imports `verify_geometry.py`. That file was added (48 package files). The
 source directory extracted from the revised local ZIP successfully regenerated
 the production plan with Python, without reaching outside its packaged inputs.
 
@@ -557,3 +557,31 @@ partial-write boundary, orders the plugin imports consistently, documents the
 source layout in BUILD.md, and removes redundant reference-map prose. The source
 diff changes no executable expression, dependency, native declaration or generated
 plan. No new runtime recheck is required for these documentation-only code edits.
+
+### Final cleanup package
+
+[Run 34694805856](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34694805856),
+build 41 / attempt 1, passed CI compilation, plan/logic comparison, package
+validation and all twelve malformed-package checks. Its clean source revision
+is `78ddf87feb5a493f4e96796dc973efe0d2011a26`, build label `0.1.41.78ddf87`,
+numeric version `0.1.41`, GUID `dsp.spherebuilder` and assembly version `0.1.0.0`.
+
+The [direct package](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34694805856/artifacts/10297534943)
+was downloaded independently: 96,143 bytes, 48 validated entries, one production
+DLL and no nested archive. Retained source/license/icon and metadata checks passed.
+Package SHA-256 matches the CI record and hosted digest:
+`AD4DD44A92FB4F01EE1660B7A577BD8E009BF7F8C7D7427C2C25285239E628F7`.
+DLL SHA-256 is `52B80618E8D6A0A6777FE20F37248146D24430E469A5643CAB7BE770D4DCCE0B`.
+All 217 emitted references agree with the same-revision/version native build;
+both local compile modes passed without warnings/errors and all five shim
+assemblies matched the native map. The raw download and build record are retained
+under ignored `artifacts/hosted/34694805856/`.
+
+Compared with milestone 0.1.38, the runtime source has only the two comments and
+import ordering described above. Package source documentation and the README
+caption are reconciled; native declarations, plan and executable expressions are
+unchanged. The subsequent evidence/state commit changes documentation outside the
+package inputs. No additional live coverage is claimed or needed for this cleanup.
+Final document checks passed all 137 local links/anchors, confirmed coverage of
+all 15 cases and 25 requirements, and retained the original sample blueprint
+unchanged. Whitespace checks passed.
