@@ -22,8 +22,8 @@ established by this project.
   scope, phase, work status, readiness, and acceptance.
 - [Product concept](CONCEPT.md) — the agreed experience, geometry, references,
   and copyable sample blueprint with its import caveats.
-- [Roadmap](docs/management/ROADMAP.md) — the place to define bounded work and
-  completion criteria for MVP implementation, validation, and the UI workshop.
+- [Roadmap placeholder](docs/management/ROADMAP.md) — starting inputs for the
+  next polishing discussion; earlier plans are retained in its archive links.
 - [MVP specification](docs/MVP-SPECIFICATION.md) — the behavioral contract,
   complete patch sequence, acceptance cases, and declared evidence limits.
 - [Build and packaging](docs/BUILD.md) — local commands, version translation,

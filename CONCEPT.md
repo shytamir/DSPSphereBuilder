@@ -2,11 +2,11 @@
 
 **Paint a perfect C60 Dyson sphere, one patch at a time.**
 
-DSP Sphere Builder is a proposed Dyson Sphere Program mod that helps players lay out an exact, cost-efficient C60 sphere gradually. Select a sphere layer and click **Paint Next Patch** to extend the framework by one connected section.
+DSP Sphere Builder is a Dyson Sphere Program mod that helps players lay out an exact, cost-efficient C60 sphere gradually. Select a sphere layer and click **Paint Next Patch** to extend the framework by one connected section.
 
 It combines the precision of a complete blueprint with the construction control of planning a small area at a time. Players can concentrate construction on the current section, then expand whenever they are ready. Shell filling remains entirely with the player.
 
-This document records the agreed concept before scaffolding or implementation. It is not evidence of working in-game incremental placement.
+This document defines the agreed experience. It was first written before scaffolding; validation is recorded separately in the project evidence.
 
 See [PROJECT.md](docs/PROJECT.md) for current decisions and acceptance, and the
 [MVP specification](docs/MVP-SPECIFICATION.md) for the detailed implementation contract.
@@ -101,8 +101,8 @@ DYBP:0,639175925155924425,0.10.34.28529,1,81"H4sIAAAAAAACCnWTPU7EMBCFJ3ES/+wNKFx
 
 The sample's preserved orientation does not establish the pole-centred orientation intended for the mod, or the latitude requirement of that orientation.
 
-## Remaining verification
+## Validation boundary
 
-Before treating the concept as demonstrated, verify the pole-centred reference geometry and ring traversal, native placement constraints across supported radii and latitude unlocks, and additive placement beside partially built structures without disturbing existing construction progress.
+The original open questions concerned pole-centred geometry and traversal, native placement limits, and additive preservation. Their investigation is recorded in [FEASIBILITY.md](docs/FEASIBILITY.md); production observations and the UI workshop are recorded in [MVP-VALIDATION.md](docs/MVP-VALIDATION.md). The [specification's accepted assumptions](docs/MVP-SPECIFICATION.md#evidence-and-accepted-assumptions) retain the unverified radius, research, system and lifecycle cases.
 
 Blueprint record parsing and radius scaling alone do not establish those behaviours. The mod's defining utility is successive additive placement while preserving the player's existing construction.

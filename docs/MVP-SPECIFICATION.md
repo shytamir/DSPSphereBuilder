@@ -7,7 +7,7 @@ and clicking **Paint Next Patch**. Twelve deliberate clicks complete the fixed
 polar progression while native construction continues and shell filling remains
 under the player's control.
 
-This document defines the behavioral contract for the next implementation plan.
+This document defines the MVP behavioral contract.
 [PROJECT.md](PROJECT.md) alone records scope acceptance, execution state, and
 milestones. [CONCEPT.md](../CONCEPT.md) retains the original concept, references,
 and illustrative five-spoke sample. That sample is not the first-click output.
@@ -32,8 +32,10 @@ telemetry subsystem is required.
 
 ## Evidence and accepted assumptions
 
-The requirements use the following evidence references. A requirement is an
-implementation obligation, not a claim that production implementation exists.
+The requirements use the following original feasibility references. The
+[production reconciliation](MVP-VALIDATION.md#sb-i54--final-mvp-reconciliation)
+maps all requirements and acceptance cases to implementation evidence. A requirement
+is a behavioral obligation, not by itself a claim of runtime verification.
 
 | Reference | Basis |
 | --- | --- |
@@ -61,8 +63,8 @@ does not make them measured results.
 
 These are explicit validation limits, not requests for further feasibility work.
 Later contradictory evidence requires a fix or an owner scope decision. This
-specification does not claim universal tested compatibility or owner acceptance
-of a future executable build.
+specification does not claim universal tested compatibility. Build-specific owner
+acceptance is recorded only in PROJECT.md.
 
 ## Target and supported envelope
 
@@ -202,14 +204,14 @@ new retry framework. A prototype failure is investigated before further testing.
 ## Delivery and retained evidence
 
 The production plugin GUID is **`dsp.spherebuilder`** (SB-D011). The implementation
-roadmap must deliver the actual CI-built mod as a directly usable package download,
+contract requires the actual CI-built mod as a directly usable package download,
 without a wrapper directory or nested package ZIP. Shim assemblies are build
 inputs and must not be shipped. Publication polish and upload remain later work;
-SB-D012 places owner/runtime validation immediately before the UI workshop.
+SB-D012 placed the initial owner/runtime session immediately before the UI workshop.
 
 | ID | Requirement | Basis |
 | --- | --- | --- |
-| SB-MVP-23 | Keep the established VERSION and sequential-build contract when later producing the executable package: numeric `MAJOR.MINOR.BuildNumber` for Thunderstore and the short commit in diagnostic build identity. Do not replace the build sequence with a hash or retry count. Packaging extension belongs to the next implementation plan. | E7; SB-D009 |
+| SB-MVP-23 | Keep the VERSION and sequential-build contract for the executable package: numeric `MAJOR.MINOR.BuildNumber` for Thunderstore and the short commit in diagnostic build identity. Do not replace the build sequence with a hash or retry count. | E7; SB-D009,015 |
 | SB-MVP-24 | Retain reference attribution and the applicable license/source material when distributing derived geometry. Preserve the upstream fixture/license identity separately from the original project's license. Do not bundle game, Unity, or BepInEx binaries or decompiled game code. | E1/E7; SB-D004,009 |
 | SB-MVP-25 | Retain the focused geometry/envelope derivation, relevant recognition/serialization checks, and attributable feasibility records as implementation inputs. Revalidate affected requirements when target APIs/serialization, reference data, orientation/deltas, arithmetic, or native integration materially changes. Do not build a broad compatibility or benchmark programme without a demonstrated need. | E1–E6; SB-D002,009 |
 
@@ -225,8 +227,8 @@ Thunderstore publication, game installation changes, or next-roadmap execution.
 ## Acceptance catalogue
 
 These cases define observable targets for the implementation. They are not a
-request to repeat the waived feasibility cases now. "Observed" below refers to
-the identified prototype evidence, not validation of a production mod.
+request to repeat the waived feasibility cases. E1–E6 observations refer to the
+prototype; production observations are explicitly linked where applicable.
 
 | Case / requirements | Setup and action | Expected result | Validation boundary |
 | --- | --- | --- | --- |
@@ -235,7 +237,7 @@ the identified prototype evidence, not validation of a production mod.
 | SB-A03 — 03,10,14,20 | Use a native unlock below rounded 68, then a sufficient native unlock, on an otherwise eligible empty layer; request Paint | First request adds nothing; sufficient state adds exactly 6 nodes / 6 frames; research is unchanged | Sufficient value 90 observed; below-threshold case W4; names/increments not assumed |
 | SB-A04 — 04–07,09,11 | Begin empty at a legal radius; click through all twelve rows without waiting | Every per-click delta matches the table, remains connected, and reuses shared elements; final 60 / 90 with no extra spoke; numeric comparisons pass | E3 derivation and E4/E6 combined live deltas; full graph observed at 9,700 |
 | SB-A05 — 09,12,14 | Allow some earlier construction to arrive, then add the next patch; repeat beside completed structure | Existing identities/positions/properties/links and invested SP retained; only valid new adjacency/request bookkeeping changes | E4 observed for partial and completed construction |
-| SB-A06 — 12,13,16 | On a closed pentagon and hexagon, designate shells through native controls before continuing Paint | Both native shells remain valid and retain progress/associations; later delta adds no shell | Pentagon observed; hexagon and both-face endpoint coverage W2/W1 |
+| SB-A06 — 12,13,16 | On a closed pentagon and hexagon, designate shells through native controls before continuing Paint | Both native shells remain valid and retain progress/associations; later delta adds no shell | Pentagon observed in E4/E6; production retained a designated hexagon boundary; completed hexagon CP and endpoints W2/W1 |
 | SB-A07 — 02,04,05,13,14 | Use the smallest and largest radii accepted by a star's native controls; complete the design and designate both face types | Same normalized design; native radius/cost rules respected; both shell types usable | E3 static; minimum-radius framework observed, remaining endpoint cases W1/W2 |
 | SB-A08 — 02,08,15,17 | Switch between started layers and stars, including a giant where native creation is legal; Paint on the current selection | Only that selected layer advances its own prefix; earlier layers remain intact | Same-star layers and star return observed; other-system painting W3 |
 | SB-A09 — 08,15,17,19 | At an intermediate prefix and at completion, close/reopen the editor and reload saved state; request Paint | Intermediate graph resumes at its next delta; complete graph refuses; no cached-reference dependence | E5 menu reload/editor return observed |
@@ -244,23 +246,21 @@ the identified prototype evidence, not validation of a production mod.
 | SB-A12 — 10,15,16,18,20 | Remove a frame/node from a prefix, or provide an extra/duplicate/displaced/ambiguous element; request Paint | Non-prefix content refuses without mutation; exact earlier prefix is treated as its current state; float-rounding differences inside the bound do not trigger repair | Native deletions observed; other recognition cases locally checked; historical provenance is not detectable |
 | SB-A13 — 06,10,20 | Complete patch 12 and request further Paint actions | Completion feedback, 60 / 90 unchanged, no new spoke or duplicated element | E5/E6 observed |
 | SB-A14 — 12,21,22 | Examine the retained native rejection experiment and partial-prefix checks; on any reachable unexpected placement failure inspect the result and attempt further Paint in that session | Earlier native additions may remain; session stops, diagnostic context is available, no automatic retry/rollback; a partial non-prefix refuses after fresh reconstruction | Native rejection observed; session stop is established by source and partial graphs checked locally. No spontaneous valid-patch exception was manufactured |
-| SB-A15 — 23–25 | Inspect the later executable package/build identity and retained reference/check inputs | Numeric sequential version, attributable commit, required source credit/licenses, no bundled dependency/game binaries; changes identify affected revalidation | Existing mock pipeline and probe packaging observed; executable package is future implementation work |
+| SB-A15 — 23–25 | Inspect the executable package/build identity and retained reference/check inputs | Numeric sequential version, attributable commit, required source credit/licenses, no bundled dependency/game binaries; changes identify affected revalidation | Actual CI downloads and native-reference comparisons are recorded in the production reconciliation; package checks do not establish moderation acceptance |
 
-## Implementation-planning handoff
+## Implementation choices and provenance
 
 The settled behavioral inputs are this requirement/acceptance catalogue, the
 pinned target and reference, fixed delta derivation, native operation map,
 SB-D003–009, and the observed/accepted boundaries above. No additional feasibility
 programme is a prerequisite under the owner's acceptance decision.
 
-The [implementation roadmap](management/ROADMAP.md) may decide project/source
-layout, exact native UI placement/styling, reference-shim wiring and mapping checks,
-diagnostic formatting, assembly-version mapping, and the direct package delivery
-mechanism. Production GUID and CI reference strategy are fixed by SB-D011/013.
-These choices must preserve this contract;
-they do not authorize new product features, custom persistence, repair, or wider
-compatibility work. They are implementation choices, not hidden unanswered core
-behavior questions.
+The [archived implementation roadmap](management/archive/ROADMAP-mvp-implementation.md)
+assigned source layout, UI placement, reference mapping, diagnostics, versioning
+and package delivery to bounded implementation stories. Their resulting material
+decisions are recorded in PROJECT.md. Production GUID and CI reference strategy
+remain fixed by SB-D011/013. These choices preserve this contract; they do not
+authorize new features, custom persistence, repair, or wider compatibility work.
 
 Only PROJECT.md records specification acceptance, the archived G4/M4 handoff,
 and authorization/readiness for implementation. This contract and its acceptance

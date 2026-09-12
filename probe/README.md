@@ -1,8 +1,8 @@
 # Sphere Builder feasibility probe
 
-This disposable probe tests staged placement and continuation through the native
-node/frame methods. It includes the twelve fixed patches so completion can be
-checked after save/reload.
+This disposable probe was used to investigate staged placement and continuation
+through the native node/frame methods. Its final version included twelve fixed
+patches for the completion and save/reload investigation.
 It is not the playable mod. Use a disposable copy of a save with an existing
 BepInEx installation; no game files are replaced by this artifact.
 

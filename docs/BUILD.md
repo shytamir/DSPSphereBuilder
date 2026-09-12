@@ -95,7 +95,7 @@ Rerunning the same run keeps its number and version. The run attempt is tracked
 separately in build information and artifact names. Major/minor changes do not
 reset the workflow sequence. See [GitHub's variable reference](https://docs.github.com/en/actions/reference/workflows-and-actions/variables).
 
-Keep this single workflow's sequence when extending it to build the real mod.
+Keep this single workflow's sequence when changing the build.
 Do not substitute a short hash, commit count, run ID, or retry attempt for the
 numeric patch.
 
@@ -124,7 +124,7 @@ runtime acceptance or a Thunderstore moderation decision.
 dispatch, with read-only repository permissions and a bounded timeout. It builds
 production source, validates the package and affected offline logic, and records
 build identity. See PROJECT.md for verified hosted delivery and the identified
-owner-session candidate. The run summary identifies the appropriate download.
+accepted build. The run summary identifies the appropriate download.
 
 The workflow does not create releases/tags, edit VERSION, submit to Thunderstore,
 or interact with a game installation.

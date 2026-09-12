@@ -1,8 +1,9 @@
 # MVP owner sessions
 
-[PROJECT.md](PROJECT.md) owns validation state and acceptance. The UI refinement
-uses the short recheck below. The original integrated procedure is retained
-after it for reference; a prepared procedure is not evidence that it passed.
+[PROJECT.md](PROJECT.md) owns validation state and acceptance. These procedures
+were used for the 2026-09-12 integrated session and UI recheck. Their original
+candidate instructions are retained for reproduction, not as a current test or
+installation request. Actual outcomes are in [MVP-VALIDATION.md](MVP-VALIDATION.md).
 
 ## UI refinement recheck — SB-I5.3
 

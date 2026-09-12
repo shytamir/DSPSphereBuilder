@@ -1,8 +1,9 @@
 # Feasibility evidence
 
 Current execution state, decisions, and gate results are in [PROJECT.md](PROJECT.md).
-This record describes observed inputs and findings. References to native members
-are inspection coordinates, not a copied implementation.
+This historical record describes the 2026-09-12 investigation in story order.
+Its early proposals and handoffs were superseded by the later findings below.
+References to native members are inspection coordinates, not copied implementation.
 
 Research commands below run from the repository root. Python checks use the
 standard library only; use an available Python 3 interpreter and `-B` to avoid
@@ -24,8 +25,8 @@ The exact target is therefore the recorded hash, with the build suffix explicitl
 unknown; the blueprint's `28529` suffix is not substituted for it.
 
 The assembly references `netstandard` version `2.1.0.0`, UnityEngine.CoreModule,
-UnityEngine.UI `1.0.0.0`, and other Unity modules. A narrow future probe can target
-`netstandard2.1` against the real local references. Additional modules should be
+UnityEngine.UI `1.0.0.0`, and other Unity modules. The inspection supported a later
+probe targeting `netstandard2.1` against the real local references. Modules were to be
 referenced only when the inspected operations actually consume them.
 
 ### Local tools and dependencies
@@ -44,7 +45,7 @@ its presence alone does not demonstrate that a live session loads it successfull
 PowerShell 7, .NET SDK `10.0.302`, the `NETStandard.Library.Ref` `2.1.0` pack,
 and ILSpy command line `11.0.0.9375` are available. The existing ILSpy executable
 was used read-only; no tool was installed and no other mod's source was adopted.
-No compilation was claimed: this story creates no plugin project.
+No compilation was claimed in SB-F1.1; it created no plugin project.
 
 ### Reproduction
 
@@ -64,8 +65,8 @@ dotnet --list-sdks
 
 The identity reader uses PE metadata; it does not load or execute inspected
 assemblies. Decompiler output is kept under ignored `artifacts/inspection/`.
-Future probe compilation will use the installed SDK and explicit reference paths;
-the project and its actual build command belong to SB-F3.1.
+Probe compilation was assigned to SB-F3.1 using the installed SDK and explicit
+reference paths; that story recorded the actual project and build command.
 
 ### Live-test boundary
 
@@ -78,8 +79,8 @@ no agent game launch, installation change, or save mutation has occurred.
 
 The missing complete game-build label is not a substitute-runtime permission.
 A hash mismatch requires a target-baseline decision before consuming observations.
-No unavailable tool prevents the next static investigation. Live observations
-remain unavailable until the owner runs the identified probe.
+No unavailable tool blocked the following static investigation. Live observations
+were unavailable at that point; the owner runs are recorded under SB-F3.
 
 ## SB-F1.2 — Native placement and lifecycle
 
@@ -141,14 +142,14 @@ when the graph expands. Runtime construction can also advance between observatio
 
 These methods are not transactions: allocation and adjacency changes precede
 renderer/auto-node calls. An exception after those mutations can leave a partial
-delta. No rollback was found in the inspected creation methods. SB-F3.1 must test
-the bounded response; retries must not blindly recreate already-added elements.
+delta. No rollback was found in the inspected creation methods. SB-F3.1 was assigned
+to test the bounded response; retries must not blindly recreate already-added elements.
 The ordinary frame rejection paths return zero before mutating the graph.
 
 Native save data provides a candidate source for reconstructing the next patch,
 but the mod's logical patch index is not a native field. Matching geometry after
-save/load, manual edits, and recycled IDs remains unproven until SB-F3.2. No custom
-persistence requirement is inferred from that gap.
+save/load, manual edits and recycled IDs was unproven at this stage; SB-F3.2 later
+investigated it. No custom persistence requirement was inferred from that gap.
 
 ### Reproduce and resolve remaining questions
 
@@ -210,8 +211,8 @@ Every node has degree three; the graph is connected. Each of twelve pentagons
 owns five distinct vertices. Twenty hexagons complete a convex closed surface:
 every frame belongs to exactly two boundaries and `60 - 90 + 32 = 2`.
 All frames have `euler=false`, hence great-circle arcs rather than Euler paths.
-Prototype records are node `0`, frame `1`, shell `0`; these are serialized values,
-not yet verified creation-argument choices.
+Prototype records are node `0`, frame `1`, shell `0`; these are serialized values.
+Their creation-argument mapping had not yet been verified at that stage.
 
 Canonical node IDs retain source IDs 1–60. Pentagon `Pk` owns IDs
 `5k-4` through `5k`, with consecutive perimeter edges and the closing edge.
@@ -428,12 +429,12 @@ are required below. Generated finite coordinates should be checked before mutati
 
 ### Candidate envelope and live cases
 
-The candidate supports a native-created selected layer in the currently viewed
-system, initially empty or later recognized as our own partial graph, at its
+The candidate proposed a native-created selected layer in the viewed
+system, initially empty or later recognized as a matching partial graph, at its
 existing game-supported radius. It requires rounded unlocked latitude at least
 68 and the fixed SB-F2.2 orientation. It preserves native layer bounds and does
 not bypass research, placement limits, or shell control. Continuation recognition
-is still SB-F3.2's question. Arbitrary existing designs are outside the concept.
+was assigned to SB-F3.2. Arbitrary existing designs are outside the concept.
 
 Nodes use creation prototype 0 and geodesic frames creation prototype 0. The
 editor declares one node prototype and three frame prototypes; renderer loading
@@ -450,8 +451,8 @@ mapping. It should use a normal editor action in its current layer context.
 | Fill a closed pentagon and hexagon before continuing | Existing shells preserved; later frames are accepted; final graph remains complete (SB-F3.1/3.3) |
 | Missing/multiple layer selection or unrelated nonempty graph | Refusal without mutation; no automatic target creation or repair (SB-F3.2/3.3) |
 
-Static inspection found no concept-breaking geometry constraint. This remains a
-candidate support envelope until identified live observations confirm it. Any
+Static inspection found no concept-breaking geometry constraint. This was a
+candidate envelope; later observations and SB-D008 resolved its evidence boundary. Any
 runtime-only restriction must return for an owner scope decision; it cannot be
 hidden behind a narrower advertised radius range.
 
@@ -469,11 +470,12 @@ rejection. No game code was executed for these checks.
 The initial disposable probe applied only the first two checked deltas. Its
 corrected [source](https://github.com/shytamir/DSPSphereBuilder/blob/4c49a0c666d1ef39a4ce24cfb129fbec42ee25e6/probe/Probe.cs)
 and [operator procedure](https://github.com/shytamir/DSPSphereBuilder/blob/4c49a0c666d1ef39a4ce24cfb129fbec42ee25e6/probe/README.md)
-identify the SB-F3.1 experiment; the current probe evolves in the subsequent story.
+identify the SB-F3.1 experiment; the probe subsequently evolved in SB-F3.2.
 The selected native layer is resolved at each button click. A panel beneath the
 editor's control panel uses native Unity UI, `UIBlockZone`, and the editor's GUI
-rectangle list; actual layout and interaction await observation. No Harmony patch,
-loader migration, shipping plugin scaffold, or mock-pipeline change was needed.
+rectangle list; layout and interaction had not yet been observed at that stage.
+No Harmony patch, loader migration, shipping scaffold or mock-pipeline change
+was needed.
 
 The source compiles as `netstandard2.1` against the identified local assemblies,
 including Unity UI, text rendering, and JSON serialization modules. The compile
@@ -510,8 +512,8 @@ an earlier successful mutation; it is not evidence that a valid planned patch
 spontaneously reaches that branch, and it adds no fault-injection framework.
 
 The probe's temporary in-memory tracking is sufficient to compare two consecutive
-actions on the same layer. It is not an MVP resumption policy. SB-F3.2 will assess
-native reconstruction only after the additive observations satisfy SB-F3.1.
+actions on the same layer. It is not an MVP resumption policy. SB-F3.2 subsequently assessed
+native reconstruction after the additive observations satisfied SB-F3.1.
 At preparation time, partial/completed construction, preservation, shell handoff,
 control behavior, and rejection had not been observed in the running game.
 The owner-run records below distinguish subsequent observations from gaps.
@@ -622,11 +624,10 @@ Critical input identities (SHA-256; timestamps above refer to files from this ru
 | Native rejection | `4480B66C368A9BF91AAB8561486A8242102A442C90DE14EBA982CA621D1692C0` |
 | Post-rejection snapshot | `A8F60D60AD37BB838792B6A726748EA7FD16C903331615E0A4216E8BB0B3084B` |
 
-The remaining additive evidence is a successful second Paint against completed
-first-patch structure with a preexisting shell. Repeat only case B using the
-same DLL and one uninterrupted tracked layer, as clarified in the
-[operator procedure](../probe/README.md). Save/reload continuation remains a
-separate investigation, not a capability established by this two-patch probe.
+At that point, a second Paint beside completed first-patch structure and a
+preexisting shell was still missing. The owner was asked to repeat only case B
+with the same DLL and one uninterrupted layer; the result is below. Save/reload
+continuation was a separate investigation, not established by the two-patch probe.
 See [PROJECT.md](PROJECT.md) for story and gate state.
 
 ### Completed-shell retest
@@ -657,7 +658,7 @@ Together with the earlier partial-construction, prerequisite-refusal, and native
 rejection observations, this covers the two-patch additive experiment. Native
 creation is not atomic: stop on a failed addition, retain evidence, and do not
 blindly retry, roll back, or repair. Whether the surviving graph establishes a
-safe next step is the subsequent continuation investigation. No spontaneous
+safe next step was addressed by the subsequent continuation investigation. No spontaneous
 failure of a valid delta, save/reload resumption, or complete traversal is claimed.
 
 ## SB-F3.2 — Continuation probe preparation
@@ -864,7 +865,7 @@ with SB-D009 resolving the previously provisional continuation/failure policy.
 | Returning later | Reconstruct only a unique complete prefix from native geometry/topology; no stored mod progress | SB-F3.2 observations; process restart/removal accepted via SB-D008 |
 | Edits, ambiguity, completion | Refuse unmatched/partial/ambiguous graphs; an exact earlier prefix is treated as that prefix; completed graph produces no additions | SB-D007; edited graphs, reused layer ID, unrelated node, and completion observed |
 | Failure and retry | Refuse predictable invalid actions before mutation; stop Paint for the plugin session after unexpected failure, retain diagnostic context and partial native result | Non-atomic native calls and probe stop behavior; no general repair or rollback |
-| UI and integration | Use a native-editor Paint action with current-target feedback; synchronous native mutation | Probe control works in the reported context; final placement/styling remains an implementation choice |
+| UI and integration | Use a native-editor Paint action with current-target feedback; synchronous native mutation | Probe control worked in the reported context; final placement/styling was left to implementation |
 | Target and delivery | Recorded target/runtime, existing version/build contract, retained source credit/licenses | SB-F1.1, BUILD.md, SB-D004; no extra compatibility matrix or release authorization |
 
 No demonstrated runtime defect is being waived. The remaining gaps concern
@@ -873,9 +874,8 @@ complete displayed game build suffix and named research levels remain unknown;
 neither is needed to identify the hash-bound target or apply the actual native
 latitude value. Broader mod compatibility and optimality proof remain excluded.
 There is no unresolved concept change or unaccepted narrowing of player behavior
-to defer to implementation planning. The final specification will retain the
-accepted assumptions and define implementation acceptance cases without claiming
-those cases have already passed in a production mod.
+to defer to implementation planning. The final specification retained the accepted assumptions and defined production
+acceptance cases without claiming they had already passed in a production mod.
 
 ## SB-F4.2 — Specification review
 
@@ -904,6 +904,6 @@ those cases have already passed in a production mod.
 
 These are document/derivation checks, not new native gameplay or production-mod
 tests. The prototype implementation and mock workflow were not changed. The
-result is a concrete behavioral specification and acceptance catalogue for owner
+result was a concrete behavioral specification and acceptance catalogue for owner
 review, with reproducible technical inputs and the explicit validation limits.
 Final owner acceptance and milestone state belong to PROJECT.md.

@@ -1,8 +1,9 @@
 # Feasibility and MVP Definition Roadmap
 
-> Historical roadmap. Closure, owner acceptance, and the SB-D008 live-evidence
+> Historical plan. The original story language below prescribed its work and
+> criteria; it is not active work. Closure, owner acceptance, and the SB-D008 live-evidence
 > exception are recorded in [PROJECT.md](../../PROJECT.md). The
-> [current roadmap](../ROADMAP.md) defines subsequent work; this archive retains
+> [roadmap placeholder](../ROADMAP.md) is reserved for subsequent planning; this archive retains
 > the original scope and completion criteria.
 
 ## Outcome and authority
@@ -13,9 +14,9 @@ can be painted incrementally on the target game build, identify its actual
 constraints, and resolve the decisions needed to implement it.
 
 [PROJECT.md](../../PROJECT.md) owns current scope, roadmap/story status, gate results,
-decisions, and acceptance. This roadmap defines work and completion criteria only.
-The [concept](../../../CONCEPT.md) is the product baseline. Authoring or publishing
-this roadmap does not execute its stories or establish feasibility.
+decisions, and acceptance. This roadmap defined work and completion criteria only.
+The [concept](../../../CONCEPT.md) was its product baseline. Authoring or publishing
+the original plan did not execute its stories or establish feasibility.
 
 ## Scope
 
@@ -43,8 +44,8 @@ Out of scope:
   programmes, custom rendering, and polished UI/artwork.
 - Rebuilding the established package pipeline, adding hosted game-assembly shims,
   Thunderstore publication, public releases, or redistribution of game code.
-  A private test-probe handoff is allowed within the recorded test authorization;
-  the established CI artifact remains a mock package.
+  A private test-probe handoff was allowed within the recorded test authorization;
+  the CI artifact at that stage was a mock package.
 
 ## Evidence and execution rules
 
@@ -63,7 +64,7 @@ Out of scope:
    production subsystem is a deliverable here.
 4. Before live testing, record the operator, matching game/loader context, and
    authorized access in PROJECT.md. Use a disposable test save/layer and a bounded
-   procedure with cleanup. This drafting task authorizes no installation, game
+   procedure with cleanup. The drafting task authorized no installation, game
    launch, or save mutation. Existing authorization need not be requested again.
    If runtime access is unavailable, finish independent analysis and leave the
    dependent gate unmet; compile-only substitutes do not pass it.

@@ -2,22 +2,24 @@
 
 [PROJECT.md](PROJECT.md) owns execution state, gate outcomes, and acceptance.
 This record distinguishes metadata inspection, offline checks, compilation,
-package inspection, and later owner-operated runtime observations.
+package inspection, and owner-operated runtime observations. Sections describe
+the evidence available at their recorded stage; reproduction commands remain
+available, while superseded handoffs are historical.
 
 ## SB-I1.1 — Mapped references and delivery inputs
 
-Inspected 2026-09-12. The local target still has SHA-256
+Inspected 2026-09-12. The local target had SHA-256
 `AE0BA95F75BD879A62AA4CE253B2AB78EAA4FB3C7C595F5E1FEE75EBE0E0EF85`,
 MVID `ece4a40e-5e73-43f4-a9f8-4e74970b5942`, and 7,830,016 bytes. The full displayed
-game-build suffix remains unknown. No native code was executed.
+game-build suffix was not established by that inspection. No native code was executed.
 
 The [reference map](../references/Map.json) records the inspected BepInEx 5.4.17.0
 and UnityEngine.CoreModule 0.0.0.0 identities, seven initial types, required member
 signatures, inheritance, and native metadata tokens. Mono.Cecil reads these
-without loading game types. The initial entry-point shims compile successfully,
+without loading game types. The initial entry-point shims compiled successfully,
 and every declared public/protected member matches the local metadata. Assembly
 names/versions/public-key identity match the runtime destinations; the production
-DLL will reference those identities, not a separately named shim library.
+DLL was to reference those identities, not a separately named shim library.
 
 Reproduction from the repository root (substitute actual local input paths):
 
@@ -55,7 +57,7 @@ of unreferenced game types. Every later added surface extends the same map.
 
 ## SB-I1.2 — Production compilation and identity
 
-The minimal production plugin uses `dsp.spherebuilder` and the declared identity
+The initial minimal production plugin used `dsp.spherebuilder` and the declared identity
 mapping. Local compilation in both reference modes passed with no warnings or
 errors using SDK 10.0.302. Metadata inspection found identical 19 emitted
 assembly/member references in the shim and native builds. The checker reads PE
@@ -64,18 +66,18 @@ metadata, never instantiates the plugin or a game type.
 Build 70,000 produced plugin/package version `0.1.70000`, assembly/file version
 `0.1.0.0`, and informational label `0.1.70000.f85d4a5` from the local worktree based
 on `f85d4a5`. This is local working-tree evidence, not a clean source-commit build.
-The build record now explicitly reports dirty state. Retry attempts 1 and 2 kept
+The build record was extended to report dirty state. Retry attempts 1 and 2 kept
 the same version, build 70,001 advanced it, and the unchanged mock ZIP validator
 passed using the shared VERSION translation.
 
 The build fails on missing required paths, a changed local target hash, compile
 errors, mismatched plugin metadata, or a changed declared native reference map.
-The source project marks references non-copying; later packaging will select the
-production DLL explicitly instead of archiving a build directory.
+The source project marked references non-copying; explicit production-DLL
+selection was subsequently implemented in SB-I4.
 
-The existing workflow now installs the exact pinned SDK through the official
-[setup-dotnet action](https://github.com/actions/setup-dotnet), compiles production
-source, and checks DLL identity before publishing its still-explicit mock artifact.
+The workflow at that stage installed the exact pinned SDK through the official
+[setup-dotnet action](https://github.com/actions/setup-dotnet), compiled production
+source, and checked DLL identity before uploading its then-mock artifact.
 [Hosted run 34676317466](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34676317466)
 passed for `fc42073f054d90b5f9cde168b341855932c40a4e`: production version `0.1.20`,
 label `0.1.20.fc42073`, 19 inspected emitted references, and successful mock ZIP
@@ -101,12 +103,12 @@ maximum relative radius error `7.07654325e-8`, both below SB-MVP-07's bounds.
 Both production reference modes compile without warnings/errors and have the
 same 29 emitted references. No native API was added; the reference map is
 unchanged. This managed test executes only this project's pure plan/math code,
-not the plugin entry point or any native game/Unity method. CI now runs the same
-compiled-plan comparison. Its first hosted run stopped before the checks because
+not the plugin entry point or any native game/Unity method. CI was extended to run
+the same compiled-plan comparison. Its first hosted run stopped before the checks because
 actions/python-versions does not publish Windows 3.12.14. The
 [official version manifest](https://github.com/actions/python-versions/blob/main/versions-manifest.json)
-lists 3.12.10 as the latest available 3.12 Windows x64 binary; CI now pins that
-version. No geometry/code change or local Python replacement was needed.
+listed 3.12.10 as the latest available 3.12 Windows x64 binary at that inspection;
+CI was changed to pin it. No geometry change or local Python replacement was needed.
 [The corrected run](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34676813261)
 passed for `bd61e9087147c05dc696209b590528cb8dfe648a`, including the compiled-plan
 comparison and existing mock delivery.
@@ -132,7 +134,7 @@ content; no historical registry is introduced.
 The existing geometry comparison remains within the recorded bounds. The tests
 run this project's compiled matcher/math on captured-data fixtures; the native
 reader is verified by mapped metadata and real-reference compilation, not executed
-in a game session. SP/CP/identity capture is retained for the next story's
+in a game session. SP/CP/identity capture was retained for SB-I3.1
 preservation comparison; there is no report-export or custom-save subsystem.
 
 ## SB-I3.1 — Additive operation and failure boundary
@@ -160,12 +162,12 @@ one-error session stop on zero/exception, no reset through another target or
 missing/menu context, rejection of a partial result in a fresh session, and
 continuation from a fully finished delta after a result-read failure. Separate
 negative outcomes detect lost SP/CP, replaced/moved old nodes, removed shells,
-and missing result frames. Production UI invocation and native behavior remain
-for the later integration/human stories; this is not a new live observation.
+and missing result frames. Production UI invocation and native behavior were
+deferred to the integration and human stories; these checks were not live observations.
 
 ## SB-I3.2 — Current-target editor control
 
-The initial panel sits at the top center of the native control panel, 380 by 122
+The initial panel sat at the top center of the native control panel, 380 by 122
 UI units, with one Paint button and a short status. It reuses a native editor font.
 Inspection of UIDysonEditor's mouse-over calculation confirms that active entries
 in `guiRects` exclude native brush input; the panel registers there and also uses
@@ -188,9 +190,9 @@ assemblies match native signatures, now including type abstract/sealed and metho
 virtual-slot shape. The mapped UI assemblies and inherited declarations were
 inspected before use; BepInEx's base plugin is abstract.
 
-This is offline lifecycle review and compilation, not a Unity runtime test.
-Visibility, overlap, readable feedback, actual event delivery, click-through,
-reopening, and production native preservation await SB-I5.1. The hosted runs for
+That stage provided offline lifecycle review and compilation, not a Unity runtime
+test. Visibility, overlap, readable feedback, event delivery, click-through,
+reopening and production preservation were deferred to SB-I5.1. The hosted runs for
 [SB-I2.2](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34677110100) and
 [SB-I3.1](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34677535631)
 also passed their affected offline checks.
@@ -203,7 +205,7 @@ warnings/errors, with identical 210 emitted references and a matching five-assem
 native map. The builder always compiles first and explicitly selects the production
 DLL; no stale/missing payload or compiler failure falls back to a mock package.
 
-The ZIP contains 47 files: required root metadata, one production DLL in the
+That initial ZIP contained 47 files: required root metadata, one production DLL in the
 verified BepInEx path, and source/compile inputs with pinned geometry, derivation,
 credit and applicable licenses. The supplied icon is unchanged, with the hash and
 256×256 PNG dimensions recorded above. Validation checks metadata identity, numeric
@@ -214,9 +216,9 @@ nested ZIP, wrapper folder, missing reference source, wrong dependency, and inva
 image. This tests package contracts, not README wording.
 
 The root/package/build documentation now describes actual installation and use.
-The intermediate workflow still wraps its executable ZIP with build information;
-SB-I4.2 replaces that transport and verifies the real download. No game installation,
-execution, release, or submission was performed.
+The intermediate workflow still wrapped its executable ZIP with build information;
+SB-I4.2 subsequently replaced that transport and verified the real download.
+No game installation, execution, release or submission was performed in SB-I4.1.
 
 Package-source follow-up: inspection found that the retained patch derivation also
 imports `verify_geometry.py`. That file is now included (48 package files). The
@@ -231,7 +233,7 @@ all twelve malformed-package cases. The step then failed because an intentionall
 rejected DLL left native exit code 1 in PowerShell. The negative-check script now
 returns success explicitly only after every rejection has passed. The local
 Actions-style exit-code check confirms zero; unexpected acceptance still throws.
-The next candidate must pass hosted upload and independent download inspection.
+Hosted upload and independent download inspection were still pending for the next candidate.
 
 Run 34678732321 (build 30, `2138818`) passed all hosted checks and direct upload.
 The independent API download matched CI's package SHA-256 and had the required
@@ -239,10 +241,10 @@ root and single DLL, with no wrapper/nested archive. Its DLL's 210 emitted
 references matched the same-revision local real-reference compilation. Inspection
 then found CI's Windows checkout converted the upstream LICENSE from LF to CRLF.
 The text was identical after newline normalization, but retained bytes differed.
-`.gitattributes` now pins license/text inputs to LF; the next downloaded candidate
-must pass the unchanged byte check before IG4 can close.
+`.gitattributes` was changed to pin license/text inputs to LF. The next download
+then had to pass the unchanged byte check before IG4 could close.
 
-The final inspected download is
+The inspected SB-I4.2 download was
 [run 34678932740](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34678932740),
 build 31 / attempt 1, source `a71fd79244054b1fe0695cff2d07631eb5ae803c` (clean CI
 checkout). The [direct package artifact](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34678932740/artifacts/10293890904)
@@ -269,9 +271,9 @@ was clean. The raw download/build record are retained under ignored
 
 ## SB-I5.1 — Prepared owner capture and handoff
 
-[OWNER-SESSION.md](OWNER-SESSION.md) defines the single integrated route on the
+[OWNER-SESSION.md](OWNER-SESSION.md) retains the integrated procedure prepared for
 verified build 0.1.31.a71fd79. The agent has not installed or run that plugin.
-The owner records two native single-layer exports (prefix 3 with a designated
+The procedure requested two native single-layer exports (prefix 3 with a designated
 pentagon, then prefix 12), a useful panel screenshot, and the normal BepInEx log.
 The route uses one menu reload and a second-layer manual edit, without new-system,
 endpoint, restart/removal, hexagon, construction-wait, or forced-failure cases.
@@ -292,7 +294,7 @@ numeric bounds, retained numeric IDs/positions/endpoints/prototypes and shell
 boundary. It does not authenticate the custom blueprint checksum, recover memory
 identities, or infer invested SP/CP that the blueprint omits. In-action production
 checks and retained feasibility evidence remain the support for those properties;
-owner observations/logs and captures will be reviewed together. See SB-D017.
+owner observations/logs and captures were subsequently reviewed together. See SB-D017.
 
 ## SB-I5.1 — Owner evidence review
 
@@ -438,8 +440,8 @@ Compared with runtime-tested 0.1.31, production changes are confined to the layo
 in `Plugin.cs` and its mapped reference declarations. The geometry, recognition,
 mutation, preservation and feedback wording are unchanged. Offline capture tools
 also changed during SB-I5.1's evidence review; they are not the runtime plugin.
-[The short owner procedure](OWNER-SESSION.md#ui-refinement-recheck--sb-i53) targets
-the new placement/readability/input, with no claim of runtime verification yet.
+[The short owner procedure](OWNER-SESSION.md#ui-refinement-recheck--sb-i53) targeted
+the new placement/readability/input before the confirmation recorded below.
 
 ### Owner refinement evidence
 
