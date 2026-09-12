@@ -24,17 +24,19 @@ passed under SB-D021. The [implementation plan](management/archive/ROADMAP-mvp-i
 and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition.md)
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
-sequential execution under SB-D023. SB-R1.1 is complete; SB-R1.2 is next and RG1
-remains open. Candidate acceptance and manual publication remain separate.
+sequential execution under SB-D023. SB-R1.1 is complete; SB-R1.2 is blocked by
+personal attribution in published Git history under SB-D025. RG1 has not passed,
+so dependent stories have not started. Candidate acceptance and manual publication
+remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Release-candidate execution authorized; SB-R1.1 complete, privacy review SB-R1.2 next |
+| Roadmap and active work | SB-R1.1 complete; SB-R1.2 blocked on historical attribution; later stories not started |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
-| Release-candidate gates | RG1–RG4, RG5a and RG5 not passed; no release candidate accepted |
+| Release-candidate gates | RG1 blocked under SB-D025; RG2–RG4, RG5a and RG5 not passed; no release candidate accepted |
 | Mod implementation | Working MVP complete; final cleanup build 0.1.41 retains milestone behavior, including the accepted label capitalization |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
 | Distribution | [CI package 0.1.41](MVP-VALIDATION.md#final-cleanup-package) independently verified; no publication authorized |
@@ -91,7 +93,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | Story | Execution state | Evidence |
 | --- | --- | --- |
 | SB-R1.1 | Complete | [Minimum distribution contract](RELEASE-CANDIDATE.md#sb-r11--minimum-distribution-contract), SB-D024 |
-| SB-R1.2 | Not started | — |
+| SB-R1.2 | Blocked; forward identity mitigation applied | [Privacy findings and required resolution](RELEASE-CANDIDATE.md#sb-r12--privacy-review-and-historical-attribution-blocker), SB-D025 |
 | SB-R2.1 | Not started | — |
 | SB-R2.2 | Not started | — |
 | SB-R3.1 | Not started | — |
@@ -620,6 +622,24 @@ Historical instructions in a decision are not a new request to execute that work
 - **Affected contract:** SB-R1.1, SB-R2.1–2.2, SB-R5.1; supersedes SB-D016's bundled
   source choice without changing the game's behavior or original-source license.
 
+### SB-D025 — Prevent new private attribution; stop at the historical privacy gate
+
+- **Date / decision-maker:** 2026-09-12, implementor within SB-R1.2.
+- **Finding / basis:** [Privacy inspection](RELEASE-CANDIDATE.md#sb-r12--privacy-review-and-historical-attribution-blocker)
+  confirmed a personal email in 44 of 45 reachable commits, including the effective
+  identity used for new commits. Anonymous GitHub access confirmed published
+  exposure. Historical names and remaining file/artifact surfaces also need review.
+- **Choice:** Change only this repository's future Git identity to the existing
+  public handle and verified GitHub no-reply address. Record SB-R1.2/RG1 as blocked;
+  do not rewrite history, delete remote material or silently exempt attribution.
+- **Alternatives / consequence:** A normal new commit cannot remove old metadata.
+  History cleanup requires separate authorization, revised commit identities and
+  review of old references/hosted remnants. Excluding historical attribution would
+  instead require an explicit owner scope change. Neither is authorized by the
+  current plan. Global Git settings and existing history remain unchanged.
+- **Affected contract:** SB-R1.2/RG1 and dependent stories; no privacy pass, release
+  candidate readiness or new acceptance waiver is asserted.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -661,6 +681,7 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Proceed to SB-R1.2's privacy review and resolve RG1 before package implementation.
-No privacy/security gate or release candidate is accepted yet. The owner's next
-planned participation remains the final candidate session.
+Resolve SB-D025: separately authorize cleanup of published Git attribution, or
+explicitly exclude historical attribution from the privacy scope. The substantial
+blocker prevents RG1 and the dependent sequence from completing under the current
+instructions. No later story, security/privacy gate or release candidate is complete.
