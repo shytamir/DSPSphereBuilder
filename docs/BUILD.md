@@ -64,6 +64,21 @@ license presence, retained input bytes, runtime dependency metadata, and DLL
 GUID/version/revision without loading it. Negative cases cover malformed payload,
 identity, dependencies, source, image, and archive layout.
 
+## Source layout
+
+| Files | Responsibility |
+| --- | --- |
+| [Plugin.cs](../src/Plugin.cs) | Editor panel, one click listener, feedback refresh and attachment cleanup |
+| [NativeTarget.cs](../src/NativeTarget.cs), [NativeGraph.cs](../src/NativeGraph.cs) | Resolve current native selection; read snapshots and invoke native node/frame creation |
+| [PaintSession.cs](../src/PaintSession.cs), [Preservation.cs](../src/Preservation.cs) | Check prerequisites, apply one delta, compare existing records and stop on partial failure |
+| [GraphRecognition.cs](../src/GraphRecognition.cs), [LayerGraph.cs](../src/LayerGraph.cs) | Match captured native content to a unique prefix; retain references only for same-action preservation |
+| [Geometry.cs](../src/Geometry.cs), [Plan.Data.cs](../src/Plan.Data.cs) | Float position scaling and generated reference directions, deltas and face boundaries |
+
+`checks/Logic` exercises managed records and call sequences without invoking native
+methods. `checks/Metadata` reads compiled identities and emitted references without
+loading the plugin. The separate `probe/` and `tests/probe-json/` retain the historical
+experiment; neither is a production dependency.
+
 ## Version contract
 
 The manually authored root [VERSION](../VERSION) contains exactly two assignments:

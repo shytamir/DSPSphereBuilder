@@ -100,6 +100,7 @@ namespace DSPSphereBuilder
             }
             catch (Exception error)
             {
+                // Earlier native writes can survive the failing call; do not replay the delta.
                 Stopped = true;
                 result.State = PaintState.Stopped;
                 logError($"Build {BuildInfo.Label}; target {targetIdentity}; star {result.StarId}, layer {result.LayerId}, radius {result.Radius}, patch {intendedPatch}: {error}");

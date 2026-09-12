@@ -21,14 +21,15 @@ The MVP implementation roadmap is complete. The owner accepted the functional
 MVP, the UI workshop refinement and the label-only correction; final reconciliation
 passed under SB-D021. The [implementation plan](management/archive/ROADMAP-mvp-implementation.md)
 and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition.md)
-are archived. The polishing placeholder is in place; the requested code hygiene
-pass follows the management cleanup. Polishing authoring and publication are not active.
+are archived. The polishing placeholder and management/code hygiene passes are
+complete. The final cleanup build is awaiting package inspection. Polishing
+authoring and publication are not active.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | MVP roadmap complete and archived; management pass complete; code hygiene pass follows |
+| Roadmap and active work | MVP roadmap archived; management/code review complete; final cleanup package inspection pending |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Mod implementation | Working MVP complete; final milestone build 0.1.38 changes only label capitalization from UI-tested 0.1.36 |
@@ -563,6 +564,5 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Complete the code hygiene pass requested in SB-D020–021. The next owner discussion
-will define the polishing roadmap; its placeholder does not authorize new product
-work or publication.
+Inspect the final cleanup package, then discuss the polishing roadmap with the
+owner. Its placeholder does not authorize new product work or publication.

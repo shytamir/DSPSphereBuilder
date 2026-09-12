@@ -15,6 +15,7 @@ namespace DSPSphereBuilder
 
     internal static class GraphRecognition
     {
+        // Accumulated binary32 rounding allowance: 10u/(1-10u), where u = 2^-24.
         public const double PositionRelativeTolerance = 10.0 / (16777216.0 - 10.0);
 
         private static bool SamePosition(Position actual, Position expected, float radius)

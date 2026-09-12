@@ -533,3 +533,27 @@ the 0.1.36 session and replacement screenshot establish the UI refinement.
 Publication polish is the next planning boundary: presentation/package copy,
 any agreed cosmetic refinements and release preparation. This review did not
 add product features, reopen W1–W6, author that plan, or authorize publication.
+
+## Closeout management and code review
+
+The management pass archived the implementation plan with its original scope,
+story bodies and criteria intact apart from relative links; this was mechanically
+compared with the pre-archive plan. It left an empty polishing roadmap boundary,
+updated active usage/contract references, and changed superseded phase/handoff
+claims to historical language. All 128 local Markdown links/anchors passed after
+repairing the renamed concept-section link. Historical operator procedures remain
+explicitly marked as reproduction material. State authority remains PROJECT.md.
+
+The code pass read production source, native declarations, logic/metadata checks
+and package/capture scripts. Tests compare behavior and data, not exact UI or
+exception prose. Exact GUIDs, signatures, checksums and serialized keys establish
+external contracts and were retained. No catch-and-rethrow wrapper, nested
+recovery loop, speculative compatibility gate, or project steering comment was
+found in production code. The existing catches preserve diagnostic exception
+details and stop non-atomic mutation as required; they were not broadened or removed.
+
+Cleanup adds only two technical comments explaining the float allowance and
+partial-write boundary, orders the plugin imports consistently, documents the
+source layout in BUILD.md, and removes redundant reference-map prose. The source
+diff changes no executable expression, dependency, native declaration or generated
+plan. No new runtime recheck is required for these documentation-only code edits.

@@ -22,5 +22,3 @@ For each commit adding/changing a reference:
 
 The checker reads metadata with the loader's existing Mono.Cecil library. It
 does not load or invoke native game types. Generated outputs stay in `artifacts/`.
-The map's equality check detects a changed recorded API inventory, not player UI
-wording or an implementation-specific behavior assertion.
