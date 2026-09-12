@@ -14,16 +14,16 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-The first [feasibility and MVP definition roadmap](management/ROADMAP.md) is
-authored. Its outcome is an evidence-backed MVP specification for a subsequent
-implementation roadmap. The current request authorizes planning and publication
-of the roadmap, not execution of its investigations or runtime probes.
+Executing the [feasibility and MVP definition roadmap](management/ROADMAP.md).
+The owner authorized sequential execution, a main-branch push with state updates
+after every completed story, and evidence-based decisions that keep the MVP lean.
+Stop for a substantial blocker. The owner will operate the later live probe.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F1 through SB-F4 defined; no execution story active |
+| Roadmap and active work | SB-F1.1 complete; SB-F1.2 is next |
 | Feasibility gates and MVP specification | G1–G4 not passed; specification not yet authored or accepted |
 | Mod implementation | Not started; no plugin source or runtime scaffold |
 | Runtime validation and owner acceptance | Not performed for the proposed mod |
@@ -53,22 +53,28 @@ The local `DSPGAME_Data/Managed/Assembly-CSharp.dll` was inspected read-only on
   player-facing game-build number.
 
 This hash identifies the initial target, not a claim of game compatibility.
-SB-F1.1 must recheck it, identify the managed/runtime context, and determine a
-reliable game-build label if available. The sample blueprint's version header
-does not substitute for this target. No game code was loaded or executed during
-this planning task.
+SB-F1.1 reconfirmed it. Managed MVID is
+`ece4a40e-5e73-43f4-a9f8-4e74970b5942`; GameConfig declares `0.10.34`, while the
+complete build suffix remains unknown. See [the evidence](FEASIBILITY.md#sb-f11--target-and-probe-environment).
+The sample header is not a substitute for this target. No game code has been
+loaded or executed by the agent.
 
 ## Work tracking
 
-| Epic | Stories | Execution state |
+| Story | Execution state | Evidence |
 | --- | --- | --- |
-| SB-F1: Native integration evidence | SB-F1.1, SB-F1.2 | Not started |
-| SB-F2: Exact staged geometry | SB-F2.1, SB-F2.2, SB-F2.3 | Not started |
-| SB-F3: Incremental construction continuity | SB-F3.1, SB-F3.2, SB-F3.3 | Not started |
-| SB-F4: Evidence-backed MVP contract | SB-F4.1, SB-F4.2 | Not started |
+| SB-F1.1 | Complete | [Target and probe environment](FEASIBILITY.md#sb-f11--target-and-probe-environment) |
+| SB-F1.2 | Not started; next | — |
+| SB-F2.1 | Not started | — |
+| SB-F2.2 | Not started | — |
+| SB-F2.3 | Not started | — |
+| SB-F3.1 | Not started | — |
+| SB-F3.2 | Not started | — |
+| SB-F3.3 | Not started | — |
+| SB-F4.1 | Not started | — |
+| SB-F4.2 | Not started | — |
 
-The grouped state applies to every listed story until execution requires separate
-rows. Record story progress, gate/milestone outcomes, and concise evidence links
+Record story progress, gate/milestone outcomes, and concise evidence links
 here. Keep purpose, scope, dependencies, and completion criteria in the roadmap.
 Do not maintain a second status table there or in the README.
 
@@ -93,10 +99,21 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** Roadmap scope and G4/M4; the future MVP specification's
   evidence and implementation-planning handoff.
 
-Record subsequent material choices here using the roadmap's decision fields.
-No native integration, orientation tolerance, supported placement envelope,
-continuation policy, or runtime-test authorization has yet been settled by this
-roadmap's execution. Those questions belong to its identified early investigations.
+### SB-D002 — Execute sequentially; owner-operated live observations
+
+- **Date / decision-maker:** 2026-09-12, owner instruction and live-probe reply.
+- **Choice:** Execute the roadmap in order, push each completed story with its
+  state update, and stop on a substantial blocker. The owner runs the eventual
+  probe in a disposable test save; the agent prepares the evidence and artifact.
+- **Alternatives:** Agent-operated gameplay was not selected. Offline checks alone
+  cannot satisfy the roadmap's live-observation gate.
+- **Basis:** Current owner authorization; SB-F1.1 confirmed the local static
+  inspection inputs and tools.
+- **Consequence:** No repeated permission request for authorized repository work.
+  Runtime conclusions wait for matching owner observations. Technical choices
+  favour native behavior and the minimum mechanism needed by the concept.
+- **Affected contract:** Execution rules, SB-F3, and G3. This supersedes SB-D001's
+  planning-only execution boundary, not its specification-first outcome.
 
 ## Evidence and unresolved questions
 
@@ -119,7 +136,5 @@ roadmap's execution. Those questions belong to its identified early investigatio
 
 ## Next decision
 
-Authorize execution of the feasibility roadmap, beginning with SB-F1.1. Later
-runtime work needs an identified matching test context and authorized access.
-The next implementation roadmap is planned only after the full MVP specification
-passes G4/M4; no feasibility story or gate is claimed complete by this document.
+Proceed to SB-F1.2 under the existing execution authorization. G1 awaits its native
+operation map. The next implementation roadmap remains downstream of G4/M4.
