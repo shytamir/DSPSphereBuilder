@@ -19,7 +19,7 @@ try {
         name = 'DSPSphereBuilder'
         version_number = $version
         website_url = 'https://github.com/shytamir/DSPSphereBuilder'
-        description = 'Paint the exact reference C60 sphere framework one connected pentagon patch at a time. Fill shells yourself.'
+        description = 'Precise Dyson sphere planning without the angle-counting, with connected sections that grow at your pace.'
         dependencies = @('xiaoye97-BepInEx-5.4.17')
     }
     $packageFiles = & ./scripts/Get-PackageInputs.ps1

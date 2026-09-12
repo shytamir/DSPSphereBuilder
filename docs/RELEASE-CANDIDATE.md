@@ -207,3 +207,25 @@ the replacement used `git rev-parse HEAD`. The builder currently trusts that
 caller's revision argument beyond its format. SB-R4.1's source-identity review must
 close that gap before candidate delivery. The working-tree package above is a
 rehearsal, not a published or accepted candidate; final bytes come from clean CI.
+
+## SB-R2.2 — Player-facing description and README
+
+The manifest description is 105 characters of benefit-led prose. The README is
+158 words before the generated source link: a short introduction, natural use
+guidance and separate manager/manual installation paragraphs. It retains the
+68° prerequisite, player-filled shells and the continuation limit without API,
+build, probe, ownership-history or project-state language. It makes no mathematical
+optimality or new compatibility claim.
+
+Installation guidance was checked against the primary
+[mod-manager download workflow](https://github.com/ebkr/r2modmanPlus/wiki/Downloading-Mods)
+and the DSP routing inputs from SB-R1.1. The copy describes installing a package;
+it does not announce an existing public listing. Candidate download logistics stay
+in the final handoff.
+
+The finished README, including its source footer, was entered in Thunderstore's
+own [Markdown preview](https://thunderstore.io/tools/markdown-preview/). The page
+reported successful rendering; visual and accessibility inspection confirmed the
+headings, action emphasis, installation paths and credit/source links. No package
+was submitted or owner copy approval requested. UTF-8 decoding and the local
+`0.1.48.6ce9a97` package check passed with the new copy. No prose assertions were added.
