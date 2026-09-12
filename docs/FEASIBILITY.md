@@ -876,3 +876,34 @@ There is no unresolved concept change or unaccepted narrowing of player behavior
 to defer to implementation planning. The final specification will retain the
 accepted assumptions and define implementation acceptance cases without claiming
 those cases have already passed in a production mod.
+
+## SB-F4.2 — Specification review
+
+[MVP-SPECIFICATION.md](MVP-SPECIFICATION.md) was reviewed in three passes on
+2026-09-12:
+
+1. **Geometry and traceability:** mechanically compared all twelve table rows
+   against `derive_patches.py`, including new/reused nodes, perimeter/closing
+   frames, leading edges, and cumulative counts. All agree. Checked unique
+   sequential requirement IDs, coverage of all 25 requirements by the 15
+   acceptance cases, and local file/heading links. The arithmetic review keeps
+   generation precision distinct from continuation matching and states the
+   relative radius bound explicitly.
+2. **Behavioral scenarios:** reviewed empty, partial, completed, invalid-selection,
+   insufficient-unlock, cross-layer/star, edited, reloaded, and interrupted states.
+   The contract advances one delta, refuses without mutation, or stops after an
+   unexpected failure; it does not wait for construction, repair partial graphs,
+   claim atomicity, or infer ownership from reused IDs. A fully completed delta
+   survives interruption as a recognizable prefix; a partial delta does not.
+3. **Scope, authority, and evidence:** checked the contract against the concept
+   and SB-D003–009. Accepted assumptions W1–W6 retain the unobserved radius,
+   hexagon, system, research, selection, and process-lifetime cases; no waiver
+   becomes a runtime result. PROJECT.md remains the state/acceptance authority.
+   Final UI/layout/build choices are bounded implementation choices, not added
+   epics, custom persistence, repair, or broader compatibility commitments.
+
+These are document/derivation checks, not new native gameplay or production-mod
+tests. The prototype implementation and mock workflow were not changed. The
+result is a concrete behavioral specification and acceptance catalogue for owner
+review, with reproducible technical inputs and the explicit validation limits.
+Final owner acceptance and milestone state belong to PROJECT.md.

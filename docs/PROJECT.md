@@ -8,7 +8,9 @@ facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
 The [roadmap](management/ROADMAP.md) defines work and completion criteria, without
-tracking its status. The [README](../README.md) introduces the project, the
+tracking its status. The [MVP specification](MVP-SPECIFICATION.md) defines the
+implementation contract and acceptance cases. The [README](../README.md)
+introduces the project, the
 [build guide](BUILD.md) defines build procedures, and [AGENTS.md](../AGENTS.md)
 governs agent conduct. These documents link here for state.
 
@@ -23,8 +25,8 @@ Stop for a substantial blocker. The owner will operate the later live probe.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-F4.1 complete; author and review the specification under SB-F4.2 |
-| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; G4/M4 pending |
+| Roadmap and active work | SB-F4.1 complete; SB-F4.2 authored and reviewed, awaiting owner acceptance of the written specification |
+| Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; specification ready for review; G4/M4 pending owner acceptance |
 | Mod implementation | Disposable continuation probe with twelve fixed patches; production implementation not started |
 | Runtime validation and owner acceptance | Additive preservation, continuation, and full graph verified in the observed contexts; owner accepts remaining unverified cases under SB-D008 |
 | Distribution | Mock artifact only; no release or Thunderstore publication authorized |
@@ -72,7 +74,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-F3.2 | Complete; full process restart/removal remains unverified and accepted under SB-D008 | [Owner continuation run](FEASIBILITY.md#owner-continuation-run), SB-D007–008 |
 | SB-F3.3 | Complete under SB-D008; remaining live cases accepted without execution | [Full workflow and limits](FEASIBILITY.md#sb-f33--full-workflow-evidence-and-accepted-limits) |
 | SB-F4.1 | Complete | [Constraint reconciliation](FEASIBILITY.md#sb-f41--mvp-constraint-reconciliation), SB-D009 |
-| SB-F4.2 | Not started | — |
+| SB-F4.2 | In progress; specification and review complete; owner acceptance pending | [MVP specification](MVP-SPECIFICATION.md), [review record](FEASIBILITY.md#sb-f42--specification-review) |
 
 Record story progress, gate/milestone outcomes, and concise evidence links
 here. Keep purpose, scope, dependencies, and completion criteria in the roadmap.
@@ -205,7 +207,8 @@ or Thunderstore moderation acceptance.
   completion, and state lifetime. This is a tested local candidate, not accepted
   live resumption or a production persistence design. G3 remains open.
   **Later disposition:** the owner continuation run supports the observed native
-  reload/selection/edit cases; SB-D008 accepts the remaining unverified cases.
+  reload/selection/edit cases; SB-D008 accepts the remaining unverified cases and
+  SB-D009 settles the MVP mechanism choice.
 
 ### SB-D008 — Accept remaining unverified cases and proceed to specification
 
@@ -295,7 +298,11 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Write and review the full MVP specification under SB-F4.2. No further human probe
-is requested. The next human handoff is the concrete specification and its
-evidence/decision record for owner review; G4/M4 and the next implementation
-roadmap remain downstream of acceptance.
+Owner review of [MVP-SPECIFICATION.md](MVP-SPECIFICATION.md), together with this
+decision record and FEASIBILITY.md, is the remaining SB-F4.2/G4/M4 step. The
+specification has 25 stable requirements, the complete twelve-delta table, and
+15 acceptance cases; its review is recorded in FEASIBILITY.md. The owner accepted
+the remaining feasibility cases, not this subsequently authored document.
+No further human probe is requested. Record explicit specification acceptance
+here before declaring the final milestone achieved. The next implementation
+roadmap and production work have not been authored or activated by this handoff.

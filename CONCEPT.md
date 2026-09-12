@@ -8,6 +8,9 @@ It combines the precision of a complete blueprint with the construction control 
 
 This document records the agreed concept before scaffolding or implementation. It is not evidence of working in-game incremental placement.
 
+See [PROJECT.md](docs/PROJECT.md) for current decisions and acceptance, and the
+[MVP specification](docs/MVP-SPECIFICATION.md) for the detailed implementation contract.
+
 ## The experience
 
 Begin on an empty selected layer with a polar pentagon and one leading spoke toward the next pentagon. Each subsequent click completes another pentagon, connects it to the already painted framework, and leads toward the next patch.

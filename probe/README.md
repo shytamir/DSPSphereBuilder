@@ -6,6 +6,10 @@ checked after save/reload.
 It is not the playable mod. Use a disposable copy of a save with an existing
 BepInEx installation; no game files are replaced by this artifact.
 
+The [project record](https://github.com/shytamir/DSPSphereBuilder/blob/main/docs/PROJECT.md)
+owns execution scope and acceptance. These procedures are retained for reproduction;
+their presence does not request another test run.
+
 ## Install and identify
 
 1. Close the game. Extract the ZIP's `DSPSphereBuilder.Feasibility` folder into
