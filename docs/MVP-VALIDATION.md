@@ -369,3 +369,13 @@ acceptance remain their evidence/disposition. The exports omit invested SP/CP an
 object identity; this screenshot has no invested construction to preserve. The
 new hexagon observation covers designation/boundary retention beside later
 addition, not completed hexagon CP delivery or the radius endpoints. See SB-D018.
+
+## SB-I5.2 — Owner UI workshop
+
+After reviewing the current screenshot, the owner selected: **"Place it near the
+bottom, left of the native bottom bar controls."** The owner confirmed **"The
+wording is fine"**, and requested a sleeker design because the enclosing box is
+too large and bulky. These are the finite refinement inputs recorded in SB-D019;
+there is no no-change disposition. The capture's top-center overlap and unused
+panel area provide the visual basis. No new action, setting, preview, or product
+behavior was requested.

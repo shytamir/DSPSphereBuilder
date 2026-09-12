@@ -27,7 +27,7 @@ final acceptance follow their explicit human gates. See SB-D014.
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | SB-I5.1 complete; owner accepted 0.1.31; the UI workshop remains required |
+| Roadmap and active work | SB-I5.1–5.2 complete; SB-I5.3 will apply the agreed bottom-left compact UI |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG4/IM4 and IG5a/IM5a passed; workshop/refinements and final IG5 remain |
 | Mod implementation | Production 0.1.31 has matching owner evidence for the full framework and retained hexagon boundary |
@@ -88,7 +88,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-I4.1 | Complete | [Executable package and validator](MVP-VALIDATION.md#sb-i41--executable-package-and-validator) |
 | SB-I4.2 | Complete | [Hosted download inspection](MVP-VALIDATION.md#sb-i42--hosted-transport-checks) |
 | SB-I5.1 | Complete under SB-D018; IG5a/IM5a passed | [Owner evidence review](MVP-VALIDATION.md#sb-i51--owner-evidence-review) |
-| SB-I5.2 | Not started | Owner UI workshop |
+| SB-I5.2 | Complete | [Owner workshop](MVP-VALIDATION.md#sb-i52--owner-ui-workshop), SB-D019 |
 | SB-I5.3 | Not started | Agreed UI refinements and targeted rechecks |
 | SB-I5.4 | Not started | Working-MVP acceptance and polish handoff |
 
@@ -472,6 +472,25 @@ or Thunderstore moderation acceptance.
 - **Affected contract:** SB-I5.1, IG5a/IM5a, SB-MVP-12–13, W2, final evidence review
   and owner acceptance. Acceptance does not authorize publication or polish work.
 
+### SB-D019 — Bottom-left compact control; unchanged wording
+
+- **Date / decision-maker:** 2026-09-12, explicit owner workshop answers.
+- **Choice:** Place Sphere Builder near the bottom, left of the native bottom bar
+  controls. Make its enclosing panel smaller and sleeker. Keep the current wording.
+- **Basis / alternatives:** The owner rejected retaining the top-center placement
+  and chose the bottom toolbar area over the suggested left-side layer controls.
+  The screenshot shows the current large panel and its overlap with the native
+  center caption. Wording was explicitly accepted.
+- **Acceptance outcomes:** The panel sits to the left of the native bottom toolbar,
+  keeps clear of its controls and the center caption, and uses visibly less space.
+  Button/status remain readable. Painting, current selection, refusal feedback,
+  single-click input and error lifetime remain unchanged. Implementation may choose
+  modest dimensions/spacing within this outcome; no new commands or settings.
+- **Consequence:** SB-I5.3 applies only this placement/layout refinement. A short
+  owner check of the resulting layout/input closes it; no repeat of twelve-patch
+  progression, shell tests or accepted feasibility gaps. Final IG5 remains open.
+- **Affected contract:** SB-I5.2–5.4 and SB-MVP-08–10 presentation only.
+
 ## Evidence and unresolved questions
 
 - The implementation draft was reviewed in three passes on 2026-09-12:
@@ -503,6 +522,5 @@ or Thunderstore moderation acceptance.
 
 ## Next decision
 
-Conduct SB-I5.2 with the owner using the supplied screenshot and observed control.
-Placement, compactness and feedback remain workshop choices. No UI change or
-no-change disposition is agreed yet; refinements and final IG5 follow the workshop.
+Implement SB-D019's bottom-left compact panel in SB-I5.3, then obtain the targeted
+owner layout/input confirmation. The final gate follows that recheck.
