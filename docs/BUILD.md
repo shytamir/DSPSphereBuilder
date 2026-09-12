@@ -19,6 +19,8 @@ metadata, builds the executable ZIP, validates it, and writes
 Use a positive local rehearsal number; local numbers do not reserve CI numbers.
 Failed compilation or a missing input stops packaging; there is no prebuilt-DLL
 or mock fallback. Generated outputs stay under ignored `artifacts/`.
+The supplied commit must match the checkout's HEAD. Dirty local builds remain
+explicitly marked rehearsals in build information; a candidate comes from clean CI.
 
 To also compile against the actual target and compare emitted references:
 
@@ -63,7 +65,8 @@ Take the expected inputs from the matching separate build record. The hash is
 optional for a local check; use it when validating downloaded bytes against CI.
 The validator checks archive entries, UTF-8, PNG decoding/dimensions, revision-specific
 source access, both license texts, retained icon bytes, runtime dependency metadata, and DLL
-GUID/version/revision without loading it. Negative cases cover malformed payload,
+GUID/version/revision, assembly file-version attribute and PE version resource
+without loading it. Negative cases first validate the original package, then cover malformed payload,
 identity, dependencies, source access, licenses, image, and archive layout.
 
 ## Source layout

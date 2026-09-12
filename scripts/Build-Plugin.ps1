@@ -13,6 +13,9 @@ $repo = Split-Path -Parent $PSScriptRoot
 Push-Location $repo
 try {
     $identity = & ./scripts/Get-BuildIdentity.ps1 -BuildNumber $BuildNumber -Commit $Commit -RunAttempt $RunAttempt
+    $head = git -c "safe.directory=$($repo.Replace('\', '/'))" rev-parse HEAD
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot identify source revision.' }
+    if ($identity.source_commit -cne $head) { throw 'Build revision does not match the checked-out source.' }
     $changes = git -c "safe.directory=$($repo.Replace('\', '/'))" status --porcelain
     if ($LASTEXITCODE -ne 0) { throw 'Cannot identify working-tree state.' }
     $identity | Add-Member -NotePropertyName working_tree_dirty -NotePropertyValue ([bool]$changes)

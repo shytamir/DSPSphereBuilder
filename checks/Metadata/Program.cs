@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 
@@ -23,6 +24,7 @@ static HashSet<string> Inspect(string path, string version, string label, string
     if (reader.GetString(assembly.Name) != "DSPSphereBuilder" || assembly.Version.ToString() != assemblyVersion)
         throw new InvalidDataException("Unexpected assembly identity.");
     string? informational = null;
+    string? fileVersion = null;
     bool plugin = false;
     foreach (var handle in reader.CustomAttributes)
     {
@@ -33,6 +35,7 @@ static HashSet<string> Inspect(string path, string version, string label, string
         var value = reader.GetBlobReader(attribute.Value);
         if (value.ReadUInt16() != 1) throw new InvalidDataException("Invalid attribute prolog.");
         if (type.EndsWith("::System.Reflection.AssemblyInformationalVersionAttribute")) informational = value.ReadSerializedString();
+        if (type.EndsWith("::System.Reflection.AssemblyFileVersionAttribute")) fileVersion = value.ReadSerializedString();
         if (type.EndsWith("::System.Reflection.AssemblyMetadataAttribute") && value.ReadSerializedString() == "ReferenceShim")
             throw new InvalidDataException("Reference shim cannot be the plugin payload.");
         if (type == "BepInEx::BepInEx.BepInPlugin")
@@ -43,6 +46,8 @@ static HashSet<string> Inspect(string path, string version, string label, string
         }
     }
     if (!plugin || informational != label) throw new InvalidDataException("Missing plugin identity or incorrect diagnostic revision.");
+    if (fileVersion != assemblyVersion || FileVersionInfo.GetVersionInfo(path).FileVersion != assemblyVersion)
+        throw new InvalidDataException("Assembly file-version attribute or PE version resource differs.");
     var references = new HashSet<string>();
     foreach (var handle in reader.AssemblyReferences)
     {
@@ -61,7 +66,7 @@ static HashSet<string> Inspect(string path, string version, string label, string
         }
         references.Add($"{names.Entity(reader, member.Parent)}::{reader.GetString(member.Name)} {signature}");
     }
-    Console.WriteLine($"PASS: {Path.GetFileName(path)} / dsp.spherebuilder / {version} / {label}; {references.Count} emitted references inspected without loading the DLL.");
+    Console.WriteLine($"PASS: {Path.GetFileName(path)} / dsp.spherebuilder / {version} / {label}; assembly/file {assemblyVersion}; {references.Count} emitted references inspected without loading the DLL.");
     return references;
 }
 

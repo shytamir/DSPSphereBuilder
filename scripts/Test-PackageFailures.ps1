@@ -4,6 +4,7 @@ param([Parameter(Mandatory)][string]$PackagePath, [Parameter(Mandatory)][string]
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 $repo = Split-Path -Parent $PSScriptRoot
+& "$PSScriptRoot/Test-Package.ps1" -PackagePath $PackagePath -ExpectedVersion $ExpectedVersion -ExpectedCommit $ExpectedCommit
 $source = [IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath $PackagePath).Path)
 $entries = [ordered]@{}
 try {
@@ -16,7 +17,19 @@ try {
 $payload = 'BepInEx/plugins/DSPSphereBuilder/DSPSphereBuilder.dll'
 $directory = Join-Path $repo 'artifacts/package-negative'
 New-Item -ItemType Directory -Force $directory | Out-Null
-$cases = @('missing-dll', 'wrong-version', 'wrong-dll-version', 'wrong-guid', 'shim-payload', 'extra-dependency', 'extra-probe', 'nested-zip', 'wrapper', 'missing-source-link', 'missing-license', 'wrong-dependency', 'bad-image')
+function Set-Marker([byte[]]$Data, [byte[]]$Before, [byte[]]$After) {
+    if ($Before.Length -ne $After.Length) { throw 'Fixture marker lengths differ.' }
+    $offsets = @()
+    for ($i = 0; $i -le $Data.Length - $Before.Length; $i++) {
+        if ($Data[$i] -ne $Before[0]) { continue }
+        $matches = $true
+        for ($j = 1; $j -lt $Before.Length; $j++) { if ($Data[$i + $j] -ne $Before[$j]) { $matches = $false; break } }
+        if ($matches) { $offsets += $i }
+    }
+    if ($offsets.Count -ne 1) { throw 'Fixture marker must identify one metadata value.' }
+    [Array]::Copy($After, 0, $Data, $offsets[0], $After.Length)
+}
+$cases = @('missing-dll', 'wrong-version', 'wrong-dll-version', 'wrong-file-version', 'wrong-file-resource', 'wrong-guid', 'shim-payload', 'extra-dependency', 'extra-probe', 'nested-zip', 'wrapper', 'missing-source-link', 'missing-license', 'wrong-dependency', 'bad-image')
 foreach ($case in $cases) {
     $files = [ordered]@{}
     foreach ($item in $entries.GetEnumerator()) { $files[$item.Key] = $item.Value.Clone() }
@@ -28,15 +41,13 @@ foreach ($case in $cases) {
             $manifest.version_number = '9.9.999'; $files['manifest.json'] = [Text.Encoding]::UTF8.GetBytes(($manifest | ConvertTo-Json))
         }
         'wrong-guid' {
-            $old = [Text.Encoding]::UTF8.GetBytes('dsp.spherebuilder')
-            $data = $files[$payload]; $found = $false
-            for ($i = 0; $i -le $data.Length - $old.Length; $i++) {
-                if ($data[$i] -ne $old[0]) { continue }
-                $matches = $true
-                for ($j = 1; $j -lt $old.Length; $j++) { if ($data[$i + $j] -ne $old[$j]) { $matches = $false; break } }
-                if ($matches) { $data[$i + $old.Length - 1] = [byte][char]'X'; $found = $true; break }
-            }
-            if (!$found) { throw 'Cannot prepare changed GUID fixture.' }
+            Set-Marker $files[$payload] ([Text.Encoding]::UTF8.GetBytes('dsp.spherebuilder')) ([Text.Encoding]::UTF8.GetBytes('dsp.spherebuildeX'))
+        }
+        { $_ -in 'wrong-file-version', 'wrong-file-resource' } {
+            $parts = $ExpectedVersion.Split('.')
+            $encoding = if ($case -eq 'wrong-file-resource') { [Text.Encoding]::Unicode } else { [Text.Encoding]::UTF8 }
+            $prefix = if ($case -eq 'wrong-file-resource') { "FileVersion`0`0" } else { '' }
+            Set-Marker $files[$payload] ($encoding.GetBytes("$prefix$($parts[0]).$($parts[1]).0.0")) ($encoding.GetBytes("$prefix$($parts[0]).$($parts[1]).0.1"))
         }
         'wrong-dll-version' {
             $version = '9.9.999'

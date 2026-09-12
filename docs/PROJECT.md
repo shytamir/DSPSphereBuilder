@@ -97,7 +97,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-R2.2 | Complete; RG2/RM2 passed | [Player copy and rendered preview](RELEASE-CANDIDATE.md#sb-r22--player-facing-description-and-readme) |
 | SB-R3.1 | Complete | [Repository security assessment](RELEASE-CANDIDATE.md#sb-r31--repository-security-assessment), SB-D027 |
 | SB-R3.2 | Complete; RG3/RM3 passed under SB-D027 | [Security closure](RELEASE-CANDIDATE.md#sb-r32--security-closure) |
-| SB-R4.1 | Not started | — |
+| SB-R4.1 | In progress; local checks passed, hosted verification pending | Source revision binding and both file-version representations checked; 15 malformed packages rejected |
 | SB-R4.2 | Not started | — |
 | SB-R5.1 | Not started | — |
 | SB-R5.2 | Not started | — |
