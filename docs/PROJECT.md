@@ -25,17 +25,17 @@ and [feasibility plan](management/archive/ROADMAP-feasibility-and-mvp-definition
 are archived. The management/code hygiene passes and final cleanup package
 inspection were completed before this planning round. The owner authorized
 sequential execution under SB-D023 and the necessary history rewrite under SB-D026.
-SB-R1.1–4.1 are complete and RG1/RM1–RG3/RM3 passed under SB-D027. SB-R4.2 is next. Candidate acceptance
+SB-R1.1–4.2 are complete and RG1/RM1–RG4/RM4 passed under SB-D027. SB-R5.1 is next. Candidate acceptance
 and manual publication remain separate.
 
 | Area | Current state |
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Complete; local checks and hosted artifact inspection passed |
-| Roadmap and active work | Hosted delivery verified; SB-R4.2 sanity/code-quality review next |
+| Roadmap and active work | Delivery and code-quality review complete; SB-R5.1 final candidate preparation next |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 complete and G4/M4 achieved by explicit specification acceptance under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
-| Release-candidate gates | RG1/RM1 through RG3/RM3 passed; RG4, RG5a and RG5 not passed |
+| Release-candidate gates | RG1/RM1 through RG4/RM4 passed; RG5a and RG5 not passed |
 | Mod implementation | Working MVP complete; final cleanup build 0.1.41 retains milestone behavior, including the accepted label capitalization |
 | Runtime validation and owner acceptance | Owner accepted MVP 0.1.31 and the 0.1.36 UI recheck; capitalization correction accepted without another live recheck under SB-D020 |
 | Distribution | [CI package 0.1.41](MVP-VALIDATION.md#final-cleanup-package) independently verified; no publication authorized |
@@ -98,7 +98,7 @@ are owner-operated; the agent has not launched or operated a game session.
 | SB-R3.1 | Complete | [Repository security assessment](RELEASE-CANDIDATE.md#sb-r31--repository-security-assessment), SB-D027 |
 | SB-R3.2 | Complete; RG3/RM3 passed under SB-D027 | [Security closure](RELEASE-CANDIDATE.md#sb-r32--security-closure) |
 | SB-R4.1 | Complete | [Delivery and DLL identity](RELEASE-CANDIDATE.md#sb-r41--delivery-and-dll-identity) |
-| SB-R4.2 | Not started | — |
+| SB-R4.2 | Complete; RG4/RM4 passed | [Sanity and code-quality review](RELEASE-CANDIDATE.md#sb-r42--sanity-and-code-quality-review) |
 | SB-R5.1 | Not started | — |
 | SB-R5.2 | Not started | — |
 
@@ -718,7 +718,7 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Next decision
 
-Proceed to SB-R4.2 and final candidate preparation. Source identity is now bound to
+Proceed to SB-R5.1 final candidate preparation. Source identity is now bound to
 the actual checkout and the downloaded delivery artifact passed its independent check.
 The next planned owner participation is candidate acceptance; security and candidate
 gates have not yet passed.

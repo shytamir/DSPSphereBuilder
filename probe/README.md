@@ -31,7 +31,8 @@ Evidence JSON files are written to `evidence/` beside the probe DLL. The files
 include source/target identities, game version/build, selected star/layer/radius,
 unlock value, native prototype counts, before/after structure and shell records,
 and direct in-process object-preservation comparisons. Keep these files, including
-any `-before` or `-error` files. They do not include your save or filesystem paths.
+any `-before` or `-error` files. They do not include your save. Exception details
+can contain filesystem paths; review those details before sharing evidence.
 
 ## Run the continuation story (SB-F3.2)
 

@@ -347,3 +347,37 @@ at `0.1.0.0` and loader GUID `dsp.spherebuilder`.
 
 This is delivery evidence. SB-R5.1 identifies the final candidate after the remaining
 sanity pass; this intermediate package is not owner-accepted or published.
+
+## SB-R4.2 — Sanity and code-quality review
+
+The entry point, current-selection resolver, graph recognition, additive writer,
+preservation check, feedback and package path were traced against the accepted
+specification. The twelve compiled deltas and native continuation are implemented;
+no executable placeholder, mock fallback or omitted MVP behavior was found.
+Reference shims remain intentional compile-only declarations, and the historical
+probe and archived plans remain clearly separated from production.
+
+The error paths retain the original exception text/stack and operation context.
+Painting stops after unexpected mutation/readback failures; successful refusals
+remain usable. The UI boundary handles its own failures, detaches listeners/panel
+references and respects the stopped session. There is no automatic retry, rollback,
+catch/rethrow chain or repeated error logging to remove. No runtime change was
+warranted. The passing run-52 managed checks exercise write counts/order, selected
+targets, construction preservation, refusal/completion and partial-failure stopping.
+
+Assertions were reviewed by their contract: GUIDs, format keys, fixture hashes,
+numeric geometry, emitted references and legal text integrity are meaningful.
+No exact player-prose or source-fragment assertion, arbitrary catch/rethrow ban,
+planning instruction in production code, or additional compatibility framework was
+found. The metadata fixture repetition introduced during SB-R4.1 was already
+consolidated into its small marker helper. Existing comments explain rounding and
+native snapshot behavior; routine methods do not need duplicated prose.
+
+Two documentation corrections were made: the repository README now describes
+refusal when a layout ceases to match a recognized stage, and the historical probe
+guide acknowledges that exception details can contain filesystem paths. Neither
+changes functionality or suppresses diagnostics. Active state remains in PROJECT;
+archive introductions identify their original story language as historical.
+The initial build command was verified present; an incomplete earlier tool display
+did not justify editing it. Local documentation links and whitespace were checked.
+No additional live case is needed for these corrections.

@@ -36,8 +36,8 @@ established by this project.
 Select exactly one native sphere layer with at least 68 degrees of unlocked
 Dyson sphere latitude. Start on an empty layer or continue a recognized staged
 framework. Click **Paint Next Patch** to extend it without waiting for
-construction. Save/reload continuation comes from the actual framework; modified
-or unrelated layouts are refused. Unexpected errors stop painting for the plugin
+construction. Save/reload continuation comes from the actual framework; layouts
+that no longer match a recognized stage are refused. Unexpected errors stop painting for the plugin
 session and may leave a partial patch; there is no rollback or automatic retry.
 
 The executable package includes the DLL, supplied icon, metadata and licenses,
