@@ -1,0 +1,50 @@
+name: Build mock Thunderstore package
+run-name: Build ${{ github.run_number }} from ${{ github.sha }}
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Build and validate mock package
+        id: package
+        run: |
+          ./scripts/Build-Package.ps1 -BuildNumber $env:GITHUB_RUN_NUMBER -Commit $env:GITHUB_SHA -RunAttempt $env:GITHUB_RUN_ATTEMPT
+
+      - name: Upload package and build identity
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: DSPSphereBuilder-${{ steps.package.outputs.build_label }}-attempt-${{ github.run_attempt }}
+          path: |
+            artifacts/packages/DSPSphereBuilder-${{ steps.package.outputs.package_version }}.zip
+            artifacts/BUILD-INFO.json
+          if-no-files-found: error
+
+      - name: Summarize artifact
+        run: |
+          $info = Get-Content artifacts/BUILD-INFO.json -Raw | ConvertFrom-Json
+          @"
+          Mock package: $($info.package_file)
+
+          Thunderstore version: $($info.package_version)
+
+          Build identity: $($info.build_label)
+
+          Contains metadata and documentation only; no executable mod. Extract the inner ZIP from the Actions artifact.
+          "@ >> $env:GITHUB_STEP_SUMMARY
