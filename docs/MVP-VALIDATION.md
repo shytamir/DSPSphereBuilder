@@ -241,3 +241,28 @@ then found CI's Windows checkout converted the upstream LICENSE from LF to CRLF.
 The text was identical after newline normalization, but retained bytes differed.
 `.gitattributes` now pins license/text inputs to LF; the next downloaded candidate
 must pass the unchanged byte check before IG4 can close.
+
+The final inspected download is
+[run 34678932740](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34678932740),
+build 31 / attempt 1, source `a71fd79244054b1fe0695cff2d07631eb5ae803c` (clean CI
+checkout). The [direct package artifact](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34678932740/artifacts/10293890904)
+is `DSPSphereBuilder-0.1.31.zip`, 95,390 bytes. The pinned upload action uses its
+verified `archive: false` input; build information is a separate artifact.
+
+- Package SHA-256: `05362278070F49000290269F8CD288297343F205BF95D22C12F3B6EB49864A39`.
+- DLL SHA-256: `EBDBCDB96ADAAE7A64CFB043F8375426309F27E7392EDE648B93843B35A2D662`.
+- Plugin/package version: `0.1.31`; diagnostic identity: `0.1.31.a71fd79`;
+  GUID: `dsp.spherebuilder`; assembly version: `0.1.0.0`.
+
+The independent REST download's exact bytes match CI's hash and artifact digest.
+The unchanged validator passes all 48 entries, root layout, dependency metadata,
+UTF-8, image decoding, retained license/reference/icon bytes, and DLL metadata.
+No wrapper folder, second ZIP, probe DLL, shim DLL, or native dependency exists.
+The packaged plan source matches the compiled/check-tested plan after text newline
+normalization. CI passed all managed logic, independent geometry, and twelve
+negative package checks. Downloaded DLL metadata matches the same production
+source compiled locally against the actual target: 210 emitted references in both
+modes, five checked shim assemblies, no warnings/errors. Local handoff-only files
+were uncommitted during that compile and were not production inputs; CI itself
+was clean. The raw download/build record are retained under ignored
+`artifacts/hosted/34678932740/`. No runtime or installation was performed.

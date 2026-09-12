@@ -219,7 +219,7 @@ Useful implementation inputs are the [probe](../probe/Probe.cs),
 [geometry tests](../scripts/test_geometry.py), and
 [envelope calculation](../scripts/check_envelope.py). They are research/prototype
 assets, not a mandate to ship the probe's structure or diagnostic controls.
-The existing pipeline remains a mock package; this document authorizes no release,
+Build and runtime readiness are recorded in PROJECT.md; this document authorizes no release,
 Thunderstore publication, game installation changes, or next-roadmap execution.
 
 ## Acceptance catalogue
