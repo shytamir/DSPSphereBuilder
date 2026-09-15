@@ -130,3 +130,68 @@ Compilation initially encountered denied SDK-folder access in the sandbox; it
 passed through the supported permission route. This was an environment access
 failure, not a source failure. Native methods and the game were not run by these
 checks. Runtime alignment and real-save continuation still require owner evidence.
+
+## Candidate package — 1.0.60
+
+[CI run 34991849654](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34991849654),
+build 60 / attempt 1, completed successfully. The
+[direct hotfix package](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34991849654/artifacts/10405409805)
+is the candidate for the owner session; later documentation builds do not replace
+this identified download.
+
+| Field | Verified value |
+| --- | --- |
+| Source revision | `145a03bb49e242327ba518f082989366bc822a23` |
+| Build label | `1.0.60.145a03b` |
+| Thunderstore / BepInEx version | `1.0.60` |
+| Plugin GUID | `dsp.spherebuilder` |
+| Assembly / file version | `1.0.0.0` |
+| Package | `DSPSphereBuilder-1.0.60.zip`, 52,188 bytes |
+| Package SHA-256 | `C777D8A436482FC127DC204BE7B2C7FCB0DB002C2E8E7A14C54FBCE483F52B8E` |
+| DLL SHA-256 | `C93F1E938CBD0E9659D9F462CADBE3181721A52BD349D79AB0C14C131DFBC486` |
+
+The independently downloaded bytes matched both the separate CI build record
+(artifact 10406082045) and hosted package digest. `Test-Package.ps1` passed against
+those exact source/version/DLL-hash inputs, including DLL metadata and all five
+package entries. The ZIP had no nested archive, game/shim assemblies or extra
+files. CI passed the logic/geometry checks and all fifteen malformed-package
+cases. Native-reference compilation was established by the same runtime-source
+local rehearsal described above; the workflow did not execute native methods.
+
+The public source archive for that full revision was downloaded and its changed
+runtime files, derivation, retained reference and license files compared exactly
+with Git. The candidate, extracted DLL, CI build record, log and source archive
+are retained under ignored `artifacts/hosted/34991849654/`. Raw artifact/log access
+required the authenticated CLI permission route after sandbox authentication
+failed; no credentials were copied into the repository.
+
+The final diff review found the correction confined to generated directions,
+orientation selection and the corresponding placement/postcondition. It added
+no runtime mesh reader, save state, retry/recovery layer, dependency or native
+declaration. Tests assert numerical/graph behavior and published float bits,
+not UI prose or bans on exception constructs. Historical derivation defaults
+and archive story bodies were preserved.
+
+## Focused owner check
+
+Use the identified candidate in the same modded profile used for normal play.
+Replace the profile's existing Sphere Builder DLL while the game is closed;
+avoid loading two copies. Use a disposable save or a copy of an existing save.
+Keep an unfinished layer painted by 1.0.56 for the continuation check.
+
+1. On an empty layer with sufficient latitude unlocked, select the native
+   pentagon/icosahedral grid and paint all twelve patches. Inspect the polar caps
+   and both latitude rings: the native grid pentagons should sit at the design
+   pentagons' centers. Capture a screenshot and the selected-layer blueprint as
+   `new-complete.txt`.
+2. On the older unfinished layer, copy the selected-layer blueprint as
+   `legacy-before.txt`. Save, return to the menu and reload, then paint one more
+   patch. Confirm that the previous construction stayed in place and the new
+   patch continued its original orientation. Copy that layer as `legacy-after.txt`.
+
+Put those three text exports, the screenshot and the session's BepInEx log in the
+usual local evidence folder. Report any unexpected behavior and whether you
+accept the candidate. No extra star/radius matrix, shell-filling exercise,
+full-process restart sequence or UI workshop is required. These exports permit
+numeric checking of the new alignment and unchanged old node/frame records;
+they do not capture live construction counters, which remain an observation.

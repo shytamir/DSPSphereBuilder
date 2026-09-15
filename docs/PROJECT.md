@@ -19,15 +19,23 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-**Hotfix implementation — grid alignment.** The owner authorized the three-story
+**Hotfix owner validation — grid alignment.** The owner authorized the three-story
 plan and preservation of the original orientation on already painted layers on
 2026-09-15 (SB-D030). SB-H1.1 completed and HG1/HM1 passed: one 18-degree azimuth
 rotation matched all twelve native pentagon centers. SB-H1.2 completed: new
 placement and both-orientation continuation passed the focused offline checks
-and real-reference compilation. SB-H1.3 is preparing the CI candidate; HG2/HM2
-await downloaded-artifact validation and HG3/HM3 await owner validation and
-acceptance. No hotfix runtime validation or acceptance has occurred.
-[Alignment evidence](GRID-ALIGNMENT.md) records the measurements and checks.
+and real-reference compilation. HG2/HM2 passed after successful CI and independent
+download validation. SB-H1.3 remains open for the focused owner check; HG3/HM3
+await runtime observations and explicit acceptance. No hotfix runtime validation,
+acceptance or publication has occurred.
+
+The owner-check candidate is **1.0.60**, build label `1.0.60.145a03b`, source
+`145a03bb49e242327ba518f082989366bc822a23`, CI run `34991849654`, attempt 1.
+[Alignment evidence](GRID-ALIGNMENT.md#candidate-package--1060) identifies the
+download and verified hashes; the [focused check](GRID-ALIGNMENT.md#focused-owner-check)
+defines the two runtime cases. Later documentation builds do not replace this
+candidate. The observed outcomes and owner acceptance have not been inferred from
+static checks.
 
 The published baseline remains 1.0.56. The owner accepted that product, verified that it worked
 through a Thunderstore Mod Manager profile's modded launch, and published package
