@@ -1,8 +1,9 @@
 # Pentagon grid alignment evidence
 
 [PROJECT.md](PROJECT.md) owns decisions, progress and acceptance. The
-[hotfix roadmap](management/archive/ROADMAP-grid-alignment-hotfix.md) retains its scope and gates. This record
-separates native-data measurements, offline checks and owner observations.
+[hotfix roadmap](management/archive/ROADMAP-grid-alignment-hotfix.md) retains its
+scope and gates. This record separates native-data measurements, offline checks
+and owner observations.
 
 ## Native measurement — 2026-09-15
 
@@ -224,11 +225,55 @@ publication, as required by [the procedure](VERSIONING.md#change-records).
 
 Runtime source, native reference declarations, dependencies and the build
 workflow were unchanged from the accepted 1.0.60 source. That owner's acceptance
-therefore carries forward to a verified version-only promotion without another
-gameplay session. The new DLL metadata and package bytes require separate checks.
+therefore carries forward to the verified version-only promotion without another
+gameplay session. The new DLL metadata and package bytes were checked separately
+below.
 
 Before promotion, the live
 [Thunderstore listing](https://thunderstore.io/c/dyson-sphere-program/p/DSPSphereBuilder/DSPSphereBuilder/)
 identified **1.0.56** as the latest published version. GitHub listed the published
 release tag `1.0`, targeting `5a0707b49e075ad7f588730b7401db6195384dda`.
-The 1.1 line is numerically newer. No tag, release or upload was performed here.
+The 1.1 line is numerically newer. No tag, GitHub release or Thunderstore upload
+was created during promotion.
+
+### Verified promoted package — 1.1.63
+
+[CI run 34995172878](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34995172878)
+completed successfully on 2026-09-15. Its
+[direct package](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34995172878/artifacts/10406814890)
+and [separate build record](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34995172878/artifacts/10407840282)
+were downloaded and independently checked.
+
+| Field | Verified value |
+| --- | --- |
+| Source commit | `41f9dcfc3cbea8f8ac4278a996e3be5b51681eb5` |
+| CI build / attempt / working tree | 63 / 1 / clean |
+| Thunderstore / BepInEx version | `1.1.63` |
+| Informational version / build label | `1.1.63.41f9dcf` |
+| Assembly / file / PE file version | `1.1.0.0` |
+| Assembly name / plugin GUID | `DSPSphereBuilder` / `dsp.spherebuilder` |
+| Package | `DSPSphereBuilder-1.1.63.zip`, 52,254 bytes |
+| Package SHA-256 | `618109C96D606B7ACA40822168BECF90942DB76298B875A73A918E2B5219ABAC` |
+| DLL SHA-256 | `F2B2A452842F2CBCD6FD86BB95419706995C41A69FB7A5E48873A67DF6D80B6D` |
+
+The downloaded ZIP had exactly the five required files, with no enclosing or
+nested package ZIP. Its digest matched both GitHub's artifact digest and the
+build record; the DLL digest also matched. The existing package validator passed
+all identity fields above, UTF-8 text, the unchanged 256×256 PNG, complete licenses
+and revision-specific source links. Metadata inspection examined 217 emitted
+references without loading the plugin. The packaged Changes section described
+both new alignment and continuation of existing spheres.
+
+The public source archive was accessible; 51 runtime, reference, delivery,
+version, packaging and license inputs matched the nominated Git commit byte for
+byte. Runtime source, native declarations and build scripts/workflow were unchanged
+from `145a03bb49e242327ba518f082989366bc822a23`. CI compilation reported zero
+warnings/errors; production logic, both-orientation geometry and all 15 malformed
+package checks passed. Native compilation and gameplay were not repeated for this
+metadata/documentation-only delta; the preceding native build evidence and the
+owner's 1.0.60 report apply to its unchanged runtime implementation.
+
+The ZIP, DLL, build record, source archive and CI log were retained under ignored
+`artifacts/hosted/34995172878/` outside CI artifact retention. Numeric comparison
+confirmed `1.1.63` is newer than the observed published `1.0.56`. Current nomination,
+acceptance and manual publication state remain in [PROJECT.md](PROJECT.md#current-phase).

@@ -27,7 +27,7 @@ source of candidate readiness, owner acceptance or current release state.
 
 ## Current phase
 
-**Minor promotion — accepted grid-alignment hotfix.** The owner reported that
+**Maintenance — 1.1.63 ready for manual publication.** The owner reported that
 build 1.0.60 passed both focused runtime cases with no observed regressions and
 authorized a minor promotion to the 1.1 line (SB-D032). SB-H1.1–3 completed;
 HG1/HM1 through HG3/HM3 passed. The hotfix roadmap was closed and archived,
@@ -37,9 +37,13 @@ The accepted runtime candidate was **1.0.60**, build label `1.0.60.145a03b`, sou
 `145a03bb49e242327ba518f082989366bc822a23`, CI run `34991849654`, attempt 1.
 [Alignment evidence](GRID-ALIGNMENT.md#owner-validation-report--2026-09-15)
 records the owner's report separately from static verification. The VERSION
-inputs are now major 1 / minor 1. The promoted package awaits CI and independent
-metadata/package validation; its actual build number will come from the workflow.
-No additional gameplay session is required for this version-only promotion.
+inputs were promoted to major 1 / minor 1. CI run `34995172878`, build 63 / attempt 1,
+and independent download validation passed for **1.1.63**, label
+`1.1.63.41f9dcf`, source `41f9dcfc3cbea8f8ac4278a996e3be5b51681eb5`.
+The [promoted package and hashes](GRID-ALIGNMENT.md#verified-promoted-package--1163)
+identify the nominated publication bytes. Its runtime implementation is unchanged
+from accepted 1.0.60; acceptance carries forward under SB-D032 without another
+gameplay session. Later documentation builds do not replace this nomination.
 Publication remains the owner's manual step and has not occurred for the hotfix.
 
 The published baseline remains 1.0.56. The owner accepted that product, verified that it worked
@@ -860,9 +864,10 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Maintenance boundary
 
-The grid-alignment hotfix was accepted under SB-D032 and its implementation plan
-closed. Only the authorized 1.1 promotion and owner publication handoff remain; no
-new implementation or feature planning is active. The owner retained
+The grid-alignment hotfix was accepted under SB-D032, its implementation plan
+closed, and promotion to the verified 1.1.63 package completed. Only manual owner
+publication and its subsequent record reconciliation remain; no new implementation
+or feature planning is active. The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
 and the usual bounded verification. Subsequent CI builds do not supersede the
