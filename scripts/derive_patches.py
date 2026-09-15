@@ -7,7 +7,8 @@ from blueprint_geometry import decode, dot, sub, unit, edges
 from verify_geometry import DIRECTION_TOLERANCE, centroid, check, cross, verify_geometry
 
 
-def derive(records):
+def derive(records, grid_aligned=False):
+    """Derive the published orientation, or its native-grid-aligned rotation."""
     geometry = verify_geometry(records)
     pentagons = {i+1: tuple(f) for i, f in enumerate(geometry['pentagons'])}
     points = {i: unit(n['position']) for i, n in records['nodes'].items()}
@@ -17,6 +18,10 @@ def derive(records):
     first = points[min(pentagons[north])]
     x = unit(sub(first, tuple(dot(first, up)*v for v in up)))
     z = cross(x, up)
+    if grid_aligned:
+        cosine, sine = math.cos(math.pi / 10), math.sin(math.pi / 10)
+        x, z = (tuple(cosine*a - sine*b for a, b in zip(x, z)),
+                tuple(sine*a + cosine*b for a, b in zip(x, z)))
     rotation = [x, up, z]
     rotated = {i: tuple(dot(p, axis) for axis in rotation) for i,p in points.items()}
     rotated_centers = {i: tuple(dot(p, axis) for axis in rotation) for i,p in centers.items()}
@@ -94,9 +99,10 @@ def derive(records):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=pathlib.Path, required=True)
+    parser.add_argument('--grid-aligned', action='store_true')
     args = parser.parse_args()
     records = decode(pathlib.Path('research/cosmin1490/60.txt').read_text(encoding='utf-8'))
-    result = derive(records)
+    result = derive(records, grid_aligned=args.grid_aligned)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2)+'\n', encoding='utf-8')
     print('Pentagon order:', result['order'])

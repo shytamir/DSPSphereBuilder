@@ -71,7 +71,7 @@ namespace DSPSphereBuilder
                 if (match.State == GraphState.Mismatch) { result.State = PaintState.Mismatch; return result; }
                 if (match.State == GraphState.Complete) { result.State = PaintState.Complete; return result; }
                 var patch = SpherePlan.Patches[match.CompletedPatches];
-                var positions = patch.Nodes.ToDictionary(id => id, id => SpherePlan.Position(id, before.Radius));
+                var positions = patch.Nodes.ToDictionary(id => id, id => SpherePlan.Position(id, before.Radius, match.Orientation));
                 if (positions.Values.Any(p => !p.IsFinite)) { result.State = PaintState.InvalidPosition; return result; }
                 result.State = PaintState.Ready;
                 if (!paint) return result;
@@ -91,7 +91,7 @@ namespace DSPSphereBuilder
                 var after = layer.Capture();
                 Preservation.Check(before, after);
                 var next = GraphRecognition.Match(after);
-                if (next.State == GraphState.Mismatch || next.CompletedPatches != intendedPatch)
+                if (next.State == GraphState.Mismatch || next.CompletedPatches != intendedPatch || next.Orientation != match.Orientation)
                     throw new InvalidOperationException("Result does not match the intended next patch.");
                 result.CompletedPatches = next.CompletedPatches;
                 result.NodeCount = after.Nodes.Length; result.FrameCount = after.Frames.Length;

@@ -5,13 +5,15 @@ static class RecognitionChecks
 {
     public static void Run()
     {
+        foreach (var orientation in new[] { PlanOrientation.Grid, PlanOrientation.Legacy })
         for (int i = 0; i <= 12; i++)
         {
-            var graph = Prefix(i);
+            var graph = Prefix(i, orientation: orientation);
             graph.LayerId = 1;
             var match = GraphRecognition.Match(graph);
             Check(match.State == (i == 0 ? GraphState.Empty : i == 12 ? GraphState.Complete : GraphState.Prefix)
                 && match.CompletedPatches == i, "Fresh prefix classification failed.");
+            Check(match.Orientation == (i == 0 ? PlanOrientation.Grid : orientation), "Wrong orientation recognized.");
             Check(match.NativeIds.All(p => p.Value == NativeId(p.Key)), "Unordered/reused IDs mapped incorrectly.");
             foreach (var node in graph.Nodes) { node.Sp += 2; node.Color = 0; }
             foreach (var frame in graph.Frames) { frame.SpA += 3; frame.Color = 0; }
@@ -36,6 +38,16 @@ static class RecognitionChecks
         Refuses(g => g.Nodes = g.Nodes.Append(Prefix(2).Nodes.First(n => g.Nodes.All(old => n.Id != old.Id))).ToArray(), "Partial next delta accepted.", 1);
         Refuses(g => g.Nodes = new[] { new GraphNode { Id = 1, Position = new Position(9700, 0, 0) } }, "Unrelated node accepted.", 0);
         Refuses(g => g.Radius = 36000, "Wrong-radius geometry accepted.");
+        Refuses(g => g.Nodes[0].Position = Prefix(2, orientation: PlanOrientation.Legacy).Nodes[0].Position,
+            "Mixed orientations accepted.");
+        Refuses(g =>
+        {
+            foreach (var node in g.Nodes)
+            {
+                var p = node.Position;
+                node.Position = new Position(-p.Z, p.Y, p.X);
+            }
+        }, "Unsupported rotation accepted.");
         foreach (float radius in new[] { 0f, -1f, float.NaN, float.PositiveInfinity })
             Refuses(g => g.Radius = radius, "Invalid radius accepted.", 0);
 
@@ -51,6 +63,14 @@ static class RecognitionChecks
         rounded.Nodes[0].Position = new Position(MathF.BitIncrement(old.X), old.Y, old.Z);
         Check(GraphRecognition.Match(rounded).State == GraphState.Prefix, "Float rounding prevented recognition.");
 
+        foreach (var orientation in new[] { PlanOrientation.Grid, PlanOrientation.Legacy })
+        {
+            var shelled = Prefix(12, orientation: orientation);
+            for (int i = 0; i < SpherePlan.Faces.Length; i++) Shell(shelled, SpherePlan.Faces[i], i + 1);
+            var match = GraphRecognition.Match(shelled);
+            Check(match.State == GraphState.Complete && match.Orientation == orientation,
+                "Shells prevented orientation recognition.");
+        }
         var complete = Prefix(12);
         for (int i = 0; i < SpherePlan.Faces.Length; i++) Shell(complete, SpherePlan.Faces[i], i + 1);
         Check(GraphRecognition.Match(complete).State == GraphState.Complete, "Reference pentagon/hexagon shells prevented completion.");

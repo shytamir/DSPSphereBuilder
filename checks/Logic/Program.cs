@@ -7,13 +7,19 @@ PaintChecks.Run();
 var export = new
 {
     reference = SpherePlan.ReferenceSha256,
-    directions = SpherePlan.Directions.Select(p => new[] { p.X, p.Y, p.Z }),
     patches = SpherePlan.Patches.Select(p => new { nodes = p.Nodes, frames = p.Frames.Select(e => new[] { e.A, e.B }) }),
     faces = SpherePlan.Faces,
-    scales = new[] { 100f, 9700f, 36000f, 100000f, 1000000f }.Select(radius => new
+    plans = new[] { PlanOrientation.Grid, PlanOrientation.Legacy }.Select(orientation => new
     {
-        radius,
-        positions = Enumerable.Range(1, 60).Select(id => SpherePlan.Position(id, radius)).Select(p => new[] { p.X, p.Y, p.Z })
+        orientation = orientation.ToString(),
+        directions = (orientation == PlanOrientation.Legacy ? SpherePlan.LegacyDirections : SpherePlan.Directions)
+            .Select(p => new[] { p.X, p.Y, p.Z }),
+        scales = new[] { 100f, 9700f, 36000f, 100000f, 1000000f }.Select(radius => new
+        {
+            radius,
+            positions = Enumerable.Range(1, 60).Select(id => SpherePlan.Position(id, radius, orientation))
+                .Select(p => new[] { p.X, p.Y, p.Z })
+        })
     })
 };
 File.WriteAllText(args[0], JsonSerializer.Serialize(export));

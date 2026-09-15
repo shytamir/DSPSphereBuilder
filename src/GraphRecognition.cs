@@ -10,6 +10,7 @@ namespace DSPSphereBuilder
     {
         public GraphState State;
         public int CompletedPatches;
+        public PlanOrientation Orientation;
         public Dictionary<int, int> NativeIds = new Dictionary<int, int>();
     }
 
@@ -31,13 +32,19 @@ namespace DSPSphereBuilder
 
         public static Recognition Match(LayerGraph graph)
         {
+            var match = Match(graph, PlanOrientation.Grid);
+            return match.State == GraphState.Mismatch ? Match(graph, PlanOrientation.Legacy) : match;
+        }
+
+        private static Recognition Match(LayerGraph graph, PlanOrientation orientation)
+        {
             var mismatch = new Recognition();
             if (graph.Radius <= 0 || float.IsNaN(graph.Radius) || float.IsInfinity(graph.Radius)) return mismatch;
             if (graph.Nodes.Length == 0 && graph.Frames.Length == 0 && graph.Shells.Length == 0)
                 return new Recognition { State = GraphState.Empty };
             if (graph.Nodes.Length > 60 || graph.Frames.Length > 90 || graph.Shells.Length > 32) return mismatch;
 
-            var positions = Enumerable.Range(1, 60).ToDictionary(id => id, id => SpherePlan.Position(id, graph.Radius));
+            var positions = Enumerable.Range(1, 60).ToDictionary(id => id, id => SpherePlan.Position(id, graph.Radius, orientation));
             var nativeToCanonical = new Dictionary<int, int>();
             var canonicalNodes = new HashSet<int>();
             foreach (var node in graph.Nodes)
@@ -86,6 +93,7 @@ namespace DSPSphereBuilder
                 {
                     State = i + 1 == SpherePlan.Patches.Length ? GraphState.Complete : GraphState.Prefix,
                     CompletedPatches = i + 1,
+                    Orientation = orientation,
                     NativeIds = nativeToCanonical.ToDictionary(p => p.Value, p => p.Key)
                 };
             }

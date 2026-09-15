@@ -55,6 +55,14 @@ entry point are not invoked. The independent derivation compares all twelve
 deltas and numeric positions. `scripts/write_plan.py src/Plan.Data.cs` regenerates
 the committed plan. No generator or parser runs inside the mod.
 
+The compiled comparison covers both orientations, all twelve native-grid centers
+and the exact published legacy float values retained under `checks/fixtures/`.
+Those fixtures are numerical measurements, not game assets. The generation command
+above emits aligned and legacy direction tables with shared topology. Historical
+probe/envelope/capture tools retain the original derivation by default; use
+`derive(..., grid_aligned=True)` for a new aligned capture. See
+[alignment evidence](GRID-ALIGNMENT.md) for provenance and the focused hotfix checks.
+
 To inspect a downloaded package independently:
 
 ```powershell

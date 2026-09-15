@@ -5,7 +5,9 @@ from blueprint_geometry import decode
 from derive_patches import derive
 
 source = pathlib.Path('research/cosmin1490/60.txt')
-plan = derive(decode(source.read_text(encoding='utf-8')))
+records = decode(source.read_text(encoding='utf-8'))
+plan = derive(records, grid_aligned=True)
+legacy = derive(records)
 assert sorted(plan['positions']) == list(range(1, 61))
 assert plan['source']['sha256'] == '96bd7badd6d0bd971df477b74622c0296b483e7b60e77aa3074cdf0b239620e0'
 
@@ -23,6 +25,8 @@ lines = [
     '        public static readonly Position[] Directions =', '        {'
 ]
 lines += ['            new Position(' + floats(plan['positions'][i]) + '),' for i in range(1, 61)]
+lines += ['        };', '        public static readonly Position[] LegacyDirections =', '        {']
+lines += ['            new Position(' + floats(legacy['positions'][i]) + '),' for i in range(1, 61)]
 lines += ['        };', '        public static readonly Patch[] Patches =', '        {']
 for step in plan['steps']:
     edges = ', '.join(f'new Edge({a}, {b})' for a, b in step['add_frames'])

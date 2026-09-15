@@ -86,3 +86,47 @@ check. It does not claim every design vertex lies on a native grid vertex.
 SB-D030 records the choice to retain the original orientation for continuation
 of existing layers. That preservation is necessary because the published graph
 recognizer compares positions against a fixed direction table.
+
+## Implementation and offline validation — 2026-09-15
+
+The generator emitted two direction tables and one shared patch/face definition.
+Grid-aligned positions are the default on empty layers. Recognition first checks
+that orientation, then the published one if the graph does not match; each
+subsequent patch uses the recognized orientation. Matching remains based on
+native content with unchanged tolerances, without a saved flag or runtime mesh
+access. The post-write check also requires the intended orientation.
+
+The [published-direction fixture](../checks/fixtures/published-directions.json)
+was extracted from `src/Plan.Data.cs` at the published DLL source commit
+`b92fb00cde46fa795b2f80c69aa9e5fad76a8aff`. It independently fixes the previous
+float coordinates rather than recalculating them with the changed generator.
+The original `derive` default was retained for historical probes and capture
+checks; the new orientation is an explicit derivation argument.
+
+Checks and observed results:
+
+- `Build-Package.ps1 -BuildNumber 1` with the real managed and loader references
+  built both modes with zero warnings/errors. All 217 emitted references agreed;
+  the five shim assemblies matched the native map. No new native surface,
+  dependency, plugin identity or build/version rule was introduced. The existing
+  five-file ZIP validator passed. This dirty build was a local rehearsal, not the
+  candidate; its `1.0.1` number did not reserve a CI version.
+- `dotnet run --project checks/Logic/Logic.csproj -c Release -- artifacts/compiled-plan.json`
+  passed both orientations at all thirteen graph states (empty through complete),
+  each continuation step with a fresh session, shell recognition, mixed/unsupported
+  orientation rejection and post-write orientation checking. Existing preservation,
+  selection, partial-failure, numeric-boundary and no-op checks also passed.
+- `python -B scripts/check_plan.py artifacts/compiled-plan.json` checked all twelve
+  deltas, 32 faces and final 60/90 topology. Published float bits matched exactly.
+  Five radii (100, 9,700, 36,000, 100,000 and 1,000,000) preserved the numeric
+  envelope; these were arithmetic samples, not a newly claimed game radius range.
+  Maximum direction error was `6.72304398e-8`, relative radius error
+  `7.07654325e-8`, and native center error `7.27119405e-8`. All were within the
+  existing respective bounds, with all twelve centers matched uniquely.
+- `python -B -m unittest discover -s scripts -p test_geometry.py` passed ten tests,
+  including all pairwise distances for both rigid orientations.
+
+Compilation initially encountered denied SDK-folder access in the sandbox; it
+passed through the supported permission route. This was an environment access
+failure, not a source failure. Native methods and the game were not run by these
+checks. Runtime alignment and real-save continuation still require owner evidence.

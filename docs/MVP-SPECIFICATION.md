@@ -13,10 +13,13 @@ milestones. [CONCEPT.md](../CONCEPT.md) retains the original concept, references
 and illustrative five-spoke sample. That sample is not the first-click output.
 Decision references below refer to PROJECT.md. SB-D003–009 establish the behavior;
 SB-D011–013 add the production identity, delivery, and validation constraints.
+SB-D030 adds native-grid alignment for new layers and retains the published
+orientation for continuation of existing layers.
 
 ## Scope
 
-Included: one fixed reference design and orientation; incremental node/frame
+Included: one fixed reference design, aligned to the native pentagon grid on new
+layers with continuation of the published orientation on existing layers; incremental node/frame
 placement; current selected-layer binding; preservation of native construction
 and player-designated reference-face shells; continuation from native save data;
 bounded feedback, refusal, completion, and failure behavior.
@@ -90,7 +93,7 @@ layer itself and is not an appropriate Paint prerequisite.
 | ID | Requirement | Basis |
 | --- | --- | --- |
 | SB-MVP-04 | Reproduce the optimized reference: 60 nodes and 90 frames, comprising twelve equal regular pentagons and twenty hexagons with alternating edge lengths, to the declared numeric precision. Do not replace it with an equal-edge football, optimize it further, or claim proven global cost optimality. | E3/E6; SB-D004 |
-| SB-MVP-05 | Use the fixed P1-to-P4 polar orientation and route below. Derive each node independently from the pinned reference and rigid rotation; scale its normalized direction by layer radius. Use layer-local positions and non-Euler great-circle frames, independent of animated layer rotation. | E2/E3/E6; SB-D005–006 |
+| SB-MVP-05 | Use the fixed P1-to-P4 polar route below. New layers use the grid-aligned orientation; existing matching layers continue in their original orientation. Derive each node independently from the pinned reference and the applicable rigid rotation; scale its normalized direction by layer radius. Use layer-local positions and non-Euler great-circle frames, independent of animated layer rotation. | E2/E3/E6; SB-D005–006,030; [alignment measurements](GRID-ALIGNMENT.md) |
 | SB-MVP-06 | Each successful click adds exactly the next table row: its pentagon perimeter, all listed closing connections, and one leading spoke/endpoint except on the final click. Reuse the incoming endpoint and every existing element. Add no other future node/frame. | E3/E4/E6; SB-D005 |
 | SB-MVP-07 | Compare newly generated node directions with the derived reference using Euclidean distance between normalized vectors at most `4u/(1-u) = 2.384185934 × 10^-7`, where `u = 2^-24`; require exact graph connectivity. Relative radius error must not exceed `10u/(1-10u)`, the float arithmetic allowance defined below. Never accumulate coordinates from previous placements or move existing nodes to satisfy a comparison. | E3/E5/E6; SB-D004,007 |
 
@@ -101,13 +104,23 @@ E3 records its measured difference from the published sphere. Source node IDs
 1–60 are canonical labels, not required native pool IDs. Pentagon Pk owns
 `5k-4` through `5k`, joined consecutively and closed back to its first vertex.
 
-To define the rotation, normalize source directions; set north to the normalized
+To define the published orientation, normalize source directions; set north to the normalized
 mean of P1's five directions. Set +X to node 1's direction projected perpendicular
 to north, then normalize it; set +Z to `X × north`. Transform each direction by
 dot products with X, north, and Z. Use the full-precision derivation in
 [derive_patches.py](../scripts/derive_patches.py), not rounded display matrices.
 P4 is the opposite cap. The ring centers lie near ±26.565052°; the maximum vertex
 latitude is approximately ±67.607230°. Cap centers are not extra nodes.
+
+For new layers, rotate these directions by +18° in `atan2(z, x)` azimuth:
+`(x', y', z') = (cos(18°)*x - sin(18°)*z, y, sin(18°)*x + cos(18°)*z)`.
+This aligns all twelve pentagon centers with the native icosahedral (`geo20`)
+drawing grid within the declared direction allowance. It preserves the latitude
+envelope and geometry; it does not snap design vertices onto grid vertices.
+`derive(..., grid_aligned=True)` derives this orientation. Its default remains
+the published orientation for historical evidence reproduction. Generated
+production data contains both direction tables and one shared patch/face table.
+Existing nodes are never rotated; recognition selects the matching table.
 
 The route is **P1 → P2 → P6 → P12 → P11 → P8 → P7 → P9 → P10 → P5 → P3 → P4**.
 The first six pentagons complete the northern group. The leading spoke 35–38 on
@@ -148,7 +161,7 @@ closure means its boundary exists; it does not create a shell.
 | Session stopped after unexpected failure | No further Paint additions, regardless of selection or menu reload |
 | Insufficient rounded latitude or invalid planned position | Refuse without partial placement |
 | Empty native layer: no nodes, frames, or shells | If prerequisites hold, add patch 1 |
-| Unique matching prefix k, 1 ≤ k < 12 | If prerequisites hold, add patch k+1 |
+| Unique matching prefix k, 1 ≤ k < 12 | If prerequisites hold, add patch k+1 in that prefix's orientation |
 | Complete matching graph | No additions; show completion |
 | Nonempty graph not uniquely matching a prefix | No additions; explain that the layer does not match the staged design |
 
@@ -174,7 +187,7 @@ established for a general replacement placement validator.
 
 | ID | Requirement | Basis |
 | --- | --- | --- |
-| SB-MVP-15 | Reconstruct the next delta from the selected layer's native graph on each action. Accept only an empty layer or a unique complete prefix of the fixed plan. Native pool order and numeric star/layer/node/frame IDs are not durable design ownership or a saved patch counter. | E2/E5; SB-D007,009 |
+| SB-MVP-15 | Reconstruct the next delta and orientation from the selected layer's native graph on each action. Empty layers select the grid-aligned plan. Nonempty layers must match a complete prefix in either the grid-aligned or published orientation; continue using that orientation. Native pool order and numeric star/layer/node/frame IDs are not durable design ownership or a saved patch counter. | E2/E5; SB-D007,009,030 |
 | SB-MVP-16 | Match nodes uniquely by expected layer-local position with Euclidean distance at most `radius × 10u/(1-10u)` (`≈ radius × 5.960468 × 10^-7`). Require the exact prefix's unordered frame set, non-Euler mode, and reference-face shell boundaries using present frames. Ignore construction amount and cosmetic colors when finding the prefix. Never snap, move, replace, or repair a record during recognition. | E3/E5; SB-D007,009 |
 | SB-MVP-17 | Closing/reopening the editor, switching layer/star, or loading a save must not advance progress or bind the next action to stale native references. Recompute against current native content. Recreated IDs start from that recreated layer's content. | E2/E5, W3/W6; SB-D007–009 |
 | SB-MVP-18 | Refuse unrelated, ambiguous, incomplete-delta, or edited non-prefix graphs without mutation. An edit that leaves an exact earlier prefix is treated as that prefix; an identical matching design created by another route is indistinguishable. This is content matching, not a provenance or arbitrary-blueprint adoption guarantee. | E5; SB-D007,009 |

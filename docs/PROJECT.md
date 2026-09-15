@@ -22,9 +22,12 @@ governs agent conduct. These documents link here for state.
 **Hotfix implementation — grid alignment.** The owner authorized the three-story
 plan and preservation of the original orientation on already painted layers on
 2026-09-15 (SB-D030). SB-H1.1 completed and HG1/HM1 passed: one 18-degree azimuth
-rotation matched all twelve native pentagon centers. SB-H1.2 is next; SB-H1.3,
-HG2/HM2 and HG3/HM3 have not completed. No hotfix runtime validation or acceptance
-has occurred. [Alignment evidence](GRID-ALIGNMENT.md) records the measurements.
+rotation matched all twelve native pentagon centers. SB-H1.2 completed: new
+placement and both-orientation continuation passed the focused offline checks
+and real-reference compilation. SB-H1.3 is preparing the CI candidate; HG2/HM2
+await downloaded-artifact validation and HG3/HM3 await owner validation and
+acceptance. No hotfix runtime validation or acceptance has occurred.
+[Alignment evidence](GRID-ALIGNMENT.md) records the measurements and checks.
 
 The published baseline remains 1.0.56. The owner accepted that product, verified that it worked
 through a Thunderstore Mod Manager profile's modded launch, and published package

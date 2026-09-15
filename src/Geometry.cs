@@ -35,8 +35,11 @@ namespace DSPSphereBuilder
         public Patch(int[] nodes, Edge[] frames) { Nodes = nodes; Frames = frames; }
     }
 
+    internal enum PlanOrientation { Grid, Legacy }
+
     internal static partial class SpherePlan
     {
-        public static Position Position(int canonicalId, float radius) => Directions[canonicalId - 1].AtRadius(radius);
+        public static Position Position(int canonicalId, float radius, PlanOrientation orientation = PlanOrientation.Grid)
+            => (orientation == PlanOrientation.Legacy ? LegacyDirections : Directions)[canonicalId - 1].AtRadius(radius);
     }
 }

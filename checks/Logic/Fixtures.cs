@@ -7,14 +7,14 @@ static class Fixtures
         if (!condition) throw new InvalidOperationException(detail);
     }
     public static int NativeId(int canonicalId) => 1000 - canonicalId * 7;
-    public static LayerGraph Prefix(int count, float radius = 9700)
+    public static LayerGraph Prefix(int count, float radius = 9700, PlanOrientation orientation = PlanOrientation.Grid)
     {
         var graph = new LayerGraph
         {
             LayerId = 2, Radius = radius,
             Nodes = SpherePlan.Patches.Take(count).SelectMany(p => p.Nodes).Select(id => new GraphNode
             {
-                Id = NativeId(id), Position = SpherePlan.Position(id, radius), Sp = 23, SpMax = 30,
+                Id = NativeId(id), Position = SpherePlan.Position(id, radius, orientation), Sp = 23, SpMax = 30,
                 Color = 0xAABBCCFF, Identity = new object()
             }).Reverse().ToArray(),
             Frames = SpherePlan.Patches.Take(count).SelectMany(p => p.Frames).Select((e, i) => new GraphFrame

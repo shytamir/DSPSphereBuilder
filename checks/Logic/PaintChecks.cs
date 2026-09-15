@@ -37,9 +37,9 @@ static class PaintChecks
         }
     }
 
-    private static LayerGraph Next(LayerGraph before, int count)
+    private static LayerGraph Next(LayerGraph before, int count, PlanOrientation orientation = PlanOrientation.Grid)
     {
-        var after = Prefix(count, before.Radius);
+        var after = Prefix(count, before.Radius, orientation);
         foreach (var node in before.Nodes)
         {
             var next = after.Nodes.Single(n => n.Id == node.Id);
@@ -85,6 +85,29 @@ static class PaintChecks
             before = after;
         }
         Check(logs.Count == 0 && !session.Stopped, "Successful progression stopped or logged failure.");
+
+        foreach (var orientation in new[] { PlanOrientation.Grid, PlanOrientation.Legacy })
+        {
+            var previous = Prefix(1, orientation: orientation);
+            for (int k = 1; k < 12; k++)
+            {
+                var after = Next(previous, k + 1, orientation);
+                var layer = new ScriptedLayer(previous, after, k);
+                var resumed = Session();
+                var result = resumed.Paint(() => Target(layer));
+                Check(result.State == (k == 11 ? PaintState.Complete : PaintState.Applied)
+                    && result.CompletedPatches == k + 1, "Reconstructed continuation failed.");
+                Check(layer.Positions.SequenceEqual(SpherePlan.Patches[k].Nodes.Select(id =>
+                    SpherePlan.Position(id, layer.Radius, orientation))), "Continuation changed orientation.");
+                previous = after;
+            }
+        }
+        Check(logs.Count == 0, "Reconstructed continuation logged failure.");
+
+        var wrongOrientation = new ScriptedLayer(Prefix(0), Prefix(1, orientation: PlanOrientation.Legacy), 0);
+        Check(Session().Paint(() => Target(wrongOrientation)).State == PaintState.Stopped,
+            "Unexpected orientation after writing was accepted.");
+        logs.Clear();
         var completed = new ScriptedLayer(before, before, 12);
         Check(session.Paint(() => Target(completed)).State == PaintState.Complete && completed.Writes == 0, "Completed sphere was changed.");
         Check(session.Paint(() => null!).State == PaintState.Unavailable, "Missing context accepted.");

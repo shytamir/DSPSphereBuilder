@@ -62,10 +62,12 @@ class GeometryChecks(unittest.TestCase):
         import itertools
         import math
         from blueprint_geometry import unit
-        rotated = derive(self.reference)['positions']
-        for a, b in itertools.combinations(rotated, 2):
-            original_distance = math.dist(unit(self.reference['nodes'][a]['position']), unit(self.reference['nodes'][b]['position']))
-            self.assertAlmostEqual(math.dist(rotated[a], rotated[b]), original_distance, places=14)
+        for grid_aligned in (False, True):
+            with self.subTest(grid_aligned=grid_aligned):
+                rotated = derive(self.reference, grid_aligned=grid_aligned)['positions']
+                for a, b in itertools.combinations(rotated, 2):
+                    original_distance = math.dist(unit(self.reference['nodes'][a]['position']), unit(self.reference['nodes'][b]['position']))
+                    self.assertAlmostEqual(math.dist(rotated[a], rotated[b]), original_distance, places=14)
 
     def test_segment_projection_clamps_beyond_endpoint(self):
         self.assertAlmostEqual(point_segment_squared((0, -1, 0), (1, 0, 0), (0, 1, 0)), 2)
