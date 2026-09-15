@@ -28,6 +28,8 @@ established by this project.
   complete patch sequence, acceptance cases, and declared evidence limits.
 - [Build and packaging](docs/BUILD.md) — local commands, version translation,
   and the GitHub Actions artifact contract.
+- [Version promotion](docs/VERSIONING.md) — owner authority, version identities
+  and release change records; [changelog](CHANGELOG.md) — linked feature history.
 - [Agent working practices](AGENTS.md) — scope discipline, validation, and Git
   conventions for automated contributors.
 

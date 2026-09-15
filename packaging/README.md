@@ -23,3 +23,8 @@ the old copy when updating.
 
 Design credit: [Cosmin1490's 60-node sphere](https://www.dysonsphereblueprints.com/en/blueprints/dyson-sphere-best-cost-efficiency-optimized-sphere-design-60-nodes-15-cheaper-than-football).
 Attribution and license terms are included in LICENSE.
+
+## Changes
+
+New spheres now line up with the game's pentagon grid. Spheres you've already
+started keep their original position and can still be continued.

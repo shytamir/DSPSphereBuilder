@@ -94,39 +94,11 @@ experiment; neither is a production dependency.
 
 ## Version contract
 
-The manually authored root [VERSION](../VERSION) contains exactly two assignments:
-
-```text
-MAJOR=1
-MINOR=0
-```
-
-Edit major/minor deliberately. There is no manually maintained patch or commit
-hash in that file. The build uses these inputs as follows:
-
-| Value | Rule | Example for build 42, commit `abcdef012345...` |
-| --- | --- | --- |
-| Thunderstore `version_number` | `MAJOR.MINOR.BuildNumber` | `1.0.42` |
-| Diagnostic build label | `MAJOR.MINOR.BuildNumber.shortCommit` | `1.0.42.abcdef0` |
-| Package filename | `DSPSphereBuilder-version_number.zip` | `DSPSphereBuilder-1.0.42.zip` |
-
-The short commit is the first seven hexadecimal characters. The four-part build
-label is diagnostic text, not a semantic package version. Hashes never enter the
-Thunderstore `version_number`. The loader's plugin version is the same numeric
-package version. Assembly/file versions are `MAJOR.MINOR.0.0`, and informational
-version is the diagnostic build label. This keeps sequential package versions
-independent of CLR assembly-version component limits.
-
-CI uses `github.run_number`, the sequential number for this workflow, as
-`BuildNumber`. New runs advance it, including failed runs; gaps are normal.
-Rerunning the same run keeps its number and version. The run attempt is tracked
-separately in build information and artifact names. Major/minor changes do not
-reset the workflow sequence. See [GitHub's variable reference](https://docs.github.com/en/actions/reference/workflows-and-actions/variables).
-
-Keep this single workflow's sequence when changing the build.
-Do not substitute a short hash, commit count, run ID, or retry attempt for the
-numeric patch.
-
+[Version promotion and change records](VERSIONING.md) is the authoritative
+procedure for VERSION edits, owner authority, DLL/package/internal identities
+and changelogs. Its [version-field table](VERSIONING.md#version-fields) defines
+all generated values. Use the build commands above to produce and validate them;
+do not maintain a second version counter or hand-edit generated metadata.
 
 ## Package contract
 

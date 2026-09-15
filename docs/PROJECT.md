@@ -17,6 +17,12 @@ introduces the project, the
 [build guide](BUILD.md) defines build procedures, and [AGENTS.md](../AGENTS.md)
 governs agent conduct. These documents link here for state.
 
+[VERSIONING.md](VERSIONING.md) is authoritative for manual promotion procedure,
+version-field mapping and change-record rules. [CHANGELOG.md](../CHANGELOG.md)
+records feature history with implementation links; the package README's Changes
+section presents the latest included changes to players. Neither is a parallel
+source of candidate readiness, owner acceptance or current release state.
+
 ## Current phase
 
 **Hotfix owner validation — grid alignment.** The owner authorized the three-story
@@ -770,6 +776,28 @@ Historical instructions in a decision are not a new request to execute that work
   Publication remains manual; issue #1 and accepted evidence gaps stay out of scope.
 - **Affected contract:** SB-MVP-05 orientation and known-prefix recognition.
   The target assembly, `dsp.spherebuilder` and version translation are unchanged.
+
+### SB-D031 — Formalize version promotions and change records
+
+- **Date / decision-maker:** 2026-09-15, owner request during hotfix validation.
+- **Choice:** Establish [VERSIONING.md](VERSIONING.md) as the authoritative
+  promotion procedure. Preserve the existing DLL, package/loader and diagnostic
+  version mapping; only an explicit owner instruction authorizes a manual
+  major/minor promotion. Keep acceptance and publication as separate decisions.
+- **Change records:** Maintain root CHANGELOG.md for every implemented feature
+  addition, change and removal, linked to its implementation commits. Keep a
+  short player-facing Changes section at the end of the authored package README.
+  The initial history was reconstructed from inspected implementation commits
+  and the recorded publication; the alignment correction remains Unreleased.
+- **Consequence:** VERSION was not changed and no promotion, candidate acceptance
+  or publication was authorized by this request. The README update belongs to
+  future packages; it does not modify or supersede the identified 1.0.60 candidate
+  under owner validation. Existing assembly/file versions still identify only
+  the major/minor line; the informational version and build record distinguish
+  exact builds. Changing this mapping would require a separate decision.
+- **Affected contract:** Promotion procedure and change-record maintenance.
+  BUILD.md delegates version rules to VERSIONING.md and retains build/package
+  commands. PROJECT.md remains the sole current-state authority.
 
 ## Evidence and unresolved questions
 
