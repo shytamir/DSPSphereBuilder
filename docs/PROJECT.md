@@ -27,7 +27,7 @@ source of candidate readiness, owner acceptance or current release state.
 
 ## Current phase
 
-**Maintenance — 1.1.63 ready for manual publication.** The owner reported that
+**Maintenance — 1.1.63 published.** The owner reported that
 build 1.0.60 passed both focused runtime cases with no observed regressions and
 authorized a minor promotion to the 1.1 line (SB-D032). SB-H1.1–3 completed;
 HG1/HM1 through HG3/HM3 passed. The hotfix roadmap was closed and archived,
@@ -41,12 +41,20 @@ inputs were promoted to major 1 / minor 1. CI run `34995172878`, build 63 / atte
 and independent download validation passed for **1.1.63**, label
 `1.1.63.41f9dcf`, source `41f9dcfc3cbea8f8ac4278a996e3be5b51681eb5`.
 The [promoted package and hashes](GRID-ALIGNMENT.md#verified-promoted-package--1163)
-identify the nominated publication bytes. Its runtime implementation is unchanged
-from accepted 1.0.60; acceptance carries forward under SB-D032 without another
-gameplay session. Later documentation builds do not replace this nomination.
-Publication remains the owner's manual step and has not occurred for the hotfix.
+identify the published bytes. Its runtime implementation was unchanged from
+accepted 1.0.60; acceptance carried forward under SB-D032 without another
+gameplay session.
 
-The published baseline remains 1.0.56. The owner accepted that product, verified that it worked
+The owner published **1.1.63** to Thunderstore and the GitHub
+[release tagged 1.1](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.1)
+on 2026-09-15 (SB-D033). The Thunderstore download and GitHub asset digest matched
+the verified package. Tag `1.1` points to documentation handoff commit
+`28d33e9f2f3c64f8a6b4f319c03132905da5f8e3`; the DLL's source remains the promotion
+commit above. [Publication verification](GRID-ALIGNMENT.md#publication-verification--2026-09-15)
+records that distinction. The root changelog was finalized for 1.1.63, and no
+release work remains open. Later CI builds do not supersede the published baseline.
+
+The previous published baseline was 1.0.56. The owner accepted that product, verified that it worked
 through a Thunderstore Mod Manager profile's modded launch, and published package
 **1.0.56** on 2026-09-12. The owner also published the GitHub
 [release tagged 1.0](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.0).
@@ -69,9 +77,9 @@ was retained for future consideration; it was not planned or added to accepted s
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 completed and G4/M4 achieved under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; candidate 0.1.54 accepted under SB-D028 |
-| Mod implementation | Accepted MVP delivered in 1.0.56; production C# and native declarations were unchanged by release polishing |
-| Runtime and final acceptance | MVP and UI sessions accepted under SB-D018–020; owner verified the published version through a Thunderstore Mod Manager profile's modded launch and accepted the final product under SB-D029 |
-| Distribution | Owner published 1.0.56 to Thunderstore and GitHub release tag 1.0; the GitHub asset digest matched the verified CI package |
+| Mod implementation | Accepted MVP delivered in 1.0.56; grid-alignment correction and original-orientation continuation delivered in 1.1.63 |
+| Runtime and final acceptance | MVP and UI sessions accepted under SB-D018–020; published MVP accepted under SB-D029; both focused hotfix cases accepted on 1.0.60 and carried forward to 1.1.63 under SB-D032 |
+| Distribution | Owner published 1.1.63 to Thunderstore and GitHub release tag 1.1; the public download and release asset digest matched the verified CI package |
 
 ## Accepted scope
 
@@ -791,7 +799,8 @@ Historical instructions in a decision are not a new request to execute that work
   addition, change and removal, linked to its implementation commits. Keep a
   short player-facing Changes section at the end of the authored package README.
   The initial history was reconstructed from inspected implementation commits
-  and the recorded publication; the alignment correction remains Unreleased.
+  and the recorded publication; the alignment correction remained Unreleased
+  at that point.
 - **Consequence:** VERSION was not changed and no promotion, candidate acceptance
   or publication was authorized by this request. The README update belongs to
   future packages; it does not modify or supersede the identified 1.0.60 candidate
@@ -807,21 +816,36 @@ Historical instructions in a decision are not a new request to execute that work
 - **Date / decision-maker:** 2026-09-15, owner report and promotion instruction.
 - **Acceptance:** The owner stated that validation of build 1.0.60 passed: one
   continued patch on an existing offset layer and a full twelve-patch aligned
-  sphere worked with no observed regressions. This completes SB-H1.3 and HG3/HM3;
+  sphere worked with no observed regressions. This completed SB-H1.3 and HG3/HM3;
   the hotfix roadmap was closed and archived. The report is owner evidence,
   without an independent inspection of new captures or additional runtime claims.
 - **Promotion:** Increase MINOR from 0 to 1 while retaining MAJOR=1, following
   VERSIONING.md. The owner explicitly chose a minor promotion for this hotfix;
   the normal recommendation to retain major/minor for a fix does not override
   that instruction. Keep the workflow sequence and `dsp.spherebuilder` identity.
-- **Consequences:** Runtime code is unchanged from accepted candidate 1.0.60.
-  Reuse its acceptance and check the new metadata/package independently; no
-  repeated owner approval or gameplay session is required. Both change records
-  include the hotfix, with the root entry remaining Unreleased until publication.
-  The existing issue #1 and accepted evidence limits remain outside this work.
-- **Boundary:** The instruction authorizes the promotion and established
-  commit/push workflow, not publication. Preserve previous package/tag identities;
-  the owner will publish the verified 1.1 package manually.
+- **Consequences:** Runtime code was unchanged from accepted candidate 1.0.60.
+  Its acceptance was reused and the new metadata/package checked independently;
+  no repeated owner approval or gameplay session was required. Both change records
+  included the hotfix, with the root entry remaining Unreleased until publication.
+  The existing issue #1 and accepted evidence limits stayed outside this work.
+- **Boundary:** The instruction authorized the promotion and established
+  commit/push workflow. Publication remained a separate manual owner step, later
+  completed under SB-D033; previous package/tag identities were preserved.
+
+### SB-D033 — Record publication of the accepted hotfix
+
+- **Date / decision-maker:** 2026-09-15, owner publication report.
+- **Outcome:** The owner published the accepted 1.1.63 package and tagged the
+  GitHub release `1.1`. The public Thunderstore ZIP and GitHub release asset digest
+  matched the verified candidate; [publication evidence](GRID-ALIGNMENT.md#publication-verification--2026-09-15)
+  records the checks. No additional runtime observation was claimed.
+- **Identity:** The owner-created tag points to the documentation handoff commit,
+  not the preceding DLL source commit. Both identities were recorded and the tag
+  preserved. Its two-component name does not change the package version 1.1.63.
+- **Consequence:** Finalized the root changelog's 1.1.63 entry and settled the
+  project into maintenance with no release work outstanding. VERSION stayed at
+  major 1 / minor 1; the archived hotfix plan and maintenance placeholder remained
+  in place. No new feature scope or planning was authorized.
 
 ## Evidence and unresolved questions
 
@@ -865,10 +889,9 @@ Historical instructions in a decision are not a new request to execute that work
 ## Maintenance boundary
 
 The grid-alignment hotfix was accepted under SB-D032, its implementation plan
-closed, and promotion to the verified 1.1.63 package completed. Only manual owner
-publication and its subsequent record reconciliation remain; no new implementation
-or feature planning is active. The owner retained
+closed, and package 1.1.63 published and reconciled under SB-D033. No release work,
+new implementation or feature planning is active. The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
 and the usual bounded verification. Subsequent CI builds do not supersede the
-published 1.0.56 baseline without a separate owner release decision.
+published 1.1.63 baseline without a separate owner release decision.

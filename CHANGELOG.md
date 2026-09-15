@@ -7,6 +7,12 @@ commits and publication record; pre-release builds are not listed as releases.
 
 ## Unreleased
 
+No unreleased feature changes.
+
+## 1.1.63 — 2026-09-15
+
+[Published release](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.1).
+
 ### Changed
 
 - Aligned new spheres with the native pentagon grid by rotating the design 18°

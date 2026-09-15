@@ -220,7 +220,7 @@ The owner chose a minor promotion for the accepted hotfix. VERSION changed from
 major 1 / minor 0 to major 1 / minor 1; the sequential CI number remains assigned
 by the existing workflow. The package README's Changes section describes aligned
 new spheres and continued original-orientation spheres in player-facing prose.
-The root changelog retains the linked implementation under Unreleased until
+The root changelog retained the linked implementation under Unreleased until
 publication, as required by [the procedure](VERSIONING.md#change-records).
 
 Runtime source, native reference declarations, dependencies and the build
@@ -277,3 +277,26 @@ The ZIP, DLL, build record, source archive and CI log were retained under ignore
 `artifacts/hosted/34995172878/` outside CI artifact retention. Numeric comparison
 confirmed `1.1.63` is newer than the observed published `1.0.56`. Current nomination,
 acceptance and manual publication state remain in [PROJECT.md](PROJECT.md#current-phase).
+
+## Publication verification — 2026-09-15
+
+The owner reported publication and tag `1.1`. The live
+[Thunderstore listing](https://thunderstore.io/c/dyson-sphere-program/p/DSPSphereBuilder/DSPSphereBuilder/)
+identified **1.1.63** as its latest version. The downloaded public ZIP was 52,254
+bytes and its SHA-256 matched the promoted package recorded above byte for byte.
+Its manifest identified 1.1.63 and its DLL hash also matched. The listing capture
+and public ZIP were retained under ignored `artifacts/publication-1.1/`.
+
+GitHub's [release tagged 1.1](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.1)
+was published at `2026-09-15T16:40:14Z`, with draft and prerelease both false.
+Its `DSPSphereBuilder-1.1.63.zip` asset, ID `566087290`, had the same size and
+reported SHA-256 as the verified package. The tag resolved to
+`28d33e9f2f3c64f8a6b4f319c03132905da5f8e3`, the documentation handoff commit;
+the binary's recorded source remained `41f9dcfc3cbea8f8ac4278a996e3be5b51681eb5`.
+Their diff contained only PROJECT.md and this evidence document. The owner-created
+tag was preserved, including its two-component name.
+
+These checks established public package identity. Compilation and gameplay were
+not repeated for identical bytes; the earlier build checks and owner acceptance
+remain their evidence. [PROJECT.md](PROJECT.md#current-phase) records publication
+and maintenance state; the root changelog's shipped entry is [1.1.63](../CHANGELOG.md#1163--2026-09-15).
