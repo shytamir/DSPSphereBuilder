@@ -7,7 +7,9 @@ current phase, epic/story status, readiness, and owner acceptance. Update those
 facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
-The [current roadmap](management/ROADMAP.md) defines the grid-alignment hotfix.
+The [current roadmap](management/ROADMAP.md) is the maintenance placeholder.
+The [archived hotfix plan](management/archive/ROADMAP-grid-alignment-hotfix.md)
+retains the completed grid-alignment scope and gates.
 The [release-candidate plan](management/archive/ROADMAP-first-release-candidate.md)
 retains the completed polishing scope and criteria.
 Archived roadmaps retain their original work and completion criteria. The
@@ -25,23 +27,20 @@ source of candidate readiness, owner acceptance or current release state.
 
 ## Current phase
 
-**Hotfix owner validation — grid alignment.** The owner authorized the three-story
-plan and preservation of the original orientation on already painted layers on
-2026-09-15 (SB-D030). SB-H1.1 completed and HG1/HM1 passed: one 18-degree azimuth
-rotation matched all twelve native pentagon centers. SB-H1.2 completed: new
-placement and both-orientation continuation passed the focused offline checks
-and real-reference compilation. HG2/HM2 passed after successful CI and independent
-download validation. SB-H1.3 remains open for the focused owner check; HG3/HM3
-await runtime observations and explicit acceptance. No hotfix runtime validation,
-acceptance or publication has occurred.
+**Minor promotion — accepted grid-alignment hotfix.** The owner reported that
+build 1.0.60 passed both focused runtime cases with no observed regressions and
+authorized a minor promotion to the 1.1 line (SB-D032). SB-H1.1–3 completed;
+HG1/HM1 through HG3/HM3 passed. The hotfix roadmap was closed and archived,
+leaving a maintenance placeholder with no new implementation work.
 
-The owner-check candidate is **1.0.60**, build label `1.0.60.145a03b`, source
+The accepted runtime candidate was **1.0.60**, build label `1.0.60.145a03b`, source
 `145a03bb49e242327ba518f082989366bc822a23`, CI run `34991849654`, attempt 1.
-[Alignment evidence](GRID-ALIGNMENT.md#candidate-package--1060) identifies the
-download and verified hashes; the [focused check](GRID-ALIGNMENT.md#focused-owner-check)
-defines the two runtime cases. Later documentation builds do not replace this
-candidate. The observed outcomes and owner acceptance have not been inferred from
-static checks.
+[Alignment evidence](GRID-ALIGNMENT.md#owner-validation-report--2026-09-15)
+records the owner's report separately from static verification. The VERSION
+inputs are now major 1 / minor 1. The promoted package awaits CI and independent
+metadata/package validation; its actual build number will come from the workflow.
+No additional gameplay session is required for this version-only promotion.
+Publication remains the owner's manual step and has not occurred for the hotfix.
 
 The published baseline remains 1.0.56. The owner accepted that product, verified that it worked
 through a Thunderstore Mod Manager profile's modded launch, and published package
@@ -53,8 +52,8 @@ the Firefox-warning disposition and this maintenance boundary.
 
 The feasibility, MVP implementation and first release-candidate roadmaps were
 completed and archived. All final milestones were achieved, including the owner
-UI workshop and explicit candidate acceptance. The maintenance placeholder was
-replaced by the separately authorized hotfix plan.
+UI workshop and explicit candidate acceptance. The subsequently authorized
+grid-alignment hotfix was also accepted and its roadmap archived.
 [Issue #1 — Feature Request: Repair Mode](https://github.com/shytamir/DSPSphereBuilder/issues/1)
 was retained for future consideration; it was not planned or added to accepted scope.
 
@@ -62,7 +61,7 @@ was retained for future consideration; it was not planned or added to accepted s
 | --- | --- |
 | Product concept | Agreed; recorded in [CONCEPT.md](../CONCEPT.md) |
 | Repository preparation | Completed; local checks and hosted artifact inspection passed |
-| Roadmaps | Feasibility, implementation and release-candidate plans completed and archived |
+| Roadmaps | Feasibility, implementation, release-candidate and grid-alignment hotfix plans completed and archived |
 | Feasibility gates and MVP specification | G1/M1 and G2/M2 passed; G3/M3 accepted under SB-D008 with documented unverified cases; SB-F4.2 completed and G4/M4 achieved under SB-D010 |
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; candidate 0.1.54 accepted under SB-D028 |
@@ -799,6 +798,27 @@ Historical instructions in a decision are not a new request to execute that work
   BUILD.md delegates version rules to VERSIONING.md and retains build/package
   commands. PROJECT.md remains the sole current-state authority.
 
+### SB-D032 — Accept 1.0.60 and promote the minor version
+
+- **Date / decision-maker:** 2026-09-15, owner report and promotion instruction.
+- **Acceptance:** The owner stated that validation of build 1.0.60 passed: one
+  continued patch on an existing offset layer and a full twelve-patch aligned
+  sphere worked with no observed regressions. This completes SB-H1.3 and HG3/HM3;
+  the hotfix roadmap was closed and archived. The report is owner evidence,
+  without an independent inspection of new captures or additional runtime claims.
+- **Promotion:** Increase MINOR from 0 to 1 while retaining MAJOR=1, following
+  VERSIONING.md. The owner explicitly chose a minor promotion for this hotfix;
+  the normal recommendation to retain major/minor for a fix does not override
+  that instruction. Keep the workflow sequence and `dsp.spherebuilder` identity.
+- **Consequences:** Runtime code is unchanged from accepted candidate 1.0.60.
+  Reuse its acceptance and check the new metadata/package independently; no
+  repeated owner approval or gameplay session is required. Both change records
+  include the hotfix, with the root entry remaining Unreleased until publication.
+  The existing issue #1 and accepted evidence limits remain outside this work.
+- **Boundary:** The instruction authorizes the promotion and established
+  commit/push workflow, not publication. Preserve previous package/tag identities;
+  the owner will publish the verified 1.1 package manually.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -840,8 +860,9 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Maintenance boundary
 
-Only the grid-alignment hotfix was authorized for implementation through owner
-validation under SB-D030. No new release has been accepted or published. The owner retained
+The grid-alignment hotfix was accepted under SB-D032 and its implementation plan
+closed. Only the authorized 1.1 promotion and owner publication handoff remain; no
+new implementation or feature planning is active. The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
 and the usual bounded verification. Subsequent CI builds do not supersede the

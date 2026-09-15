@@ -12,7 +12,9 @@ commits and publication record; pre-release builds are not listed as releases.
 - Aligned new spheres with the native pentagon grid by rotating the design 18°
   around its polar axis. Already painted layers retain their original orientation
   and can continue; geometry, twelve-patch order and existing construction are
-  preserved. [Implementation](https://github.com/shytamir/DSPSphereBuilder/commit/145a03bb49e242327ba518f082989366bc822a23).
+  preserved. The prior release's recognizer supports only the original orientation,
+  so it cannot continue newly aligned layers after a downgrade.
+  [Implementation](https://github.com/shytamir/DSPSphereBuilder/commit/145a03bb49e242327ba518f082989366bc822a23).
 
 ## 1.0.56 — 2026-09-12
 

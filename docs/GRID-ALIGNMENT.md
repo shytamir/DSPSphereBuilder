@@ -1,7 +1,7 @@
 # Pentagon grid alignment evidence
 
 [PROJECT.md](PROJECT.md) owns decisions, progress and acceptance. The
-[hotfix roadmap](management/ROADMAP.md) defines scope and gates. This record
+[hotfix roadmap](management/archive/ROADMAP-grid-alignment-hotfix.md) retains its scope and gates. This record
 separates native-data measurements, offline checks and owner observations.
 
 ## Native measurement — 2026-09-15
@@ -129,15 +129,16 @@ Checks and observed results:
 Compilation initially encountered denied SDK-folder access in the sandbox; it
 passed through the supported permission route. This was an environment access
 failure, not a source failure. Native methods and the game were not run by these
-checks. Runtime alignment and real-save continuation still require owner evidence.
+checks. Runtime alignment and real-save continuation were subsequently reported
+by the owner below; they were not established by these offline checks.
 
 ## Candidate package — 1.0.60
 
 [CI run 34991849654](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34991849654),
 build 60 / attempt 1, completed successfully. The
 [direct hotfix package](https://github.com/shytamir/DSPSphereBuilder/actions/runs/34991849654/artifacts/10405409805)
-is the candidate for the owner session; later documentation builds do not replace
-this identified download.
+was the candidate used for the owner session. Later documentation builds did not
+replace this identified download.
 
 | Field | Verified value |
 | --- | --- |
@@ -174,6 +175,9 @@ and archive story bodies were preserved.
 
 ## Focused owner check
 
+The following was the handoff procedure for 1.0.60, retained for reproduction.
+The owner's report is recorded below; this is not a request for another session.
+
 Use the identified candidate in the same modded profile used for normal play.
 Replace the profile's existing Sphere Builder DLL while the game is closed;
 avoid loading two copies. Use a disposable save or a copy of an existing save.
@@ -195,3 +199,36 @@ accept the candidate. No extra star/radius matrix, shell-filling exercise,
 full-process restart sequence or UI workshop is required. These exports permit
 numeric checking of the new alignment and unchanged old node/frame records;
 they do not capture live construction counters, which remain an observation.
+
+## Owner validation report — 2026-09-15
+
+The owner reported that validation of build **1.0.60** passed: one more patch on
+an existing offset layer and all twelve patches on a new grid-aligned layer
+worked, with no observed regressions. The owner then requested a minor-version
+promotion using the version procedure. SB-D032 records acceptance and that
+promotion authority; the two reported cases complete the focused owner gate.
+
+This is an explicit owner runtime report. No new blueprint exports, screenshot
+or log were independently inspected for this acceptance, and no additional
+coverage is inferred beyond the report. The existing static geometry and
+preservation evidence remains separate from that observation.
+
+## Minor promotion — 1.1
+
+The owner chose a minor promotion for the accepted hotfix. VERSION changed from
+major 1 / minor 0 to major 1 / minor 1; the sequential CI number remains assigned
+by the existing workflow. The package README's Changes section describes aligned
+new spheres and continued original-orientation spheres in player-facing prose.
+The root changelog retains the linked implementation under Unreleased until
+publication, as required by [the procedure](VERSIONING.md#change-records).
+
+Runtime source, native reference declarations, dependencies and the build
+workflow were unchanged from the accepted 1.0.60 source. That owner's acceptance
+therefore carries forward to a verified version-only promotion without another
+gameplay session. The new DLL metadata and package bytes require separate checks.
+
+Before promotion, the live
+[Thunderstore listing](https://thunderstore.io/c/dyson-sphere-program/p/DSPSphereBuilder/DSPSphereBuilder/)
+identified **1.0.56** as the latest published version. GitHub listed the published
+release tag `1.0`, targeting `5a0707b49e075ad7f588730b7401db6195384dda`.
+The 1.1 line is numerically newer. No tag, release or upload was performed here.
