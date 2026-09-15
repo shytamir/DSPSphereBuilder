@@ -7,7 +7,7 @@ current phase, epic/story status, readiness, and owner acceptance. Update those
 facts here only. Current owner instructions take precedence.
 
 The [concept](../CONCEPT.md) describes the product behavior and reference geometry.
-The [current roadmap](management/ROADMAP.md) is the maintenance placeholder.
+The [current roadmap](management/ROADMAP.md) defines the grid-alignment hotfix.
 The [release-candidate plan](management/archive/ROADMAP-first-release-candidate.md)
 retains the completed polishing scope and criteria.
 Archived roadmaps retain their original work and completion criteria. The
@@ -19,7 +19,14 @@ governs agent conduct. These documents link here for state.
 
 ## Current phase
 
-**Maintenance mode.** The owner accepted the final product, verified that it worked
+**Hotfix implementation — grid alignment.** The owner authorized the three-story
+plan and preservation of the original orientation on already painted layers on
+2026-09-15 (SB-D030). SB-H1.1 completed and HG1/HM1 passed: one 18-degree azimuth
+rotation matched all twelve native pentagon centers. SB-H1.2 is next; SB-H1.3,
+HG2/HM2 and HG3/HM3 have not completed. No hotfix runtime validation or acceptance
+has occurred. [Alignment evidence](GRID-ALIGNMENT.md) records the measurements.
+
+The published baseline remains 1.0.56. The owner accepted that product, verified that it worked
 through a Thunderstore Mod Manager profile's modded launch, and published package
 **1.0.56** on 2026-09-12. The owner also published the GitHub
 [release tagged 1.0](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.0).
@@ -29,8 +36,8 @@ the Firefox-warning disposition and this maintenance boundary.
 
 The feasibility, MVP implementation and first release-candidate roadmaps were
 completed and archived. All final milestones were achieved, including the owner
-UI workshop and explicit candidate acceptance. The current ROADMAP.md is a
-maintenance placeholder with no scheduled stories or implementation work.
+UI workshop and explicit candidate acceptance. The maintenance placeholder was
+replaced by the separately authorized hotfix plan.
 [Issue #1 — Feature Request: Repair Mode](https://github.com/shytamir/DSPSphereBuilder/issues/1)
 was retained for future consideration; it was not planned or added to accepted scope.
 
@@ -730,6 +737,29 @@ Historical instructions in a decision are not a new request to execute that work
 - **Affected contract:** Published baseline 1.0.56, final product acceptance and
   maintenance scope. The release candidate's RG5/RM5 closure was preserved.
 
+### SB-D030 — Align new layers and preserve the published orientation
+
+- **Date / decision-maker:** 2026-09-15, owner authorization of the proposed
+  three-story hotfix through owner validation; agent measurement of the angle.
+- **Choice:** New empty layers use the native icosahedral grid alignment. Already
+  painted 1.0.56 layers continue in their original orientation. Recognize these
+  two fixed designs from their existing native content; do not move structures.
+- **Basis:** The owner reported the offset and explicitly agreed to preserving
+  existing orientation. Read-only target/resource inspection and numeric
+  comparison matched all twelve centers after increasing `atan2(z, x)` by 18°;
+  [measurement evidence](GRID-ALIGNMENT.md) identifies the inputs and precision.
+- **Alternatives / consequence:** Replacing the old coordinates alone would
+  strand unfinished layers. A two-orientation match preserves continuation
+  without arbitrary rotation fitting, save migrations, repair or a new control.
+  Preserve geometry, patch order and latitude; update the specification with the
+  correction. This is a bounded maintenance hotfix, not a new feature roadmap.
+- **Execution boundary:** Implement in story order with PROJECT updates and the
+  established commit/push workflow. HG1 passed from inspection and mathematics;
+  runtime observation and explicit owner acceptance remain separate, final gates.
+  Publication remains manual; issue #1 and accepted evidence gaps stay out of scope.
+- **Affected contract:** SB-MVP-05 orientation and known-prefix recognition.
+  The target assembly, `dsp.spherebuilder` and version translation are unchanged.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -771,7 +801,8 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Maintenance boundary
 
-No roadmap execution, feature planning or new release is active. The owner retained
+Only the grid-alignment hotfix was authorized for implementation through owner
+validation under SB-D030. No new release has been accepted or published. The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
 and the usual bounded verification. Subsequent CI builds do not supersede the

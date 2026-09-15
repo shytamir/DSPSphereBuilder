@@ -22,7 +22,7 @@ established by this project.
   scope, phase, work status, readiness, and acceptance.
 - [Product concept](CONCEPT.md) — the agreed experience, geometry, references,
   and copyable sample blueprint with its import caveats.
-- [Roadmaps](docs/management/ROADMAP.md) — the maintenance placeholder and
+- [Roadmaps](docs/management/ROADMAP.md) — the current plan and
   archived plans with their original scope, stories and gates.
 - [MVP specification](docs/MVP-SPECIFICATION.md) — the behavioral contract,
   complete patch sequence, acceptance cases, and declared evidence limits.
