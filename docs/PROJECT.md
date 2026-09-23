@@ -27,13 +27,13 @@ source of candidate readiness, owner acceptance or current release state.
 
 ## Current phase
 
-**Maintenance — 1.2 promotion in progress; 1.1.63 remains published.** On
-2026-09-23 the owner authorized increasing MINOR from 1 to 2, pushing to main,
-and verifying the resulting GitHub Actions package under SB-D035. VERSION now
-contains major 1 / minor 2. The runtime implementation is unchanged; the existing
-acceptance and game-update validation carry forward. The concrete candidate will
-be identified after the matching CI artifact passes independent verification.
-Publication remains a separate owner step.
+**Maintenance — 1.2.67 verified for handoff; 1.1.63 remains published.** The
+owner-authorized minor promotion under SB-D035 is complete. VERSION contains
+major 1 / minor 2; [the identified 1.2.67 package](#verified-12-promotion) passed
+CI and independent download validation. The runtime implementation is unchanged,
+so the existing acceptance and game-update validation carry forward. Publication
+remains a separate owner step. Later documentation builds do not replace this
+identified candidate.
 
 For the published 1.1 baseline, the owner reported that
 build 1.0.60 passed both focused runtime cases with no observed regressions and
@@ -88,6 +88,48 @@ was retained for future consideration; it was not planned or added to accepted s
 | Mod implementation | Accepted MVP delivered in 1.0.56; grid-alignment correction and original-orientation continuation delivered in 1.1.63 |
 | Runtime and final acceptance | MVP and UI sessions accepted under SB-D018–020; published MVP accepted under SB-D029; both focused hotfix cases accepted on 1.0.60 and carried forward to 1.1.63 under SB-D032 |
 | Distribution | Owner published 1.1.63 to Thunderstore and GitHub release tag 1.1; the public download and release asset digest matched the verified CI package |
+
+## Verified 1.2 promotion
+
+On 2026-09-23, [CI run 35921832719](https://github.com/shytamir/DSPSphereBuilder/actions/runs/35921832719)
+completed successfully for promotion commit
+`7ad5ed20be06d607c033815d0bf966f3e36cac97`, build 67 / attempt 1.
+The [direct package](https://github.com/shytamir/DSPSphereBuilder/actions/runs/35921832719/artifacts/10777143205)
+and [separate build record](https://github.com/shytamir/DSPSphereBuilder/actions/runs/35921832719/artifacts/10777730986)
+were independently downloaded and checked.
+
+| Surface | Verified value |
+| --- | --- |
+| Package filename / size | `DSPSphereBuilder-1.2.67.zip` / 52,284 bytes |
+| Manifest / BepInPlugin / internal BuildInfo.Version | `1.2.67` |
+| AssemblyVersion / AssemblyFileVersion / PE file version | `1.2.0.0` |
+| AssemblyInformationalVersion / internal BuildInfo.Label | `1.2.67.7ad5ed2` |
+| Assembly name / plugin GUID | `DSPSphereBuilder` / `dsp.spherebuilder` |
+| Build record | Source above; build 67; attempt 1; clean working tree |
+| Package SHA-256 | `B9AF5627DA4A85159F8BC67910A1D17A0C809DCA58AED271533864D31B3C88D1` |
+| DLL SHA-256 | `7324686FF4E170C13D4C1C3243AC9C8B8105AB8C09AC56D80C8FF6CB00E43732` |
+
+The package hash matched both the build record and GitHub artifact digest; the
+build-record archive also matched its GitHub digest. The existing package
+validator passed the exact five-file layout, metadata and 217 emitted references,
+dependency identity, unchanged icon, UTF-8, licenses and revision-specific source
+links. Independent inspection confirmed both internal BuildInfo constants. The
+exact public source archive downloaded successfully and its production source
+matched the committed Git blobs. The packaged README matched its authored source
+plus the generated source footer and described game 0.10.35.29057 support with
+unchanged gameplay. Version 1.2.67 is newer than the highest published 1.1.63
+baseline confirmed on GitHub and Thunderstore.
+
+CI reported zero compiler warnings/errors and passed the existing logic,
+two-orientation geometry and 15 malformed-package rejection checks. No runtime
+source or reference surface changed, so no new native-reference compilation or
+gameplay session was needed. SB-D032's acceptance and SB-D034's owner validation
+carry forward under the explicit promotion instruction SB-D035.
+
+The downloaded ZIP, build record, run identity, CI log and source archive are
+preserved locally under ignored `artifacts/promotion-1.2/`, outside expiring CI
+storage. This is the verified handoff, not publication. Existing public release
+assets and tags remain unchanged; the root changelog remains Unreleased.
 
 ## Accepted scope
 
@@ -923,6 +965,10 @@ Historical instructions in a decision are not a new request to execute that work
 - **Change records:** No new feature or behavior change. The root changelog
   retains Unreleased until publication; the package README describes current
   game support and unchanged gameplay instead of repeating the prior hotfix.
+- **Outcome:** [1.2.67](#verified-12-promotion) passed CI and independent package,
+  DLL/version, build-record, hash and exact-source checks. It is the identified
+  promotion handoff, with prior runtime acceptance carried forward. A subsequent
+  documentation commit or its CI build does not supersede that artifact.
 - **Boundary:** Commit/push and package handoff are authorized. Publication,
   new tags/releases, runtime changes and build-reference retargeting are outside
   this request. Existing release identities and historical evidence are retained.
@@ -970,7 +1016,8 @@ Historical instructions in a decision are not a new request to execute that work
 
 The grid-alignment hotfix was accepted under SB-D032, its implementation plan
 closed, and package 1.1.63 published and reconciled under SB-D033. The bounded
-version-only 1.2 promotion is active under SB-D035; no new implementation or
+version-only promotion to 1.2.67 is complete under SB-D035, with its verified
+handoff awaiting the separate owner publication step. No new implementation or
 feature planning is active. The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
