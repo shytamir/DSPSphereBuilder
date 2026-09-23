@@ -29,5 +29,5 @@ Attribution and license terms are included in LICENSE.
 
 ## Changes
 
-New spheres now line up with the game's pentagon grid. Spheres you've already
-started keep their original position and can still be continued.
+Supports Dyson Sphere Program 0.10.35.29057. Gameplay behavior is unchanged
+from the previous version.

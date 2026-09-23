@@ -9,6 +9,11 @@ commits and publication record; pre-release builds are not listed as releases.
 
 No unreleased feature changes.
 
+The owner-requested 1.2 promotion retains the 1.1.63 runtime implementation and
+includes documentation of support for Dyson Sphere Program 0.10.35.29057.
+[Owner validation and promotion](docs/PROJECT.md#sb-d035--promote-the-minor-version-to-12)
+identify the authorization and evidence; this is a version-only promotion.
+
 ## 1.1.63 — 2026-09-15
 
 [Published release](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.1).

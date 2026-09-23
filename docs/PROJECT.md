@@ -27,7 +27,15 @@ source of candidate readiness, owner acceptance or current release state.
 
 ## Current phase
 
-**Maintenance — 1.1.63 published.** The owner reported that
+**Maintenance — 1.2 promotion in progress; 1.1.63 remains published.** On
+2026-09-23 the owner authorized increasing MINOR from 1 to 2, pushing to main,
+and verifying the resulting GitHub Actions package under SB-D035. VERSION now
+contains major 1 / minor 2. The runtime implementation is unchanged; the existing
+acceptance and game-update validation carry forward. The concrete candidate will
+be identified after the matching CI artifact passes independent verification.
+Publication remains a separate owner step.
+
+For the published 1.1 baseline, the owner reported that
 build 1.0.60 passed both focused runtime cases with no observed regressions and
 authorized a minor promotion to the 1.1 line (SB-D032). SB-H1.1–3 completed;
 HG1/HM1 through HG3/HM3 passed. The hotfix roadmap was closed and archived,
@@ -51,8 +59,8 @@ on 2026-09-15 (SB-D033). The Thunderstore download and GitHub asset digest match
 the verified package. Tag `1.1` points to documentation handoff commit
 `28d33e9f2f3c64f8a6b4f319c03132905da5f8e3`; the DLL's source remains the promotion
 commit above. [Publication verification](GRID-ALIGNMENT.md#publication-verification--2026-09-15)
-records that distinction. The root changelog was finalized for 1.1.63, and no
-release work remains open. Later CI builds do not supersede the published baseline.
+records that distinction. The root changelog was finalized for 1.1.63 and its
+release work closed. Later CI builds do not supersede the published baseline.
 
 The previous published baseline was 1.0.56. The owner accepted that product, verified that it worked
 through a Thunderstore Mod Manager profile's modded launch, and published package
@@ -117,8 +125,9 @@ performed by the owner after the release-candidate roadmap closed.
 published 1.1.63 implementation.** On 2026-09-23, the owner reported completing
 all existing validations after the game update, with everything working as is,
 and authorized this documentation update (SB-D034). Support covers the accepted
-product scope; no implementation change, version promotion or new release is
-needed.
+product scope and requires no implementation change. The owner subsequently
+requested the version-only 1.2 promotion under SB-D035; game compatibility did
+not require that promotion.
 
 Read-only inspection of the installed game on 2026-09-23 identified:
 
@@ -896,6 +905,28 @@ Historical instructions in a decision are not a new request to execute that work
   runtime change, build-tool retargeting, version promotion or publication is
   required. Maintenance and the deferred Repair Mode boundary continue.
 
+### SB-D035 — Promote the minor version to 1.2
+
+- **Date / decision-maker:** 2026-09-23, explicit owner instruction to increment
+  the minor version, push to main and validate the GitHub Actions artifacts.
+- **Choice:** Retain MAJOR=1 and increase MINOR from 1 to 2 under VERSIONING.md.
+  Keep the existing CI build sequence, GUID, package identity and version-field
+  mapping. The actual workflow run supplies the third numeric component.
+- **Baseline:** Live GitHub releases/tags and Thunderstore package metadata
+  confirmed 1.1.63 as the highest published package before promotion. Runtime
+  source, reference declarations/map, checks and build workflow are unchanged
+  from its source `41f9dcfc3cbea8f8ac4278a996e3be5b51681eb5`.
+- **Acceptance:** Reuse SB-D032's accepted runtime implementation and SB-D034's
+  successful owner validation on game 0.10.35.29057. Only the new metadata,
+  package and source identity require independent verification; no additional
+  gameplay session or repeated approval is required for this version-only step.
+- **Change records:** No new feature or behavior change. The root changelog
+  retains Unreleased until publication; the package README describes current
+  game support and unchanged gameplay instead of repeating the prior hotfix.
+- **Boundary:** Commit/push and package handoff are authorized. Publication,
+  new tags/releases, runtime changes and build-reference retargeting are outside
+  this request. Existing release identities and historical evidence are retained.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -938,8 +969,9 @@ Historical instructions in a decision are not a new request to execute that work
 ## Maintenance boundary
 
 The grid-alignment hotfix was accepted under SB-D032, its implementation plan
-closed, and package 1.1.63 published and reconciled under SB-D033. No release work,
-new implementation or feature planning is active. The owner retained
+closed, and package 1.1.63 published and reconciled under SB-D033. The bounded
+version-only 1.2 promotion is active under SB-D035; no new implementation or
+feature planning is active. The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
 and the usual bounded verification. Subsequent CI builds do not supersede the
