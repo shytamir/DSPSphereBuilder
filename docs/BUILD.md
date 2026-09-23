@@ -29,8 +29,14 @@ To also compile against the actual target and compare emitted references:
 ```
 
 Set the path variables to the actual `DSPGAME_Data/Managed` and `BepInEx/core`
-directories. The build verifies the recorded local target hash and the
-[reference map](../references/README.md). All newly referenced native surfaces
+directories. This native-reference command remains pinned to the
+[original build/reference baseline](PROJECT.md#target-game-reference) and its
+[reference map](../references/README.md). It rejects the updated 0.10.35.29057
+assembly before compilation. The unchanged published mod's
+[owner-validated support](PROJECT.md#supported-game-version) for that game update
+is separate from retargeting these build inputs; use the original references to
+reproduce the native build. The default shim build above is unaffected.
+All newly referenced native surfaces
 must be inspected and mapped in the commit introducing them.
 
 For compilation alone, `scripts/Build-Plugin.ps1` accepts the same arguments.

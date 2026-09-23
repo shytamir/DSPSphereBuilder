@@ -1,8 +1,13 @@
 # Compile reference map
 
 These assemblies provide type declarations for CI compilation. They are never
-installed, shipped, or used to simulate game behavior. The local assemblies remain
-the target authority. [PROJECT.md](../docs/PROJECT.md) owns decisions and state.
+installed, shipped, or used to simulate game behavior. The map retains the
+[original build/reference baseline](../docs/PROJECT.md#target-game-reference);
+it is not a runtime compatibility whitelist. The unchanged mod's
+[current game support](../docs/PROJECT.md#supported-game-version) includes
+0.10.35.29057 following owner validation. This documentation update does not
+retarget the map or native build hash. [PROJECT.md](../docs/PROJECT.md) owns
+decisions and state.
 
 [Map.json](Map.json) maps each declared public/protected surface to the actual
 assembly identity, hash/MVID, native type/base, member signature, and metadata

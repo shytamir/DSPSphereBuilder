@@ -111,7 +111,38 @@ of the polishing plan and a push for each completed story with its state update.
 Accepted behavior and W1–W6 evidence limits remain unchanged. Publication was
 performed by the owner after the release-candidate roadmap closed.
 
+## Supported game version
+
+**Dyson Sphere Program 0.10.35.29057 is fully supported by the unchanged
+published 1.1.63 implementation.** On 2026-09-23, the owner reported completing
+all existing validations after the game update, with everything working as is,
+and authorized this documentation update (SB-D034). Support covers the accepted
+product scope; no implementation change, version promotion or new release is
+needed.
+
+Read-only inspection of the installed game on 2026-09-23 identified:
+
+- Game version: **0.10.35.29057**, the latest entry in the installed
+  `Updates/Versions.txt`, dated 2026-09-23; `GameConfig` declares `0.10.35`.
+- `Assembly-CSharp.dll` size: **8,019,456 bytes**.
+- SHA-256: `E75D3FE4B6A9CA822766189F826BA3A8348DFB7E301AA37FF6779DB29A83FD8D`.
+- Managed MVID: `9d8957ec-44bb-4b81-9e0b-0ec4de39ccfa`.
+- Managed assembly version: `0.0.0.0`; this is not the game version.
+- Unity: `2022.3.62f3c1`; the current startup log reports BepInEx `5.4.17.0`.
+
+The current startup log identifies `1.0.60.145a03b` on this new target MVID.
+As recorded under SB-D032, published 1.1.63 contains the same runtime
+implementation. The owner's validation report establishes compatibility; the
+agent inspected local identities and the startup log without operating the game
+or claiming an independent rerun of the validations. Earlier dated evidence and
+its per-case observation limits remain historical records.
+
 ## Target game reference
+
+This is the **original build/reference baseline**, retained for historical
+evidence, the compile-reference map and the retired feasibility probe. Current
+runtime support is recorded [above](#supported-game-version). The native-reference
+build remains pinned to this original assembly; see [BUILD.md](BUILD.md).
 
 The local `DSPGAME_Data/Managed/Assembly-CSharp.dll` was inspected read-only on
 2026-09-12 while authoring the roadmap:
@@ -846,6 +877,24 @@ Historical instructions in a decision are not a new request to execute that work
   project into maintenance with no release work outstanding. VERSION stayed at
   major 1 / minor 1; the archived hotfix plan and maintenance placeholder remained
   in place. No new feature scope or planning was authorized.
+
+### SB-D034 — Confirm support for the game update
+
+- **Date / decision-maker:** 2026-09-23, owner validation report and instruction.
+- **Outcome:** The owner reported running all existing validations after the
+  game update, with everything working unchanged, and requested that current
+  support references be updated. The [supported game record](#supported-game-version)
+  identifies 0.10.35.29057 and its installed assembly hash/MVID. Published 1.1.63
+  remains the supported mod baseline; SB-D032 records its runtime equivalence
+  to the 1.0.60 implementation identified in the current startup log.
+- **Evidence boundary:** Compatibility is owner-validated. Local read-only
+  metadata/version-file and startup-log inspection identifies the target; it is
+  not an agent-operated gameplay test or a new native-reference compilation.
+  Historical observations, sample blueprint headers and original reference
+  identities retain their dates and meaning.
+- **Scope:** Documentation only, with commit/push to main authorized. No roadmap,
+  runtime change, build-tool retargeting, version promotion or publication is
+  required. Maintenance and the deferred Repair Mode boundary continue.
 
 ## Evidence and unresolved questions
 

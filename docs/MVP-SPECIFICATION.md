@@ -15,6 +15,8 @@ Decision references below refer to PROJECT.md. SB-D003–009 establish the behav
 SB-D011–013 add the production identity, delivery, and validation constraints.
 SB-D030 adds native-grid alignment for new layers and retains the published
 orientation for continuation of existing layers.
+SB-D034 records owner-validated support for the updated game without changing
+the runtime implementation.
 
 ## Scope
 
@@ -64,7 +66,10 @@ does not make them measured results.
 | W5: multiple selected layers | E2 returns a layer only for exactly one selected layer. No-selection refusal is observed; the multiple-selection case was not exercised. |
 | W6: process restart and mod removal | Native save data owns the graph, and E5 observes reconstruction after menu reload. Full application exit/relaunch and removal/reinstallation were not exercised in that run. |
 
-These are explicit validation limits, not requests for further feasibility work.
+These retain the original per-case evidence limits; the later owner report that
+all existing validations passed on 0.10.35.29057 is recorded in
+[current game support](PROJECT.md#supported-game-version). They are not requests
+for further feasibility work.
 Later contradictory evidence requires a fix or an owner scope decision. This
 specification does not claim universal tested compatibility. Build-specific owner
 acceptance is recorded only in PROJECT.md.
@@ -73,13 +78,15 @@ acceptance is recorded only in PROJECT.md.
 
 | ID | Requirement | Basis |
 | --- | --- | --- |
-| SB-MVP-01 | Implement against the recorded local `Assembly-CSharp.dll`: SHA-256 `AE0BA95F75BD879A62AA4CE253B2AB78EAA4FB3C7C595F5E1FEE75EBE0E0EF85`, MVID `ece4a40e-5e73-43f4-a9f8-4e74970b5942`, 7,830,016 bytes. The known baseline is GameConfig `0.10.34`, Unity `2022.3.62f3c1`, BepInEx `5.4.17.0`, and a successful `netstandard2.1` probe build. The full displayed game-build suffix is unknown; do not infer it from the blueprint header. | E1; SB-D002,009 |
+| SB-MVP-01 | Fully support Dyson Sphere Program `0.10.35.29057` with the unchanged published implementation. [PROJECT.md](PROJECT.md#supported-game-version) records the current `Assembly-CSharp.dll` hash, MVID, size, runtime identity and owner validation. The [original build/reference baseline](PROJECT.md#target-game-reference) remains the provenance for the original `netstandard2.1` compilation and feasibility evidence. | E1 (original baseline); SB-D002,009,034 |
 | SB-MVP-02 | Operate on one native-created sphere layer in the currently viewed system, at its existing game-supported radius. Do not create, resize, select, or reorient layers automatically. Support the native legal-radius envelope, including giant-star rules; do not impose an arbitrary radius/star whitelist. | E2/E3/E6, W1/W3; SB-D006,008 |
 | SB-MVP-03 | Before adding anything, require a running native game/editor context, exactly one selected layer, rounded `GameMain.history.dysonNodeLatitude` at least 68, a recognized empty/prefix graph, and finite planned positions. Use the actual native value, not a guessed technology name or the sample's 81° header. Below the threshold, refuse the whole patch; do not paint a low-latitude subset. | E2/E3/E5, W4/W5; SB-D006–009 |
 
-The target hash identifies the baseline and triggers revalidation when it changes;
-a production hard-hash compatibility gate is not required. No claim extends to
-another game/loader version without reviewing the affected native surfaces.
+The current target hash identifies the owner-validated game update; the original
+build/reference hash remains historical compile provenance. A changed target
+requires revalidation, recorded for 0.10.35.29057 under SB-D034; a production
+hard-hash compatibility gate is not required. Support for a further game/loader
+update requires its own validation.
 Under SB-D013, CI uses compile-only type-reference shims, with target-backed
 type/member mappings updated in every commit adding or changing a referenced
 surface. Local real-reference compilation remains a separate required check;

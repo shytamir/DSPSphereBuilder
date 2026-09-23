@@ -5,6 +5,9 @@ laying out the whole design upfront. Each click adds a connected pentagon;
 twelve clicks complete the framework. Construction already underway stays intact,
 and the shells are yours to fill.
 
+Fully supports Dyson Sphere Program **0.10.35.29057**; no mod update is needed
+for this game update.
+
 ## Getting started
 
 With at least 68° of Dyson sphere latitude unlocked, select one empty layer in

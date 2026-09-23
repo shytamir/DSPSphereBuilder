@@ -35,6 +35,10 @@ established by this project.
 
 ## Build and use
 
+Dyson Sphere Program **0.10.35.29057** is fully supported by the unchanged
+published mod. The [support record](docs/PROJECT.md#supported-game-version)
+identifies the game assembly and the owner's completed validation.
+
 Select exactly one native sphere layer with at least 68 degrees of unlocked
 Dyson sphere latitude. Start on an empty layer or continue a recognized staged
 framework. Click **Paint Next Patch** to extend it without waiting for
