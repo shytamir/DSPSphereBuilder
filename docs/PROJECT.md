@@ -27,13 +27,13 @@ source of candidate readiness, owner acceptance or current release state.
 
 ## Current phase
 
-**Maintenance — 1.2.67 verified for handoff; 1.1.63 remains published.** The
-owner-authorized minor promotion under SB-D035 is complete. VERSION contains
-major 1 / minor 2; [the identified 1.2.67 package](#verified-12-promotion) passed
-CI and independent download validation. The runtime implementation is unchanged,
-so the existing acceptance and game-update validation carry forward. Publication
-remains a separate owner step. Later documentation builds do not replace this
-identified candidate.
+**Maintenance — 1.2.68 published.** The owner published the 1.2 line to
+Thunderstore and GitHub release tag `1.2` and requested closeout on 2026-09-24
+(SB-D036). [Publication verification](#publication-verification--1268) reconciled
+the public 1.2.68 package with its successful CI build. VERSION remains major 1 /
+minor 2. The game-support documentation, minor promotion, package validation and
+publication closeout are complete; no release work, implementation or feature
+planning is active. Later CI builds do not supersede this published baseline.
 
 For the published 1.1 baseline, the owner reported that
 build 1.0.60 passed both focused runtime cases with no observed regressions and
@@ -86,8 +86,8 @@ was retained for future consideration; it was not planned or added to accepted s
 | Implementation gates | IG1/IM1 through IG5/IM5 passed, including IG5a/IM5a and the owner UI workshop |
 | Release-candidate gates | RG1/RM1 through RG5/RM5 passed, including RG5a/RM5a; candidate 0.1.54 accepted under SB-D028 |
 | Mod implementation | Accepted MVP delivered in 1.0.56; grid-alignment correction and original-orientation continuation delivered in 1.1.63 |
-| Runtime and final acceptance | MVP and UI sessions accepted under SB-D018–020; published MVP accepted under SB-D029; both focused hotfix cases accepted on 1.0.60 and carried forward to 1.1.63 under SB-D032 |
-| Distribution | Owner published 1.1.63 to Thunderstore and GitHub release tag 1.1; the public download and release asset digest matched the verified CI package |
+| Runtime and final acceptance | MVP and UI sessions accepted under SB-D018–020; published MVP accepted under SB-D029; hotfix accepted under SB-D032; game 0.10.35.29057 validated under SB-D034; unchanged runtime acceptance carried forward to 1.2.68 under SB-D035–036 |
+| Distribution | Owner published 1.2.68 to Thunderstore and GitHub release tag 1.2; both public downloads matched the successful CI package and release asset digest |
 
 ## Verified 1.2 promotion
 
@@ -117,8 +117,8 @@ links. Independent inspection confirmed both internal BuildInfo constants. The
 exact public source archive downloaded successfully and its production source
 matched the committed Git blobs. The packaged README matched its authored source
 plus the generated source footer and described game 0.10.35.29057 support with
-unchanged gameplay. Version 1.2.67 is newer than the highest published 1.1.63
-baseline confirmed on GitHub and Thunderstore.
+unchanged gameplay. Version 1.2.67 was newer than the highest published 1.1.63
+baseline confirmed on GitHub and Thunderstore at that handoff.
 
 CI reported zero compiler warnings/errors and passed the existing logic,
 two-orientation geometry and 15 malformed-package rejection checks. No runtime
@@ -128,8 +128,44 @@ carry forward under the explicit promotion instruction SB-D035.
 
 The downloaded ZIP, build record, run identity, CI log and source archive are
 preserved locally under ignored `artifacts/promotion-1.2/`, outside expiring CI
-storage. This is the verified handoff, not publication. Existing public release
-assets and tags remain unchanged; the root changelog remains Unreleased.
+storage. This records the original verified 1.2.67 handoff. The owner subsequently
+published 1.2.68 from the documentation closeout commit; the publication record
+below identifies those distinct bytes without rewriting this earlier evidence.
+
+## Publication verification — 1.2.68
+
+On 2026-09-24 (Europe/Madrid), the owner reported publication to
+[Thunderstore](https://thunderstore.io/c/dyson-sphere-program/p/DSPSphereBuilder/DSPSphereBuilder/)
+and the [GitHub release tagged 1.2](https://github.com/shytamir/DSPSphereBuilder/releases/tag/1.2).
+Both services identify **1.2.68**. Their publication timestamps are
+2026-09-23 22:04:06 UTC and 22:13:34 UTC respectively, both September 24 locally.
+
+| Surface | Verified published identity |
+| --- | --- |
+| Release tag / DLL source | `1.2` / `5b90f2508c9f4333c9ed072b8422b9f452df9aa4`; the tag resolves to this same commit |
+| CI run / build / attempt | [35922472161](https://github.com/shytamir/DSPSphereBuilder/actions/runs/35922472161) / 68 / 1; successful, clean build |
+| Package / size | `DSPSphereBuilder-1.2.68.zip` / 52,289 bytes |
+| Manifest / loader version | `1.2.68` |
+| Assembly / file version | `1.2.0.0` |
+| Informational version / build label | `1.2.68.5b90f25` |
+| Package SHA-256 | `975973B3827267B24B510B612E7848AB7D471689B6DEE10B3D2C80C09F00C46E` |
+| DLL SHA-256 | `0CBBE741B2205D1321AD69ACF21CD491E61276F87F382446B2EE7E07704F20B0` |
+
+The independently downloaded Thunderstore and GitHub ZIPs matched each other,
+the GitHub release/CI artifact digests and the matching CI build record. The
+existing package validator passed all five required entries, manifest and DLL
+identity, 217 emitted references, dependency metadata, icon, UTF-8, licenses and
+revision-specific source links. The exact public source archive downloaded
+successfully. The publication downloads, service metadata, source and build
+record are preserved under ignored `artifacts/publication-1.2/`.
+
+Compared with the verified 1.2.67 source, the published source changes only
+`docs/PROJECT.md`. The runtime and authored package content are unchanged;
+the new build number/revision explains the different artifact hashes. The
+owner's publication selects 1.2.68 as the released baseline, carrying forward
+SB-D032/SB-D034 acceptance under SB-D035. No new gameplay claim is inferred from
+these package checks. SB-D036 closes the work, and the root changelog now records
+1.2.68 as published with no unreleased feature changes.
 
 ## Accepted scope
 
@@ -163,9 +199,9 @@ performed by the owner after the release-candidate roadmap closed.
 
 ## Supported game version
 
-**Dyson Sphere Program 0.10.35.29057 is fully supported by the unchanged
-published 1.1.63 implementation.** On 2026-09-23, the owner reported completing
-all existing validations after the game update, with everything working as is,
+**Dyson Sphere Program 0.10.35.29057 is fully supported by published 1.2.68,
+whose runtime implementation is unchanged from 1.1.63.** On 2026-09-23, the owner
+reported completing all existing validations after the game update, with everything working as is,
 and authorized this documentation update (SB-D034). Support covers the accepted
 product scope and requires no implementation change. The owner subsequently
 requested the version-only 1.2 promotion under SB-D035; game compatibility did
@@ -973,6 +1009,25 @@ Historical instructions in a decision are not a new request to execute that work
   new tags/releases, runtime changes and build-reference retargeting are outside
   this request. Existing release identities and historical evidence are retained.
 
+### SB-D036 — Record publication of 1.2 and close the work
+
+- **Date / decision-maker:** 2026-09-24, owner publication report and instruction
+  to record completion, restore maintenance state and push to main.
+- **Outcome:** The owner tagged `1.2` and published **1.2.68** to Thunderstore
+  and GitHub. [Publication verification](#publication-verification--1268) matched
+  both public downloads to the successful CI build and recorded the tag/source,
+  versions and hashes. This is the owner's release selection after the earlier
+  1.2.67 handoff; the only intervening source change was its documentation record.
+- **Acceptance:** Existing runtime acceptance and game-update validation carry
+  forward to the unchanged implementation. Publication and byte verification are
+  recorded separately from owner-operated gameplay evidence.
+- **Closeout:** Game-support documentation, minor promotion, artifact checks and
+  publication reconciliation are complete. The root changelog is finalized for
+  1.2.68; VERSION remains major 1 / minor 2. The existing maintenance placeholder
+  remains sufficient: no new roadmap, active story or release task is needed.
+  Repair Mode stays deferred; historical evidence and older release tags remain
+  unchanged. The owner authorized this documentation closeout and push to main.
+
 ## Evidence and unresolved questions
 
 - The release-candidate draft was reviewed in three passes on 2026-09-12:
@@ -1014,12 +1069,12 @@ Historical instructions in a decision are not a new request to execute that work
 
 ## Maintenance boundary
 
-The grid-alignment hotfix was accepted under SB-D032, its implementation plan
-closed, and package 1.1.63 published and reconciled under SB-D033. The bounded
-version-only promotion to 1.2.67 is complete under SB-D035, with its verified
-handoff awaiting the separate owner publication step. No new implementation or
-feature planning is active. The owner retained
+The game-update support work, version-only promotion and publication closeout
+are complete under SB-D034–036. Package **1.2.68** is the published baseline;
+no release work, implementation, feature planning or owner validation is pending.
+The maintenance roadmap placeholder and completed archives remain in place.
+The owner retained
 [issue #1](https://github.com/shytamir/DSPSphereBuilder/issues/1) for a future discussion
 and explicitly deferred planning it. Maintenance changes require a concrete request
 and the usual bounded verification. Subsequent CI builds do not supersede the
-published 1.1.63 baseline without a separate owner release decision.
+published 1.2.68 baseline without a separate owner release decision.
